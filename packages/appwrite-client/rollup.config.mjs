@@ -3,7 +3,7 @@ import typescript from '@rollup/plugin-typescript'
 
 export default {
 	external: Object.keys(pkg.dependencies),
-	input: './src/index.ts',
+	input: 'src/index.ts',
 	plugins: [typescript()],
 	output: [
 		{

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { navigating } from '$app/stores';
-	import CookiesAlert from '$lib/components/Common/CookiesAlert.svelte';
-	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte';
-	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query';
-	import OfflinePage from '$lib/components/Pages/OfflinePage.svelte';
-	import { isOnline } from '$lib/utils/online';
+	import { navigating } from '$app/stores'
+	import CookiesAlert from '$lib/components/Common/CookiesAlert.svelte'
+	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
+	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query'
+	import OfflinePage from '$lib/components/Pages/OfflinePage.svelte'
+	import { isOnline } from '$lib/utils/online'
 
-	import '../app.css';
-	const queryClient = new QueryClient();
+	import '../app.css'
+	const queryClient = new QueryClient()
 </script>
 
 <CookiesAlert />

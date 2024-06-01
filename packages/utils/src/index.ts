@@ -13,4 +13,5 @@ export * from './utils/object';
 export * from './utils/operations';
 export * from './utils/prettier';
 export * from './utils/theme';
+export * from './utils/typeCheking';
 export * from './utils/url';

@@ -17,7 +17,8 @@
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/adapter-vercel": "^5.3.1",
+		"@sveltejs/kit": "^1.30.3",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "^8.56.7",
 		"autoprefixer": "^10.4.19",
@@ -34,13 +35,11 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0-alpha.20",
-		"vite": "^5.0.3",
+		"vite": "^4.4.2",
 		"vitest": "^1.2.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"@repo/my-pets-tstypes": "*",
-		"@repo/utils": "*",
 		"@apollo/client": "^3.8.2",
 		"@cloudinary/url-gen": "^1.11.2",
 		"@lordicon/element": "^1.2.0",
@@ -49,6 +48,8 @@
 		"@onsvisual/svelte-maps": "^1.1.6",
 		"@pqina/pintura": "^8.62.0",
 		"@pqina/svelte-pintura": "^9.0.1",
+		"@repo/my-pets-tstypes": "*",
+		"@repo/utils": "*",
 		"@skeletonlabs/skeleton": "^2.9.0",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"@sveltestack/svelte-query": "^1.6.0",

@@ -3,3 +3,5 @@
  */
 
 export * from './Document';
+export * from './DocumentValues';
+export * from './IndexTypes';

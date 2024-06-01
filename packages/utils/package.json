@@ -16,7 +16,7 @@
 		"build": "npm run build:types && npm run build:libs",
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
-		"prebuild": "yarn barrelsby && yarn check-missing-dependencies",
+		"prebuild": "yarn barrelsby",
 		"barrelsby": "barrelsby --delete  --singleQuotes --directory ./src/",
 		"check-missing-dependencies": "npx dependency-check ./package.json src/**/* --missing"
 	},
@@ -28,6 +28,7 @@
 		"ts-node": "^10.9.1"
 	},
 	"dependencies": {
+		"@repo/ts-types": "*",
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
 		"appwrite": "^13.0.1",
