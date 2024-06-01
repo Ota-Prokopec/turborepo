@@ -1,0 +1,27 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+@import url('normalize.scss');
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	display: flex;
+}
+
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-bottom-right {
+	display: none !important;
+}
