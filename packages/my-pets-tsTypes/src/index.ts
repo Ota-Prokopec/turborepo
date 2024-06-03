@@ -4,3 +4,5 @@
 
 export * from './PetData';
 export * from './signupTypes';
+export * from './Auth/UsersPreferences';
+export * from './Documents/PetDocument';

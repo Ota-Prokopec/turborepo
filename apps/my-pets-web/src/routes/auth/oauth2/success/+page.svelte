@@ -1,0 +1,68 @@
+<script lang="ts">
+	import { goto } from '$app/navigation'
+	import { Queries, collections, user } from '$lib/appwrite/appwrite'
+	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
+	import { storage } from '$lib/utils/lsStore'
+	import LL from '$src/i18n/i18n-svelte'
+	import { onMount } from 'svelte'
+	import type { PageData } from './$types'
+
+	export let data: PageData
+
+	let { username, myId } = data
+
+	onMount(async () => {
+		try {
+			//session in localstorage for client to appwrite
+			storage.cookieFallback = { a_session_experiences: data.session }
+			//cookies for ssr
+			await sdk.setSession({ session: data.session })
+
+			const { $id: userId, ...userData } = await user.get()
+
+			if (!userId) throw new Error('User is not Authed')
+
+			const myUserInfoAlreadyExists =
+				(
+					await collections.userInfo.listDocuments([
+						Queries.userInfo.equal('userId', userId),
+					])
+				).total > 0
+
+			//if there already is a userInfo document with my $id it means i only want to login so navigate me into the main page
+			if (myUserInfoAlreadyExists) {
+				goto('/', { invalidateAll: true }) //go to the main page
+				return
+			}
+
+			//*if the user does not have myId and username in query in url (it happens when user clicks google login before creating user account)
+			if (!myId) myId = `@${userId}`
+			if (!username) username = userData.name
+
+			//if your account is not created, create an account
+			//set up the language
+			let language = getSystemLanguageAbbreviation()
+			if (!isLanguage(language)) language = 'en' //set the default language
+			if (!isLanguage(language))
+				throw new Error(
+					'the language should be en if you have some language that Tourmate does not support the default is en',
+				)
+
+			if (!myUserInfoAlreadyExists) {
+				//create experience account
+				const { createAccount: account } = await sdk.createAccount({
+					myId: myId,
+					username: username,
+					language: language,
+				})
+
+				if (!account) throw new Error('It was not successful to create your account')
+				goto(`/auth/register/setlocationfornotifications`, { invalidateAll: true }) //finish your registration
+			}
+		} catch (error) {
+			alert('', $LL.page.oauth.success.errorMessage(), { color: 'red' })
+		}
+	})
+</script>
+
+<FullPageLoading />

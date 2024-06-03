@@ -1,0 +1,17 @@
+{
+	"extends": "../../packages/tsconfig/base.json",
+	"compilerOptions": {
+		"module": "CommonJS",
+		"outDir": "dist",
+		"rootDir": "src"
+	},
+
+	"include": [
+		"src/**/*.d.ts",
+		"src/**/*.ts",
+		"src/**/*.js",
+		"../../global.d.ts",
+		"../../tsReset.d.ts"
+	],
+	"exclude": ["node_modules", "dist"]
+}
