@@ -1,1 +1,1 @@
-export type TypeSocialMediaToSignUp = 'google' | 'facebook' | 'github' | 'discord'
+export type SocialMediaToSignUp = 'google' | 'facebook' | 'github' | 'discord'

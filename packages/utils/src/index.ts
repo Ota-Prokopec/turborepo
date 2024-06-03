@@ -7,6 +7,7 @@ export * from './utils/array';
 export * from './utils/classes';
 export * from './utils/clipboard';
 export * from './utils/device';
+export * from './utils/elementIdGenerator';
 export * from './utils/language';
 export * from './utils/normalizators';
 export * from './utils/object';

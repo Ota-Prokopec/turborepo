@@ -11,7 +11,6 @@
 </script>
 
 <CookiesAlert />
-<div></div>
 
 <QueryClientProvider client={queryClient}>
 	{#if $navigating}

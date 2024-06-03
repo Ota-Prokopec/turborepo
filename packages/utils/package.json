@@ -25,7 +25,8 @@
 		"barrelsby": "^2.8.0",
 		"dependency-check": "^4.1.0",
 		"rollup": "^4.6.0",
-		"ts-node": "^10.9.1"
+		"ts-node": "^10.9.1",
+		"typescript": "5.4.5"
 	},
 	"dependencies": {
 		"@repo/ts-types": "*",

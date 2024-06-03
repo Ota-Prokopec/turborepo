@@ -6,20 +6,8 @@
 	import IconFacebook from '$lib/components/Icons/IconFacebook.svelte'
 	import IconGithub from '$lib/components/Icons/IconGithub.svelte'
 	import IconGoogle from '$lib/components/Icons/IconGoogle.svelte'
-	import { createEventDispatcher } from 'svelte'
+	import { type SocialMediaToSignUp } from '@repo/my-pets-tstypes'
 	import { twMerge } from 'tailwind-merge'
-	import type { TypeSocialMediaToSignUp } from '@repo/my-pets-tstypes'
-
-	const dispatch = createEventDispatcher<{ click: undefined }>()
-
-	export let disabled: boolean = false
-
-	export let userData:
-		| {
-				myId: string
-				username: string
-		  }
-		| undefined = undefined
 
 	const logout = async () => {
 		try {
@@ -27,27 +15,15 @@
 		} catch (error) {}
 	}
 
-	const createSuccessURL = () => {
-		const url = new URL(`${location.origin}/auth/oauth2/success`)
-		if (userData) {
-			url.searchParams.append('myId', userData.myId)
-			url.searchParams.append('username', userData.username)
-		}
-		return url
-	}
-
-	const login = async (platform: TypeSocialMediaToSignUp) => {
+	const login = async (platform: SocialMediaToSignUp) => {
 		await logout()
-		const successURL = createSuccessURL()
 
 		await user.createOAuth2Session(
 			platform,
-			successURL.href,
+			`${location.origin}/auth/oauth2/success`,
 			`${location.origin}/oauth2/failure`,
 		)
 	}
-
-	const blurryClass = 'opacity-[0.5]'
 
 	const socials = [
 		{
@@ -66,18 +42,12 @@
 			key: 'github',
 			icon: IconGithub,
 		},
-	] as const
+	] as const satisfies { key: SocialMediaToSignUp; icon: any }[]
 </script>
 
 <Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
 	{#each socials as { icon, key }}
-		<Icon
-			{disabled}
-			on:click={() => dispatch('click')}
-			disableDefaultDarkMode
-			class={twMerge('w-14', disabled && blurryClass)}
-			on:click={() => login(key)}
-		>
+		<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
 			<svelte:component this={icon} />
 		</Icon>
 	{/each}
