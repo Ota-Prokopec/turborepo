@@ -1,13 +1,13 @@
 import { collectionsClient, collectionsAdmin } from './tools/collections'
-import { type Types, setProject } from '@repo/appwrite-ssr-graphql'
+import { Types, setProject } from '@repo/appwrite-ssr-graphql'
 import Queries from './tools/query'
 import { getAccount } from './tools/account'
 
 const client: ReturnType<typeof setProject> = setProject({
-	endpoint: process.env.APPWRITE_ENDPOINT,
-	projectId: process.env.APPWRITE_PROJECT_ID,
+	endpoint: process.env.APPWRITE_ENDPOINT || '',
+	projectId: process.env.APPWRITE_PROJECT_ID || '',
 	apiKey: process.env.APPWRITE_API_KEY,
-	hostname: process.env.SERVER_HOSTNAME,
+	hostname: process.env.SERVER_HOSTNAME || '',
 })
 
 const setCookie = (cookies: Types.Cookie[]) => setClient(client.setCookie(cookies))

@@ -53,12 +53,14 @@ declare module '$env/static/private' {
 	export const npm_config_version_git_tag: string;
 	export const TURBO_INVOCATION_DIR: string;
 	export const NVM_CD_FLAGS: string;
+	export const npm_package_dependencies__graphql_codegen_typescript_graphql_request: string;
 	export const npm_package_devDependencies_typescript: string;
 	export const npm_package_devDependencies_prettier_plugin_svelte: string;
 	export const TERM: string;
 	export const SHELL: string;
 	export const npm_package_dependencies__repo_utils: string;
 	export const npm_package_devDependencies_vite: string;
+	export const npm_package_scripts_dev_pets_web: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_package_scripts_lint: string;
@@ -86,6 +88,7 @@ declare module '$env/static/private' {
 	export const npm_package_description: string;
 	export const USER: string;
 	export const NVM_DIR: string;
+	export const npm_package_scripts_codegen: string;
 	export const LS_COLORS: string;
 	export const npm_package_dependencies_svelte_loading_spinners: string;
 	export const npm_package_dependencies_mapbox_gl: string;
@@ -99,6 +102,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies__turf_turf: string;
 	export const SSH_AUTH_SOCK: string;
 	export const npm_package_dependencies_lodash: string;
+	export const npm_package_dependencies_graphql_request: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_package_dependencies_appwrite: string;
 	export const npm_package_devDependencies_postcss: string;
@@ -107,11 +111,13 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_eslint_config: string;
 	export const npm_execpath: string;
 	export const npm_package_devDependencies_tslib: string;
+	export const npm_package_scripts_dev_pets_api: string;
 	export const PAGER: string;
 	export const npm_package_devDependencies_svelte: string;
 	export const npm_package_dependencies_cors: string;
 	export const npm_package_dependencies__sveltestack_svelte_query: string;
 	export const LSCOLORS: string;
+	export const npm_package_devDependencies__graphql_codegen_cli: string;
 	export const npm_package_dependencies_turf: string;
 	export const npm_package_dependencies_tailwind_merge: string;
 	export const npm_config_argv: string;
@@ -178,6 +184,7 @@ declare module '$env/static/private' {
 	export const HOME: string;
 	export const npm_package_dependencies_svelte_appwrite_client: string;
 	export const npm_package_type: string;
+	export const npm_package_devDependencies_graphql_codegen_svelte_apollo: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const npm_package_dependencies__svelteuidev_core: string;
 	export const npm_package_dependencies__onsvisual_svelte_maps: string;
@@ -199,6 +206,7 @@ declare module '$env/static/private' {
 	export const LOGNAME: string;
 	export const LESS: string;
 	export const npm_package_dependencies_tough_cookie: string;
+	export const npm_package_devDependencies_codegen: string;
 	export const npm_lifecycle_script: string;
 	export const PREFIX: string;
 	export const npm_package_dependencies_zod: string;
@@ -206,6 +214,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_superjson: string;
 	export const npm_package_dependencies_canvas_txt: string;
 	export const npm_package_dependencies__splidejs_svelte_splide: string;
+	export const npm_package_devDependencies_dotenv_cli: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const npm_package_dependencies_cloudinary: string;
 	export const npm_package_dependencies_react: string;
@@ -308,12 +317,14 @@ declare module '$env/dynamic/private' {
 		npm_config_version_git_tag: string;
 		TURBO_INVOCATION_DIR: string;
 		NVM_CD_FLAGS: string;
+		npm_package_dependencies__graphql_codegen_typescript_graphql_request: string;
 		npm_package_devDependencies_typescript: string;
 		npm_package_devDependencies_prettier_plugin_svelte: string;
 		TERM: string;
 		SHELL: string;
 		npm_package_dependencies__repo_utils: string;
 		npm_package_devDependencies_vite: string;
+		npm_package_scripts_dev_pets_web: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_package_scripts_lint: string;
@@ -341,6 +352,7 @@ declare module '$env/dynamic/private' {
 		npm_package_description: string;
 		USER: string;
 		NVM_DIR: string;
+		npm_package_scripts_codegen: string;
 		LS_COLORS: string;
 		npm_package_dependencies_svelte_loading_spinners: string;
 		npm_package_dependencies_mapbox_gl: string;
@@ -354,6 +366,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies__turf_turf: string;
 		SSH_AUTH_SOCK: string;
 		npm_package_dependencies_lodash: string;
+		npm_package_dependencies_graphql_request: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_package_dependencies_appwrite: string;
 		npm_package_devDependencies_postcss: string;
@@ -362,11 +375,13 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_eslint_config: string;
 		npm_execpath: string;
 		npm_package_devDependencies_tslib: string;
+		npm_package_scripts_dev_pets_api: string;
 		PAGER: string;
 		npm_package_devDependencies_svelte: string;
 		npm_package_dependencies_cors: string;
 		npm_package_dependencies__sveltestack_svelte_query: string;
 		LSCOLORS: string;
+		npm_package_devDependencies__graphql_codegen_cli: string;
 		npm_package_dependencies_turf: string;
 		npm_package_dependencies_tailwind_merge: string;
 		npm_config_argv: string;
@@ -433,6 +448,7 @@ declare module '$env/dynamic/private' {
 		HOME: string;
 		npm_package_dependencies_svelte_appwrite_client: string;
 		npm_package_type: string;
+		npm_package_devDependencies_graphql_codegen_svelte_apollo: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		npm_package_dependencies__svelteuidev_core: string;
 		npm_package_dependencies__onsvisual_svelte_maps: string;
@@ -454,6 +470,7 @@ declare module '$env/dynamic/private' {
 		LOGNAME: string;
 		LESS: string;
 		npm_package_dependencies_tough_cookie: string;
+		npm_package_devDependencies_codegen: string;
 		npm_lifecycle_script: string;
 		PREFIX: string;
 		npm_package_dependencies_zod: string;
@@ -461,6 +478,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_superjson: string;
 		npm_package_dependencies_canvas_txt: string;
 		npm_package_dependencies__splidejs_svelte_splide: string;
+		npm_package_devDependencies_dotenv_cli: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		npm_package_dependencies_cloudinary: string;
 		npm_package_dependencies_react: string;

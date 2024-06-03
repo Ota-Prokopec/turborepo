@@ -11,10 +11,7 @@ export const collectionsClient = (
 	Collection: AppwriteSSRReturnTypeClient['Collection'],
 ) => {
 	return {
-		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>(
-			'experiences',
-			'usersAnswers',
-		),
+		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>('my-pets', 'pet'),
 	}
 }
 
@@ -22,9 +19,6 @@ export const collectionsAdmin = (
 	Collection: AppwriteSSRReturnTypeAdmin['Collection'],
 ) => {
 	return {
-		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>(
-			'experiences',
-			'usersAnswers',
-		),
+		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>('my-pets', 'pet'),
 	}
 }

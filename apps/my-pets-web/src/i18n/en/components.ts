@@ -3,7 +3,7 @@ import type { BaseTranslation } from '../i18n-types'
 export const componentsCS = {
 	CookiesAlert: {
 		title:
-			'Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů, včetně aktuální polohy uživatelů.',
+			'Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů.',
 		acceptButtonLabel: 'Přijmout soubory cookie',
 	},
 
@@ -17,7 +17,20 @@ export const componentsCS = {
 		message:
 			'Vaše GPS není zaplá nebo jste neudělil povolení, prohlížeči chrom nebo safari, o používání GPS. Jestli jste geolokaci povolili a stále to nefunguje, zkuste se pohnout.',
 	},
-	PetNameInput: {
+	EditPetNameInput: {
 		title: 'Edit your pet`s name',
+	},
+	NoPetFound: {
+		title: 'No pets found',
+		message: 'Go ahead and create a page for your pet!',
+	},
+	CreateNewPetModal: {
+		title: 'create new pet',
+	},
+	PetNameInput: {
+		title: 'your pets name',
+	},
+	PetAddressInput: {
+		title: 'your pets address',
 	},
 } satisfies BaseTranslation

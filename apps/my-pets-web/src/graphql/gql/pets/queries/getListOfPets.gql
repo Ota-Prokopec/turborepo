@@ -1,0 +1,7 @@
+query getListOfPets {
+	getListOfPets {
+		petAddress
+		petName
+		petId
+	}
+}

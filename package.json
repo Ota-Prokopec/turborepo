@@ -4,7 +4,8 @@
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"dev-pets": "dotenv -e .env -- turbo dev --filter=my-pets-api ",
+		"dev-pets-web": "dotenv -e .env -- turbo dev --filter=my-pets-web ",
+		"dev-pets-api": "dotenv -e .env -- turbo dev --filter=my-pets-api ",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},

@@ -1,6 +1,6 @@
 <script lang="ts">
+	import Card from './Card.svelte'
 	import Column from './Column.svelte'
-	import Line from './Line.svelte'
 
 	type Item = $$Generic
 
@@ -9,7 +9,8 @@
 
 <Column class="w-full h-auto gap-0">
 	{#each items as item}
-		<slot {item} />
-		<Line></Line>
+		<Card>
+			<slot {item} />
+		</Card>
 	{/each}
 </Column>

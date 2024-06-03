@@ -2,7 +2,19 @@
 ### Do not make changes to this file directly
 
 
+type Account {
+  userId: String!
+}
+
+type Pet {
+  petAddress: String!
+  petId: String!
+  petName: String!
+}
+
 type Query {
+  getAccount: Account!
+  getListOfPets: [Pet!]!
   setSession(session: String!): Boolean!
 }
 

@@ -1,24 +1,34 @@
 <script lang="ts">
+	import Center from '$lib/components/Common/Center.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
 	import Tabs from '$lib/components/Common/Tabs.svelte'
-	import type { PetData } from '@repo/my-pets-tstypes'
+	import { sdk } from '$src/graphql/sdk'
+	import { useQuery } from '@sveltestack/svelte-query'
+	import NoPetFound from './Components/NoPetFound.svelte'
 	import Section from './Components/Section.svelte'
+	import { onMount } from 'svelte'
 
-	const myPets: PetData[] = [
-		{ name: 'Jessinka', id: '1', address: 'fa' },
-		{ name: 'Bobek', id: '2', address: '' },
-		{ name: 'Karina', id: '3', address: '' },
-	] as const
+	let myPetsData:
+		| Awaited<ReturnType<typeof sdk.getListOfPets>>['getListOfPets']
+		| undefined
 
-	const tabItems = myPets.map((pet) => ({ key: pet.id, title: pet.name }))
+	onMount(async () => {
+		myPetsData = (await sdk.getListOfPets()).getListOfPets
+	})
 
-	let currentPetId: (typeof myPets)[number]['id'] = '1'
-	$: currentPet = myPets.find((pet) => pet.id === currentPetId)
+	$: tabItems = myPetsData?.map((pet) => ({ key: pet.petId, title: pet.petName }))
+
+	$: currentPetId = myPetsData?.at(0)?.petId
+	$: currentPet = myPetsData?.find((pet) => pet.petId === currentPetId)
 </script>
 
-<Column class="h-auto w-full justify-center flex items-center pt-10">
-	<Tabs bind:active={currentPetId} items={tabItems} />
-	{#if currentPet}
-		<Section petData={currentPet}></Section>
-	{/if}
-</Column>
+{#if currentPetId && currentPet && tabItems}
+	<Column class="h-auto w-full justify-center flex items-center pt-10">
+		<Tabs bind:active={currentPetId} items={tabItems} />
+		{#if currentPet}
+			<Section petData={currentPet}></Section>
+		{/if}
+	</Column>
+{:else}
+	<Center class="w-full h-full"><NoPetFound></NoPetFound></Center>
+{/if}

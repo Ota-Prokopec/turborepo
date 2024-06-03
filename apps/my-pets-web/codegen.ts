@@ -2,11 +2,13 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
 
 const codegenConfigConfig: CodegenConfig['config'] = {
 	clientPath: './client',
-	scalars: {},
+	scalars: {
+		StringOrNumber: 'string|number',
+	},
 }
 
 const config: CodegenConfig = {
-	schema: '../api/src/generated/schema.graphql',
+	schema: '../my-pets-api/src/generated/schema.graphql',
 	documents: './src/graphql/**/*.gql',
 	generates: {
 		'./src/graphql/generated-svelte.ts': {

@@ -38,6 +38,14 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Account: { // root type
+    userId: string; // String!
+  }
+  Pet: { // root type
+    petAddress: string; // String!
+    petId: string; // String!
+    petName: string; // String!
+  }
   Query: {};
   Session: { // root type
     session: string; // String!
@@ -55,7 +63,17 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Account: { // field return type
+    userId: string; // String!
+  }
+  Pet: { // field return type
+    petAddress: string; // String!
+    petId: string; // String!
+    petName: string; // String!
+  }
   Query: { // field return type
+    getAccount: NexusGenRootTypes['Account']; // Account!
+    getListOfPets: NexusGenRootTypes['Pet'][]; // [Pet!]!
     setSession: boolean; // Boolean!
   }
   Session: { // field return type
@@ -64,7 +82,17 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Account: { // field return type name
+    userId: 'String'
+  }
+  Pet: { // field return type name
+    petAddress: 'String'
+    petId: 'String'
+    petName: 'String'
+  }
   Query: { // field return type name
+    getAccount: 'Account'
+    getListOfPets: 'Pet'
     setSession: 'Boolean'
   }
   Session: { // field return type name

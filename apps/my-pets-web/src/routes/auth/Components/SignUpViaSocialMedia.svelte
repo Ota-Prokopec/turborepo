@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { user } from '$lib/appwrite/appwrite'
+	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
+	import Loading from '$lib/components/Common/Loading.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import IconDiscord from '$lib/components/Icons/IconDiscord.svelte'
 	import IconFacebook from '$lib/components/Icons/IconFacebook.svelte'
@@ -9,6 +11,8 @@
 	import { type SocialMediaToSignUp } from '@repo/my-pets-tstypes'
 	import { twMerge } from 'tailwind-merge'
 
+	export let isLoading = false
+
 	const logout = async () => {
 		try {
 			await user.deleteSessions() //first things first, i will delete session, if some exists
@@ -16,13 +20,15 @@
 	}
 
 	const login = async (platform: SocialMediaToSignUp) => {
+		isLoading = true
 		await logout()
 
 		await user.createOAuth2Session(
 			platform,
 			`${location.origin}/auth/oauth2/success`,
-			`${location.origin}/oauth2/failure`,
+			`${location.origin}/auth/oauth2/failure`,
 		)
+		isLoading = false
 	}
 
 	const socials = [
@@ -45,10 +51,14 @@
 	] as const satisfies { key: SocialMediaToSignUp; icon: any }[]
 </script>
 
-<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
-	{#each socials as { icon, key }}
-		<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
-			<svelte:component this={icon} />
-		</Icon>
-	{/each}
-</Row>
+{#if isLoading}
+	<FullPageLoading></FullPageLoading>
+{:else}
+	<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
+		{#each socials as { icon, key }}
+			<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
+				<svelte:component this={icon} />
+			</Icon>
+		{/each}
+	</Row>
+{/if}

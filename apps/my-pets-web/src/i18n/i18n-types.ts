@@ -27,6 +27,14 @@ type RootTranslation = {
 			 */
 			welcome: string
 		}
+		oauth: {
+			success: {
+				/**
+				 * W​e​ ​a​r​e​ ​s​o​r​r​y​,​ ​w​e​ ​w​e​r​e​ ​n​o​t​ ​a​b​l​e​ ​t​o​ ​s​i​g​n​ ​y​o​u​ ​i​n​ ​t​h​e​ ​T​o​u​r​m​a​t​e​.​ ​P​l​e​a​s​e​ ​t​r​y​ ​i​t​ ​a​g​a​i​n​.
+				 */
+				errorMessage: string
+			}
+		}
 	}
 	common: {
 		/**
@@ -65,7 +73,7 @@ type RootTranslation = {
 	component: {
 		CookiesAlert: {
 			/**
-			 * T​a​t​o​ ​s​t​r​á​n​k​a​ ​p​o​u​ž​í​v​á​ ​s​o​u​b​o​r​y​ ​c​o​o​k​i​e​ ​k​ ​u​k​l​á​d​á​n​í​ ​r​e​l​a​c​í​ ​u​ž​i​v​a​t​e​l​ů​ ​a​ ​d​a​t​ ​u​ž​i​v​a​t​e​l​ů​,​ ​v​č​e​t​n​ě​ ​a​k​t​u​á​l​n​í​ ​p​o​l​o​h​y​ ​u​ž​i​v​a​t​e​l​ů​.
+			 * T​a​t​o​ ​s​t​r​á​n​k​a​ ​p​o​u​ž​í​v​á​ ​s​o​u​b​o​r​y​ ​c​o​o​k​i​e​ ​k​ ​u​k​l​á​d​á​n​í​ ​r​e​l​a​c​í​ ​u​ž​i​v​a​t​e​l​ů​ ​a​ ​d​a​t​ ​u​ž​i​v​a​t​e​l​ů​.
 			 */
 			title: string
 			/**
@@ -97,9 +105,37 @@ type RootTranslation = {
 			 */
 			message: string
 		}
-		PetNameInput: {
+		EditPetNameInput: {
 			/**
 			 * E​d​i​t​ ​y​o​u​r​ ​p​e​t​`​s​ ​n​a​m​e
+			 */
+			title: string
+		}
+		NoPetFound: {
+			/**
+			 * N​o​ ​p​e​t​s​ ​f​o​u​n​d
+			 */
+			title: string
+			/**
+			 * G​o​ ​a​h​e​a​d​ ​a​n​d​ ​c​r​e​a​t​e​ ​a​ ​p​a​g​e​ ​f​o​r​ ​y​o​u​r​ ​p​e​t​!
+			 */
+			message: string
+		}
+		CreateNewPetModal: {
+			/**
+			 * c​r​e​a​t​e​ ​n​e​w​ ​p​e​t
+			 */
+			title: string
+		}
+		PetNameInput: {
+			/**
+			 * y​o​u​r​ ​p​e​t​s​ ​n​a​m​e
+			 */
+			title: string
+		}
+		PetAddressInput: {
+			/**
+			 * y​o​u​r​ ​p​e​t​s​ ​a​d​d​r​e​s​s
 			 */
 			title: string
 		}
@@ -125,6 +161,14 @@ export type TranslationFunctions = {
 		 Registrujte se do aplikace a vytvořte si psí známku!
 			 */
 			welcome: () => LocalizedString
+		}
+		oauth: {
+			success: {
+				/**
+				 * We are sorry, we were not able to sign you in the Tourmate. Please try it again.
+				 */
+				errorMessage: () => LocalizedString
+			}
 		}
 	}
 	common: {
@@ -164,7 +208,7 @@ export type TranslationFunctions = {
 	component: {
 		CookiesAlert: {
 			/**
-			 * Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů, včetně aktuální polohy uživatelů.
+			 * Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů.
 			 */
 			title: () => LocalizedString
 			/**
@@ -196,9 +240,37 @@ export type TranslationFunctions = {
 			 */
 			message: () => LocalizedString
 		}
-		PetNameInput: {
+		EditPetNameInput: {
 			/**
 			 * Edit your pet`s name
+			 */
+			title: () => LocalizedString
+		}
+		NoPetFound: {
+			/**
+			 * No pets found
+			 */
+			title: () => LocalizedString
+			/**
+			 * Go ahead and create a page for your pet!
+			 */
+			message: () => LocalizedString
+		}
+		CreateNewPetModal: {
+			/**
+			 * create new pet
+			 */
+			title: () => LocalizedString
+		}
+		PetNameInput: {
+			/**
+			 * your pets name
+			 */
+			title: () => LocalizedString
+		}
+		PetAddressInput: {
+			/**
+			 * your pets address
 			 */
 			title: () => LocalizedString
 		}
