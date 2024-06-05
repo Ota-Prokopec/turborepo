@@ -4,6 +4,12 @@ export type TPetDocumentCreate = {
 	petName: string
 	petAddress: string
 	userId: string
+	petType: 'dog' | 'cat'
+	petAllergens: string[]
+	ownerPhoneNumber: string
+	petTreating: string
+	petGender: 'female' | 'male'
+	petDescriptionCustomFieldIds: string[]
 }
 
 export type TPetDocument = Document<TPetDocumentCreate>

@@ -138,6 +138,40 @@ type RootTranslation = {
 			 * y​o​u​r​ ​p​e​t​s​ ​a​d​d​r​e​s​s
 			 */
 			title: string
+			/**
+			 * s​a​v​e
+			 */
+			buttonSaveTitle: string
+		}
+		PetAllergensInput: {
+			/**
+			 * A​l​l​e​r​g​e​n​s
+			 */
+			title: string
+		}
+		OwnerPhoneNumberInput: {
+			/**
+			 * Y​o​u​r​ ​p​h​o​n​e​ ​n​u​m​b​e​r
+			 */
+			title: string
+		}
+		PetTreatInput: {
+			/**
+			 * H​o​w​ ​t​o​ ​t​r​e​a​t​ ​y​o​u​r​ ​p​e​t​?
+			 */
+			title: string
+		}
+		PetCustomTextInput: {
+			placeholder: {
+				/**
+				 * t​i​t​l​e
+				 */
+				title: string
+				/**
+				 * t​e​x​t
+				 */
+				text: string
+			}
 		}
 	}
 	error: {
@@ -273,6 +307,40 @@ export type TranslationFunctions = {
 			 * your pets address
 			 */
 			title: () => LocalizedString
+			/**
+			 * save
+			 */
+			buttonSaveTitle: () => LocalizedString
+		}
+		PetAllergensInput: {
+			/**
+			 * Allergens
+			 */
+			title: () => LocalizedString
+		}
+		OwnerPhoneNumberInput: {
+			/**
+			 * Your phone number
+			 */
+			title: () => LocalizedString
+		}
+		PetTreatInput: {
+			/**
+			 * How to treat your pet?
+			 */
+			title: () => LocalizedString
+		}
+		PetCustomTextInput: {
+			placeholder: {
+				/**
+				 * title
+				 */
+				title: () => LocalizedString
+				/**
+				 * text
+				 */
+				text: () => LocalizedString
+			}
 		}
 	}
 	error: {

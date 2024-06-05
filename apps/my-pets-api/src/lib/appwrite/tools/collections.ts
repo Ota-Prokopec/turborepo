@@ -1,5 +1,10 @@
 import { Types } from '@repo/appwrite-ssr-graphql'
-import { TPetDocumentCreate, TPetGraphqlDocument } from '@repo/my-pets-tstypes'
+import {
+	TPetDocumentCreate,
+	TPetGraphqlDocument,
+	TpetDescriptionCustomFieldsDocumentCreate,
+	TpetDescriptionCustomFieldsGraphqlDocument,
+} from '@repo/my-pets-tstypes'
 
 export type Collections = ReturnType<typeof collectionsAdmin>
 export type CollectionName = keyof ReturnType<typeof collectionsAdmin>
@@ -12,6 +17,10 @@ export const collectionsClient = (
 ) => {
 	return {
 		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>('my-pets', 'pet'),
+		petDescriptionCustomField: new Collection<
+			TpetDescriptionCustomFieldsGraphqlDocument,
+			TpetDescriptionCustomFieldsDocumentCreate
+		>('my-pets', 'PetDescriptionCustomFields'),
 	}
 }
 
@@ -20,5 +29,9 @@ export const collectionsAdmin = (
 ) => {
 	return {
 		pet: new Collection<TPetGraphqlDocument, TPetDocumentCreate>('my-pets', 'pet'),
+		petDescriptionCustomField: new Collection<
+			TpetDescriptionCustomFieldsGraphqlDocument,
+			TpetDescriptionCustomFieldsDocumentCreate
+		>('my-pets', 'PetDescriptionCustomFields'),
 	}
 }

@@ -26,7 +26,6 @@
 		"src/**/*.ts",
 		"src/**/*.js",
 		"src/**/*.svelte",
-		"api/**/*.ts",
 		"../../global.d.ts",
 		".svelte-kit/ambient.d.ts"
 	],

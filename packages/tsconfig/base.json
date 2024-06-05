@@ -2,18 +2,16 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "Default",
 	"compilerOptions": {
-		"composite": false,
 		"declaration": true,
 		"declarationMap": true,
 		"forceConsistentCasingInFileNames": true,
 		"inlineSources": false,
+
 		"isolatedModules": true,
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"skipLibCheck": true,
 		"strict": true,
-		"noUncheckedIndexedAccess": true,
-		"skipDefaultLibCheck": true,
 
 		"moduleResolution": "node",
 		"esModuleInterop": true,
@@ -21,7 +19,7 @@
 		"target": "ES2015",
 
 		"typeRoots": ["../../global.d.ts", "../../node_modules/@types"],
-		"lib": ["esnext", "DOM"]
+		"lib": ["esnext"]
 	},
 
 	"include": ["../../global.d.ts", "../../tsReset.d.ts"],

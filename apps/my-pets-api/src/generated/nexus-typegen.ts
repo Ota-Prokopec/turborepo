@@ -8,11 +8,15 @@ import type { Context } from "./../context"
 import type { core } from "nexus"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
+    petGender<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetGender";
+    petType<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "StringOrNumber";
   }
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
+    petGender<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetGender";
+    petType<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "StringOrNumber";
   }
 }
@@ -23,6 +27,20 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreatePetDescriptionCustomField: { // input type
+    text: string; // String!
+    title: string; // String!
+  }
+  CreatePetInput: { // input type
+    ownerPhoneNumber: string; // String!
+    petAddress: string; // String!
+    petAllergens: string[]; // [String!]!
+    petDescriptionCustomFields: NexusGenInputs['CreatePetDescriptionCustomField'][]; // [CreatePetDescriptionCustomField!]!
+    petGender: NexusGenScalars['PetGender']; // PetGender!
+    petName: string; // String!
+    petTreating: string; // String!
+    petType: NexusGenScalars['PetType']; // PetType!
+  }
 }
 
 export interface NexusGenEnums {
@@ -34,6 +52,8 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  PetGender: 'male' | 'female'
+  PetType: 'cat' | 'dog'
   StringOrNumber: string | number
 }
 
@@ -41,10 +61,21 @@ export interface NexusGenObjects {
   Account: { // root type
     userId: string; // String!
   }
+  Mutation: {};
   Pet: { // root type
+    ownerPhoneNumber: string; // String!
     petAddress: string; // String!
+    petAllergens: string[]; // [String!]!
+    petDescriptionCustomFieldIds: string[]; // [String!]!
+    petGender: NexusGenScalars['PetGender']; // PetGender!
     petId: string; // String!
     petName: string; // String!
+    petTreating: string; // String!
+    petType: NexusGenScalars['PetType']; // PetType!
+  }
+  PetDescriptionCustomField: { // root type
+    text: string; // String!
+    title: string; // String!
   }
   Query: {};
   Session: { // root type
@@ -66,10 +97,24 @@ export interface NexusGenFieldTypes {
   Account: { // field return type
     userId: string; // String!
   }
+  Mutation: { // field return type
+    createPet: NexusGenRootTypes['Pet']; // Pet!
+  }
   Pet: { // field return type
+    ownerPhoneNumber: string; // String!
     petAddress: string; // String!
+    petAllergens: string[]; // [String!]!
+    petDescriptionCustomFieldIds: string[]; // [String!]!
+    petDescriptionCustomFields: NexusGenRootTypes['PetDescriptionCustomField'][]; // [PetDescriptionCustomField!]!
+    petGender: NexusGenScalars['PetGender']; // PetGender!
     petId: string; // String!
     petName: string; // String!
+    petTreating: string; // String!
+    petType: NexusGenScalars['PetType']; // PetType!
+  }
+  PetDescriptionCustomField: { // field return type
+    text: string; // String!
+    title: string; // String!
   }
   Query: { // field return type
     getAccount: NexusGenRootTypes['Account']; // Account!
@@ -85,10 +130,24 @@ export interface NexusGenFieldTypeNames {
   Account: { // field return type name
     userId: 'String'
   }
+  Mutation: { // field return type name
+    createPet: 'Pet'
+  }
   Pet: { // field return type name
+    ownerPhoneNumber: 'String'
     petAddress: 'String'
+    petAllergens: 'String'
+    petDescriptionCustomFieldIds: 'String'
+    petDescriptionCustomFields: 'PetDescriptionCustomField'
+    petGender: 'PetGender'
     petId: 'String'
     petName: 'String'
+    petTreating: 'String'
+    petType: 'PetType'
+  }
+  PetDescriptionCustomField: { // field return type name
+    text: 'String'
+    title: 'String'
   }
   Query: { // field return type name
     getAccount: 'Account'
@@ -101,6 +160,11 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createPet: { // args
+      input: NexusGenInputs['CreatePetInput']; // CreatePetInput!
+    }
+  }
   Query: {
     setSession: { // args
       session: string; // String!
@@ -116,7 +180,7 @@ export interface NexusGenTypeInterfaces {
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = keyof NexusGenInputs;
 
 export type NexusGenEnumNames = never;
 

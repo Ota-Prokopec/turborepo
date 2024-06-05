@@ -17,6 +17,12 @@ export default queryField('getListOfPets', {
 			petAddress: pet.petAddress,
 			petId: pet._id,
 			petName: pet.petAddress,
+			ownerPhoneNumber: pet.ownerPhoneNumber,
+			petAllergens: pet.petAllergens,
+			petDescriptionCustomFieldIds: pet.petDescriptionCustomFieldIds,
+			petGender: pet.petGender,
+			petTreating: pet.petTreating,
+			petType: pet.petType,
 		}))
 	},
 })

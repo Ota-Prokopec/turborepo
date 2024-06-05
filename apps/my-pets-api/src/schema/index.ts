@@ -6,5 +6,7 @@ export { default as Account } from './Account';
 export * from './Account';
 export { default as Pet } from './Pet';
 export * from './Pet';
+export { default as PetDescribingCustomField } from './PetDescribingCustomField';
+export * from './PetDescribingCustomField';
 export { default as Session } from './Session';
 export * from './Session';

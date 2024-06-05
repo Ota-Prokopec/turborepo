@@ -1,7 +1,14 @@
 {
 	"/(app)/(pets)": [
+		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts",
+		"src/routes/(app)/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)": [
+		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],

@@ -6,6 +6,7 @@
 		"dev": "turbo dev",
 		"dev-pets-web": "dotenv -e .env -- turbo dev --filter=my-pets-web ",
 		"dev-pets-api": "dotenv -e .env -- turbo dev --filter=my-pets-api ",
+		"dev-pets-next": "dotenv -e .env -- turbo dev --filter=my-pets-next",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},

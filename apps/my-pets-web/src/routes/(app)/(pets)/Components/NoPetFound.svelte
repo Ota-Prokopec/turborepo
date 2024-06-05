@@ -25,10 +25,10 @@
 				on:click={() => (createNewPetModalOpen = true)}
 				class="h-10 w-10 fill-green-400"
 			>
-				<IconAdd></IconAdd>
+				<IconAdd />
 			</Icon>
 		</Right>
 	</Column>
 </Card>
 
-<CreateNewPetModal bind:open={createNewPetModalOpen}></CreateNewPetModal>
+<CreateNewPetModal bind:open={createNewPetModalOpen} />

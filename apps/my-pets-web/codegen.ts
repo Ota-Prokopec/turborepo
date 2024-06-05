@@ -4,6 +4,8 @@ const codegenConfigConfig: CodegenConfig['config'] = {
 	clientPath: './client',
 	scalars: {
 		StringOrNumber: 'string|number',
+		PetGender: 'male|female',
+		PetType: 'cat|dog',
 	},
 }
 

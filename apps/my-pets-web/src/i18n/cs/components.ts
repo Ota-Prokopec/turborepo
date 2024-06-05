@@ -1,3 +1,5 @@
+import PetCustomTextInput from '$lib/components/MyPetsComponents/PetCustomTextInput.svelte.svelte'
+import PetTreatInput from '$lib/components/MyPetsComponents/PetTreatInput.svelte'
 import type { BaseTranslation } from '../i18n-types'
 
 export const componentsCS = {
@@ -32,5 +34,21 @@ export const componentsCS = {
 	},
 	PetAddressInput: {
 		title: 'your pets address',
+		buttonSaveTitle: 'save',
+	},
+	PetAllergensInput: {
+		title: 'Allergens',
+	},
+	OwnerPhoneNumberInput: {
+		title: 'Your phone number',
+	},
+	PetTreatInput: {
+		title: 'How to treat your pet?',
+	},
+	PetCustomTextInput: {
+		placeholder: {
+			title: 'title',
+			text: 'text',
+		},
 	},
 } satisfies BaseTranslation

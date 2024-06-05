@@ -15,9 +15,7 @@
 	export let iconPosition: 'right' | 'left' = 'left'
 	export let disabled = false
 	export let autocomplete = ''
-	export let pattern: RegExp | null = null
-	export let prefix: string = ''
-	export let invisiblePrefix = icon ? true : false
+
 	export let ableClickIcon = true
 
 	export let type:
@@ -44,30 +42,6 @@
 	let className: string = ''
 	export { className as class }
 	export let classWrap = ''
-
-	let inputValue = value
-
-	$: control(inputValue)
-
-	const control = (inputString: string) => {
-		if (pattern) inputValue = patternControl(inputString)
-		if (prefix) value = prefixControl(inputValue)
-		else value = inputValue
-	}
-
-	const prefixControl = (v: string) => {
-		if (!invisiblePrefix) {
-			if (v?.indexOf(prefix) !== 0) v = `${prefix}${v}`
-			return v
-		} else if (v?.indexOf(prefix) !== 0) {
-			return `${prefix}${v}`
-		} else return v
-	}
-
-	const patternControl = (v: string) => {
-		if (!pattern) throw new Error('there is no pattern')
-		return v.replace(pattern, '')
-	}
 
 	let inputElement: HTMLElement | null = null
 
@@ -124,7 +98,7 @@
 			className,
 		)}
 		{placeholder}
-		bind:value={inputValue}
+		bind:value
 		on:input
 		on:focus
 		on:blur

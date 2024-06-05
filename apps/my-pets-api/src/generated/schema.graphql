@@ -6,11 +6,47 @@ type Account {
   userId: String!
 }
 
-type Pet {
+input CreatePetDescriptionCustomField {
+  text: String!
+  title: String!
+}
+
+input CreatePetInput {
+  ownerPhoneNumber: String!
   petAddress: String!
+  petAllergens: [String!]!
+  petDescriptionCustomFields: [CreatePetDescriptionCustomField!]!
+  petGender: PetGender!
+  petName: String!
+  petTreating: String!
+  petType: PetType!
+}
+
+type Mutation {
+  createPet(input: CreatePetInput!): Pet!
+}
+
+type Pet {
+  ownerPhoneNumber: String!
+  petAddress: String!
+  petAllergens: [String!]!
+  petDescriptionCustomFieldIds: [String!]!
+  petDescriptionCustomFields: [PetDescriptionCustomField!]!
+  petGender: PetGender!
   petId: String!
   petName: String!
+  petTreating: String!
+  petType: PetType!
 }
+
+type PetDescriptionCustomField {
+  text: String!
+  title: String!
+}
+
+scalar PetGender
+
+scalar PetType
 
 type Query {
   getAccount: Account!

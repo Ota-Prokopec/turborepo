@@ -1,39 +1,29 @@
 <script lang="ts">
-	import { type TPetType } from '@repo/my-pets-tstypes'
-	import { RadioButton } from 'flowbite-svelte'
 	import Icon from '../Common/Icon.svelte'
-	import IconDog from '../Icons/IconDog.svelte'
+	import Tabs from '../Common/Tabs.svelte'
 	import IconCat from '../Icons/IconCat.svelte'
+	import IconDog from '../Icons/IconDog.svelte'
 
-	export let value: TPetType
-
-	const tabItems = [
+	const items = [
 		{
-			key: 'j',
-			title: 'jlkdsa',
+			title: '',
+			key: 'dog',
 		},
-	]
+		{
+			title: '',
+			key: 'cat',
+		},
+	] as const
+
+	export let value: (typeof items)[number]['key'] = 'dog'
 </script>
 
-<Tabs active={'j'} items={tabItems} />
-
-<RadioButton
-	value={'dog'}
-	bind:group={value}
-	custom
-	class="bg-white peer-checked:border-"
->
-	<Icon class="w-5 h-5">
-		<IconDog></IconDog>
+<Tabs class="w-min" let:key bind:active={value} {items}>
+	<Icon class="w-6 h-6 child:fill-white">
+		{#if key === 'cat'}
+			<IconCat></IconCat>
+		{:else}
+			<IconDog></IconDog>
+		{/if}
 	</Icon>
-</RadioButton>
-<RadioButton
-	value={'cat'}
-	bind:group={value}
-	custom
-	class="bg-white peer-checked:border-"
->
-	<Icon class="w-5 h-5">
-		<IconCat></IconCat>
-	</Icon>
-</RadioButton>
+</Tabs>

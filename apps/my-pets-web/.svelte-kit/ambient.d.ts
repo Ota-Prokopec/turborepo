@@ -142,6 +142,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_package_dependencies_sveltekit_i18n: string;
 	export const npm_package_dependencies_date_fns: string;
+	export const npm_package_scripts_dev_pets_next: string;
 	export const npm_package_packageManager: string;
 	export const npm_package_name: string;
 	export const LANG: string;
@@ -406,6 +407,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_package_dependencies_sveltekit_i18n: string;
 		npm_package_dependencies_date_fns: string;
+		npm_package_scripts_dev_pets_next: string;
 		npm_package_packageManager: string;
 		npm_package_name: string;
 		LANG: string;

@@ -32,5 +32,21 @@ export const componentsCS = {
 	},
 	PetAddressInput: {
 		title: 'your pets address',
+		buttonSaveTitle: 'save',
+	},
+	PetAllergensInput: {
+		title: 'Allergens',
+	},
+	OwnerPhoneNumberInput: {
+		title: 'Your phone number',
+	},
+	PetTreatInput: {
+		title: 'How to treat your pet?',
+	},
+	PetCustomTextInput: {
+		placeholder: {
+			title: 'title',
+			text: 'text',
+		},
 	},
 } satisfies BaseTranslation

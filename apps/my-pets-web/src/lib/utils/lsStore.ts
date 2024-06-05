@@ -1,9 +1,11 @@
 import { browser } from '$app/environment'
+import { Coords } from '@repo/ts-types'
 import * as lodash from 'lodash'
 import { writable } from 'svelte/store'
 
 export type Data = {
 	cookieFallback?: Record<'a_session_experiences', string> | null
+	usersLocation?: Coords | null
 } & Record<string, any>
 
 const parseLocalStorageValue = (value: string) => {
