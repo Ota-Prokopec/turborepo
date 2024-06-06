@@ -30,6 +30,7 @@
 	class={twMerge('w-full', className)}
 	floatingLabel={$LL.component.PetAddressInput.title()}
 	icon
+	required
 	iconPosition="right"
 >
 	<Icon class="w-6 h-6" on:click={() => (modalOpened = true)}>

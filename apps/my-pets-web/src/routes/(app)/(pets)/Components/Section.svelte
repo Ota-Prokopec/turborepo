@@ -1,24 +1,48 @@
 <script lang="ts">
 	import Avatar from '$lib/components/Common/Avatar.svelte'
-	import List from '$lib/components/Common/List.svelte'
+	import Column from '$lib/components/Common/Column.svelte'
+	import Row from '$lib/components/Common/Row.svelte'
 	import { type TPetData } from '@repo/my-pets-tstypes'
-	import { pick } from 'lodash'
-	import PetAddressInput from './EditPetAddressInput.svelte'
-	import PetNameInput from './EditPetNameInput.svelte'
+	import OwnerPhoneNumberItem from '../Components/Items/OwnerPhoneNumberItem.svelte'
+	import PetAddressItem from '../Components/Items/PetAddressItem.svelte'
+	import PetAllergensItem from '../Components/Items/PetAllergensItem.svelte'
+	import PetGenderItem from '../Components/Items/PetGenderItem.svelte.svelte'
+	import PetNameItem from '../Components/Items/PetNameItem.svelte'
+	import PetTreatingItem from '../Components/Items/PetTreatingItem.svelte'
+	import PetTypeItem from '../Components/Items/PetTypeItem.svelte'
+	import PetDescriptionCustomFieldsItem from '../Components/Items/PetDescriptionCustomFieldsItem.svelte'
+	import PetUrl from './Items/PetUrlItem.svelte'
+	import { type GraphqlDocument } from '@repo/appwrite-types'
 
-	export let petData: TPetData
+	export let petData: GraphqlDocument<TPetData>
 
-	const petDataInList = Object.keys(
-		pick(petData, 'petName', 'petAddress'),
-	) as (keyof Pick<typeof petData, 'petAddress' | 'petName'>)[]
+	$: petUrl = `${location.origin}/${petData._id}`
 </script>
 
-<Avatar size="xl"></Avatar>
+<Avatar src={petData.petPicture} size="xl"></Avatar>
+<Row
+	class="mobile:gap-[120px] gap-4 items-center w-full mobile:justify-center relative top-[-50px]"
+>
+	<PetTypeItem petType={petData.petType}></PetTypeItem>
+	<PetGenderItem petGender={petData.petGender}></PetGenderItem>
+</Row>
+<Column class="w-full">
+	<PetUrl class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrl>
+	<Column class="w-full max-w-[600px]">
+		<PetNameItem petName={petData.petName}></PetNameItem>
+		<PetAddressItem petAddress={petData.petAddress}></PetAddressItem>
+		<OwnerPhoneNumberItem number={petData.ownerPhoneNumber}></OwnerPhoneNumberItem>
 
-<List let:item items={petDataInList}>
-	{#if item === 'petName'}
-		<PetNameInput petName={petData.petName}></PetNameInput>
-	{:else if item === 'petAddress'}
-		<PetAddressInput petAddress={petData.petAddress}></PetAddressInput>
-	{/if}
-</List>
+		{#if petData.petAllergens.length}
+			<PetAllergensItem petAllergens={petData.petAllergens}></PetAllergensItem>
+		{/if}
+
+		{#if petData.petTreating.length}
+			<PetTreatingItem text={petData.petTreating}></PetTreatingItem>
+		{/if}
+		{#if petData.petDescriptionCustomFields.length}
+			<PetDescriptionCustomFieldsItem fields={petData.petDescriptionCustomFields}
+			></PetDescriptionCustomFieldsItem>
+		{/if}
+	</Column>
+</Column>

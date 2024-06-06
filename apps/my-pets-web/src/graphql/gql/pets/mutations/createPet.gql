@@ -1,0 +1,18 @@
+mutation createPet($input: CreatePetInput!) {
+	createPet(input: $input) {
+		_id
+		petAddress
+		petName
+		petType
+		petAllergens
+		ownerPhoneNumber
+		petTreating
+		petDescriptionCustomFieldIds
+		petGender
+		petDescriptionCustomFields {
+			title
+			text
+		}
+		petPicture
+	}
+}

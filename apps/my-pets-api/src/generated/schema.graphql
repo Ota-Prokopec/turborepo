@@ -18,6 +18,7 @@ input CreatePetInput {
   petDescriptionCustomFields: [CreatePetDescriptionCustomField!]!
   petGender: PetGender!
   petName: String!
+  petPicture: String!
   petTreating: String!
   petType: PetType!
 }
@@ -27,14 +28,22 @@ type Mutation {
 }
 
 type Pet {
+  _collectionId: String!
+  _createdAt: String!
+  _databaseId: String!
+  _id: String!
+  _permissions: [String!]!
+  _updatedAt: String!
   ownerPhoneNumber: String!
   petAddress: String!
   petAllergens: [String!]!
   petDescriptionCustomFieldIds: [String!]!
   petDescriptionCustomFields: [PetDescriptionCustomField!]!
   petGender: PetGender!
-  petId: String!
   petName: String!
+
+  """Pet Picture is pet pictures URL"""
+  petPicture: String!
   petTreating: String!
   petType: PetType!
 }
@@ -51,6 +60,7 @@ scalar PetType
 type Query {
   getAccount: Account!
   getListOfPets: [Pet!]!
+  getPet(petId: String!): Pet!
   setSession(session: String!): Boolean!
 }
 
@@ -59,3 +69,8 @@ type Session {
 }
 
 scalar StringOrNumber
+
+"""
+A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
+"""
+scalar URL

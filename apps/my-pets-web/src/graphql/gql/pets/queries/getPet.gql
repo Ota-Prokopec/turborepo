@@ -1,0 +1,23 @@
+query getPet($petId: String!) {
+	getPet(petId: $petId) {
+		_createdAt
+		_updatedAt
+		_collectionId
+		_id
+		_permissions
+		_databaseId
+		petAddress
+		petName
+		petType
+		petAllergens
+		ownerPhoneNumber
+		petTreating
+		petPicture
+		petDescriptionCustomFieldIds
+		petGender
+		petDescriptionCustomFields {
+			title
+			text
+		}
+	}
+}

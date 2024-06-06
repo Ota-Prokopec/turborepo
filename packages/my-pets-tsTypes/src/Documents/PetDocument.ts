@@ -9,6 +9,7 @@ export type TPetDocumentCreate = {
 	ownerPhoneNumber: string
 	petTreating: string
 	petGender: 'female' | 'male'
+	petPicture: string
 	petDescriptionCustomFieldIds: string[]
 }
 

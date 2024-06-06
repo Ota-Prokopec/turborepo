@@ -73,7 +73,7 @@ type RootTranslation = {
 	component: {
 		CookiesAlert: {
 			/**
-			 * T​a​t​o​ ​s​t​r​á​n​k​a​ ​p​o​u​ž​í​v​á​ ​s​o​u​b​o​r​y​ ​c​o​o​k​i​e​ ​k​ ​u​k​l​á​d​á​n​í​ ​r​e​l​a​c​í​ ​u​ž​i​v​a​t​e​l​ů​ ​a​ ​d​a​t​ ​u​ž​i​v​a​t​e​l​ů​.
+			 * T​a​t​o​ ​s​t​r​á​n​k​a​ ​p​o​u​ž​í​v​á​ ​s​o​u​b​o​r​y​ ​c​o​o​k​i​e​ ​k​ ​u​k​l​á​d​á​n​í​ ​r​e​l​a​c​í​ ​u​ž​i​v​a​t​e​l​ů​ ​a​ ​d​a​t​ ​u​ž​i​v​a​t​e​l​ů​.​.
 			 */
 			title: string
 			/**
@@ -105,12 +105,6 @@ type RootTranslation = {
 			 */
 			message: string
 		}
-		EditPetNameInput: {
-			/**
-			 * E​d​i​t​ ​y​o​u​r​ ​p​e​t​`​s​ ​n​a​m​e
-			 */
-			title: string
-		}
 		NoPetFound: {
 			/**
 			 * N​o​ ​p​e​t​s​ ​f​o​u​n​d
@@ -126,6 +120,10 @@ type RootTranslation = {
 			 * c​r​e​a​t​e​ ​n​e​w​ ​p​e​t
 			 */
 			title: string
+			/**
+			 * s​a​v​e
+			 */
+			saveButtonLabel: string
 		}
 		PetNameInput: {
 			/**
@@ -172,6 +170,72 @@ type RootTranslation = {
 				 */
 				text: string
 			}
+		}
+		SavingModal: {
+			/**
+			 * s​a​v​i​n​g​.​.​.
+			 */
+			label: string
+		}
+		ErrorModal: {
+			/**
+			 * E​r​r​o​r​ ​o​c​c​u​r​e​d
+			 */
+			title: string
+			/**
+			 * P​l​e​a​s​e​ ​t​r​y​ ​i​t​ ​a​g​a​i​n
+			 */
+			text: string
+		}
+		SavedModal: {
+			/**
+			 * s​a​v​e​d
+			 */
+			label: string
+			/**
+			 * g​o​ ​b​a​c​k
+			 */
+			returningButtonLabel: string
+		}
+		PetAllergensItem: {
+			/**
+			 * P​e​t​'​s​ ​a​l​l​e​r​g​e​n​s
+			 */
+			title: string
+		}
+		PetTreatItem: {
+			/**
+			 * H​o​w​ ​t​o​ ​t​r​e​a​t​ ​m​e​?
+			 */
+			title: string
+		}
+		PetPictureInput: {
+			/**
+			 * P​e​t​'​s​ ​p​i​c​t​u​r​e
+			 */
+			title: string
+		}
+		RequiredBadge: {
+			/**
+			 * r​e​q​u​i​r​e​d
+			 */
+			label: string
+		}
+		RequiredFieldsEmptlyPetCreatingErrorModal: {
+			/**
+			 * R​e​q​u​i​r​e​d​ ​f​i​e​l​d​s​ ​a​r​e​ ​e​m​p​t​y
+			 */
+			title: string
+			/**
+			 * P​l​e​a​s​e​ ​f​i​l​l​ ​u​p​ ​a​l​l​ ​r​e​q​u​i​r​e​d​ ​f​i​e​l​d​s
+			 */
+			text: string
+		}
+		PetUrlItem: {
+			/**
+			 * p​e​t​'​s​ ​u​r​l
+			 */
+			label: string
 		}
 	}
 	error: {
@@ -242,7 +306,7 @@ export type TranslationFunctions = {
 	component: {
 		CookiesAlert: {
 			/**
-			 * Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů.
+			 * Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů..
 			 */
 			title: () => LocalizedString
 			/**
@@ -274,12 +338,6 @@ export type TranslationFunctions = {
 			 */
 			message: () => LocalizedString
 		}
-		EditPetNameInput: {
-			/**
-			 * Edit your pet`s name
-			 */
-			title: () => LocalizedString
-		}
 		NoPetFound: {
 			/**
 			 * No pets found
@@ -295,6 +353,10 @@ export type TranslationFunctions = {
 			 * create new pet
 			 */
 			title: () => LocalizedString
+			/**
+			 * save
+			 */
+			saveButtonLabel: () => LocalizedString
 		}
 		PetNameInput: {
 			/**
@@ -341,6 +403,72 @@ export type TranslationFunctions = {
 				 */
 				text: () => LocalizedString
 			}
+		}
+		SavingModal: {
+			/**
+			 * saving...
+			 */
+			label: () => LocalizedString
+		}
+		ErrorModal: {
+			/**
+			 * Error occured
+			 */
+			title: () => LocalizedString
+			/**
+			 * Please try it again
+			 */
+			text: () => LocalizedString
+		}
+		SavedModal: {
+			/**
+			 * saved
+			 */
+			label: () => LocalizedString
+			/**
+			 * go back
+			 */
+			returningButtonLabel: () => LocalizedString
+		}
+		PetAllergensItem: {
+			/**
+			 * Pet's allergens
+			 */
+			title: () => LocalizedString
+		}
+		PetTreatItem: {
+			/**
+			 * How to treat me?
+			 */
+			title: () => LocalizedString
+		}
+		PetPictureInput: {
+			/**
+			 * Pet's picture
+			 */
+			title: () => LocalizedString
+		}
+		RequiredBadge: {
+			/**
+			 * required
+			 */
+			label: () => LocalizedString
+		}
+		RequiredFieldsEmptlyPetCreatingErrorModal: {
+			/**
+			 * Required fields are empty
+			 */
+			title: () => LocalizedString
+			/**
+			 * Please fill up all required fields
+			 */
+			text: () => LocalizedString
+		}
+		PetUrlItem: {
+			/**
+			 * pet's url
+			 */
+			label: () => LocalizedString
 		}
 	}
 	error: {

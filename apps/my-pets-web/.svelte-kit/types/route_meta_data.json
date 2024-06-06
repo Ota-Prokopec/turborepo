@@ -16,6 +16,11 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/(pets)/addpet": [
+		"src/routes/(app)/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/auth": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts",
@@ -28,6 +33,17 @@
 	],
 	"/auth/oauth2/success": [
 		"src/routes/auth/oauth2/success/+page.server.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)/(pets)/notfound": [
+		"src/routes/(app)/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)/(pets)/[petId]": [
+		"src/routes/(app)/(pets)/[petId]/+page.ts",
+		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	]

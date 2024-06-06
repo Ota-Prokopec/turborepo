@@ -1,7 +1,23 @@
 query getListOfPets {
 	getListOfPets {
+		_id
 		petAddress
 		petName
-		petId
+		petType
+		petAllergens
+		ownerPhoneNumber
+		petTreating
+		petDescriptionCustomFieldIds
+		petGender
+		petDescriptionCustomFields {
+			title
+			text
+		}
+		petPicture
+		_permissions
+		_databaseId
+		_collectionId
+		_updatedAt
+		_createdAt
 	}
 }

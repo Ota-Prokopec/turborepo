@@ -33,6 +33,7 @@
 		"vitest": "^0.34.6"
 	},
 	"dependencies": {
+		"@repo/cloudinary-server": "*",
 		"@repo/my-pets-tstypes": "*",
 		"@repo/appwrite-permissions": "*",
 		"@repo/appwrite-ssr-graphql": "*",

@@ -9,6 +9,7 @@ export default inputObjectType({
 		t.list.string('petAllergens')
 		t.string('ownerPhoneNumber')
 		t.string('petTreating')
+		t.string('petPicture')
 		t.field('petGender', { type: 'PetGender' })
 		t.list.field('petDescriptionCustomFields', {
 			type: 'CreatePetDescriptionCustomField',

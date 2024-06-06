@@ -10,6 +10,8 @@ export { default as createPet } from './pet/mutations/createPet';
 export * from './pet/mutations/createPet';
 export { default as getListOfPets } from './pet/queries/getListOfPets';
 export * from './pet/queries/getListOfPets';
+export { default as getPet } from './pet/queries/getPet';
+export * from './pet/queries/getPet';
 export { default as CreatePetDescriptionCustomField } from './pet/schema/CreatePetDescriptionCustomField';
 export * from './pet/schema/CreatePetDescriptionCustomField';
 export { default as CreatePetInput } from './pet/schema/CreatePetInput';

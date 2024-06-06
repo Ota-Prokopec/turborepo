@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { elementIdGenerator } from '@repo/utils'
+	import { Badge, P } from 'flowbite-svelte'
 	import { createEventDispatcher, onMount } from 'svelte'
 	import { twMerge } from 'tailwind-merge'
+	import RequiredBadge from '../Badges/RequiredBadge.svelte'
 
 	const dispatch = createEventDispatcher()
 	export let value = ''
@@ -15,6 +17,7 @@
 	export let iconPosition: 'right' | 'left' = 'left'
 	export let disabled = false
 	export let autocomplete = ''
+	export let required = false
 
 	export let ableClickIcon = true
 
@@ -69,7 +72,7 @@
 				iconPosition === 'left' ? 'left-0 pl-3' : 'right-0 pr-3'
 			} flex items-center  pointer-events-none ${
 				!ableClickIcon ? 'pointer-events-none' : 'pointer-events-auto z-10'
-			} z-50 `}
+			} z-20 `}
 			on:click={iconClick}
 		>
 			{#if typeof icon === 'string'}
@@ -82,6 +85,10 @@
 				<slot {iconClicked} />
 			{/if}
 		</button>
+	{/if}
+
+	{#if required}
+		<RequiredBadge class="absolute top-[-8px] right-[-8px]"></RequiredBadge>
 	{/if}
 
 	<input

@@ -1,3 +1,4 @@
+import { Base64 } from '@repo/ts-types'
 import { Buffer } from 'buffer'
 
 export function getParsed(parsing: string) {
@@ -80,4 +81,13 @@ export const stringToFile = (string: string, fileName: string) => {
 
 export const stringToBuffer = (string: string | string) => {
 	return Buffer.from(string, 'base64')
+}
+
+export const fileToBase64 = (file: File): Promise<Base64> => {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader()
+		reader.readAsDataURL(file)
+		reader.onload = () => resolve(reader.result as Base64)
+		reader.onerror = () => reject(reader.error)
+	})
 }

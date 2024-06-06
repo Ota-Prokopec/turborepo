@@ -1,6 +1,8 @@
 import { ApolloError } from 'apollo-server-express'
 import { list, queryField } from 'nexus'
 import { Queries } from '../../../lib/appwrite/appwrite'
+import { appwriteGraphqlKeys } from '@repo/appwrite-ssr-graphql'
+import { pick } from 'lodash'
 
 export default queryField('getListOfPets', {
 	type: list('Pet'),
@@ -16,13 +18,15 @@ export default queryField('getListOfPets', {
 		return pets.map((pet: (typeof pets)[number]) => ({
 			petAddress: pet.petAddress,
 			petId: pet._id,
-			petName: pet.petAddress,
+			petName: pet.petName,
+			petPicture: pet.petPicture,
 			ownerPhoneNumber: pet.ownerPhoneNumber,
 			petAllergens: pet.petAllergens,
 			petDescriptionCustomFieldIds: pet.petDescriptionCustomFieldIds,
 			petGender: pet.petGender,
 			petTreating: pet.petTreating,
 			petType: pet.petType,
+			...pick(pet, appwriteGraphqlKeys),
 		}))
 	},
 })

@@ -10,7 +10,7 @@
 	import MyPetsPaginator from './MyPetsPaginator.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 
-	export let fields: TPetData['customFields'] = [{ title: '', text: '' }]
+	export let fields: TPetData['petDescriptionCustomFields'] = [{ title: '', text: '' }]
 
 	export let aboutMaxLength: number
 </script>
@@ -28,6 +28,7 @@
 			<TextArea
 				bind:value={text}
 				class="w-[calc(100%-20px)] relative left-[20px]"
+				letterCount
 				maxLength={aboutMaxLength}
 				placeholder={$LL.component.PetCustomTextInput.placeholder.text()}
 			></TextArea>

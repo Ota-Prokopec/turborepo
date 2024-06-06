@@ -9,10 +9,12 @@
 	import LL from '$src/i18n/i18n-svelte'
 	import { createEventDispatcher } from 'svelte'
 	import CreateNewPetModal from './CreateNewPetModal.svelte'
-
-	const dispatch = createEventDispatcher<{ clickAdd: undefined }>()
+	import { goto } from '$app/navigation'
+	import { navigate } from '$lib/utils/navigator'
 
 	let createNewPetModalOpen = true
+
+	const dispatch = createEventDispatcher<{ reload: undefined }>()
 </script>
 
 <Card class="bg-gray-200">
@@ -31,4 +33,9 @@
 	</Column>
 </Card>
 
-<CreateNewPetModal bind:open={createNewPetModalOpen} />
+<CreateNewPetModal
+	on:saved={() => {
+		navigate('/', { invalidateAll: true })
+	}}
+	bind:open={createNewPetModalOpen}
+/>

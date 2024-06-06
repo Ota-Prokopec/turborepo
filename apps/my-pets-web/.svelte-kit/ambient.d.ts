@@ -97,6 +97,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_flowbite_svelte: string;
 	export const npm_package_dependencies_compressorjs: string;
 	export const npm_package_dependencies_bytemd: string;
+	export const npm_package_devDependencies__sveltejs_adapter_static: string;
 	export const npm_package_scripts_typesafe_i18n: string;
 	export const npm_package_dependencies_typesafe_i18n: string;
 	export const npm_package_dependencies__turf_turf: string;
@@ -233,6 +234,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_browser_image_compression: string;
 	export const npm_package_dependencies__types_w3c_image_capture: string;
 	export const npm_package_devDependencies__types_eslint: string;
+	export const npm_package_dependencies_svelte_tel_input: string;
 	export const npm_package_dependencies_svelte_qrcode_image: string;
 	export const npm_config_init_version: string;
 	export const npm_config_ignore_optional: string;
@@ -273,7 +275,6 @@ declare module '$env/static/public' {
 	export const PUBLIC_CLIENT_HOSTNAME: string;
 	export const PUBLIC_SERVER_HOSTNAME: string;
 	export const PUBLIC_MAP_TILER_API_KEY: string;
-	export const PUBLIC_MAX_IMAGE_SIZE_IN_MB: string;
 	export const PUBLIC_DEV: string;
 }
 
@@ -362,6 +363,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_flowbite_svelte: string;
 		npm_package_dependencies_compressorjs: string;
 		npm_package_dependencies_bytemd: string;
+		npm_package_devDependencies__sveltejs_adapter_static: string;
 		npm_package_scripts_typesafe_i18n: string;
 		npm_package_dependencies_typesafe_i18n: string;
 		npm_package_dependencies__turf_turf: string;
@@ -498,6 +500,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_browser_image_compression: string;
 		npm_package_dependencies__types_w3c_image_capture: string;
 		npm_package_devDependencies__types_eslint: string;
+		npm_package_dependencies_svelte_tel_input: string;
 		npm_package_dependencies_svelte_qrcode_image: string;
 		npm_config_init_version: string;
 		npm_config_ignore_optional: string;
@@ -543,7 +546,6 @@ declare module '$env/dynamic/public' {
 		PUBLIC_CLIENT_HOSTNAME: string;
 		PUBLIC_SERVER_HOSTNAME: string;
 		PUBLIC_MAP_TILER_API_KEY: string;
-		PUBLIC_MAX_IMAGE_SIZE_IN_MB: string;
 		PUBLIC_DEV: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}

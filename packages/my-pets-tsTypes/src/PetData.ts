@@ -3,15 +3,15 @@ import { z } from 'zod'
 export const zodPetGender = z.union([z.literal('male'), z.literal('female')])
 
 export const zodPetData = z.object({
-	petAddress: z.string(),
-	petName: z.string(),
-	petId: z.string(),
+	petAddress: z.string().min(1),
+	petName: z.string().min(1),
 	petType: z.union([z.literal('cat'), z.literal('dog')]),
 	petAllergens: z.string().array(),
-	ownerPhoneNumber: z.string(),
+	ownerPhoneNumber: z.string().min(1),
 	petTreating: z.string(),
 	petGender: zodPetGender,
-	customFields: z
+	petPicture: z.string().url().min(1),
+	petDescriptionCustomFields: z
 		.object({
 			title: z.string(),
 			text: z.string(),
@@ -20,6 +20,8 @@ export const zodPetData = z.object({
 })
 
 export type TPetData = z.infer<typeof zodPetData>
+
+export type TCreatePetData = Omit<TPetData, 'petId'>
 
 export const zodPetType = z.union([z.literal('cat'), z.literal('dog')])
 

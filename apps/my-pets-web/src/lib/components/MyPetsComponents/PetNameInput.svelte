@@ -11,6 +11,7 @@
 
 <Input
 	bind:value
+	required
 	class={twMerge('w-full', className)}
 	floatingLabel={$LL.component.PetNameInput.title()}
 />
