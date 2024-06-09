@@ -26,6 +26,10 @@ export const componentsCS = {
 		title: 'create new pet',
 		saveButtonLabel: 'save',
 	},
+	UpdatePetModal: {
+		title: 'update your pet',
+		saveButtonLabel: 'update',
+	},
 	PetNameInput: {
 		title: 'your pets name',
 	},
@@ -79,5 +83,8 @@ export const componentsCS = {
 	},
 	PetUrlItem: {
 		label: "pet's url",
+	},
+	EditPetButton: {
+		label: 'Edit pet',
 	},
 } satisfies BaseTranslation

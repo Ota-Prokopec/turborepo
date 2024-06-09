@@ -88,8 +88,15 @@ export interface NexusGenObjects {
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    userId: string; // String!
   }
   PetDescriptionCustomField: { // root type
+    _collectionId: string; // String!
+    _createdAt: string; // String!
+    _databaseId: string; // String!
+    _id: string; // String!
+    _permissions: string[]; // [String!]!
+    _updatedAt: string; // String!
     text: string; // String!
     title: string; // String!
   }
@@ -115,6 +122,8 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createPet: NexusGenRootTypes['Pet']; // Pet!
+    deletePet: boolean; // Boolean!
+    updatePet: NexusGenRootTypes['Pet']; // Pet!
   }
   Pet: { // field return type
     _collectionId: string; // String!
@@ -133,8 +142,15 @@ export interface NexusGenFieldTypes {
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    userId: string; // String!
   }
   PetDescriptionCustomField: { // field return type
+    _collectionId: string; // String!
+    _createdAt: string; // String!
+    _databaseId: string; // String!
+    _id: string; // String!
+    _permissions: string[]; // [String!]!
+    _updatedAt: string; // String!
     text: string; // String!
     title: string; // String!
   }
@@ -155,6 +171,8 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     createPet: 'Pet'
+    deletePet: 'Boolean'
+    updatePet: 'Pet'
   }
   Pet: { // field return type name
     _collectionId: 'String'
@@ -173,8 +191,15 @@ export interface NexusGenFieldTypeNames {
     petPicture: 'String'
     petTreating: 'String'
     petType: 'PetType'
+    userId: 'String'
   }
   PetDescriptionCustomField: { // field return type name
+    _collectionId: 'String'
+    _createdAt: 'String'
+    _databaseId: 'String'
+    _id: 'String'
+    _permissions: 'String'
+    _updatedAt: 'String'
     text: 'String'
     title: 'String'
   }
@@ -193,6 +218,13 @@ export interface NexusGenArgTypes {
   Mutation: {
     createPet: { // args
       input: NexusGenInputs['CreatePetInput']; // CreatePetInput!
+    }
+    deletePet: { // args
+      petId: string; // String!
+    }
+    updatePet: { // args
+      data: NexusGenInputs['CreatePetInput']; // CreatePetInput!
+      petId: string; // String!
     }
   }
   Query: {

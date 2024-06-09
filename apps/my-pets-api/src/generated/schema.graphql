@@ -25,6 +25,8 @@ input CreatePetInput {
 
 type Mutation {
   createPet(input: CreatePetInput!): Pet!
+  deletePet(petId: String!): Boolean!
+  updatePet(data: CreatePetInput!, petId: String!): Pet!
 }
 
 type Pet {
@@ -46,9 +48,16 @@ type Pet {
   petPicture: String!
   petTreating: String!
   petType: PetType!
+  userId: String!
 }
 
 type PetDescriptionCustomField {
+  _collectionId: String!
+  _createdAt: String!
+  _databaseId: String!
+  _id: String!
+  _permissions: [String!]!
+  _updatedAt: String!
   text: String!
   title: String!
 }

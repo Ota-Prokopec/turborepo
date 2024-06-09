@@ -2,22 +2,14 @@ import { Query } from '@repo/appwrite-ssr-graphql'
 import collections from './collections'
 
 type CollectionName = keyof ReturnType<typeof collections>
-import {
-	LocationForNotificationsDocument,
-	MonumentLikeDocument,
-	PlaceDetailDocument,
-	TMonumentDocument,
-	TokenDocument,
-	UserInfoDocument,
-} from '@repo/ts-types'
+import type {
+	TPetDocument,
+	TpetDescriptionCustomFieldsDocument,
+} from '@repo/my-pets-tstypes'
 
 const query = {
-	userInfo: Query<UserInfoDocument>(),
-	monument: Query<TMonumentDocument>(),
-	placeDetail: Query<PlaceDetailDocument>(),
-	token: Query<TokenDocument>(),
-	monumentLike: Query<MonumentLikeDocument>(),
-	locationForNotification: Query<LocationForNotificationsDocument>(),
+	pet: Query<TPetDocument>(),
+	petDescriptionCustomField: Query<TpetDescriptionCustomFieldsDocument>(),
 } satisfies Record<CollectionName, any>
 
 export default query

@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
+	import Center from '$lib/components/Common/Center.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
 	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
-	import Tabs from '$lib/components/Common/Tabs.svelte'
-	import Text from '$lib/components/Common/Text.svelte'
-	import { sdk } from '$src/graphql/sdk'
-	import type { TPetData } from '@repo/my-pets-tstypes'
-	import { onMount } from 'svelte'
-	import Section from './Components/Section.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
-	import IconAdd from '$lib/components/Icons/IconAdd.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
-	import CreateNewPetModal from './notfound/Components/CreateNewPetModal.svelte'
-	import Center from '$lib/components/Common/Center.svelte'
+	import Tabs from '$lib/components/Common/Tabs.svelte'
+	import IconAdd from '$lib/components/Icons/IconAdd.svelte'
+	import { sdk } from '$src/graphql/sdk'
+	import { onMount } from 'svelte'
+	import type { PageData } from './$types'
+	import Section from './Components/Section.svelte'
+
+	export let data: PageData
 
 	let pageState: 'loading' | 'loaded' | 'error' | null = null
 
@@ -60,7 +60,8 @@
 			</Row>
 
 			{#if currentPet}
-				<Section petData={currentPet}></Section>
+				<Section isOwner={currentPet.userId === data.user?.userId} petData={currentPet}
+				></Section>
 			{/if}
 		</Column>
 	</Center>

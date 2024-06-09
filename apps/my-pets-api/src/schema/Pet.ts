@@ -11,6 +11,7 @@ export default objectType({
 		t.list.string('_permissions')
 		t.string('_databaseId')
 		t.string('petAddress')
+		t.string('userId')
 		t.string('petName')
 		t.field('petType', { type: 'PetType' })
 		t.list.string('petAllergens')

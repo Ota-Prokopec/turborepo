@@ -1,16 +1,18 @@
-import { c as create_ssr_component, h as add_attribute, j as createEventDispatcher, v as validate_component, k as each, m as missing_component } from "../../../chunks/ssr.js";
-import { twMerge } from "tailwind-merge";
-import { I as Icon, T as Text } from "../../../chunks/Icon.js";
+import { s as subscribe } from "../../../chunks/utils.js";
+import { c as create_ssr_component, i as add_attribute, v as validate_component, a as each, m as missing_component, e as escape } from "../../../chunks/ssr.js";
+import { R as Row, C as Column } from "../../../chunks/Row.js";
+import { L as LL } from "../../../chunks/i18n-svelte.js";
+import { H as Heading } from "../../../chunks/Heading.js";
 import { Permission, Role, Teams, Functions, Locale as Locale$1, Avatars, Graphql, Account, Query, ID, Databases, Client } from "appwrite";
-import { w as writable } from "../../../chunks/index.js";
+import { w as writable } from "../../../chunks/index2.js";
 import lodash__default from "lodash";
 import "node-appwrite";
-const Column = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { class: className = "" } = $$props;
-  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
-    $$bindings.class(className);
-  return `<div${add_attribute("class", twMerge("w-auto h-auto flex flex-wrap flex-col gap-4", className), 0)}>${slots.default ? slots.default({}) : ``}</div>`;
-});
+import { a as PUBLIC_APPWRITE_ENDPOINT, b as PUBLIC_APPWRITE_PROJECT_ID } from "../../../chunks/public.js";
+import { F as FullPageLoading } from "../../../chunks/FullPageLoading.js";
+import { I as Icon } from "../../../chunks/Icon.js";
+/* empty css                                                     */import "../../../chunks/index6.js";
+import { twMerge } from "tailwind-merge";
+import { P as Padding } from "../../../chunks/Padding.js";
 const owner = (...userIds) => userIds.flatMap((userId) => [
   Permission.read(Role.user(userId)),
   Permission.write(Role.user(userId)),
@@ -49,10 +51,10 @@ typeof SuppressedError === "function" ? SuppressedError : function(error, suppre
   return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
 var createAuthDispatcher = (account) => {
-  const client = account.client;
+  const client2 = account.client;
   return class Auth extends Account {
     constructor() {
-      super(client);
+      super(client2);
       this.userStore = writable(null);
       this.subscribe = this.userStore.subscribe;
       this.isLoadingStore = writable(true);
@@ -60,7 +62,7 @@ var createAuthDispatcher = (account) => {
       this.userId = Math.random().toString().substring(2, 7);
       try {
         this.__get().then(() => this.isLoadingStore.set(false));
-        client.subscribe("account", (response) => {
+        client2.subscribe("account", (response) => {
           if (response.events.includes("users.*.update")) {
             return this.__get();
           }
@@ -143,8 +145,8 @@ const isArrayString = (permissions) => {
 const convertObjectInfoArray = (data) => {
   return Object.values(data);
 };
-var database = (client) => {
-  const databases = new Databases(client);
+var database = (client2) => {
+  const databases = new Databases(client2);
   return class Collection {
     constructor(databaseId, collectionId) {
       this.databaseId = databaseId;
@@ -258,7 +260,7 @@ var database = (client) => {
       });
     }
     subscribeDocument(documentId, callback) {
-      client.subscribe(`databases.${this.databaseId}.collections.${this.collectionId}.documents.${documentId}`, (response) => {
+      client2.subscribe(`databases.${this.databaseId}.collections.${this.collectionId}.documents.${documentId}`, (response) => {
         callback(response);
       });
     }
@@ -271,18 +273,18 @@ var database = (client) => {
     }
   };
 };
-var connection = (client) => {
-  const teams = new Teams(client);
-  const functions = new Functions(client);
-  const locale = new Locale$1(client);
-  const avatars = new Avatars(client);
-  const graphql = new Graphql(client);
-  const account = new Account(client);
+var connection = (client2) => {
+  const teams = new Teams(client2);
+  const functions = new Functions(client2);
+  const locale = new Locale$1(client2);
+  const avatars = new Avatars(client2);
+  const graphql = new Graphql(client2);
+  const account = new Account(client2);
   const Auth = createAuthDispatcher(account);
-  const Collection = database(client);
+  const Collection = database(client2);
   const user = new Auth();
   return {
-    client,
+    client: client2,
     teams,
     functions,
     locale,
@@ -302,16 +304,16 @@ typeof SuppressedError === "function" ? SuppressedError : function(error, suppre
   var e = new Error(message);
   return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
 };
-const PUBLIC_APPWRITE_ENDPOINT = "http://localhost:8080/v1";
-connection(
+const myCollections = (Collection) => {
+  return {
+    pet: new Collection("my-pets", "pet"),
+    petDescriptionCustomField: new Collection("my-pets", "PetDescriptionCustomFields")
+  };
+};
+const client = connection(
   new Client().setEndpoint(PUBLIC_APPWRITE_ENDPOINT).setProject(PUBLIC_APPWRITE_PROJECT_ID)
 );
-const Row = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { class: className = "" } = $$props;
-  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
-    $$bindings.class(className);
-  return `<div${add_attribute("class", twMerge("w-auto h-auto flex flex-wrap flex-row", className), 0)}>${slots.default ? slots.default({}) : ``}</div>`;
-});
+myCollections(client.Collection);
 const IconDiscord = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { class: className = "" } = $$props;
   if ($$props.class === void 0 && $$bindings.class && className !== void 0)
@@ -336,22 +338,17 @@ const IconGoogle = create_ssr_component(($$result, $$props, $$bindings, slots) =
     $$bindings.class(className);
   return `<svg${add_attribute("class", className, 0)} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path></svg>`;
 });
-const blurryClass = "opacity-[0.5]";
 const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  createEventDispatcher();
-  let { disabled = false } = $$props;
-  let { userData = void 0 } = $$props;
+  let { isLoading = false } = $$props;
   const socials = [
     { key: "facebook", icon: IconFacebook },
     { key: "google", icon: IconGoogle },
     { key: "discord", icon: IconDiscord },
     { key: "github", icon: IconGithub }
   ];
-  if ($$props.disabled === void 0 && $$bindings.disabled && disabled !== void 0)
-    $$bindings.disabled(disabled);
-  if ($$props.userData === void 0 && $$bindings.userData && userData !== void 0)
-    $$bindings.userData(userData);
-  return `${validate_component(Row, "Row").$$render(
+  if ($$props.isLoading === void 0 && $$bindings.isLoading && isLoading !== void 0)
+    $$bindings.isLoading(isLoading);
+  return `${isLoading ? `${validate_component(FullPageLoading, "FullPageLoading").$$render($$result, {}, {}, {})}` : `${validate_component(Row, "Row").$$render(
     $$result,
     {
       class: "gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto"
@@ -363,9 +360,8 @@ const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings
           return `${validate_component(Icon, "Icon").$$render(
             $$result,
             {
-              disabled,
               disableDefaultDarkMode: true,
-              class: twMerge("w-14", disabled && blurryClass)
+              class: twMerge("w-14")
             },
             {},
             {
@@ -377,18 +373,32 @@ const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings
         })}`;
       }
     }
-  )}`;
+  )}`}`;
 });
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${validate_component(Column, "Column").$$render($$result, {}, {}, {
-    default: () => {
-      return `${validate_component(Text, "Text").$$render($$result, {}, {}, {
-        default: () => {
-          return `fjdasj`;
-        }
-      })} ${validate_component(SignUpViaSocialMedia, "SignUpViaSocialMedia").$$render($$result, {}, {}, {})}`;
+  let $LL, $$unsubscribe_LL;
+  $$unsubscribe_LL = subscribe(LL, (value) => $LL = value);
+  $$unsubscribe_LL();
+  return `${validate_component(Column, "Column").$$render(
+    $$result,
+    {
+      class: "flex justify-center items-center w-full h-auto"
+    },
+    {},
+    {
+      default: () => {
+        return `${validate_component(Padding, "Padding").$$render($$result, { padding: "16px" }, {}, {
+          default: () => {
+            return `${validate_component(Heading, "Heading").$$render($$result, { class: "text-xl text-center", tag: "h1" }, {}, {
+              default: () => {
+                return `${escape($LL.page.signIn.welcome())}`;
+              }
+            })}`;
+          }
+        })} ${validate_component(SignUpViaSocialMedia, "SignUpViaSocialMedia").$$render($$result, {}, {}, {})}`;
+      }
     }
-  })}`;
+  )}`;
 });
 export {
   Page as default

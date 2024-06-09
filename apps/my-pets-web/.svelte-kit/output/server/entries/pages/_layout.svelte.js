@@ -1,235 +1,80 @@
-import { c as create_ssr_component, a as compute_rest_props, b as spread, e as escape_object, d as escape_attribute_value, f as subscribe, g as escape, v as validate_component, s as setContext, o as onDestroy, h as add_attribute } from "../../chunks/ssr.js";
+import { c as compute_rest_props, a as compute_slots, s as subscribe } from "../../chunks/utils.js";
+import { c as create_ssr_component, v as validate_component, s as setContext, o as onDestroy, e as escape, a as each } from "../../chunks/ssr.js";
 import { n as navigating } from "../../chunks/stores.js";
-import { w as writable } from "../../chunks/index.js";
-import * as lodash from "lodash";
+import { L as LL } from "../../chunks/i18n-svelte.js";
+import "../../chunks/lsStore.js";
+import { F as FullPageLoading } from "../../chunks/FullPageLoading.js";
+import { C as Center } from "../../chunks/Center.js";
+import { I as Icon } from "../../chunks/Icon.js";
+import { T as Text, B as Button } from "../../chunks/Text.js";
+import { H as Heading } from "../../chunks/Heading.js";
+import { w as writable } from "../../chunks/index2.js";
 import { twMerge } from "tailwind-merge";
-import { i as is_void, T as Text, I as Icon } from "../../chunks/Icon.js";
-var getFallbackProxy = () => (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  new Proxy(Object.assign(() => "", {}), {
-    get: (_target, key) => key === "length" ? 0 : getFallbackProxy()
-  })
-);
-var removeEmptyValues = (object) => Object.fromEntries(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Object.entries(object).map(([key, value]) => key !== "i" && value && value != "0" && [key, value]).filter(Boolean)
-);
-var trimAllValues = (part) => Object.fromEntries(
-  Object.keys(part).map((key) => {
-    const val = part[key];
-    return [
-      key,
-      Array.isArray(val) ? val.map((v) => v?.trim()) : val === !!val ? val : val?.trim()
-    ];
-  })
-);
-var parseArgumentPart = (text) => {
-  const [keyPart = "", ...formatterKeys] = text.split("|");
-  const [keyWithoutType = "", type] = keyPart.split(":");
-  const [key, isOptional] = keyWithoutType.split("?");
-  return { k: key, i: type, n: isOptional === "", f: formatterKeys };
-};
-var isBasicPluralPart = (part) => !!(part.o || part.r);
-var parsePluralPart = (content, lastAccessor) => {
-  let [key, values] = content.split(":");
-  if (!values) {
-    values = key;
-    key = lastAccessor;
-  }
-  const entries = values.split("|");
-  const [zero, one, two, few, many, rest] = entries;
-  const nrOfEntries = entries.filter((entry) => entry !== void 0).length;
-  if (nrOfEntries === 1) {
-    return { k: key, r: zero };
-  }
-  if (nrOfEntries === 2) {
-    return { k: key, o: zero, r: one };
-  }
-  if (nrOfEntries === 3) {
-    return { k: key, z: zero, o: one, r: two };
-  }
-  return { k: key, z: zero, o: one, t: two, f: few, m: many, r: rest };
-};
-var REGEX_SWITCH_CASE = /^\{.*\}$/;
-var parseCases = (text) => Object.fromEntries(
-  removeOuterBrackets(text).split(",").map((part) => part.split(":")).reduce(
-    (accumulator, entry) => {
-      if (entry.length === 2) {
-        return [...accumulator, entry.map((entry2) => entry2.trim())];
-      }
-      accumulator[accumulator.length - 1][1] += "," + entry[0];
-      return accumulator;
-    },
-    []
-  )
-);
-var REGEX_BRACKETS_SPLIT = /(\{(?:[^{}]+|\{(?:[^{}]+)*\})*\})/g;
-var removeOuterBrackets = (text) => text.substring(1, text.length - 1);
-var parseRawText = (rawText, optimize = true, firstKey = "", lastKey = "") => rawText.split(REGEX_BRACKETS_SPLIT).map((part) => {
-  if (!part.match(REGEX_BRACKETS_SPLIT)) {
-    return part;
-  }
-  const content = removeOuterBrackets(part);
-  if (content.startsWith("{")) {
-    return parsePluralPart(removeOuterBrackets(content), lastKey);
-  }
-  const parsedPart = parseArgumentPart(content);
-  lastKey = parsedPart.k || lastKey;
-  !firstKey && (firstKey = lastKey);
-  return parsedPart;
-}).map((part) => {
-  if (typeof part === "string")
-    return part;
-  if (!part.k)
-    part.k = firstKey || "0";
-  const trimmed = trimAllValues(part);
-  return optimize ? removeEmptyValues(trimmed) : trimmed;
+import { T as TransitionFrame, C as CloseButton } from "../../chunks/CloseButton.js";
+import { i as isValidTimeout, f as functionalUpdate, r as replaceEqualDeep, n as noop, t as timeUntilStale, e as ensureQueryKeyArray, g as getAbortController, R as Retryer, a as isCancelledError, b as getLogger, c as notifyManager, S as Subscribable, h as hashQueryKeyByOptions, p as parseFilterArgs, m as matchQuery, d as matchMutation, j as isCancelable, k as focusManager, o as onlineManager, l as parseQueryArgs, q as hashQueryKey, s as partialMatchKey } from "../../chunks/logger.js";
+const Alert = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $$restProps = compute_rest_props($$props, ["dismissable", "defaultClass"]);
+  let $$slots = compute_slots(slots);
+  let { dismissable = false } = $$props;
+  let { defaultClass = "p-4 gap-3 text-sm" } = $$props;
+  let divClass;
+  if ($$props.dismissable === void 0 && $$bindings.dismissable && dismissable !== void 0)
+    $$bindings.dismissable(dismissable);
+  if ($$props.defaultClass === void 0 && $$bindings.defaultClass && defaultClass !== void 0)
+    $$bindings.defaultClass(defaultClass);
+  divClass = twMerge(defaultClass, ($$slots.icon || dismissable) && "flex items-center", $$props.class);
+  return `${validate_component(TransitionFrame, "TransitionFrame").$$render($$result, Object.assign({}, { dismissable }, { color: "primary" }, { role: "alert" }, { rounded: true }, $$restProps, { class: divClass }), {}, {
+    default: ({ close }) => {
+      return `${$$slots.icon ? `${slots.icon ? slots.icon({}) : ``}` : ``} ${$$slots.icon || dismissable ? `<div>${slots.default ? slots.default({}) : ``}</div>` : `${slots.default ? slots.default({}) : ``}`} ${dismissable ? `${slots["close-button"] ? slots["close-button"]({ close }) : ` ${validate_component(CloseButton, "CloseButton").$$render(
+        $$result,
+        {
+          class: "ms-auto -me-1.5 -my-1.5 dark:hover:bg-gray-700",
+          color: $$restProps.color
+        },
+        {},
+        {}
+      )} `}` : ``}`;
+    }
+  })} `;
 });
-var applyFormatters = (formatters, formatterKeys, initialValue) => formatterKeys.reduce(
-  (value, formatterKey) => (formatterKey.match(REGEX_SWITCH_CASE) ? ((cases) => cases[value] ?? cases["*"])(parseCases(formatterKey)) : formatters[formatterKey]?.(value)) ?? value,
-  initialValue
-);
-var getPlural = (pluralRules, { z, o, t, f, m, r }, value) => {
-  switch (z && value == 0 ? "zero" : pluralRules.select(value)) {
-    case "zero":
-      return z;
-    case "one":
-      return o;
-    case "two":
-      return t;
-    case "few":
-      return f ?? r;
-    case "many":
-      return m ?? r;
-    default:
-      return r;
-  }
-};
-var REGEX_PLURAL_VALUE_INJECTION = /\?\?/g;
-var applyArguments = (textParts, pluralRules, formatters, args) => textParts.map((part) => {
-  if (typeof part === "string") {
-    return part;
-  }
-  const { k: key = "0", f: formatterKeys = [] } = part;
-  const value = args[key];
-  if (isBasicPluralPart(part)) {
-    return ((typeof value === "boolean" ? value ? part.o : part.r : getPlural(pluralRules, part, value)) || "").replace(REGEX_PLURAL_VALUE_INJECTION, value);
-  }
-  const formattedValue = formatterKeys.length ? applyFormatters(formatters, formatterKeys, value) : value;
-  return ("" + (formattedValue ?? "")).trim();
-}).join("");
-var translate = (textParts, pluralRules, formatters, args) => {
-  const firstArg = args[0];
-  const isObject = firstArg && typeof firstArg === "object" && firstArg.constructor === Object;
-  const transformedArgs = args.length === 1 && isObject ? firstArg : args;
-  return applyArguments(textParts, pluralRules, formatters, transformedArgs);
-};
-var getPartsFromString = (cache, text) => cache[text] || (cache[text] = parseRawText(text));
-var getTranslateInstance = (locale2, formatters) => {
-  const cache = {};
-  const pluralRules = new Intl.PluralRules(locale2);
-  return (text, ...args) => translate(getPartsFromString(cache, text), pluralRules, formatters, args);
-};
-function i18nObject(locale2, translations, formatters = {}) {
-  return createProxy(translations, getTranslateInstance(locale2, formatters));
-}
-var wrap = (proxyObject = {}, translateFn) => typeof proxyObject === "string" ? translateFn.bind(null, proxyObject) : Object.assign(
-  Object.defineProperty(() => "", "name", { writable: true }),
-  proxyObject
-);
-var createProxy = (proxyObject, translateFn) => new Proxy(wrap(proxyObject, translateFn), {
-  get: (target, key) => {
-    if (key === Symbol.iterator)
-      return [][Symbol.iterator].bind(Object.values(target).map((entry) => wrap(entry, translateFn)));
-    return createProxy(target[key], translateFn);
-  }
-});
-var initI18nSvelte = (translations, formatters = {}) => {
-  const _locale = writable();
-  const _LL = writable(getFallbackProxy());
-  const locale2 = readonly(_locale);
-  const LL2 = new Proxy({}, {
-    get: (_target, key) => key === "subscribe" ? _LL.subscribe : _LL[key]
-  });
-  const setLocale2 = (newLocale) => {
-    _locale.set(newLocale);
-    _LL.set(i18nObject(newLocale, translations[newLocale], formatters[newLocale]));
-  };
-  return {
-    locale: locale2,
-    LL: LL2,
-    setLocale: setLocale2
-  };
-};
-function readonly(store) {
-  return {
-    // @ts-ignore
-    subscribe: store.subscribe.bind(store)
-  };
-}
-const loadedLocales = {};
-const loadedFormatters = {};
-const { locale, LL, setLocale } = initI18nSvelte(loadedLocales, loadedFormatters);
-const Heading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let $$restProps = compute_rest_props($$props, ["tag", "color", "customSize"]);
-  let { tag = "h1" } = $$props;
-  let { color = "text-gray-900 dark:text-white" } = $$props;
-  let { customSize = "" } = $$props;
-  const textSizes = {
-    h1: "text-5xl font-extrabold",
-    h2: "text-4xl font-bold",
-    h3: "text-3xl font-bold",
-    h4: "text-2xl font-bold",
-    h5: "text-xl font-bold",
-    h6: "text-lg font-bold"
-  };
-  if ($$props.tag === void 0 && $$bindings.tag && tag !== void 0)
-    $$bindings.tag(tag);
+const Alert_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let { color = "blue" } = $$props;
+  let { dismissable = false } = $$props;
+  let { visible = true } = $$props;
+  let { timeout = 0 } = $$props;
+  let { class: className = "" } = $$props;
   if ($$props.color === void 0 && $$bindings.color && color !== void 0)
     $$bindings.color(color);
-  if ($$props.customSize === void 0 && $$bindings.customSize && customSize !== void 0)
-    $$bindings.customSize(customSize);
-  return `${((tag$1) => {
-    return tag$1 ? `<${tag}${spread(
-      [
-        escape_object($$restProps),
-        {
-          class: escape_attribute_value(twMerge(customSize ? customSize : textSizes[tag], color, "w-full", $$props.class))
-        }
-      ],
-      {}
-    )}>${is_void(tag$1) ? "" : `${slots.default ? slots.default({}) : ``}`}${is_void(tag$1) ? "" : `</${tag$1}>`}` : "";
-  })(tag)} `;
-});
-const parseLocalStorageValue = (value) => {
-  if (value === "undefined")
-    return void 0;
-  try {
-    return JSON.parse(value);
-  } catch (error) {
-    return value;
+  if ($$props.dismissable === void 0 && $$bindings.dismissable && dismissable !== void 0)
+    $$bindings.dismissable(dismissable);
+  if ($$props.visible === void 0 && $$bindings.visible && visible !== void 0)
+    $$bindings.visible(visible);
+  if ($$props.timeout === void 0 && $$bindings.timeout && timeout !== void 0)
+    $$bindings.timeout(timeout);
+  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
+    $$bindings.class(className);
+  {
+    if (visible && timeout)
+      setTimeout(() => visible = false, timeout);
   }
-};
-const data = {};
-const lsStore = writable(data);
-lsStore.subscribe((storeValue) => {
-  return;
-});
-new Proxy(data, {
-  get: (target, prop, receiver) => {
-    const item = localStorage.getItem(prop.toString());
-    const res = item ? parseLocalStorageValue(item) : item;
-    return res;
-  },
-  set: (target, prop, value, receiver) => {
-    lsStore.update((currentData) => ({ ...currentData, [prop.toString()]: value }));
-    return true;
-  },
-  deleteProperty: (target, propKey) => {
-    Reflect.deleteProperty(target, propKey.toString());
-    lsStore.update((currentData) => ({ ...lodash.omit(currentData, propKey.toString()) }));
-    return false;
-  }
+  return `${visible ? `${validate_component(Alert, "Alert").$$render(
+    $$result,
+    {
+      shadow: true,
+      dismissable,
+      class: twMerge("rounded-xl max-w-[500px] z-[9999] max-h-[300px] ml-auto mr-auto mt-5 absolute", className),
+      color
+    },
+    {},
+    {
+      icon: () => {
+        return `<span slot="icon"></span>`;
+      },
+      default: () => {
+        return `<span class="text-lg break-all">${slots.title ? slots.title({}) : ``}</span> <div><div class="mt-2 mb-4 text-sm break-words">${slots.default ? slots.default({}) : ``}${slots.message ? slots.message({}) : ``}</div> <div class="flex gap-2">${slots.buttons ? slots.buttons({}) : ``}</div></div>`;
+      }
+    }
+  )}` : ``}`;
 });
 const CookiesAlert = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_LL;
@@ -237,577 +82,6 @@ const CookiesAlert = create_ssr_component(($$result, $$props, $$bindings, slots)
   $$unsubscribe_LL();
   return `${``}`;
 });
-const css = {
-  code: ".wrapper.svelte-7wj78d{width:var(--size);height:var(--size);display:flex;justify-content:center;align-items:center;line-height:0;box-sizing:border-box}.inner.svelte-7wj78d{transform:scale(calc(var(--floatSize) / 52))}.ball-container.svelte-7wj78d{animation:svelte-7wj78d-ballTwo var(--duration) infinite;width:44px;height:44px;flex-shrink:0;position:relative}.single-ball.svelte-7wj78d{width:44px;height:44px;position:absolute}.ball.svelte-7wj78d{width:20px;height:20px;border-radius:50%;position:absolute;animation:svelte-7wj78d-ballOne var(--duration) infinite ease}.pause-animation.svelte-7wj78d{animation-play-state:paused}.ball-top-left.svelte-7wj78d{background-color:var(--ballTopLeftColor);top:0;left:0}.ball-top-right.svelte-7wj78d{background-color:var(--ballTopRightColor);top:0;left:24px}.ball-bottom-left.svelte-7wj78d{background-color:var(--ballBottomLeftColor);top:24px;left:0}.ball-bottom-right.svelte-7wj78d{background-color:var(--ballBottomRightColor);top:24px;left:24px}@keyframes svelte-7wj78d-ballOne{0%{position:absolute}50%{top:12px;left:12px;position:absolute;opacity:0.5}100%{position:absolute}}@keyframes svelte-7wj78d-ballTwo{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(360deg) scale(1.3)}100%{transform:rotate(720deg) scale(1)}}",
-  map: null
-};
-const Circle3 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { size = "60" } = $$props;
-  let { unit = "px" } = $$props;
-  let { pause = false } = $$props;
-  let { ballTopLeft = "#FF3E00" } = $$props;
-  let { ballTopRight = "#F8B334" } = $$props;
-  let { ballBottomLeft = "#40B3FF" } = $$props;
-  let { ballBottomRight = "#676778" } = $$props;
-  let { duration = "1.5s" } = $$props;
-  if ($$props.size === void 0 && $$bindings.size && size !== void 0)
-    $$bindings.size(size);
-  if ($$props.unit === void 0 && $$bindings.unit && unit !== void 0)
-    $$bindings.unit(unit);
-  if ($$props.pause === void 0 && $$bindings.pause && pause !== void 0)
-    $$bindings.pause(pause);
-  if ($$props.ballTopLeft === void 0 && $$bindings.ballTopLeft && ballTopLeft !== void 0)
-    $$bindings.ballTopLeft(ballTopLeft);
-  if ($$props.ballTopRight === void 0 && $$bindings.ballTopRight && ballTopRight !== void 0)
-    $$bindings.ballTopRight(ballTopRight);
-  if ($$props.ballBottomLeft === void 0 && $$bindings.ballBottomLeft && ballBottomLeft !== void 0)
-    $$bindings.ballBottomLeft(ballBottomLeft);
-  if ($$props.ballBottomRight === void 0 && $$bindings.ballBottomRight && ballBottomRight !== void 0)
-    $$bindings.ballBottomRight(ballBottomRight);
-  if ($$props.duration === void 0 && $$bindings.duration && duration !== void 0)
-    $$bindings.duration(duration);
-  $$result.css.add(css);
-  return `<div class="wrapper svelte-7wj78d" style="${"--size: " + escape(size, true) + escape(unit, true) + "; --floatSize: " + escape(size, true) + "; --ballTopLeftColor: " + escape(ballTopLeft, true) + "; --ballTopRightColor: " + escape(ballTopRight, true) + "; --ballBottomLeftColor: " + escape(ballBottomLeft, true) + "; --ballBottomRightColor: " + escape(ballBottomRight, true) + "; --duration: " + escape(duration, true) + ";"}"><div class="inner svelte-7wj78d"><div class="${["ball-container svelte-7wj78d", pause ? "pause-animation" : ""].join(" ").trim()}"><div class="single-ball svelte-7wj78d"><div class="${["ball ball-top-left svelte-7wj78d", pause ? "pause-animation" : ""].join(" ").trim()}" data-svelte-h="svelte-srzctx"> </div></div> <div class="contener_mixte"><div class="${["ball ball-top-right svelte-7wj78d", pause ? "pause-animation" : ""].join(" ").trim()}" data-svelte-h="svelte-6iyjws"> </div></div> <div class="contener_mixte"><div class="${["ball ball-bottom-left svelte-7wj78d", pause ? "pause-animation" : ""].join(" ").trim()}" data-svelte-h="svelte-9h2qed"> </div></div> <div class="contener_mixte"><div class="${["ball ball-bottom-right svelte-7wj78d", pause ? "pause-animation" : ""].join(" ").trim()}" data-svelte-h="svelte-yk0z5u"> </div></div></div></div> </div>`;
-});
-const Loading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { type = "basic" } = $$props;
-  let { class: className = "text-blue-600" } = $$props;
-  if ($$props.type === void 0 && $$bindings.type && type !== void 0)
-    $$bindings.type(type);
-  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
-    $$bindings.class(className);
-  return `${type === "basic" ? `<div class="${escape(className, true) + " animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent rounded-full"}" role="status" aria-label="loading"><span class="sr-only" data-svelte-h="svelte-1wtojot">Loading...</span></div>` : `${type === "circle3" ? `${validate_component(Circle3, "Circle3").$$render($$result, {}, {}, {})}` : ``}`}`;
-});
-const FullPageLoading = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="fixed w-full h-full flex items-center justify-center">${validate_component(Loading, "Loading").$$render($$result, {}, {}, {})}</div>`;
-});
-class Subscribable {
-  constructor() {
-    this.listeners = [];
-  }
-  subscribe(listener) {
-    const callback = listener || (() => void 0);
-    this.listeners.push(callback);
-    this.onSubscribe();
-    return () => {
-      this.listeners = this.listeners.filter((x) => x !== callback);
-      this.onUnsubscribe();
-    };
-  }
-  hasListeners() {
-    return this.listeners.length > 0;
-  }
-  onSubscribe() {
-  }
-  onUnsubscribe() {
-  }
-}
-const isServer = typeof window === "undefined";
-function noop() {
-  return void 0;
-}
-function functionalUpdate(updater, input) {
-  return typeof updater === "function" ? updater(input) : updater;
-}
-function isValidTimeout(value) {
-  return typeof value === "number" && value >= 0 && value !== Infinity;
-}
-function ensureQueryKeyArray(value) {
-  return Array.isArray(value) ? value : [value];
-}
-function timeUntilStale(updatedAt, staleTime) {
-  return Math.max(updatedAt + (staleTime || 0) - Date.now(), 0);
-}
-function parseQueryArgs(arg1, arg2, arg3) {
-  if (!isQueryKey(arg1)) {
-    return arg1;
-  }
-  if (typeof arg2 === "function") {
-    return Object.assign(Object.assign({}, arg3), { queryKey: arg1, queryFn: arg2 });
-  }
-  return Object.assign(Object.assign({}, arg2), { queryKey: arg1 });
-}
-function parseFilterArgs(arg1, arg2, arg3) {
-  return isQueryKey(arg1) ? [Object.assign(Object.assign({}, arg2), { queryKey: arg1 }), arg3] : [arg1 || {}, arg2];
-}
-function mapQueryStatusFilter(active, inactive) {
-  if (active === true && inactive === true || active == null && inactive == null) {
-    return "all";
-  } else if (active === false && inactive === false) {
-    return "none";
-  } else {
-    const isActive = active !== null && active !== void 0 ? active : !inactive;
-    return isActive ? "active" : "inactive";
-  }
-}
-function matchQuery(filters, query) {
-  const { active, exact, fetching, inactive, predicate, queryKey, stale } = filters;
-  if (isQueryKey(queryKey)) {
-    if (exact) {
-      if (query.queryHash !== hashQueryKeyByOptions(queryKey, query.options)) {
-        return false;
-      }
-    } else if (!partialMatchKey(query.queryKey, queryKey)) {
-      return false;
-    }
-  }
-  const queryStatusFilter = mapQueryStatusFilter(active, inactive);
-  if (queryStatusFilter === "none") {
-    return false;
-  } else if (queryStatusFilter !== "all") {
-    const isActive = query.isActive();
-    if (queryStatusFilter === "active" && !isActive) {
-      return false;
-    }
-    if (queryStatusFilter === "inactive" && isActive) {
-      return false;
-    }
-  }
-  if (typeof stale === "boolean" && query.isStale() !== stale) {
-    return false;
-  }
-  if (typeof fetching === "boolean" && query.isFetching() !== fetching) {
-    return false;
-  }
-  if (predicate && !predicate(query)) {
-    return false;
-  }
-  return true;
-}
-function matchMutation(filters, mutation) {
-  const { exact, fetching, predicate, mutationKey } = filters;
-  if (isQueryKey(mutationKey)) {
-    if (!mutation.options.mutationKey) {
-      return false;
-    }
-    if (exact) {
-      if (hashQueryKey(mutation.options.mutationKey) !== hashQueryKey(mutationKey)) {
-        return false;
-      }
-    } else if (!partialMatchKey(mutation.options.mutationKey, mutationKey)) {
-      return false;
-    }
-  }
-  if (typeof fetching === "boolean" && mutation.state.status === "loading" !== fetching) {
-    return false;
-  }
-  if (predicate && !predicate(mutation)) {
-    return false;
-  }
-  return true;
-}
-function hashQueryKeyByOptions(queryKey, options) {
-  const hashFn = (options === null || options === void 0 ? void 0 : options.queryKeyHashFn) || hashQueryKey;
-  return hashFn(queryKey);
-}
-function hashQueryKey(queryKey) {
-  const asArray = ensureQueryKeyArray(queryKey);
-  return stableValueHash(asArray);
-}
-function stableValueHash(value) {
-  return JSON.stringify(value, (_, val) => isPlainObject(val) ? Object.keys(val).sort().reduce((result, key) => {
-    result[key] = val[key];
-    return result;
-  }, {}) : val);
-}
-function partialMatchKey(a, b) {
-  return partialDeepEqual(ensureQueryKeyArray(a), ensureQueryKeyArray(b));
-}
-function partialDeepEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-  if (typeof a !== typeof b) {
-    return false;
-  }
-  if (a && b && typeof a === "object" && typeof b === "object") {
-    return !Object.keys(b).some((key) => !partialDeepEqual(a[key], b[key]));
-  }
-  return false;
-}
-function replaceEqualDeep(a, b) {
-  if (a === b) {
-    return a;
-  }
-  const array = Array.isArray(a) && Array.isArray(b);
-  if (array || isPlainObject(a) && isPlainObject(b)) {
-    const aSize = array ? a.length : Object.keys(a).length;
-    const bItems = array ? b : Object.keys(b);
-    const bSize = bItems.length;
-    const copy = array ? [] : {};
-    let equalItems = 0;
-    for (let i = 0; i < bSize; i++) {
-      const key = array ? i : bItems[i];
-      copy[key] = replaceEqualDeep(a[key], b[key]);
-      if (copy[key] === a[key]) {
-        equalItems++;
-      }
-    }
-    return aSize === bSize && equalItems === aSize ? a : copy;
-  }
-  return b;
-}
-function isPlainObject(o) {
-  if (!hasObjectPrototype(o)) {
-    return false;
-  }
-  const ctor = o.constructor;
-  if (typeof ctor === "undefined") {
-    return true;
-  }
-  const prot = ctor.prototype;
-  if (!hasObjectPrototype(prot)) {
-    return false;
-  }
-  if (!prot.hasOwnProperty("isPrototypeOf")) {
-    return false;
-  }
-  return true;
-}
-function hasObjectPrototype(o) {
-  return Object.prototype.toString.call(o) === "[object Object]";
-}
-function isQueryKey(value) {
-  return typeof value === "string" || Array.isArray(value);
-}
-function sleep(timeout) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-}
-function scheduleMicrotask(callback) {
-  Promise.resolve().then(callback).catch((error) => setTimeout(() => {
-    throw error;
-  }));
-}
-function getAbortController() {
-  if (typeof AbortController === "function") {
-    return new AbortController();
-  }
-}
-class FocusManager extends Subscribable {
-  constructor() {
-    super();
-    this.setup = (onFocus) => {
-      if (!isServer && (window === null || window === void 0 ? void 0 : window.addEventListener)) {
-        const listener = () => onFocus();
-        window.addEventListener("visibilitychange", listener, false);
-        window.addEventListener("focus", listener, false);
-        return () => {
-          window.removeEventListener("visibilitychange", listener);
-          window.removeEventListener("focus", listener);
-        };
-      }
-    };
-  }
-  onSubscribe() {
-    if (!this.cleanup) {
-      this.setEventListener(this.setup);
-    }
-  }
-  onUnsubscribe() {
-    var _a;
-    if (!this.hasListeners()) {
-      (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
-      this.cleanup = void 0;
-    }
-  }
-  setEventListener(setup) {
-    var _a;
-    this.setup = setup;
-    (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
-    this.cleanup = setup((focused) => {
-      if (typeof focused === "boolean") {
-        this.setFocused(focused);
-      } else {
-        this.onFocus();
-      }
-    });
-  }
-  setFocused(focused) {
-    this.focused = focused;
-    if (focused) {
-      this.onFocus();
-    }
-  }
-  onFocus() {
-    this.listeners.forEach((listener) => {
-      listener();
-    });
-  }
-  isFocused() {
-    if (typeof this.focused === "boolean") {
-      return this.focused;
-    }
-    if (typeof document === "undefined") {
-      return true;
-    }
-    return [void 0, "visible", "prerender"].includes(document.visibilityState);
-  }
-}
-const focusManager = new FocusManager();
-class OnlineManager extends Subscribable {
-  constructor() {
-    super();
-    this.setup = (onOnline) => {
-      if (!isServer && (window === null || window === void 0 ? void 0 : window.addEventListener)) {
-        const listener = () => onOnline();
-        window.addEventListener("online", listener, false);
-        window.addEventListener("offline", listener, false);
-        return () => {
-          window.removeEventListener("online", listener);
-          window.removeEventListener("offline", listener);
-        };
-      }
-    };
-  }
-  onSubscribe() {
-    if (!this.cleanup) {
-      this.setEventListener(this.setup);
-    }
-  }
-  onUnsubscribe() {
-    var _a;
-    if (!this.hasListeners()) {
-      (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
-      this.cleanup = void 0;
-    }
-  }
-  setEventListener(setup) {
-    var _a;
-    this.setup = setup;
-    (_a = this.cleanup) === null || _a === void 0 ? void 0 : _a.call(this);
-    this.cleanup = setup((online) => {
-      if (typeof online === "boolean") {
-        this.setOnline(online);
-      } else {
-        this.onOnline();
-      }
-    });
-  }
-  setOnline(online) {
-    this.online = online;
-    if (online) {
-      this.onOnline();
-    }
-  }
-  onOnline() {
-    this.listeners.forEach((listener) => {
-      listener();
-    });
-  }
-  isOnline() {
-    if (typeof this.online === "boolean") {
-      return this.online;
-    }
-    if (typeof navigator === "undefined" || typeof navigator.onLine === "undefined") {
-      return true;
-    }
-    return navigator.onLine;
-  }
-}
-const onlineManager = new OnlineManager();
-function defaultRetryDelay(failureCount) {
-  return Math.min(1e3 * 2 ** failureCount, 3e4);
-}
-function isCancelable(value) {
-  return typeof (value === null || value === void 0 ? void 0 : value.cancel) === "function";
-}
-class CancelledError {
-  constructor(options) {
-    this.revert = options === null || options === void 0 ? void 0 : options.revert;
-    this.silent = options === null || options === void 0 ? void 0 : options.silent;
-  }
-}
-function isCancelledError(value) {
-  return value instanceof CancelledError;
-}
-class Retryer {
-  constructor(config) {
-    let cancelRetry = false;
-    let cancelFn;
-    let continueFn;
-    let promiseResolve;
-    let promiseReject;
-    this.abort = config.abort;
-    this.cancel = (cancelOptions) => cancelFn === null || cancelFn === void 0 ? void 0 : cancelFn(cancelOptions);
-    this.cancelRetry = () => {
-      cancelRetry = true;
-    };
-    this.continueRetry = () => {
-      cancelRetry = false;
-    };
-    this.continue = () => continueFn === null || continueFn === void 0 ? void 0 : continueFn();
-    this.failureCount = 0;
-    this.isPaused = false;
-    this.isResolved = false;
-    this.isTransportCancelable = false;
-    this.promise = new Promise((outerResolve, outerReject) => {
-      promiseResolve = outerResolve;
-      promiseReject = outerReject;
-    });
-    const resolve = (value) => {
-      var _a;
-      if (!this.isResolved) {
-        this.isResolved = true;
-        (_a = config.onSuccess) === null || _a === void 0 ? void 0 : _a.call(config, value);
-        continueFn === null || continueFn === void 0 ? void 0 : continueFn();
-        promiseResolve(value);
-      }
-    };
-    const reject = (value) => {
-      var _a;
-      if (!this.isResolved) {
-        this.isResolved = true;
-        (_a = config.onError) === null || _a === void 0 ? void 0 : _a.call(config, value);
-        continueFn === null || continueFn === void 0 ? void 0 : continueFn();
-        promiseReject(value);
-      }
-    };
-    const pause = () => {
-      return new Promise((continueResolve) => {
-        var _a;
-        continueFn = continueResolve;
-        this.isPaused = true;
-        (_a = config.onPause) === null || _a === void 0 ? void 0 : _a.call(config);
-      }).then(() => {
-        var _a;
-        continueFn = void 0;
-        this.isPaused = false;
-        (_a = config.onContinue) === null || _a === void 0 ? void 0 : _a.call(config);
-      });
-    };
-    const run = () => {
-      if (this.isResolved) {
-        return;
-      }
-      let promiseOrValue;
-      try {
-        promiseOrValue = config.fn();
-      } catch (error) {
-        promiseOrValue = Promise.reject(error);
-      }
-      cancelFn = (cancelOptions) => {
-        var _a;
-        if (!this.isResolved) {
-          reject(new CancelledError(cancelOptions));
-          (_a = this.abort) === null || _a === void 0 ? void 0 : _a.call(this);
-          if (isCancelable(promiseOrValue)) {
-            try {
-              promiseOrValue.cancel();
-            } catch (_b) {
-            }
-          }
-        }
-      };
-      this.isTransportCancelable = isCancelable(promiseOrValue);
-      Promise.resolve(promiseOrValue).then(resolve).catch((error) => {
-        var _a, _b, _c;
-        if (this.isResolved) {
-          return;
-        }
-        const retry = (_a = config.retry) !== null && _a !== void 0 ? _a : 3;
-        const retryDelay = (_b = config.retryDelay) !== null && _b !== void 0 ? _b : defaultRetryDelay;
-        const delay = typeof retryDelay === "function" ? retryDelay(this.failureCount, error) : retryDelay;
-        const shouldRetry = retry === true || typeof retry === "number" && this.failureCount < retry || typeof retry === "function" && retry(this.failureCount, error);
-        if (cancelRetry || !shouldRetry) {
-          reject(error);
-          return;
-        }
-        this.failureCount++;
-        (_c = config.onFail) === null || _c === void 0 ? void 0 : _c.call(config, this.failureCount, error);
-        sleep(delay).then(() => {
-          if (!focusManager.isFocused() || !onlineManager.isOnline()) {
-            return pause();
-          }
-        }).then(() => {
-          if (cancelRetry) {
-            reject(error);
-          } else {
-            run();
-          }
-        });
-      });
-    };
-    run();
-  }
-}
-class NotifyManager {
-  constructor() {
-    this.queue = [];
-    this.transactions = 0;
-    this.notifyFn = (callback) => {
-      callback();
-    };
-    this.batchNotifyFn = (callback) => {
-      callback();
-    };
-  }
-  batch(callback) {
-    let result;
-    this.transactions++;
-    try {
-      result = callback();
-    } finally {
-      this.transactions--;
-      if (!this.transactions) {
-        this.flush();
-      }
-    }
-    return result;
-  }
-  schedule(callback) {
-    if (this.transactions) {
-      this.queue.push(callback);
-    } else {
-      scheduleMicrotask(() => {
-        this.notifyFn(callback);
-      });
-    }
-  }
-  /**
-   * All calls to the wrapped function will be batched.
-   */
-  batchCalls(callback) {
-    return (...args) => {
-      this.schedule(() => {
-        callback(...args);
-      });
-    };
-  }
-  flush() {
-    const queue = this.queue;
-    this.queue = [];
-    if (queue.length) {
-      scheduleMicrotask(() => {
-        this.batchNotifyFn(() => {
-          queue.forEach((callback) => {
-            this.notifyFn(callback);
-          });
-        });
-      });
-    }
-  }
-  /**
-   * Use this method to set a custom notify function.
-   * This can be used to for example wrap notifications with `React.act` while running tests.
-   */
-  setNotifyFunction(fn) {
-    this.notifyFn = fn;
-  }
-  /**
-   * Use this method to set a custom function to batch notifications together into a single tick.
-   * By default React Query will use the batch function provided by ReactDOM or React Native.
-   */
-  setBatchNotifyFunction(fn) {
-    this.batchNotifyFn = fn;
-  }
-}
-const notifyManager = new NotifyManager();
-let logger = console;
-function getLogger() {
-  return logger;
-}
 class Query {
   constructor(config) {
     this.abortSignalConsumed = false;
@@ -858,18 +132,18 @@ class Query {
   setData(updater, options) {
     var _a, _b;
     const prevData = this.state.data;
-    let data2 = functionalUpdate(updater, prevData);
-    if ((_b = (_a = this.options).isDataEqual) === null || _b === void 0 ? void 0 : _b.call(_a, prevData, data2)) {
-      data2 = prevData;
+    let data = functionalUpdate(updater, prevData);
+    if ((_b = (_a = this.options).isDataEqual) === null || _b === void 0 ? void 0 : _b.call(_a, prevData, data)) {
+      data = prevData;
     } else if (this.options.structuralSharing !== false) {
-      data2 = replaceEqualDeep(prevData, data2);
+      data = replaceEqualDeep(prevData, data);
     }
     this.dispatch({
-      data: data2,
+      data,
       type: "success",
       dataUpdatedAt: options === null || options === void 0 ? void 0 : options.updatedAt
     });
-    return data2;
+    return data;
   }
   setState(state, setStateOptions) {
     this.dispatch({ type: "setState", state, setStateOptions });
@@ -1013,10 +287,10 @@ class Query {
     this.retryer = new Retryer({
       fn: context.fetchFn,
       abort: (_f = abortController === null || abortController === void 0 ? void 0 : abortController.abort) === null || _f === void 0 ? void 0 : _f.bind(abortController),
-      onSuccess: (data2) => {
+      onSuccess: (data) => {
         var _a2, _b2;
-        this.setData(data2);
-        (_b2 = (_a2 = this.cache.config).onSuccess) === null || _b2 === void 0 ? void 0 : _b2.call(_a2, data2, this);
+        this.setData(data);
+        (_b2 = (_a2 = this.cache.config).onSuccess) === null || _b2 === void 0 ? void 0 : _b2.call(_a2, data, this);
         if (this.cacheTime === 0) {
           this.optionalRemove();
         }
@@ -1062,12 +336,12 @@ class Query {
     });
   }
   getDefaultState(options) {
-    const data2 = typeof options.initialData === "function" ? options.initialData() : options.initialData;
+    const data = typeof options.initialData === "function" ? options.initialData() : options.initialData;
     const hasInitialData = typeof options.initialData !== "undefined";
     const initialDataUpdatedAt = hasInitialData ? typeof options.initialDataUpdatedAt === "function" ? options.initialDataUpdatedAt() : options.initialDataUpdatedAt : 0;
-    const hasData = typeof data2 !== "undefined";
+    const hasData = typeof data !== "undefined";
     return {
-      data: data2,
+      data,
       dataUpdateCount: 0,
       dataUpdatedAt: hasData ? initialDataUpdatedAt !== null && initialDataUpdatedAt !== void 0 ? initialDataUpdatedAt : Date.now() : 0,
       error: null,
@@ -1240,7 +514,7 @@ class Mutation {
     return this.execute();
   }
   execute() {
-    let data2;
+    let data;
     const restored = this.state.status === "loading";
     let promise = Promise.resolve();
     if (!restored) {
@@ -1263,17 +537,17 @@ class Mutation {
     }
     return promise.then(() => this.executeMutation()).then((result) => {
       var _a, _b;
-      data2 = result;
-      (_b = (_a = this.mutationCache.config).onSuccess) === null || _b === void 0 ? void 0 : _b.call(_a, data2, this.state.variables, this.state.context, this);
+      data = result;
+      (_b = (_a = this.mutationCache.config).onSuccess) === null || _b === void 0 ? void 0 : _b.call(_a, data, this.state.variables, this.state.context, this);
     }).then(() => {
       var _a, _b;
-      return (_b = (_a = this.options).onSuccess) === null || _b === void 0 ? void 0 : _b.call(_a, data2, this.state.variables, this.state.context);
+      return (_b = (_a = this.options).onSuccess) === null || _b === void 0 ? void 0 : _b.call(_a, data, this.state.variables, this.state.context);
     }).then(() => {
       var _a, _b;
-      return (_b = (_a = this.options).onSettled) === null || _b === void 0 ? void 0 : _b.call(_a, data2, null, this.state.variables, this.state.context);
+      return (_b = (_a = this.options).onSettled) === null || _b === void 0 ? void 0 : _b.call(_a, data, null, this.state.variables, this.state.context);
     }).then(() => {
-      this.dispatch({ type: "success", data: data2 });
-      return data2;
+      this.dispatch({ type: "success", data });
+      return data;
     }).catch((error) => {
       var _a, _b;
       (_b = (_a = this.mutationCache.config).onError) === null || _b === void 0 ? void 0 : _b.call(_a, error, this.state.variables, this.state.context, this);
@@ -1554,8 +828,8 @@ class QueryClient {
   }
   getQueriesData(queryKeyOrFilters) {
     return this.getQueryCache().findAll(queryKeyOrFilters).map(({ queryKey, state }) => {
-      const data2 = state.data;
-      return [queryKey, data2];
+      const data = state.data;
+      return [queryKey, data];
     });
   }
   setQueryData(queryKey, updater, options) {
@@ -1739,12 +1013,7 @@ const QueryClientProvider = create_ssr_component(($$result, $$props, $$bindings,
     $$bindings.client(client);
   return `${slots.default ? slots.default({}) : ``}`;
 });
-const Center = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { class: className = "" } = $$props;
-  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
-    $$bindings.class(className);
-  return `<div${add_attribute("class", twMerge("w-full flex items-center justify-center", className), 0)}>${slots.default ? slots.default({}) : ``}</div>`;
-});
+const QueryClientProvider$1 = QueryClientProvider;
 const IconNoWifi = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-wifi-off"><line x1="1" y1="1" x2="23" y2="23"></line><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path><path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>`;
 });
@@ -1789,15 +1058,61 @@ if (typeof window !== "undefined")
   window?.addEventListener("online", () => isOnline.set("online"));
 if (typeof window !== "undefined")
   window?.addEventListener("offline", () => isOnline.set("offline"));
+const app = "";
+const alertStore = writable({
+  shown: false,
+  message: "",
+  title: ""
+});
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $alertStore, $$unsubscribe_alertStore;
   let $navigating, $$unsubscribe_navigating;
   let $isOnline, $$unsubscribe_isOnline;
+  $$unsubscribe_alertStore = subscribe(alertStore, (value) => $alertStore = value);
   $$unsubscribe_navigating = subscribe(navigating, (value) => $navigating = value);
   $$unsubscribe_isOnline = subscribe(isOnline, (value) => $isOnline = value);
   const queryClient = new QueryClient();
+  $$unsubscribe_alertStore();
   $$unsubscribe_navigating();
   $$unsubscribe_isOnline();
-  return `${validate_component(CookiesAlert, "CookiesAlert").$$render($$result, {}, {}, {})} <div></div> ${validate_component(QueryClientProvider, "QueryClientProvider").$$render($$result, { client: queryClient }, {}, {
+  return `${validate_component(Alert_1, "Alert").$$render(
+    $$result,
+    {
+      class: "z-[9999] absolute top-0 max-w-[500px] w-[95%] m-2",
+      visible: $alertStore.shown,
+      color: $alertStore.details?.color
+    },
+    {},
+    {
+      buttons: () => {
+        return `<span slot="buttons">${!$alertStore.details?.buttons ? `${validate_component(Button, "Button").$$render($$result, { color: $alertStore.details?.color }, {}, {
+          default: () => {
+            return `ok`;
+          }
+        })}` : `${each($alertStore.details.buttons, (button) => {
+          return `${validate_component(Button, "Button").$$render($$result, { color: $alertStore.details?.color }, {}, {
+            default: () => {
+              return `${escape(button.title)}`;
+            }
+          })}`;
+        })}`}</span>`;
+      },
+      message: () => {
+        return `${validate_component(Text, "Text").$$render($$result, { slot: "message" }, {}, {
+          default: () => {
+            return `${escape($alertStore.message)}`;
+          }
+        })}`;
+      },
+      title: () => {
+        return `${validate_component(Text, "Text").$$render($$result, { slot: "title" }, {}, {
+          default: () => {
+            return `${escape($alertStore.title)}`;
+          }
+        })}`;
+      }
+    }
+  )} ${validate_component(CookiesAlert, "CookiesAlert").$$render($$result, {}, {}, {})} ${validate_component(QueryClientProvider$1, "QueryClientProvider").$$render($$result, { client: queryClient }, {}, {
     default: () => {
       return `${$navigating ? `${validate_component(FullPageLoading, "FullPageLoading").$$render($$result, {}, {}, {})}` : `<div class="w-full h-full bg-white dark:bg-black overflow-auto">${$isOnline === "offline" ? `${validate_component(OfflinePage, "OfflinePage").$$render($$result, {}, {}, {})}` : `${slots.default ? slots.default({}) : ``}`}</div>`}`;
     }

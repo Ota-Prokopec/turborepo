@@ -3,4 +3,5 @@
  */
 
 export * from './Base64';
+export * from './ColorTheme';
 export * from './Location';

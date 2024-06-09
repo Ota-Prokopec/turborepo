@@ -10,6 +10,8 @@ const client: ReturnType<typeof setProject> = setProject({
 	hostname: process.env.SERVER_HOSTNAME || '',
 })
 
+export type Appwrite = ReturnType<typeof setClient>
+
 const setCookie = (cookies: Types.Cookie[]) => setClient(client.setCookie(cookies))
 const setSession = (session: string) => setClient(client.setSession(session))
 const setNone = () => setClient(client.none())

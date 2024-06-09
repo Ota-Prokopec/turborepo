@@ -1,5 +1,6 @@
 {
 	"/(app)/(pets)": [
+		"src/routes/(app)/(pets)/+page.ts",
 		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts",
@@ -43,6 +44,11 @@
 	],
 	"/(app)/(pets)/[petId]": [
 		"src/routes/(app)/(pets)/[petId]/+page.ts",
+		"src/routes/(app)/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/(app)/(pets)/[petId]/edit": [
 		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"

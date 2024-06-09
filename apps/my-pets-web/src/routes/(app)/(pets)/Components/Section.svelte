@@ -13,8 +13,14 @@
 	import PetDescriptionCustomFieldsItem from '../Components/Items/PetDescriptionCustomFieldsItem.svelte'
 	import PetUrl from './Items/PetUrlItem.svelte'
 	import { type GraphqlDocument } from '@repo/appwrite-types'
+	import Icon from '$lib/components/Common/Icon.svelte'
+	import EditPetButton from './EditPetButton.svelte'
+	import Right from '$lib/components/Common/Right.svelte'
+	import { navigate } from '$lib/utils/navigator'
 
 	export let petData: GraphqlDocument<TPetData>
+
+	export let isOwner: boolean
 
 	$: petUrl = `${location.origin}/${petData._id}`
 </script>
@@ -27,6 +33,13 @@
 	<PetGenderItem petGender={petData.petGender}></PetGenderItem>
 </Row>
 <Column class="w-full">
+	{#if isOwner}
+		<Right>
+			<EditPetButton on:click={() => navigate(`${petData._id}/edit`)} class=""
+			></EditPetButton>
+		</Right>
+	{/if}
+
 	<PetUrl class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrl>
 	<Column class="w-full max-w-[600px]">
 		<PetNameItem petName={petData.petName}></PetNameItem>

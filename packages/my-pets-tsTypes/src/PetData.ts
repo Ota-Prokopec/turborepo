@@ -9,6 +9,7 @@ export const zodPetData = z.object({
 	petAllergens: z.string().array(),
 	ownerPhoneNumber: z.string().min(1),
 	petTreating: z.string(),
+	userId: z.string(),
 	petGender: zodPetGender,
 	petPicture: z.string().url().min(1),
 	petDescriptionCustomFields: z
@@ -21,7 +22,7 @@ export const zodPetData = z.object({
 
 export type TPetData = z.infer<typeof zodPetData>
 
-export type TCreatePetData = Omit<TPetData, 'petId'>
+export type TCreatePetData = Omit<TPetData, 'petId' | 'userId'>
 
 export const zodPetType = z.union([z.literal('cat'), z.literal('dog')])
 

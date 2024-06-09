@@ -15,8 +15,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  PetGender: { input: male|female; output: male|female; }
-  PetType: { input: cat|dog; output: cat|dog; }
+  PetGender: { input: 'male'|'female'; output: 'male'|'female'; }
+  PetType: { input: 'cat'|'dog'; output: 'cat'|'dog'; }
   StringOrNumber: { input: string|number; output: string|number; }
   /** A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt. */
   URL: { input: any; output: any; }
@@ -47,11 +47,24 @@ export type CreatePetInput = {
 export type Mutation = {
   __typename?: 'Mutation';
   createPet: Pet;
+  deletePet: Scalars['Boolean']['output'];
+  updatePet: Pet;
 };
 
 
 export type MutationCreatePetArgs = {
   input: CreatePetInput;
+};
+
+
+export type MutationDeletePetArgs = {
+  petId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdatePetArgs = {
+  data: CreatePetInput;
+  petId: Scalars['String']['input'];
 };
 
 export type Pet = {
@@ -73,10 +86,17 @@ export type Pet = {
   petPicture: Scalars['String']['output'];
   petTreating: Scalars['String']['output'];
   petType: Scalars['PetType']['output'];
+  userId: Scalars['String']['output'];
 };
 
 export type PetDescriptionCustomField = {
   __typename?: 'PetDescriptionCustomField';
+  _collectionId: Scalars['String']['output'];
+  _createdAt: Scalars['String']['output'];
+  _databaseId: Scalars['String']['output'];
+  _id: Scalars['String']['output'];
+  _permissions: Array<Scalars['String']['output']>;
+  _updatedAt: Scalars['String']['output'];
   text: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
@@ -121,19 +141,27 @@ export type CreatePetMutationVariables = Exact<{
 }>;
 
 
-export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: cat|dog, petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: male|female, petPicture: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+
+export type UpdatePetMutationVariables = Exact<{
+  petId: Scalars['String']['input'];
+  data: CreatePetInput;
+}>;
+
+
+export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, petAddress: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }> } };
 
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: cat|dog, petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: male|female, petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> }> };
 
 export type GetPetQueryVariables = Exact<{
   petId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, petAddress: string, petName: string, petType: cat|dog, petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: male|female, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, petAddress: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }> } };
 
 
 export const GetAccountDocument = gql`
@@ -168,6 +196,38 @@ export const CreatePetDocument = gql`
   }
 }
     `;
+export const UpdatePetDocument = gql`
+    mutation updatePet($petId: String!, $data: CreatePetInput!) {
+  updatePet(petId: $petId, data: $data) {
+    _createdAt
+    _updatedAt
+    _collectionId
+    _id
+    _permissions
+    _databaseId
+    petAddress
+    userId
+    petName
+    petType
+    petAllergens
+    ownerPhoneNumber
+    petTreating
+    petPicture
+    petDescriptionCustomFieldIds
+    petGender
+    petDescriptionCustomFields {
+      _createdAt
+      _updatedAt
+      _collectionId
+      _id
+      _permissions
+      _databaseId
+      title
+      text
+    }
+  }
+}
+    `;
 export const GetListOfPetsDocument = gql`
     query getListOfPets {
   getListOfPets {
@@ -178,6 +238,7 @@ export const GetListOfPetsDocument = gql`
     petAllergens
     ownerPhoneNumber
     petTreating
+    userId
     petDescriptionCustomFieldIds
     petGender
     petDescriptionCustomFields {
@@ -203,6 +264,7 @@ export const GetPetDocument = gql`
     _permissions
     _databaseId
     petAddress
+    userId
     petName
     petType
     petAllergens
@@ -212,6 +274,12 @@ export const GetPetDocument = gql`
     petDescriptionCustomFieldIds
     petGender
     petDescriptionCustomFields {
+      _createdAt
+      _updatedAt
+      _collectionId
+      _id
+      _permissions
+      _databaseId
       title
       text
     }
@@ -234,6 +302,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     createPet(variables: CreatePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CreatePetMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePetMutation>(CreatePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPet', 'mutation');
+    },
+    updatePet(variables: UpdatePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdatePetMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdatePetMutation>(UpdatePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updatePet', 'mutation');
     },
     getListOfPets(variables?: GetListOfPetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetListOfPetsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetListOfPetsQuery>(GetListOfPetsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getListOfPets', 'query');

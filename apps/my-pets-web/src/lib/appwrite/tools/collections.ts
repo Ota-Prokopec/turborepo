@@ -1,5 +1,17 @@
 import type { Types } from '@repo/appwrite-client'
+import type {
+	TPetDocument,
+	TPetDocumentCreate,
+	TpetDescriptionCustomFieldsDocument,
+	TpetDescriptionCustomFieldsDocumentCreate,
+} from '@repo/my-pets-tstypes'
 
 export default (Collection: Types.Appwrite['Collection']) => {
-	return {}
+	return {
+		pet: new Collection<TPetDocument, TPetDocumentCreate>('my-pets', 'pet'),
+		petDescriptionCustomField: new Collection<
+			TpetDescriptionCustomFieldsDocument,
+			TpetDescriptionCustomFieldsDocumentCreate
+		>('my-pets', 'PetDescriptionCustomFields'),
+	}
 }

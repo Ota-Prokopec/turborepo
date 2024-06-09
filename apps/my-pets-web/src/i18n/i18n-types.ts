@@ -125,6 +125,16 @@ type RootTranslation = {
 			 */
 			saveButtonLabel: string
 		}
+		UpdatePetModal: {
+			/**
+			 * u​p​d​a​t​e​ ​y​o​u​r​ ​p​e​t
+			 */
+			title: string
+			/**
+			 * u​p​d​a​t​e
+			 */
+			saveButtonLabel: string
+		}
 		PetNameInput: {
 			/**
 			 * y​o​u​r​ ​p​e​t​s​ ​n​a​m​e
@@ -234,6 +244,12 @@ type RootTranslation = {
 		PetUrlItem: {
 			/**
 			 * p​e​t​'​s​ ​u​r​l
+			 */
+			label: string
+		}
+		EditPetButton: {
+			/**
+			 * E​d​i​t​ ​p​e​t
 			 */
 			label: string
 		}
@@ -358,6 +374,16 @@ export type TranslationFunctions = {
 			 */
 			saveButtonLabel: () => LocalizedString
 		}
+		UpdatePetModal: {
+			/**
+			 * update your pet
+			 */
+			title: () => LocalizedString
+			/**
+			 * update
+			 */
+			saveButtonLabel: () => LocalizedString
+		}
 		PetNameInput: {
 			/**
 			 * your pets name
@@ -467,6 +493,12 @@ export type TranslationFunctions = {
 		PetUrlItem: {
 			/**
 			 * pet's url
+			 */
+			label: () => LocalizedString
+		}
+		EditPetButton: {
+			/**
+			 * Edit pet
 			 */
 			label: () => LocalizedString
 		}

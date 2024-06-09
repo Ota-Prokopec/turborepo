@@ -1,101 +1,453 @@
 {
   "../../node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
-    "name": "entries/fallbacks/error.svelte",
-    "src": "../../node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
-    "isEntry": true,
     "imports": [
+      "_utils.js",
       "_ssr.js",
       "_stores.js"
-    ]
-  },
-  "../../node_modules/@sveltejs/kit/src/runtime/server/index.js": {
-    "file": "index.js",
-    "name": "index",
-    "src": "../../node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    ],
     "isEntry": true,
-    "imports": [
-      "_internal.js",
-      "_index.js"
-    ]
+    "src": "../../node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
   },
-  ".svelte-kit/generated/server/internal.js": {
-    "file": "internal.js",
-    "name": "internal",
-    "src": ".svelte-kit/generated/server/internal.js",
-    "isEntry": true,
-    "imports": [
-      "_internal.js"
-    ]
-  },
-  "_Icon.js": {
-    "file": "chunks/Icon.js",
-    "name": "Icon",
+  "../../node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
+    "file": "entries/fallbacks/layout.svelte.js",
     "imports": [
       "_ssr.js"
     ],
+    "isEntry": true,
+    "src": "../../node_modules/@sveltejs/kit/src/runtime/components/layout.svelte"
+  },
+  "../../node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "imports": [
+      "_internal.js",
+      "_index.js",
+      "_index2.js"
+    ],
+    "isEntry": true,
+    "src": "../../node_modules/@sveltejs/kit/src/runtime/server/index.js"
+  },
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "imports": [
+      "_internal.js"
+    ],
+    "isEntry": true,
+    "src": ".svelte-kit/generated/server/internal.js"
+  },
+  "ArrowUp.css": {
+    "file": "_app/immutable/assets/ArrowUp.5b5ebce6.css",
+    "src": "ArrowUp.css"
+  },
+  "CreateNewPetModal.css": {
+    "file": "_app/immutable/assets/CreateNewPetModal.eeadc2f3.css",
+    "src": "CreateNewPetModal.css"
+  },
+  "Icon.css": {
+    "file": "_app/immutable/assets/Icon.791c25e6.css",
+    "src": "Icon.css"
+  },
+  "Input.css": {
+    "file": "_app/immutable/assets/Input.89a4de6e.css",
+    "src": "Input.css"
+  },
+  "_Avatar.js": {
+    "file": "chunks/Avatar.js",
+    "imports": [
+      "_ssr.js",
+      "_Avatar2.js"
+    ]
+  },
+  "_Avatar2.js": {
+    "file": "chunks/Avatar2.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js"
+    ]
+  },
+  "_Center.js": {
+    "file": "chunks/Center.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_CloseButton.js": {
+    "file": "chunks/CloseButton.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Text.js"
+    ]
+  },
+  "_CreateNewPetModal.js": {
     "css": [
-      "_app/immutable/assets/Icon.JkID90uL.css"
+      "_app/immutable/assets/CreateNewPetModal.eeadc2f3.css",
+      "_app/immutable/assets/Input.89a4de6e.css",
+      "_app/immutable/assets/ArrowUp.5b5ebce6.css",
+      "_app/immutable/assets/Icon.791c25e6.css"
+    ],
+    "file": "chunks/CreateNewPetModal.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_IconDog.js",
+      "_Row.js",
+      "_i18n-svelte.js",
+      "_Text.js",
+      "_CloseButton.js",
+      "_Avatar2.js",
+      "_index2.js",
+      "_Icon.js",
+      "_public.js",
+      "_lsStore.js",
+      "_FullPageLoading.js",
+      "_index5.js",
+      "_index6.js",
+      "_Avatar.js",
+      "_sdk.js"
+    ]
+  },
+  "_FullPageLoading.js": {
+    "css": [
+      "_app/immutable/assets/ArrowUp.5b5ebce6.css"
+    ],
+    "file": "chunks/FullPageLoading.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_Heading.js": {
+    "file": "chunks/Heading.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Avatar2.js"
+    ]
+  },
+  "_Icon.js": {
+    "css": [
+      "_app/immutable/assets/Icon.791c25e6.css"
+    ],
+    "file": "chunks/Icon.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Avatar2.js"
+    ]
+  },
+  "_IconDog.js": {
+    "file": "chunks/IconDog.js",
+    "imports": [
+      "_ssr.js",
+      "_utils.js",
+      "_Text.js",
+      "_Icon.js"
+    ]
+  },
+  "_Padding.js": {
+    "file": "chunks/Padding.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_Row.js": {
+    "file": "chunks/Row.js",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_Text.js": {
+    "file": "chunks/Text.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Avatar2.js"
+    ]
+  },
+  "_clientOptions.js": {
+    "file": "chunks/clientOptions.js",
+    "imports": [
+      "_public.js",
+      "_lsStore.js"
+    ]
+  },
+  "_i18n-svelte.js": {
+    "file": "chunks/i18n-svelte.js",
+    "imports": [
+      "_index2.js"
     ]
   },
   "_index.js": {
-    "file": "chunks/index.js",
-    "name": "index",
+    "file": "chunks/index.js"
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "imports": [
+      "_utils.js"
+    ]
+  },
+  "_index5.js": {
+    "file": "chunks/index5.js"
+  },
+  "_index6.js": {
+    "file": "chunks/index6.js"
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
     "imports": [
       "_ssr.js"
     ]
   },
-  "_internal.js": {
-    "file": "chunks/internal.js",
-    "name": "internal",
+  "_logger.js": {
+    "file": "chunks/logger.js"
+  },
+  "_lsStore.js": {
+    "file": "chunks/lsStore.js",
     "imports": [
-      "_ssr.js"
+      "_index2.js"
+    ]
+  },
+  "_public.js": {
+    "file": "chunks/public.js"
+  },
+  "_sdk.js": {
+    "file": "chunks/sdk.js",
+    "imports": [
+      "_clientOptions.js"
     ]
   },
   "_ssr.js": {
     "file": "chunks/ssr.js",
-    "name": "ssr"
+    "imports": [
+      "_utils.js"
+    ]
   },
   "_stores.js": {
     "file": "chunks/stores.js",
-    "name": "stores",
     "imports": [
       "_ssr.js"
     ]
   },
-  "src/routes/+layout.svelte": {
-    "file": "entries/pages/_layout.svelte.js",
-    "name": "entries/pages/_layout.svelte",
-    "src": "src/routes/+layout.svelte",
-    "isEntry": true,
+  "_utils.js": {
+    "file": "chunks/utils.js"
+  },
+  "src/i18n/cs/index.ts": {
+    "file": "chunks/index3.js",
+    "isDynamicEntry": true,
+    "src": "src/i18n/cs/index.ts"
+  },
+  "src/i18n/en/index.ts": {
+    "file": "chunks/index4.js",
+    "isDynamicEntry": true,
+    "src": "src/i18n/en/index.ts"
+  },
+  "src/routes/(app)/(pets)/+layout.svelte": {
+    "file": "entries/pages/(app)/(pets)/_layout.svelte.js",
     "imports": [
       "_ssr.js",
-      "_stores.js",
-      "_index.js",
-      "_Icon.js"
+      "_Padding.js"
     ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/+layout.svelte"
+  },
+  "src/routes/(app)/(pets)/+page.svelte": {
     "css": [
-      "_app/immutable/assets/_layout.A5GN-G9U.css"
-    ]
+      "_app/immutable/assets/ArrowUp.5b5ebce6.css",
+      "_app/immutable/assets/Icon.791c25e6.css",
+      "_app/immutable/assets/Input.89a4de6e.css"
+    ],
+    "file": "entries/pages/(app)/(pets)/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_sdk.js",
+      "_index6.js",
+      "_i18n-svelte.js",
+      "_index5.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/+page.svelte"
+  },
+  "src/routes/(app)/(pets)/+page.ts": {
+    "file": "entries/pages/(app)/(pets)/_page.ts.js",
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/+page.ts"
+  },
+  "src/routes/(app)/(pets)/[petId]/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/Input.89a4de6e.css",
+      "_app/immutable/assets/Icon.791c25e6.css"
+    ],
+    "file": "entries/pages/(app)/(pets)/_petId_/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_stores.js",
+      "_Center.js",
+      "_FullPageLoading.js",
+      "_sdk.js",
+      "_Avatar.js",
+      "_Row.js",
+      "_index6.js",
+      "_Text.js",
+      "_i18n-svelte.js",
+      "_Icon.js",
+      "_IconDog.js",
+      "_index5.js",
+      "_Avatar2.js",
+      "_index2.js",
+      "_logger.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/[petId]/+page.svelte"
+  },
+  "src/routes/(app)/(pets)/[petId]/+page.ts": {
+    "file": "entries/pages/(app)/(pets)/_petId_/_page.ts.js",
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/[petId]/+page.ts"
+  },
+  "src/routes/(app)/(pets)/addpet/+page.svelte": {
+    "file": "entries/pages/(app)/(pets)/addpet/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_index5.js",
+      "_CreateNewPetModal.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/addpet/+page.svelte"
+  },
+  "src/routes/(app)/(pets)/notfound/+page.svelte": {
+    "file": "entries/pages/(app)/(pets)/notfound/_page.svelte.js",
+    "imports": [
+      "_ssr.js",
+      "_Center.js",
+      "_index5.js",
+      "_utils.js",
+      "_IconDog.js",
+      "_Row.js",
+      "_Icon.js",
+      "_Text.js",
+      "_CreateNewPetModal.js",
+      "_i18n-svelte.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/notfound/+page.svelte"
+  },
+  "src/routes/(app)/+layout.ts": {
+    "file": "entries/pages/(app)/_layout.ts.js",
+    "imports": [
+      "_index5.js",
+      "_lsStore.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/+layout.ts"
+  },
+  "src/routes/+layout.css": {
+    "file": "_app/immutable/assets/_layout.a8a3cdf2.css",
+    "src": "src/routes/+layout.css"
+  },
+  "src/routes/+layout.server.ts": {
+    "file": "entries/pages/_layout.server.ts.js",
+    "imports": [
+      "_clientOptions.js",
+      "_index.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+layout.server.ts"
+  },
+  "src/routes/+layout.svelte": {
+    "css": [
+      "_app/immutable/assets/_layout.a8a3cdf2.css"
+    ],
+    "file": "entries/pages/_layout.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_stores.js",
+      "_i18n-svelte.js",
+      "_lsStore.js",
+      "_FullPageLoading.js",
+      "_Center.js",
+      "_Icon.js",
+      "_Text.js",
+      "_Heading.js",
+      "_index2.js",
+      "_CloseButton.js",
+      "_logger.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+layout.svelte"
+  },
+  "src/routes/+layout.ts": {
+    "dynamicImports": [
+      "src/i18n/cs/index.ts",
+      "src/i18n/en/index.ts"
+    ],
+    "file": "entries/pages/_layout.ts.js",
+    "imports": [
+      "_i18n-svelte.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/+layout.ts"
   },
   "src/routes/auth/+layout.svelte": {
     "file": "entries/pages/auth/_layout.svelte.js",
-    "name": "entries/pages/auth/_layout.svelte",
-    "src": "src/routes/auth/+layout.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js"
-    ]
-  },
-  "src/routes/auth/+page.svelte": {
-    "file": "entries/pages/auth/_page.svelte.js",
-    "name": "entries/pages/auth/_page.svelte",
-    "src": "src/routes/auth/+page.svelte",
-    "isEntry": true,
     "imports": [
       "_ssr.js",
+      "_Avatar.js",
+      "_Center.js",
+      "_Padding.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/+layout.svelte"
+  },
+  "src/routes/auth/+page.svelte": {
+    "css": [
+      "_app/immutable/assets/ArrowUp.5b5ebce6.css"
+    ],
+    "file": "entries/pages/auth/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Row.js",
+      "_i18n-svelte.js",
+      "_Heading.js",
+      "_index2.js",
+      "_public.js",
+      "_FullPageLoading.js",
       "_Icon.js",
+      "_index6.js",
+      "_Padding.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/+page.svelte"
+  },
+  "src/routes/auth/oauth2/failure/+page.svelte": {
+    "file": "entries/pages/auth/oauth2/failure/_page.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/oauth2/failure/+page.svelte"
+  },
+  "src/routes/auth/oauth2/success/+page.server.ts": {
+    "file": "entries/pages/auth/oauth2/success/_page.server.ts.js",
+    "imports": [
       "_index.js"
-    ]
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/oauth2/success/+page.server.ts"
+  },
+  "src/routes/auth/oauth2/success/+page.svelte": {
+    "file": "entries/pages/auth/oauth2/success/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_FullPageLoading.js",
+      "_lsStore.js",
+      "_sdk.js",
+      "_i18n-svelte.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/auth/oauth2/success/+page.svelte"
   }
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { Models } from 'appwrite'
-import appwriteConnections from './lib/appwrite/appwrite'
+import appwriteConnections, { Appwrite } from './lib/appwrite/appwrite'
 import { Types, getSessionFromCookie } from '@repo/appwrite-ssr-graphql'
 import { TUserPreferences } from '@repo/my-pets-tstypes'
 
@@ -14,7 +14,7 @@ export const context = async ({ req, res }: { res: Response; req: Request }) => 
 		}))
 
 		let user: Models.User<TUserPreferences> | null = null
-		let appwrite: ReturnType<typeof appwriteConnections.setCookie>
+		let appwrite: Appwrite
 
 		const sessionForAndroid = getSessionFromCookie(
 			process.env.APPWRITE_PROJECT_ID,

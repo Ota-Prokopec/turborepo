@@ -27,24 +27,22 @@
 	}
 </script>
 
-{#if placement !== 'auto'}
-	<Drawer
-		{backdrop}
-		{activateClickOutside}
-		bind:hidden
-		class={twMerge('rounded-xl relative z-50', className)}
-		{placement}
-		{transitionParams}
-		transitionType="fly"
-	>
-		{#if !disableClosing}
-			<Right class="h-auto w-full">
-				<Icon on:click={() => (hidden = true)} class="child:h-10 child:w-10">
-					<IconTimes />
-				</Icon>
-			</Right>
-		{/if}
+<Drawer
+	{backdrop}
+	{activateClickOutside}
+	bind:hidden
+	class={twMerge('rounded-xl relative z-50', className)}
+	{placement}
+	{transitionParams}
+	transitionType="fly"
+>
+	{#if !disableClosing}
+		<Right class="h-auto w-full">
+			<Icon on:click={() => (hidden = true)} class="child:h-10 child:w-10">
+				<IconTimes />
+			</Icon>
+		</Right>
+	{/if}
 
-		<slot />
-	</Drawer>
-{/if}
+	<slot />
+</Drawer>

@@ -24,6 +24,7 @@ export default queryField('getListOfPets', {
 			petAllergens: pet.petAllergens,
 			petDescriptionCustomFieldIds: pet.petDescriptionCustomFieldIds,
 			petGender: pet.petGender,
+			userId: pet.userId,
 			petTreating: pet.petTreating,
 			petType: pet.petType,
 			...pick(pet, appwriteGraphqlKeys),

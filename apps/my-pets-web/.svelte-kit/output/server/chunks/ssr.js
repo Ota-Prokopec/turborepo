@@ -1,45 +1,4 @@
-function noop() {
-}
-function run(fn) {
-  return fn();
-}
-function blank_object() {
-  return /* @__PURE__ */ Object.create(null);
-}
-function run_all(fns) {
-  fns.forEach(run);
-}
-function safe_not_equal(a, b) {
-  return a != a ? b == b : a !== b || a && typeof a === "object" || typeof a === "function";
-}
-function subscribe(store, ...callbacks) {
-  if (store == null) {
-    for (const callback of callbacks) {
-      callback(void 0);
-    }
-    return noop;
-  }
-  const unsub = store.subscribe(...callbacks);
-  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
-}
-function compute_rest_props(props, keys) {
-  const rest = {};
-  keys = new Set(keys);
-  for (const k in props)
-    if (!keys.has(k) && k[0] !== "$")
-      rest[k] = props[k];
-  return rest;
-}
-function compute_slots(slots) {
-  const result = {};
-  for (const key in slots) {
-    result[key] = true;
-  }
-  return result;
-}
-function null_to_empty(value) {
-  return value == null ? "" : value;
-}
+import { r as run_all, f as blank_object } from "./utils.js";
 function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
   return new CustomEvent(type, { detail, bubbles, cancelable });
 }
@@ -260,32 +219,31 @@ function create_ssr_component(fn) {
   };
 }
 function add_attribute(name, value, boolean) {
-  if (value == null || boolean)
+  if (value == null || boolean && !value)
     return "";
-  const assignment = `="${escape(value, true)}"`;
+  const assignment = boolean && value === true ? "" : `="${escape(value, true)}"`;
   return ` ${name}${assignment}`;
 }
 function style_object_to_string(style_object) {
   return Object.keys(style_object).filter((key) => style_object[key] != null && style_object[key] !== "").map((key) => `${key}: ${escape_attribute_value(style_object[key])};`).join(" ");
 }
+function add_styles(style_object) {
+  const styles = style_object_to_string(style_object);
+  return styles ? ` style="${styles}"` : "";
+}
 export {
-  compute_rest_props as a,
+  each as a,
   spread as b,
   create_ssr_component as c,
-  escape_attribute_value as d,
-  escape_object as e,
-  subscribe as f,
-  escape as g,
-  add_attribute as h,
-  getContext as i,
-  createEventDispatcher as j,
-  each as k,
-  compute_slots as l,
+  escape_object as d,
+  escape as e,
+  escape_attribute_value as f,
+  getContext as g,
+  createEventDispatcher as h,
+  add_attribute as i,
+  add_styles as j,
   missing_component as m,
-  null_to_empty as n,
   onDestroy as o,
-  noop as p,
-  safe_not_equal as q,
   setContext as s,
   validate_component as v
 };
