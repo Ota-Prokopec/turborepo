@@ -83,6 +83,7 @@ export const componentsCS = {
 	},
 	PetUrlItem: {
 		label: 'URL mazlíčka',
+		copied: 'zkopírováno!',
 	},
 	EditPetButton: {
 		label: 'Upravit mazlíčka',
