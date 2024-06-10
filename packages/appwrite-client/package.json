@@ -29,6 +29,7 @@
 	"dependencies": {
 		"@repo/appwrite-permissions": "*",
 		"@repo/appwrite-types": "*",
+		"@repo/utils": "*",
 		"@types/tough-cookie": "^4.0.2",
 		"appwrite": "^13.0.0",
 		"axios-cookiejar-support": "^4.0.7",
