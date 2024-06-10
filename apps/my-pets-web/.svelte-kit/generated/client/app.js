@@ -13,17 +13,19 @@ export const nodes = [
 	() => import('./nodes/9'),
 	() => import('./nodes/10'),
 	() => import('./nodes/11'),
-	() => import('./nodes/12')
+	() => import('./nodes/12'),
+	() => import('./nodes/13')
 ];
 
 export const server_loads = [0];
 
 export const dictionary = {
 		"/(app)/(pets)": [5,[2,3]],
+		"/(app)/account/settings": [10,[2]],
 		"/(app)/(pets)/addpet": [8,[2,3]],
-		"/auth": [10,[4]],
-		"/auth/oauth2/failure": [11,[4]],
-		"/auth/oauth2/success": [~12,[4]],
+		"/auth": [11,[4]],
+		"/auth/oauth2/failure": [12,[4]],
+		"/auth/oauth2/success": [~13,[4]],
 		"/(app)/(pets)/notfound": [9,[2,3]],
 		"/(app)/(pets)/[petId]": [6,[2,3]],
 		"/(app)/(pets)/[petId]/edit": [7,[2,3]]

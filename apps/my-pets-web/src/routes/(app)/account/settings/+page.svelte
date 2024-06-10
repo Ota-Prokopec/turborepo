@@ -1,0 +1,46 @@
+<script lang="ts">
+	import { goto } from '$app/navigation'
+	import { user } from '$lib/appwrite/appwrite'
+	import LogOutButton from '$lib/components/Buttons/LogOutButton.svelte'
+	import Card from '$lib/components/Common/Card.svelte'
+	import Column from '$lib/components/Common/Column.svelte'
+	import LanguageSwitch from '$lib/components/Common/LanguageSwitch.svelte'
+	import Text from '$lib/components/Common/Text.svelte'
+	import ThemeSwitch from '$lib/components/Common/ThemeSwitch.svelte'
+	import lsStore from '$lib/utils/lsStore'
+	import { sdk } from '$src/graphql/sdk'
+	import LL from '$src/i18n/i18n-svelte'
+	import { alert } from '$src/routes/alertStore'
+
+	const logOut = async () => {
+		try {
+			await user.deleteSessions()
+			await sdk.logOut()
+			$lsStore.cookieFallback = { a_session_experiences: '' }
+			goto('/auth')
+		} catch (error) {
+			alert('', $LL.page.settings.logOut.errorMessage(), { color: 'red' })
+		}
+	}
+</script>
+
+<Column class="items-center justify-center h-full">
+	<Card class="">
+		<Column>
+			<Text>{$LL.page.settings.language()}</Text>
+			<LanguageSwitch></LanguageSwitch>
+		</Column>
+	</Card>
+	<Card>
+		<Column>
+			<Text>{$LL.page.settings.colorTheme()}</Text>
+			<ThemeSwitch
+				on:themeChange={(e) => ($lsStore.colorTheme = e.detail.theme)}
+				theme={$lsStore.colorTheme ?? 'light'}
+			></ThemeSwitch>
+		</Column>
+	</Card>
+	<Card>
+		<LogOutButton on:click={logOut}></LogOutButton>
+	</Card>
+</Column>

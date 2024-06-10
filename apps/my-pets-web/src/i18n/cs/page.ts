@@ -12,4 +12,11 @@ export const pageCS = {
 				'Omlouváme se, nebylo nám možné přihlásit vás do aplikace Tourmate. Prosím, zkuste to znovu.',
 		},
 	},
+	settings: {
+		language: 'Language',
+		colorTheme: 'Color theme',
+		logOut: {
+			errorMessage: 'We were not able to sign you out',
+		},
+	},
 } satisfies BaseTranslation

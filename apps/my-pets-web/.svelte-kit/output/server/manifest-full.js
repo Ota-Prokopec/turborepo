@@ -23,7 +23,9 @@ return {
 			__memo(() => import('./nodes/8.js')),
 			__memo(() => import('./nodes/9.js')),
 			__memo(() => import('./nodes/10.js')),
-			__memo(() => import('./nodes/11.js'))
+			__memo(() => import('./nodes/11.js')),
+			__memo(() => import('./nodes/12.js')),
+			__memo(() => import('./nodes/13.js'))
 		],
 		routes: [
 			{
@@ -34,38 +36,45 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/(app)/account/settings",
+				pattern: /^\/account\/settings\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 10 },
+				endpoint: null
+			},
+			{
 				id: "/(app)/(pets)/addpet",
 				pattern: /^\/addpet\/?$/,
 				params: [],
-				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 7 },
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 8 },
 				endpoint: null
 			},
 			{
 				id: "/auth",
 				pattern: /^\/auth\/?$/,
 				params: [],
-				page: { layouts: [0,4,], errors: [1,,], leaf: 9 },
+				page: { layouts: [0,4,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
 				id: "/auth/oauth2/failure",
 				pattern: /^\/auth\/oauth2\/failure\/?$/,
 				params: [],
-				page: { layouts: [0,4,], errors: [1,,], leaf: 10 },
+				page: { layouts: [0,4,], errors: [1,,], leaf: 12 },
 				endpoint: null
 			},
 			{
 				id: "/auth/oauth2/success",
 				pattern: /^\/auth\/oauth2\/success\/?$/,
 				params: [],
-				page: { layouts: [0,4,], errors: [1,,], leaf: 11 },
+				page: { layouts: [0,4,], errors: [1,,], leaf: 13 },
 				endpoint: null
 			},
 			{
 				id: "/(app)/(pets)/notfound",
 				pattern: /^\/notfound\/?$/,
 				params: [],
-				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 8 },
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 9 },
 				endpoint: null
 			},
 			{
@@ -73,6 +82,13 @@ return {
 				pattern: /^\/([^/]+?)\/?$/,
 				params: [{"name":"petId","optional":false,"rest":false,"chained":false}],
 				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 6 },
+				endpoint: null
+			},
+			{
+				id: "/(app)/(pets)/[petId]/edit",
+				pattern: /^\/([^/]+?)\/edit\/?$/,
+				params: [{"name":"petId","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,2,3,], errors: [1,,,], leaf: 7 },
 				endpoint: null
 			}
 		],

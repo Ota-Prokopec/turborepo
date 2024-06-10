@@ -1,5 +1,6 @@
 import { Base64 } from '@repo/ts-types'
 import { Buffer } from 'buffer'
+import { isBase64 } from './typeCheking'
 
 export function getParsed(parsing: string) {
 	return parsing[0] === '[' || parsing[0] === '{' ? JSON.parse(parsing) : parsing
@@ -89,5 +90,22 @@ export const fileToBase64 = (file: File): Promise<Base64> => {
 		reader.readAsDataURL(file)
 		reader.onload = () => resolve(reader.result as Base64)
 		reader.onerror = () => reject(reader.error)
+	})
+}
+
+export const urlToBase64 = async (url: string): Promise<Base64> => {
+	return new Promise((res) => {
+		var xhr = new XMLHttpRequest()
+		xhr.onload = function () {
+			var reader = new FileReader()
+			reader.onloadend = function () {
+				if (!isBase64(reader.result)) throw new Error('result is not type of base64')
+				res(reader.result)
+			}
+			reader.readAsDataURL(xhr.response)
+		}
+		xhr.open('GET', url)
+		xhr.responseType = 'blob'
+		xhr.send()
 	})
 }

@@ -13,7 +13,7 @@
 	onMount(async () => {
 		try {
 			//session in localstorage for client to appwrite
-			storage.cookieFallback = { a_session_experiences: data.session }
+			storage.cookieFallback = { a_session_6636972a0023b54e21bf: data.session }
 			//cookies for ssr
 			await sdk.setSession({ session: data.session })
 

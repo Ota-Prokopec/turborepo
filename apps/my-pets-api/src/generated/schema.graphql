@@ -26,6 +26,7 @@ input CreatePetInput {
 type Mutation {
   createPet(input: CreatePetInput!): Pet!
   deletePet(petId: String!): Boolean!
+  logout: Boolean!
   updatePet(data: CreatePetInput!, petId: String!): Pet!
 }
 

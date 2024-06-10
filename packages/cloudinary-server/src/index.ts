@@ -18,6 +18,7 @@ export class Cloudinary {
 		return file
 	}
 	async deleteFiles(...files: string[]) {
+		cloudinary.config(this.options)
 		return await cloudinary.api.delete_resources(
 			files.map((file) => `${this.folder}/${file}`),
 		)

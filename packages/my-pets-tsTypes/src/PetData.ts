@@ -20,9 +20,11 @@ export const zodPetData = z.object({
 		.array(),
 })
 
+export const zodCreatingPetData = zodPetData.omit({ userId: true })
+
 export type TPetData = z.infer<typeof zodPetData>
 
-export type TCreatePetData = Omit<TPetData, 'petId' | 'userId'>
+export type TCreatePetData = z.infer<typeof zodCreatingPetData>
 
 export const zodPetType = z.union([z.literal('cat'), z.literal('dog')])
 

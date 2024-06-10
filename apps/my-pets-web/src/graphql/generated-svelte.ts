@@ -52,6 +52,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createPet: Pet;
   deletePet: Scalars['Boolean']['output'];
+  logout: Scalars['Boolean']['output'];
   updatePet: Pet;
 };
 
@@ -133,6 +134,11 @@ export type GetAccountQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAccountQuery = { __typename?: 'Query', getAccount: { __typename?: 'Account', userId: string } };
 
+export type LogOutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogOutMutation = { __typename?: 'Mutation', logout: boolean };
+
 export type SetSessionQueryVariables = Exact<{
   session: Scalars['String']['input'];
 }>;
@@ -146,6 +152,13 @@ export type CreatePetMutationVariables = Exact<{
 
 
 export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+
+export type DeletePetMutationVariables = Exact<{
+  petId: Scalars['String']['input'];
+}>;
+
+
+export type DeletePetMutation = { __typename?: 'Mutation', deletePet: boolean };
 
 export type UpdatePetMutationVariables = Exact<{
   petId: Scalars['String']['input'];
@@ -175,6 +188,11 @@ export const GetAccountDoc = gql`
   }
 }
     `;
+export const LogOutDoc = gql`
+    mutation logOut {
+  logout
+}
+    `;
 export const SetSessionDoc = gql`
     query setSession($session: String!) {
   setSession(session: $session)
@@ -198,6 +216,11 @@ export const CreatePetDoc = gql`
     }
     petPicture
   }
+}
+    `;
+export const DeletePetDoc = gql`
+    mutation deletePet($petId: String!) {
+  deletePet(petId: $petId)
 }
     `;
 export const UpdatePetDoc = gql`
@@ -325,6 +348,18 @@ export const getAccount = (
             return result;
           }
         
+export const logOut = (
+            options: Omit<
+              MutationOptions<any, LogOutMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<LogOutMutation, LogOutMutationVariables>({
+              mutation: LogOutDoc,
+              ...options,
+            });
+            return m;
+          }
 export const setSession = (
             options: Omit<
               WatchQueryOptions<SetSessionQueryVariables>, 
@@ -368,6 +403,18 @@ export const createPet = (
           ) => {
             const m = client.mutate<CreatePetMutation, CreatePetMutationVariables>({
               mutation: CreatePetDoc,
+              ...options,
+            });
+            return m;
+          }
+export const deletePet = (
+            options: Omit<
+              MutationOptions<any, DeletePetMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<DeletePetMutation, DeletePetMutationVariables>({
+              mutation: DeletePetDoc,
               ...options,
             });
             return m;

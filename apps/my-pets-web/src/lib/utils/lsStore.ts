@@ -1,11 +1,14 @@
 import { browser } from '$app/environment'
-import { Coords } from '@repo/ts-types'
+import { Locales } from '$src/i18n/i18n-types'
+import type { ColorTheme, Coords } from '@repo/ts-types'
 import * as lodash from 'lodash'
 import { writable } from 'svelte/store'
 
 export type Data = {
-	cookieFallback?: Record<'a_session_experiences', string> | null
+	cookieFallback?: Record<'a_session_6636972a0023b54e21bf', string> | null
 	usersLocation?: Coords | null
+	colorTheme?: ColorTheme
+	language?: Locales
 } & Record<string, any>
 
 const parseLocalStorageValue = (value: string) => {

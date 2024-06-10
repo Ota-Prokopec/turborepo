@@ -39,10 +39,6 @@
     "file": "_app/immutable/assets/ArrowUp.5b5ebce6.css",
     "src": "ArrowUp.css"
   },
-  "CreateNewPetModal.css": {
-    "file": "_app/immutable/assets/CreateNewPetModal.eeadc2f3.css",
-    "src": "CreateNewPetModal.css"
-  },
   "Icon.css": {
     "file": "_app/immutable/assets/Icon.791c25e6.css",
     "src": "Icon.css"
@@ -50,6 +46,10 @@
   "Input.css": {
     "file": "_app/immutable/assets/Input.89a4de6e.css",
     "src": "Input.css"
+  },
+  "RequiredFieldsEmptlyPetCreatingErrorModal.css": {
+    "file": "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.eeadc2f3.css",
+    "src": "RequiredFieldsEmptlyPetCreatingErrorModal.css"
   },
   "_Avatar.js": {
     "file": "chunks/Avatar.js",
@@ -65,6 +65,15 @@
       "_ssr.js"
     ]
   },
+  "_Card.js": {
+    "file": "chunks/Card.js",
+    "imports": [
+      "_ssr.js",
+      "_utils.js",
+      "_Text.js",
+      "_Icon.js"
+    ]
+  },
   "_Center.js": {
     "file": "chunks/Center.js",
     "imports": [
@@ -75,36 +84,38 @@
     "file": "chunks/CloseButton.js",
     "imports": [
       "_utils.js",
-      "_ssr.js",
-      "_Text.js"
+      "_ssr.js"
+    ]
+  },
+  "_Column.js": {
+    "file": "chunks/Column.js",
+    "imports": [
+      "_ssr.js"
     ]
   },
   "_CreateNewPetModal.js": {
-    "css": [
-      "_app/immutable/assets/CreateNewPetModal.eeadc2f3.css",
-      "_app/immutable/assets/Input.89a4de6e.css",
-      "_app/immutable/assets/ArrowUp.5b5ebce6.css",
-      "_app/immutable/assets/Icon.791c25e6.css"
-    ],
     "file": "chunks/CreateNewPetModal.js",
     "imports": [
       "_utils.js",
       "_ssr.js",
-      "_IconDog.js",
+      "_RequiredFieldsEmptlyPetCreatingErrorModal.js",
+      "_ErrorModal.js",
       "_Row.js",
+      "_sdk.js",
+      "_i18n-svelte.js",
+      "_index4.js",
+      "_Text.js"
+    ]
+  },
+  "_ErrorModal.js": {
+    "file": "chunks/ErrorModal.js",
+    "imports": [
+      "_ssr.js",
+      "_utils.js",
       "_i18n-svelte.js",
       "_Text.js",
       "_CloseButton.js",
-      "_Avatar2.js",
-      "_index2.js",
-      "_Icon.js",
-      "_public.js",
-      "_lsStore.js",
-      "_FullPageLoading.js",
-      "_index5.js",
-      "_index6.js",
-      "_Avatar.js",
-      "_sdk.js"
+      "_Column.js"
     ]
   },
   "_FullPageLoading.js": {
@@ -135,19 +146,39 @@
       "_Avatar2.js"
     ]
   },
-  "_IconDog.js": {
-    "file": "chunks/IconDog.js",
-    "imports": [
-      "_ssr.js",
-      "_utils.js",
-      "_Text.js",
-      "_Icon.js"
-    ]
-  },
   "_Padding.js": {
     "file": "chunks/Padding.js",
     "imports": [
       "_ssr.js"
+    ]
+  },
+  "_RequiredFieldsEmptlyPetCreatingErrorModal.js": {
+    "css": [
+      "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.eeadc2f3.css",
+      "_app/immutable/assets/Input.89a4de6e.css",
+      "_app/immutable/assets/ArrowUp.5b5ebce6.css"
+    ],
+    "file": "chunks/RequiredFieldsEmptlyPetCreatingErrorModal.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_i18n-svelte.js",
+      "_Card.js",
+      "_index2.js",
+      "_Text.js",
+      "_ErrorModal.js",
+      "_Icon.js",
+      "_public.js",
+      "_lsStore.js",
+      "_FullPageLoading.js",
+      "_index3.js",
+      "_Column.js",
+      "_index4.js",
+      "_Row.js",
+      "_Avatar2.js",
+      "_TransitionFrame.js",
+      "_CloseButton.js",
+      "_Avatar.js"
     ]
   },
   "_Row.js": {
@@ -162,6 +193,21 @@
       "_utils.js",
       "_ssr.js",
       "_Avatar2.js"
+    ]
+  },
+  "_TransitionFrame.js": {
+    "file": "chunks/TransitionFrame.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Text.js"
+    ]
+  },
+  "_appwrite.js": {
+    "file": "chunks/appwrite.js",
+    "imports": [
+      "_index2.js",
+      "_public.js"
     ]
   },
   "_clientOptions.js": {
@@ -186,11 +232,11 @@
       "_utils.js"
     ]
   },
-  "_index5.js": {
-    "file": "chunks/index5.js"
+  "_index3.js": {
+    "file": "chunks/index3.js"
   },
-  "_index6.js": {
-    "file": "chunks/index6.js"
+  "_index4.js": {
+    "file": "chunks/index4.js"
   },
   "_internal.js": {
     "file": "chunks/internal.js",
@@ -228,18 +274,16 @@
       "_ssr.js"
     ]
   },
+  "_useQuery.js": {
+    "file": "chunks/useQuery.js",
+    "imports": [
+      "_index2.js",
+      "_logger.js",
+      "_ssr.js"
+    ]
+  },
   "_utils.js": {
     "file": "chunks/utils.js"
-  },
-  "src/i18n/cs/index.ts": {
-    "file": "chunks/index3.js",
-    "isDynamicEntry": true,
-    "src": "src/i18n/cs/index.ts"
-  },
-  "src/i18n/en/index.ts": {
-    "file": "chunks/index4.js",
-    "isDynamicEntry": true,
-    "src": "src/i18n/en/index.ts"
   },
   "src/routes/(app)/(pets)/+layout.svelte": {
     "file": "entries/pages/(app)/(pets)/_layout.svelte.js",
@@ -253,16 +297,16 @@
   "src/routes/(app)/(pets)/+page.svelte": {
     "css": [
       "_app/immutable/assets/ArrowUp.5b5ebce6.css",
-      "_app/immutable/assets/Icon.791c25e6.css",
       "_app/immutable/assets/Input.89a4de6e.css"
     ],
     "file": "entries/pages/(app)/(pets)/_page.svelte.js",
     "imports": [
       "_ssr.js",
+      "_Icon.js",
       "_sdk.js",
-      "_index6.js",
+      "_index4.js",
       "_i18n-svelte.js",
-      "_index5.js"
+      "_index3.js"
     ],
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/+page.svelte"
@@ -274,8 +318,7 @@
   },
   "src/routes/(app)/(pets)/[petId]/+page.svelte": {
     "css": [
-      "_app/immutable/assets/Input.89a4de6e.css",
-      "_app/immutable/assets/Icon.791c25e6.css"
+      "_app/immutable/assets/Input.89a4de6e.css"
     ],
     "file": "entries/pages/(app)/(pets)/_petId_/_page.svelte.js",
     "imports": [
@@ -286,16 +329,17 @@
       "_FullPageLoading.js",
       "_sdk.js",
       "_Avatar.js",
+      "_Column.js",
       "_Row.js",
-      "_index6.js",
+      "_index4.js",
       "_Text.js",
       "_i18n-svelte.js",
       "_Icon.js",
-      "_IconDog.js",
-      "_index5.js",
+      "_ErrorModal.js",
+      "_index3.js",
       "_Avatar2.js",
-      "_index2.js",
-      "_logger.js"
+      "_Card.js",
+      "_useQuery.js"
     ],
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/[petId]/+page.svelte"
@@ -305,11 +349,31 @@
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/[petId]/+page.ts"
   },
+  "src/routes/(app)/(pets)/[petId]/edit/+page.svelte": {
+    "file": "entries/pages/(app)/(pets)/_petId_/edit/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_stores.js",
+      "_FullPageLoading.js",
+      "_sdk.js",
+      "_RequiredFieldsEmptlyPetCreatingErrorModal.js",
+      "_ErrorModal.js",
+      "_Row.js",
+      "_i18n-svelte.js",
+      "_index4.js",
+      "_index3.js",
+      "_Text.js",
+      "_useQuery.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/[petId]/edit/+page.svelte"
+  },
   "src/routes/(app)/(pets)/addpet/+page.svelte": {
     "file": "entries/pages/(app)/(pets)/addpet/_page.svelte.js",
     "imports": [
       "_ssr.js",
-      "_index5.js",
+      "_index3.js",
       "_CreateNewPetModal.js"
     ],
     "isEntry": true,
@@ -320,14 +384,15 @@
     "imports": [
       "_ssr.js",
       "_Center.js",
-      "_index5.js",
       "_utils.js",
-      "_IconDog.js",
-      "_Row.js",
+      "_Card.js",
+      "_Column.js",
       "_Icon.js",
+      "_ErrorModal.js",
       "_Text.js",
-      "_CreateNewPetModal.js",
-      "_i18n-svelte.js"
+      "_RequiredFieldsEmptlyPetCreatingErrorModal.js",
+      "_i18n-svelte.js",
+      "_CreateNewPetModal.js"
     ],
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/notfound/+page.svelte"
@@ -335,14 +400,30 @@
   "src/routes/(app)/+layout.ts": {
     "file": "entries/pages/(app)/_layout.ts.js",
     "imports": [
-      "_index5.js",
+      "_index3.js",
       "_lsStore.js"
     ],
     "isEntry": true,
     "src": "src/routes/(app)/+layout.ts"
   },
+  "src/routes/(app)/account/settings/+page.svelte": {
+    "file": "entries/pages/(app)/account/settings/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_appwrite.js",
+      "_i18n-svelte.js",
+      "_Text.js",
+      "_Card.js",
+      "_Column.js",
+      "_lsStore.js",
+      "_sdk.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/account/settings/+page.svelte"
+  },
   "src/routes/+layout.css": {
-    "file": "_app/immutable/assets/_layout.a8a3cdf2.css",
+    "file": "_app/immutable/assets/_layout.fea3f143.css",
     "src": "src/routes/+layout.css"
   },
   "src/routes/+layout.server.ts": {
@@ -356,7 +437,7 @@
   },
   "src/routes/+layout.svelte": {
     "css": [
-      "_app/immutable/assets/_layout.a8a3cdf2.css"
+      "_app/immutable/assets/_layout.fea3f143.css"
     ],
     "file": "entries/pages/_layout.svelte.js",
     "imports": [
@@ -371,6 +452,7 @@
       "_Text.js",
       "_Heading.js",
       "_index2.js",
+      "_TransitionFrame.js",
       "_CloseButton.js",
       "_logger.js"
     ],
@@ -378,13 +460,11 @@
     "src": "src/routes/+layout.svelte"
   },
   "src/routes/+layout.ts": {
-    "dynamicImports": [
-      "src/i18n/cs/index.ts",
-      "src/i18n/en/index.ts"
-    ],
     "file": "entries/pages/_layout.ts.js",
     "imports": [
-      "_i18n-svelte.js"
+      "_lsStore.js",
+      "_i18n-svelte.js",
+      "_index3.js"
     ],
     "isEntry": true,
     "src": "src/routes/+layout.ts"
@@ -408,14 +488,14 @@
     "imports": [
       "_utils.js",
       "_ssr.js",
-      "_Row.js",
+      "_Column.js",
       "_i18n-svelte.js",
       "_Heading.js",
-      "_index2.js",
-      "_public.js",
+      "_appwrite.js",
       "_FullPageLoading.js",
       "_Icon.js",
-      "_index6.js",
+      "_Row.js",
+      "_index4.js",
       "_Padding.js"
     ],
     "isEntry": true,

@@ -17,6 +17,11 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/(app)/account/settings": [
+		"src/routes/(app)/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/(app)/(pets)/addpet": [
 		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",

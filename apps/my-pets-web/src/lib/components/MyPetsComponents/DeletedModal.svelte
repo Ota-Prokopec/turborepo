@@ -7,7 +7,7 @@
 	import IconCheck from '../Icons/IconCheck.svelte'
 	import { createEventDispatcher } from 'svelte'
 
-	const dispatch = createEventDispatcher<{ goBack: undefined }>()
+	const dispatch = createEventDispatcher<{ return: undefined }>()
 </script>
 
 <Modal
@@ -17,14 +17,14 @@
 	dismissable={false}
 >
 	<Column class="w-full h-full flex justify-center items-center">
-		<Text class="text-green-500 font-bold">{$LL.component.SavedModal.label()}</Text>
+		<Text class="text-green-500 font-bold">{$LL.component.DeletedModal.label()}</Text>
 		<Icon class="w-8 h-8 fill-green-500">
 			<IconCheck></IconCheck>
 		</Icon>
 		<Button
 			on:click={() => {
-				dispatch('goBack')
-			}}>{$LL.component.SavedModal.returningButtonLabel()}</Button
+				dispatch('return')
+			}}>{$LL.component.DeletedModal.returningButtonLabel()}</Button
 		>
 	</Column>
 </Modal>

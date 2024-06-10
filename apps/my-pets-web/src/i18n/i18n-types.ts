@@ -35,6 +35,22 @@ type RootTranslation = {
 				errorMessage: string
 			}
 		}
+		settings: {
+			/**
+			 * L​a​n​g​u​a​g​e
+			 */
+			language: string
+			/**
+			 * C​o​l​o​r​ ​t​h​e​m​e
+			 */
+			colorTheme: string
+			logOut: {
+				/**
+				 * W​e​ ​w​e​r​e​ ​n​o​t​ ​a​b​l​e​ ​t​o​ ​s​i​g​n​ ​y​o​u​ ​o​u​t
+				 */
+				errorMessage: string
+			}
+		}
 	}
 	common: {
 		/**
@@ -253,6 +269,54 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		DeletePetButton: {
+			/**
+			 * D​e​l​e​t​e​ ​p​e​t
+			 */
+			label: string
+			modal: {
+				/**
+				 * D​e​l​e​t​e​ ​y​o​u​r​ ​p​e​t
+				 */
+				title: string
+				/**
+				 * I​f​ ​y​o​u​ ​d​e​l​e​t​e​ ​y​o​u​r​ ​p​e​t​,​ ​y​o​u​ ​w​i​l​l​ ​n​o​t​ ​b​e​ ​a​b​l​e​ ​t​o​ ​r​e​c​o​v​e​r​ ​i​t​.​ ​A​r​e​ ​y​o​u​ ​s​u​r​e​ ​y​o​u​ ​w​a​n​t​ ​t​o​ ​d​o​ ​t​h​i​s​?
+				 */
+				text: string
+			}
+		}
+		DeletingModal: {
+			/**
+			 * d​e​l​e​t​i​n​g​.​.​.​.
+			 */
+			label: string
+		}
+		DeletedModal: {
+			/**
+			 * d​e​l​e​t​e​d
+			 */
+			label: string
+			/**
+			 * g​o​ ​b​a​c​k
+			 */
+			returningButtonLabel: string
+		}
+		LanguageSwitch: {
+			/**
+			 * e​n​g​l​i​s​h
+			 */
+			english: string
+			/**
+			 * c​z​e​c​h
+			 */
+			czech: string
+		}
+		LogOutButton: {
+			/**
+			 * L​o​g​ ​o​u​t
+			 */
+			label: string
+		}
 	}
 	error: {
 		/**
@@ -280,6 +344,22 @@ export type TranslationFunctions = {
 			success: {
 				/**
 				 * We are sorry, we were not able to sign you in the Tourmate. Please try it again.
+				 */
+				errorMessage: () => LocalizedString
+			}
+		}
+		settings: {
+			/**
+			 * Language
+			 */
+			language: () => LocalizedString
+			/**
+			 * Color theme
+			 */
+			colorTheme: () => LocalizedString
+			logOut: {
+				/**
+				 * We were not able to sign you out
 				 */
 				errorMessage: () => LocalizedString
 			}
@@ -499,6 +579,54 @@ export type TranslationFunctions = {
 		EditPetButton: {
 			/**
 			 * Edit pet
+			 */
+			label: () => LocalizedString
+		}
+		DeletePetButton: {
+			/**
+			 * Delete pet
+			 */
+			label: () => LocalizedString
+			modal: {
+				/**
+				 * Delete your pet
+				 */
+				title: () => LocalizedString
+				/**
+				 * If you delete your pet, you will not be able to recover it. Are you sure you want to do this?
+				 */
+				text: () => LocalizedString
+			}
+		}
+		DeletingModal: {
+			/**
+			 * deleting....
+			 */
+			label: () => LocalizedString
+		}
+		DeletedModal: {
+			/**
+			 * deleted
+			 */
+			label: () => LocalizedString
+			/**
+			 * go back
+			 */
+			returningButtonLabel: () => LocalizedString
+		}
+		LanguageSwitch: {
+			/**
+			 * english
+			 */
+			english: () => LocalizedString
+			/**
+			 * czech
+			 */
+			czech: () => LocalizedString
+		}
+		LogOutButton: {
+			/**
+			 * Log out
 			 */
 			label: () => LocalizedString
 		}

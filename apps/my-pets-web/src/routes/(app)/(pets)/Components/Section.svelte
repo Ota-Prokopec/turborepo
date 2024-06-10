@@ -17,6 +17,7 @@
 	import EditPetButton from './EditPetButton.svelte'
 	import Right from '$lib/components/Common/Right.svelte'
 	import { navigate } from '$lib/utils/navigator'
+	import DeletePetButton from './DeletePetButton.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -35,8 +36,14 @@
 <Column class="w-full">
 	{#if isOwner}
 		<Right>
-			<EditPetButton on:click={() => navigate(`${petData._id}/edit`)} class=""
-			></EditPetButton>
+			<Column>
+				<EditPetButton on:click={() => navigate(`/${petData._id}/edit`)} class=""
+				></EditPetButton>
+				<DeletePetButton
+					on:deleted={() => navigate('/', { invalidateAll: true })}
+					petId={petData._id}
+				></DeletePetButton>
+			</Column>
 		</Right>
 	{/if}
 

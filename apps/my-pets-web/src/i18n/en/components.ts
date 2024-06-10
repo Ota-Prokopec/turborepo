@@ -87,4 +87,25 @@ export const componentsCS = {
 	EditPetButton: {
 		label: 'Edit pet',
 	},
+	DeletePetButton: {
+		label: 'Delete pet',
+		modal: {
+			title: 'Delete your pet',
+			text: 'If you delete your pet, you will not be able to recover it. Are you sure you want to do this?',
+		},
+	},
+	DeletingModal: {
+		label: 'deleting....',
+	},
+	DeletedModal: {
+		label: 'deleted',
+		returningButtonLabel: 'go back',
+	},
+	LanguageSwitch: {
+		english: 'english',
+		czech: 'czech',
+	},
+	LogOutButton: {
+		label: 'Log out',
+	},
 } satisfies BaseTranslation

@@ -12,4 +12,11 @@ export const pageCS = {
 				'We are sorry, we were not able to sign you in the Tourmate. Please try it again.',
 		},
 	},
+	settings: {
+		language: 'Language',
+		colorTheme: 'Color theme',
+		logOut: {
+			errorMessage: 'We were not able to sign you out',
+		},
+	},
 } satisfies BaseTranslation

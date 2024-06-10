@@ -20,18 +20,24 @@ export const deletePet = async (petId: string, appwrite: Appwrite) => {
 
 	if (!petDocument) throw new ApolloError('pet document has not been found')
 
-	//*delete custom fields
-	const deletingQueries = Queries.petDescriptionCustomField.equal(
-		'$id',
-		petDocument.petDescriptionCustomFieldIds,
-	)
-	const deletingCustomFieldsPromise =
-		collections.petDescriptionCustomField.deleteDocuments([deletingQueries])
+	let deletingCustomFieldsPromise: Promise<string[]> | null = null
+
+	if (petDocument.petDescriptionCustomFieldIds.length) {
+		//*delete custom fields
+		const deletingQueries = Queries.petDescriptionCustomField.equal(
+			'$id',
+			petDocument.petDescriptionCustomFieldIds,
+		)
+		deletingCustomFieldsPromise = collections.petDescriptionCustomField.deleteDocuments([
+			deletingQueries,
+		])
+	}
 
 	//*delete pet picture
 	const petPictureFileName = buckets.petPictures.getFileNameFromUrl(
 		petDocument.petPicture,
 	)
+
 	const deletingPetPicturePromise = buckets.petPictures.deleteFiles(petPictureFileName)
 
 	//*delete pet document

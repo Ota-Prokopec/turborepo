@@ -5,6 +5,9 @@
 	import { sdk } from '$src/graphql/sdk'
 	import { useQuery } from '@sveltestack/svelte-query'
 	import Section from '../Components/Section.svelte'
+	import type { PageData } from './$types'
+
+	export let data: PageData
 
 	const petId: string = $page.params.petId
 
@@ -17,6 +20,7 @@
 	<FullPageLoading></FullPageLoading>
 {:else if $petData.data}
 	<Center class="w-full flex-wrap flex-col pt-20">
-		<Section petData={$petData.data}></Section>
+		<Section isOwner={$petData.data.userId === data.user?.userId} petData={$petData.data}
+		></Section>
 	</Center>
 {/if}

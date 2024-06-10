@@ -2,7 +2,8 @@ import { b as null_to_empty } from "./utils.js";
 import { c as create_ssr_component, e as escape, v as validate_component } from "./ssr.js";
 import { twMerge } from "tailwind-merge";
 import { A as Avatar } from "./Avatar2.js";
-/* empty css                                    */const css = {
+const Icon_svelte_svelte_type_style_lang = "";
+const css = {
   code: "i.svelte-v60zul,i.svelte-v60zul::before{font-size:100%;display:flex;align-items:center;justify-content:center}.outlineOnly.svelte-v60zul{color:white;text-shadow:-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000}",
   map: null
 };

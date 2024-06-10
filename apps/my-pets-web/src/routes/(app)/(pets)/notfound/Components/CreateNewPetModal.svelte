@@ -16,12 +16,11 @@
 	import SavingModal from '$lib/components/MyPetsComponents/SavingModal.svelte'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
-	import { zodPetData, type TCreatePetData } from '@repo/my-pets-tstypes'
+	import { zodCreatingPetData, type TCreatePetData } from '@repo/my-pets-tstypes'
 	import { Button, Modal } from 'flowbite-svelte'
 	import { createEventDispatcher } from 'svelte'
 	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
-
-	const dispatch = createEventDispatcher<{ returnBack: undefined }>()
+	import { goto } from '$app/navigation'
 
 	export let open = false
 	export let savingState:
@@ -49,7 +48,7 @@
 		let dataToSave: typeof data | null = null
 
 		try {
-			dataToSave = zodPetData.parse(data)
+			dataToSave = zodCreatingPetData.parse(data)
 		} catch (error) {
 			savingState = 'required-fields-empty-error'
 			return
@@ -74,11 +73,12 @@
 </script>
 
 <Modal
-	on:close={() => dispatch('returnBack')}
+	on:close={() => {
+		goto('/', { invalidateAll: true })
+	}}
 	class="relative"
 	title={$LL.component.CreateNewPetModal.title()}
 	bind:open
-	size="xs"
 >
 	{#if savingState === 'saving'}
 		<SavingModal></SavingModal>
@@ -86,9 +86,8 @@
 		<ErrorModal></ErrorModal>
 	{:else if savingState === 'saved'}
 		<SavedModal
-			on:return={() => (open = false)}
-			on:return={() => {
-				dispatch('returnBack')
+			on:goBack={() => {
+				goto('/', { invalidateAll: true })
 			}}
 		></SavedModal>
 	{:else if savingState === 'required-fields-empty-error'}
@@ -112,7 +111,7 @@
 	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>
 	<PetTreatInput maxInputLength={500} bind:value={data.petTreating}></PetTreatInput>
-	<PetCustomTextInput fields={data.petDescriptionCustomFields} aboutMaxLength={500}
+	<PetCustomTextInput bind:fields={data.petDescriptionCustomFields} aboutMaxLength={500}
 	></PetCustomTextInput>
 	<Right>
 		<Button on:click={save} color="green"

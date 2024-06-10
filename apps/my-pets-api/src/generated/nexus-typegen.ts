@@ -123,6 +123,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createPet: NexusGenRootTypes['Pet']; // Pet!
     deletePet: boolean; // Boolean!
+    logout: boolean; // Boolean!
     updatePet: NexusGenRootTypes['Pet']; // Pet!
   }
   Pet: { // field return type
@@ -172,6 +173,7 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createPet: 'Pet'
     deletePet: 'Boolean'
+    logout: 'Boolean'
     updatePet: 'Pet'
   }
   Pet: { // field return type name

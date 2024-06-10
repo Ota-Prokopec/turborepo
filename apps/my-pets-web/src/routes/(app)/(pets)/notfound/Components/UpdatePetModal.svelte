@@ -9,6 +9,7 @@
 	import PetCustomTextInput from '$lib/components/MyPetsComponents/PetCustomTextInput.svelte.svelte'
 	import PetGenderInput from '$lib/components/MyPetsComponents/PetGenderInput.svelte'
 	import PetNameInput from '$lib/components/MyPetsComponents/PetNameInput.svelte'
+	import PetPictureInput from '$lib/components/MyPetsComponents/PetPictureInput.svelte'
 	import PetTreatInput from '$lib/components/MyPetsComponents/PetTreatInput.svelte'
 	import PetTypeInput from '$lib/components/MyPetsComponents/PetTypeInput.svelte'
 	import SavedModal from '$lib/components/MyPetsComponents/SavedModal.svelte'
@@ -16,11 +17,15 @@
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
 	import { type GraphqlDocument } from '@repo/appwrite-types'
-	import { type TPetData } from '@repo/my-pets-tstypes'
+	import {
+		type TCreatePetData,
+		zodCreatingPetData,
+		type TPetData,
+	} from '@repo/my-pets-tstypes'
+	import { urlToBase64 } from '@repo/utils'
 	import { Button, Modal } from 'flowbite-svelte'
 	import { createEventDispatcher } from 'svelte'
 	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
-	import PetPictureInput from '$lib/components/MyPetsComponents/PetPictureInput.svelte'
 
 	const dispatch = createEventDispatcher<{ returnBack: undefined }>()
 
@@ -32,17 +37,30 @@
 		| 'error'
 		| 'required-fields-empty-error' = null
 
-	export let data: Omit<GraphqlDocument<TPetData>, 'petDescriptionCustomFields'> & {
+	export let currentData: Omit<
+		GraphqlDocument<TPetData>,
+		'petDescriptionCustomFields'
+	> & {
 		petDescriptionCustomFields: GraphqlDocument<
 			TPetData['petDescriptionCustomFields'][number]
 		>[]
 	}
 
+	let updatingData: TCreatePetData = currentData
+
 	const update = async () => {
 		updatingState = 'updating'
 
 		try {
-			await sdk.updatePet({ petId: data._id, data: data })
+			updatingData = zodCreatingPetData.parse(updatingData)
+
+			await sdk.updatePet({
+				petId: currentData._id,
+				data: {
+					...updatingData,
+					petPicture: await urlToBase64(updatingData.petPicture),
+				},
+			})
 
 			updatingState = 'updated'
 		} catch (error) {
@@ -74,22 +92,26 @@
 		></RequiredFieldsEmptlyPetCreatingErrorModal>
 	{/if}
 	<Row class="gap-4 items-center">
-		<PetTypeInput bind:value={data.petType}></PetTypeInput>
+		<PetTypeInput bind:value={updatingData.petType}></PetTypeInput>
 		<Line class="h-6 w-[2px]"></Line>
-		<PetGenderInput bind:value={data.petGender}></PetGenderInput>
+		<PetGenderInput bind:value={updatingData.petGender}></PetGenderInput>
 	</Row>
 
 	<PetPictureInput
-		src={data.petPicture}
-		on:image={(e) => (data.petPicture = e.detail.base64)}
+		src={updatingData.petPicture}
+		on:image={(e) => (updatingData.petPicture = e.detail.base64)}
 	></PetPictureInput>
 
-	<PetNameInput bind:value={data.petName}></PetNameInput>
-	<PetAddressInput bind:value={data.petAddress}></PetAddressInput>
-	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
+	<PetNameInput bind:value={updatingData.petName}></PetNameInput>
+	<PetAddressInput bind:value={updatingData.petAddress}></PetAddressInput>
+	<OwnerPhoneNumberInput bind:value={updatingData.ownerPhoneNumber}
+	></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>
-	<PetTreatInput maxInputLength={500} bind:value={data.petTreating}></PetTreatInput>
-	<PetCustomTextInput fields={data.petDescriptionCustomFields} aboutMaxLength={500}
+	<PetTreatInput maxInputLength={500} bind:value={updatingData.petTreating}
+	></PetTreatInput>
+	<PetCustomTextInput
+		fields={updatingData.petDescriptionCustomFields}
+		aboutMaxLength={500}
 	></PetCustomTextInput>
 	<Right>
 		<Button on:click={update} color="green"

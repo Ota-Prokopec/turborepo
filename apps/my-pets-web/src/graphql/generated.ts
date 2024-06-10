@@ -48,6 +48,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createPet: Pet;
   deletePet: Scalars['Boolean']['output'];
+  logout: Scalars['Boolean']['output'];
   updatePet: Pet;
 };
 
@@ -129,6 +130,11 @@ export type GetAccountQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAccountQuery = { __typename?: 'Query', getAccount: { __typename?: 'Account', userId: string } };
 
+export type LogOutMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LogOutMutation = { __typename?: 'Mutation', logout: boolean };
+
 export type SetSessionQueryVariables = Exact<{
   session: Scalars['String']['input'];
 }>;
@@ -142,6 +148,13 @@ export type CreatePetMutationVariables = Exact<{
 
 
 export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+
+export type DeletePetMutationVariables = Exact<{
+  petId: Scalars['String']['input'];
+}>;
+
+
+export type DeletePetMutation = { __typename?: 'Mutation', deletePet: boolean };
 
 export type UpdatePetMutationVariables = Exact<{
   petId: Scalars['String']['input'];
@@ -171,6 +184,11 @@ export const GetAccountDocument = gql`
   }
 }
     `;
+export const LogOutDocument = gql`
+    mutation logOut {
+  logout
+}
+    `;
 export const SetSessionDocument = gql`
     query setSession($session: String!) {
   setSession(session: $session)
@@ -194,6 +212,11 @@ export const CreatePetDocument = gql`
     }
     petPicture
   }
+}
+    `;
+export const DeletePetDocument = gql`
+    mutation deletePet($petId: String!) {
+  deletePet(petId: $petId)
 }
     `;
 export const UpdatePetDocument = gql`
@@ -297,11 +320,17 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     getAccount(variables?: GetAccountQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetAccountQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAccountQuery>(GetAccountDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAccount', 'query');
     },
+    logOut(variables?: LogOutMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<LogOutMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LogOutMutation>(LogOutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'logOut', 'mutation');
+    },
     setSession(variables: SetSessionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SetSessionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SetSessionQuery>(SetSessionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'setSession', 'query');
     },
     createPet(variables: CreatePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CreatePetMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePetMutation>(CreatePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPet', 'mutation');
+    },
+    deletePet(variables: DeletePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<DeletePetMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeletePetMutation>(DeletePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deletePet', 'mutation');
     },
     updatePet(variables: UpdatePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdatePetMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpdatePetMutation>(UpdatePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updatePet', 'mutation');

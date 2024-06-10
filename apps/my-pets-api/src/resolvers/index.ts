@@ -4,6 +4,8 @@
 
 export { default as getAccount } from './account/queries/getAccount';
 export * from './account/queries/getAccount';
+export { default as logOut } from './auth/mutations/logOut';
+export * from './auth/mutations/logOut';
 export { default as setSession } from './auth/queries/setSession';
 export * from './auth/queries/setSession';
 export { default as createPet } from './pet/mutations/createPet';

@@ -11,6 +11,7 @@
 	import { onMount } from 'svelte'
 	import type { PageData } from './$types'
 	import Section from './Components/Section.svelte'
+	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
 
 	export let data: PageData
 
@@ -41,6 +42,10 @@
 	$: if (pageState === 'loaded' && !(currentPetId && currentPet && tabItems))
 		goto('notfound')
 </script>
+
+<Icon class="w-8 h-8" on:click={() => goto('/account/settings')}>
+	<IconSettings></IconSettings>
+</Icon>
 
 {#if pageState === 'loading'}
 	<FullPageLoading></FullPageLoading>

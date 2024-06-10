@@ -6,7 +6,7 @@
 	import Text from '../Common/Text.svelte'
 	import AvatarImageInput from '../ImageInputs/AvatarImageInput.svelte'
 
-	const avatarPictureSrc = 'pictures/petPictureInputAvatar.png'
+	const avatarPictureSrc = '/pictures/petPictureInputAvatar.png'
 	export let src: string | Base64 | undefined = undefined
 </script>
 

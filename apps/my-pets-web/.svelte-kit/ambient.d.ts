@@ -61,6 +61,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies__repo_utils: string;
 	export const npm_package_devDependencies_vite: string;
 	export const npm_package_scripts_dev_pets_web: string;
+	export const npm_package_devDependencies__types_cookie: string;
 	export const TMPDIR: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const npm_package_scripts_lint: string;
@@ -68,6 +69,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies__svelteuidev_motion: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const npm_package_scripts_dev: string;
+	export const npm_package_dependencies_cookie: string;
 	export const npm_package_dependencies__types_turf: string;
 	export const ZDOTDIR: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
@@ -226,6 +228,7 @@ declare module '$env/static/private' {
 	export const npm_config_version_git_sign: string;
 	export const npm_config_user_agent: string;
 	export const npm_config_ignore_scripts: string;
+	export const npm_package_devDependencies_svelte_language_server: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
@@ -254,7 +257,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_qrcode: string;
 	export const npm_package_dependencies__lordicon_element: string;
 	export const npm_package_scripts_test_unit: string;
-	export const NINJA_WELCOME_SHOWN: string;
+	export const NINJA_ENV: string;
 	export const NODE_ENV: string;
 }
 
@@ -327,6 +330,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies__repo_utils: string;
 		npm_package_devDependencies_vite: string;
 		npm_package_scripts_dev_pets_web: string;
+		npm_package_devDependencies__types_cookie: string;
 		TMPDIR: string;
 		HOMEBREW_REPOSITORY: string;
 		npm_package_scripts_lint: string;
@@ -334,6 +338,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies__svelteuidev_motion: string;
 		TERM_PROGRAM_VERSION: string;
 		npm_package_scripts_dev: string;
+		npm_package_dependencies_cookie: string;
 		npm_package_dependencies__types_turf: string;
 		ZDOTDIR: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
@@ -492,6 +497,7 @@ declare module '$env/dynamic/private' {
 		npm_config_version_git_sign: string;
 		npm_config_user_agent: string;
 		npm_config_ignore_scripts: string;
+		npm_package_devDependencies_svelte_language_server: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
@@ -520,7 +526,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_qrcode: string;
 		npm_package_dependencies__lordicon_element: string;
 		npm_package_scripts_test_unit: string;
-		NINJA_WELCOME_SHOWN: string;
+		NINJA_ENV: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
