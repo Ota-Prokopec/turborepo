@@ -40,7 +40,7 @@ app.use(
 )
 
 app.use(express.json({ limit: '10mb' }))
-app.get('/', (req, res) => res.send('This is experiences api graphql'))
+app.get('/', (req, res) => res.send('This is my-pets api graphql'))
 //app.use('/apikey', expressRouter)
 
 start()
