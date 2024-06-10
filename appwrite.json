@@ -1,0 +1,24 @@
+{
+    "projectId": "6636972a0023b54e21bf",
+    "projectName": "My pets",
+    "functions": [
+        {
+            "$id": "cron-graphql-my-pets-api-wakeup",
+            "name": "cron-graphql-my-pets-api-wakeup",
+            "runtime": "node-18.0",
+            "execute": [],
+            "events": [],
+            "schedule": "",
+            "timeout": 15,
+            "enabled": true,
+            "logging": true,
+            "entrypoint": "src/main.js",
+            "commands": "npm install",
+            "ignore": [
+                "node_modules",
+                ".npm"
+            ],
+            "path": "functions/cron-graphql-my-pets-api-wakeup"
+        }
+    ]
+}
