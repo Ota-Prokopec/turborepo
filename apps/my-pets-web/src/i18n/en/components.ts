@@ -108,4 +108,7 @@ export const componentsCS = {
 	LogOutButton: {
 		label: 'Log out',
 	},
+	ButtonLinkToDeveloperPage: {
+		label: 'Vývojář and majitel',
+	},
 } satisfies BaseTranslation

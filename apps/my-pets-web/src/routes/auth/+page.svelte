@@ -5,6 +5,7 @@
 	import { Heading } from 'flowbite-svelte'
 	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
 	import Padding from '$lib/components/Common/Padding.svelte'
+	import ButtonLinkToDeveloperPage from '$lib/components/Buttons/ButtonLinkToDeveloperPage.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">
@@ -12,4 +13,6 @@
 		<Heading class="text-xl text-center" tag="h1">{$LL.page.signIn.welcome()}</Heading>
 	</Padding>
 	<SignUpViaSocialMedia></SignUpViaSocialMedia>
+
+	<ButtonLinkToDeveloperPage></ButtonLinkToDeveloperPage>
 </Column>

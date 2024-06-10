@@ -10,6 +10,7 @@ import { I as Icon } from "../../../chunks/Icon.js";
 import "../../../chunks/index4.js";
 import { twMerge } from "tailwind-merge";
 import { P as Padding } from "../../../chunks/Padding.js";
+import { B as Button } from "../../../chunks/Button.js";
 const IconDiscord = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { class: className = "" } = $$props;
   if ($$props.class === void 0 && $$bindings.class && className !== void 0)
@@ -71,6 +72,24 @@ const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings
     }
   )}`}`;
 });
+const ButtonLinkToDeveloperPage = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $LL, $$unsubscribe_LL;
+  $$unsubscribe_LL = subscribe(LL, (value) => $LL = value);
+  $$unsubscribe_LL();
+  return `${validate_component(Button, "Button").$$render(
+    $$result,
+    {
+      href: "https://otaprokopec.cz",
+      color: "green"
+    },
+    {},
+    {
+      default: () => {
+        return `${escape($LL.component.ButtonLinkToDeveloperPage.label())}`;
+      }
+    }
+  )}`;
+});
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $LL, $$unsubscribe_LL;
   $$unsubscribe_LL = subscribe(LL, (value) => $LL = value);
@@ -91,7 +110,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
               }
             })}`;
           }
-        })} ${validate_component(SignUpViaSocialMedia, "SignUpViaSocialMedia").$$render($$result, {}, {}, {})}`;
+        })} ${validate_component(SignUpViaSocialMedia, "SignUpViaSocialMedia").$$render($$result, {}, {}, {})} ${validate_component(ButtonLinkToDeveloperPage, "ButtonLinkToDeveloperPage").$$render($$result, {}, {}, {})}`;
       }
     }
   )}`;
