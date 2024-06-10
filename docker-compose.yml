@@ -11,6 +11,16 @@ services:
       - 4444:4444
     networks:
       - app_network
+  my-pets-web:
+    container_name: my-pets-web
+    build:
+      context: .
+      dockerfile: ./apps/my-pets-web/Dockerfile
+    restart: always
+    ports:
+      - 5222:5222
+    networks:
+      - app_network
 
 volumes:
   data:

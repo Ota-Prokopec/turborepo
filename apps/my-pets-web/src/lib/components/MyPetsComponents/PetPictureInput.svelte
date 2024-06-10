@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_MAX_PICTURE_SIZE_IN_MB } from '$env/static/public'
 	import LL from '$src/i18n/i18n-svelte'
 	import type { Base64 } from '@repo/ts-types'
 	import { compressImageFile, fileToBase64 } from '@repo/utils'
@@ -24,7 +23,7 @@
 
 	<Text>{$LL.component.PetPictureInput.title()}</Text>
 	<AvatarImageInput
-		compression={{ maxSizeInMB: parseFloat(PUBLIC_MAX_PICTURE_SIZE_IN_MB) }}
+		compression={{ maxSizeInMB: parseFloat('1') }}
 		avatarSrc={src || avatarPictureSrc}
 		on:image={(e) => getImage(e.detail.base64)}
 	></AvatarImageInput>
