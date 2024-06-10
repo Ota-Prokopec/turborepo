@@ -9,6 +9,7 @@
 
 <Column class="flex justify-center items-center w-full h-auto">
 	<Padding padding="16px">
+		<Heading class="text-2xl text-center" tag="h1">My pets</Heading>
 		<Heading class="text-xl text-center" tag="h1">{$LL.page.signIn.welcome()}</Heading>
 	</Padding>
 	<SignUpViaSocialMedia></SignUpViaSocialMedia>
