@@ -27,7 +27,7 @@
 	let selected: (typeof languageItems)[number]['value'] = $locale
 
 	$: setLocale(selected)
-	$lsStore.language = selected
+	$: $lsStore.language = selected
 
 	let className = ''
 	export { className as class }

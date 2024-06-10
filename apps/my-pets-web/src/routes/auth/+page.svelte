@@ -12,6 +12,7 @@
 	<Padding padding="16px">
 		<Heading class="text-xl text-center" tag="h1">{$LL.page.signIn.welcome()}</Heading>
 	</Padding>
+
 	<SignUpViaSocialMedia></SignUpViaSocialMedia>
 
 	<ButtonLinkToDeveloperPage></ButtonLinkToDeveloperPage>

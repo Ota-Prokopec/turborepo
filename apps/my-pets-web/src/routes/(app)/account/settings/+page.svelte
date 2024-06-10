@@ -16,7 +16,7 @@
 		try {
 			await user.deleteSessions()
 			await sdk.logOut()
-			$lsStore.cookieFallback = { a_session_experiences: '' }
+			$lsStore.cookieFallback = { a_session_6636972a0023b54e21bf: '' }
 			goto('/auth')
 		} catch (error) {
 			alert('', $LL.page.settings.logOut.errorMessage(), { color: 'red' })
