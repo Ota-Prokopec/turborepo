@@ -14,7 +14,7 @@ export const load = async (event: Parameters<LayoutServerLoad>[0]) => {
 			user,
 		}
 	} catch (error) {
-		if (event.url.href?.includes('auth')) {
+		if (event.url.href?.includes('auth') || event.url.href?.includes('/pet/')) {
 			return { user: null }
 		}
 

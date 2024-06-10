@@ -1,7 +1,6 @@
 mutation createPet($input: CreatePetInput!) {
 	createPet(input: $input) {
 		_id
-		petAddress
 		petName
 		petType
 		petAllergens
@@ -14,5 +13,11 @@ mutation createPet($input: CreatePetInput!) {
 			text
 		}
 		petPicture
+		petAddressId
+		userId
+		petAddress {
+			petAddress
+			petAddressCoords
+		}
 	}
 }

@@ -103,7 +103,10 @@
 	></PetPictureInput>
 
 	<PetNameInput bind:value={updatingData.petName}></PetNameInput>
-	<PetAddressInput bind:value={updatingData.petAddress}></PetAddressInput>
+	<PetAddressInput
+		bind:value={updatingData.petAddress.petAddress}
+		bind:coords={updatingData.petAddress.petAddressCoords}
+	></PetAddressInput>
 	<OwnerPhoneNumberInput bind:value={updatingData.ownerPhoneNumber}
 	></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>

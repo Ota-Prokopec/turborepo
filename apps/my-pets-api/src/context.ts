@@ -16,14 +16,15 @@ export const context = async ({ req, res }: { res: Response; req: Request }) => 
 		let user: Models.User<TUserPreferences> | null = null
 		let appwrite: Appwrite
 
-		const sessionForAndroid = getSessionFromCookie(
-			process.env.APPWRITE_PROJECT_ID,
-			cookies,
-		)
-		const sessionForIos = req.headers ? req.headers.authorization : undefined
-
-		const session = sessionForAndroid ?? sessionForIos
 		try {
+			const sessionForAndroid = getSessionFromCookie(
+				process.env.APPWRITE_PROJECT_ID,
+				cookies,
+			)
+			const sessionForIos = req.headers ? req.headers.authorization : undefined
+
+			const session = sessionForAndroid ?? sessionForIos
+
 			if (!session) throw new Error('User is not authenticated')
 			appwrite = appwriteConnections.setSession(session)
 

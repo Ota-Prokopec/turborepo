@@ -6,6 +6,13 @@ type Account {
   userId: String!
 }
 
+scalar Coords
+
+input CreatePetAddressInput {
+  petAddress: String!
+  petAddressCoords: Coords!
+}
+
 input CreatePetDescriptionCustomField {
   text: String!
   title: String!
@@ -13,7 +20,7 @@ input CreatePetDescriptionCustomField {
 
 input CreatePetInput {
   ownerPhoneNumber: String!
-  petAddress: String!
+  petAddress: CreatePetAddressInput!
   petAllergens: [String!]!
   petDescriptionCustomFields: [CreatePetDescriptionCustomField!]!
   petGender: PetGender!
@@ -38,7 +45,8 @@ type Pet {
   _permissions: [String!]!
   _updatedAt: String!
   ownerPhoneNumber: String!
-  petAddress: String!
+  petAddress: PetAddress!
+  petAddressId: String!
   petAllergens: [String!]!
   petDescriptionCustomFieldIds: [String!]!
   petDescriptionCustomFields: [PetDescriptionCustomField!]!
@@ -50,6 +58,11 @@ type Pet {
   petTreating: String!
   petType: PetType!
   userId: String!
+}
+
+type PetAddress {
+  petAddress: String!
+  petAddressCoords: Coords!
 }
 
 type PetDescriptionCustomField {

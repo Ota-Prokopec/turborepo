@@ -15,6 +15,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  Coords: { input: [number, number]; output: [number, number]; }
   PetGender: { input: 'male'|'female'; output: 'male'|'female'; }
   PetType: { input: 'cat'|'dog'; output: 'cat'|'dog'; }
   StringOrNumber: { input: string|number; output: string|number; }
@@ -27,6 +28,11 @@ export type Account = {
   userId: Scalars['String']['output'];
 };
 
+export type CreatePetAddressInput = {
+  petAddress: Scalars['String']['input'];
+  petAddressCoords: Scalars['Coords']['input'];
+};
+
 export type CreatePetDescriptionCustomField = {
   text: Scalars['String']['input'];
   title: Scalars['String']['input'];
@@ -34,7 +40,7 @@ export type CreatePetDescriptionCustomField = {
 
 export type CreatePetInput = {
   ownerPhoneNumber: Scalars['String']['input'];
-  petAddress: Scalars['String']['input'];
+  petAddress: CreatePetAddressInput;
   petAllergens: Array<Scalars['String']['input']>;
   petDescriptionCustomFields: Array<CreatePetDescriptionCustomField>;
   petGender: Scalars['PetGender']['input'];
@@ -77,7 +83,8 @@ export type Pet = {
   _permissions: Array<Scalars['String']['output']>;
   _updatedAt: Scalars['String']['output'];
   ownerPhoneNumber: Scalars['String']['output'];
-  petAddress: Scalars['String']['output'];
+  petAddress: PetAddress;
+  petAddressId: Scalars['String']['output'];
   petAllergens: Array<Scalars['String']['output']>;
   petDescriptionCustomFieldIds: Array<Scalars['String']['output']>;
   petDescriptionCustomFields: Array<PetDescriptionCustomField>;
@@ -88,6 +95,12 @@ export type Pet = {
   petTreating: Scalars['String']['output'];
   petType: Scalars['PetType']['output'];
   userId: Scalars['String']['output'];
+};
+
+export type PetAddress = {
+  __typename?: 'PetAddress';
+  petAddress: Scalars['String']['output'];
+  petAddressCoords: Scalars['Coords']['output'];
 };
 
 export type PetDescriptionCustomField = {
@@ -147,7 +160,7 @@ export type CreatePetMutationVariables = Exact<{
 }>;
 
 
-export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> } };
+export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petAddressId: string, userId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
 
 export type DeletePetMutationVariables = Exact<{
   petId: Scalars['String']['input'];
@@ -162,19 +175,19 @@ export type UpdatePetMutationVariables = Exact<{
 }>;
 
 
-export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, petAddress: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }> } };
+export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
 
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petAddress: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }> }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } }> };
 
 export type GetPetQueryVariables = Exact<{
   petId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, petAddress: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }> } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
 
 
 export const GetAccountDocument = gql`
@@ -198,7 +211,6 @@ export const CreatePetDocument = gql`
     mutation createPet($input: CreatePetInput!) {
   createPet(input: $input) {
     _id
-    petAddress
     petName
     petType
     petAllergens
@@ -211,6 +223,12 @@ export const CreatePetDocument = gql`
       text
     }
     petPicture
+    petAddressId
+    userId
+    petAddress {
+      petAddress
+      petAddressCoords
+    }
   }
 }
     `;
@@ -228,7 +246,6 @@ export const UpdatePetDocument = gql`
     _id
     _permissions
     _databaseId
-    petAddress
     userId
     petName
     petType
@@ -248,6 +265,11 @@ export const UpdatePetDocument = gql`
       title
       text
     }
+    petAddressId
+    petAddress {
+      petAddress
+      petAddressCoords
+    }
   }
 }
     `;
@@ -255,7 +277,6 @@ export const GetListOfPetsDocument = gql`
     query getListOfPets {
   getListOfPets {
     _id
-    petAddress
     petName
     petType
     petAllergens
@@ -274,6 +295,11 @@ export const GetListOfPetsDocument = gql`
     _collectionId
     _updatedAt
     _createdAt
+    petAddressId
+    petAddress {
+      petAddress
+      petAddressCoords
+    }
   }
 }
     `;
@@ -286,7 +312,6 @@ export const GetPetDocument = gql`
     _id
     _permissions
     _databaseId
-    petAddress
     userId
     petName
     petType
@@ -305,6 +330,11 @@ export const GetPetDocument = gql`
       _databaseId
       title
       text
+    }
+    petAddressId
+    petAddress {
+      petAddress
+      petAddressCoords
     }
   }
 }

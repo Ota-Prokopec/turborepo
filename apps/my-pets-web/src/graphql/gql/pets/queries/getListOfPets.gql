@@ -1,7 +1,6 @@
 query getListOfPets {
 	getListOfPets {
 		_id
-		petAddress
 		petName
 		petType
 		petAllergens
@@ -20,5 +19,10 @@ query getListOfPets {
 		_collectionId
 		_updatedAt
 		_createdAt
+		petAddressId
+		petAddress {
+			petAddress
+			petAddressCoords
+		}
 	}
 }

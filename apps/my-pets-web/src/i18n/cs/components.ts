@@ -35,7 +35,7 @@ export const componentsCS = {
 	},
 	PetAddressInput: {
 		title: 'Adresa vašeho mazlíčka',
-		buttonSaveTitle: 'Uložit',
+		mapTitle: 'Najděte svému mazlíčkovi přesnou lokaci pomocí mapy',
 	},
 	PetAllergensInput: {
 		title: 'Alergeny',
@@ -44,7 +44,7 @@ export const componentsCS = {
 		title: 'Vaše telefonní číslo',
 	},
 	PetTreatInput: {
-		title: 'Jak léčit vašeho mazlíčka?',
+		title: 'Jak se starat o vašeho mazlíčka?',
 	},
 	PetCustomTextInput: {
 		placeholder: {
@@ -69,7 +69,7 @@ export const componentsCS = {
 	},
 
 	PetTreatItem: {
-		title: 'Jak mě léčit?',
+		title: 'Jak se o mě starat?',
 	},
 	PetPictureInput: {
 		title: 'Fotografie mazlíčka',
@@ -111,5 +111,9 @@ export const componentsCS = {
 	},
 	ButtonLinkToDeveloperPage: {
 		label: 'Vývojář a majitel',
+	},
+	PetAddressItem: {
+		title: 'Tady bydlím',
+		seeOnMap: 'See on map',
 	},
 } satisfies BaseTranslation

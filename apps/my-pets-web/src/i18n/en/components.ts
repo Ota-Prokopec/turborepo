@@ -35,7 +35,7 @@ export const componentsCS = {
 	},
 	PetAddressInput: {
 		title: 'your pets address',
-		buttonSaveTitle: 'save',
+		mapTitle: 'find your pet accurate location using the map',
 	},
 	PetAllergensInput: {
 		title: 'Allergens',
@@ -111,5 +111,9 @@ export const componentsCS = {
 	},
 	ButtonLinkToDeveloperPage: {
 		label: 'Vývojář and majitel',
+	},
+	PetAddressItem: {
+		title: 'I live here',
+		seeOnMap: 'See on map',
 	},
 } satisfies BaseTranslation

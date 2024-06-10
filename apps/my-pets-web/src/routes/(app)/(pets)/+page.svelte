@@ -12,6 +12,7 @@
 	import type { PageData } from './$types'
 	import Section from './Components/Section.svelte'
 	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
+	import type { TPetData } from '@repo/my-pets-tstypes'
 
 	export let data: PageData
 
@@ -26,7 +27,7 @@
 	onMount(async () => {
 		pageState = 'loading'
 		try {
-			myPetsData = (await sdk.getListOfPets()).getListOfPets
+			myPetsData = (await sdk.getListOfPets()).getListOfPets satisfies TPetData[]
 			currentPetId = myPetsData?.at(0)?._id ?? null
 			pageState = 'loaded'
 		} catch (error) {

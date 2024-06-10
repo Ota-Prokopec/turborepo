@@ -158,9 +158,9 @@ const options = {
   // added lazily, via `get_hooks`
   preload_strategy: "modulepreload",
   root: Root,
-  service_worker: false,
+  service_worker: true,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en" class="">\n	<title>tourmate</title>\n	<head>\n		<meta charset="utf-8" />\n		<meta name="theme-color" content="dark" />\n		<meta\n			name="viewport"\n			content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"\n		/>\n		<link rel="icon" href="/favicon.ico" />\n		<link rel="apple-touch-icon" href="/favicon.ico" />\n		<link rel="apple-touch-icon-precomposed" href="/favicon.ico" />\n		<link rel="shortcut icon" href="/favicon.ico" />\n		<script\n			src="https://kit.fontawesome.com/f9631ea83e.js"\n			crossorigin="anonymous"\n		><\/script>\n		<link rel="manifest" href="/manifest.json" />\n\n		' + head + '\n	</head>\n	<body\n		data-theme="skeleton"\n		class="select-none overflow-x-hidden"\n		data-sveltekit-preload-data="hover"\n	>\n		<div class="flex justify-center !w-[100dvw] !h-[100dvh]">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en" class="">\n	<title>My pets</title>\n	<head>\n		<meta charset="utf-8" />\n		<meta name="theme-color" content="dark" />\n		<meta\n			name="viewport"\n			content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"\n		/>\n		<link rel="icon" href="/favicon.ico" />\n		<link rel="apple-touch-icon" href="/favicon.ico" />\n		<link rel="apple-touch-icon-precomposed" href="/favicon.ico" />\n		<link rel="shortcut icon" href="/favicon.ico" />\n		<script\n			src="https://kit.fontawesome.com/f9631ea83e.js"\n			crossorigin="anonymous"\n		><\/script>\n		<link rel="manifest" href="/manifest.json" />\n\n		' + head + '\n	</head>\n	<body\n		data-theme="skeleton"\n		class="select-none overflow-x-hidden"\n		data-sveltekit-preload-data="hover"\n	>\n		<div class="flex justify-center !w-[100dvw] !h-[100dvh]">' + body + "</div>\n	</body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -232,7 +232,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1ldcp80"
+  version_hash: "1xvcl91"
 };
 function get_hooks() {
   return {};

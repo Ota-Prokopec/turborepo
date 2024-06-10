@@ -5,7 +5,7 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
-
+		"baseUrl": ".",
 		"strict": true,
 
 		"allowSyntheticDefaultImports": true,
@@ -19,7 +19,15 @@
 		"noImplicitReturns": true,
 		"importHelpers": true,
 		"allowUnusedLabels": false,
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"paths": {
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"],
+			"$src": ["src"],
+			"$src/*": ["src/*"],
+			"$routes": ["src/routes"],
+			"$routes/*": ["src/routes/*"]
+		}
 	},
 	"include": [
 		"src/**/*.d.ts",

@@ -6,7 +6,6 @@ mutation updatePet($petId: String!, $data: CreatePetInput!) {
 		_id
 		_permissions
 		_databaseId
-		petAddress
 		userId
 		petName
 		petType
@@ -25,6 +24,11 @@ mutation updatePet($petId: String!, $data: CreatePetInput!) {
 			_databaseId
 			title
 			text
+		}
+		petAddressId
+		petAddress {
+			petAddress
+			petAddressCoords
 		}
 	}
 }

@@ -43,12 +43,12 @@
     "file": "_app/immutable/assets/Icon.791c25e6.css",
     "src": "Icon.css"
   },
-  "Input.css": {
-    "file": "_app/immutable/assets/Input.89a4de6e.css",
-    "src": "Input.css"
+  "Map.css": {
+    "file": "_app/immutable/assets/Map.eeadc2f3.css",
+    "src": "Map.css"
   },
   "RequiredFieldsEmptlyPetCreatingErrorModal.css": {
-    "file": "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.eeadc2f3.css",
+    "file": "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.89a4de6e.css",
     "src": "RequiredFieldsEmptlyPetCreatingErrorModal.css"
   },
   "_Avatar.js": {
@@ -112,14 +112,22 @@
       "_sdk.js",
       "_i18n-svelte.js",
       "_index4.js",
-      "_Button.js"
+      "_Button.js",
+      "_lsStore.js"
     ]
   },
   "_ErrorModal.js": {
+    "css": [
+      "_app/immutable/assets/Map.eeadc2f3.css"
+    ],
     "file": "chunks/ErrorModal.js",
     "imports": [
       "_ssr.js",
       "_utils.js",
+      "_public.js",
+      "_lsStore.js",
+      "_FullPageLoading.js",
+      "_index2.js",
       "_i18n-svelte.js",
       "_Text.js",
       "_CloseButton.js",
@@ -162,8 +170,7 @@
   },
   "_RequiredFieldsEmptlyPetCreatingErrorModal.js": {
     "css": [
-      "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.eeadc2f3.css",
-      "_app/immutable/assets/Input.89a4de6e.css",
+      "_app/immutable/assets/RequiredFieldsEmptlyPetCreatingErrorModal.89a4de6e.css",
       "_app/immutable/assets/ArrowUp.5b5ebce6.css"
     ],
     "file": "chunks/RequiredFieldsEmptlyPetCreatingErrorModal.js",
@@ -174,20 +181,21 @@
       "_Card.js",
       "_index2.js",
       "_Text.js",
-      "_Button.js",
-      "_ErrorModal.js",
-      "_Icon.js",
-      "_public.js",
       "_lsStore.js",
-      "_FullPageLoading.js",
-      "_index3.js",
+      "_public.js",
+      "_Center.js",
       "_Column.js",
+      "_Icon.js",
+      "_ErrorModal.js",
+      "_index3.js",
       "_index4.js",
+      "_FullPageLoading.js",
       "_Row.js",
       "_Avatar2.js",
       "_TransitionFrame.js",
       "_CloseButton.js",
-      "_Avatar.js"
+      "_Avatar.js",
+      "_Button.js"
     ]
   },
   "_Row.js": {
@@ -306,7 +314,7 @@
   "src/routes/(app)/(pets)/+page.svelte": {
     "css": [
       "_app/immutable/assets/ArrowUp.5b5ebce6.css",
-      "_app/immutable/assets/Input.89a4de6e.css"
+      "_app/immutable/assets/Map.eeadc2f3.css"
     ],
     "file": "entries/pages/(app)/(pets)/_page.svelte.js",
     "imports": [
@@ -315,6 +323,7 @@
       "_sdk.js",
       "_index4.js",
       "_i18n-svelte.js",
+      "_lsStore.js",
       "_index3.js"
     ],
     "isEntry": true,
@@ -324,60 +333,6 @@
     "file": "entries/pages/(app)/(pets)/_page.ts.js",
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/+page.ts"
-  },
-  "src/routes/(app)/(pets)/[petId]/+page.svelte": {
-    "css": [
-      "_app/immutable/assets/Input.89a4de6e.css"
-    ],
-    "file": "entries/pages/(app)/(pets)/_petId_/_page.svelte.js",
-    "imports": [
-      "_utils.js",
-      "_ssr.js",
-      "_stores.js",
-      "_Center.js",
-      "_FullPageLoading.js",
-      "_sdk.js",
-      "_Avatar.js",
-      "_Column.js",
-      "_Row.js",
-      "_index4.js",
-      "_Text.js",
-      "_i18n-svelte.js",
-      "_Icon.js",
-      "_ErrorModal.js",
-      "_index3.js",
-      "_Avatar2.js",
-      "_Card.js",
-      "_Button.js",
-      "_useQuery.js"
-    ],
-    "isEntry": true,
-    "src": "src/routes/(app)/(pets)/[petId]/+page.svelte"
-  },
-  "src/routes/(app)/(pets)/[petId]/+page.ts": {
-    "file": "entries/pages/(app)/(pets)/_petId_/_page.ts.js",
-    "isEntry": true,
-    "src": "src/routes/(app)/(pets)/[petId]/+page.ts"
-  },
-  "src/routes/(app)/(pets)/[petId]/edit/+page.svelte": {
-    "file": "entries/pages/(app)/(pets)/_petId_/edit/_page.svelte.js",
-    "imports": [
-      "_utils.js",
-      "_ssr.js",
-      "_stores.js",
-      "_FullPageLoading.js",
-      "_sdk.js",
-      "_RequiredFieldsEmptlyPetCreatingErrorModal.js",
-      "_ErrorModal.js",
-      "_Row.js",
-      "_i18n-svelte.js",
-      "_index4.js",
-      "_index3.js",
-      "_Button.js",
-      "_useQuery.js"
-    ],
-    "isEntry": true,
-    "src": "src/routes/(app)/(pets)/[petId]/edit/+page.svelte"
   },
   "src/routes/(app)/(pets)/addpet/+page.svelte": {
     "file": "entries/pages/(app)/(pets)/addpet/_page.svelte.js",
@@ -407,6 +362,57 @@
     "isEntry": true,
     "src": "src/routes/(app)/(pets)/notfound/+page.svelte"
   },
+  "src/routes/(app)/(pets)/pet/[petId]/+page.svelte": {
+    "file": "entries/pages/(app)/(pets)/pet/_petId_/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_stores.js",
+      "_Center.js",
+      "_FullPageLoading.js",
+      "_sdk.js",
+      "_Avatar.js",
+      "_Column.js",
+      "_Row.js",
+      "_index4.js",
+      "_Text.js",
+      "_i18n-svelte.js",
+      "_Icon.js",
+      "_Card.js",
+      "_ErrorModal.js",
+      "_Avatar2.js",
+      "_index3.js",
+      "_Button.js",
+      "_useQuery.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/pet/[petId]/+page.svelte"
+  },
+  "src/routes/(app)/(pets)/pet/[petId]/+page.ts": {
+    "file": "entries/pages/(app)/(pets)/pet/_petId_/_page.ts.js",
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/pet/[petId]/+page.ts"
+  },
+  "src/routes/(app)/(pets)/pet/[petId]/edit/+page.svelte": {
+    "file": "entries/pages/(app)/(pets)/pet/_petId_/edit/_page.svelte.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_stores.js",
+      "_FullPageLoading.js",
+      "_sdk.js",
+      "_RequiredFieldsEmptlyPetCreatingErrorModal.js",
+      "_ErrorModal.js",
+      "_Row.js",
+      "_i18n-svelte.js",
+      "_index4.js",
+      "_index3.js",
+      "_Button.js",
+      "_useQuery.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/(app)/(pets)/pet/[petId]/edit/+page.svelte"
+  },
   "src/routes/(app)/+layout.ts": {
     "file": "entries/pages/(app)/_layout.ts.js",
     "imports": [
@@ -434,7 +440,7 @@
     "src": "src/routes/(app)/account/settings/+page.svelte"
   },
   "src/routes/+layout.css": {
-    "file": "_app/immutable/assets/_layout.fea3f143.css",
+    "file": "_app/immutable/assets/_layout.2cc9d328.css",
     "src": "src/routes/+layout.css"
   },
   "src/routes/+layout.server.ts": {
@@ -448,7 +454,7 @@
   },
   "src/routes/+layout.svelte": {
     "css": [
-      "_app/immutable/assets/_layout.fea3f143.css"
+      "_app/immutable/assets/_layout.2cc9d328.css"
     ],
     "file": "entries/pages/_layout.svelte.js",
     "imports": [
@@ -505,7 +511,6 @@
       "_i18n-svelte.js",
       "_Heading.js",
       "_appwrite.js",
-      "_FullPageLoading.js",
       "_Icon.js",
       "_Row.js",
       "_index4.js",

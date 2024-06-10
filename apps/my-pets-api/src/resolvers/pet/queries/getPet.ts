@@ -6,8 +6,6 @@ export default queryField('getPet', {
 	type: 'Pet',
 	args: { petId: stringArg() },
 	resolve: async (source, args, ctx, info) => {
-		if (!ctx.isAuthed(ctx.user)) throw new ApolloError('User is not authenticated')
-
 		const { collections } = ctx.appwrite
 
 		const queries = Queries.pet.equal('$id', args.petId)

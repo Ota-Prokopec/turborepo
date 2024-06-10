@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation'
 	import Line from '$lib/components/Common/Line.svelte'
 	import Right from '$lib/components/Common/Right.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
@@ -14,13 +15,12 @@
 	import PetTypeInput from '$lib/components/MyPetsComponents/PetTypeInput.svelte'
 	import SavedModal from '$lib/components/MyPetsComponents/SavedModal.svelte'
 	import SavingModal from '$lib/components/MyPetsComponents/SavingModal.svelte'
+	import lsStore from '$lib/utils/lsStore'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
 	import { zodCreatingPetData, type TCreatePetData } from '@repo/my-pets-tstypes'
 	import { Button, Modal } from 'flowbite-svelte'
-	import { createEventDispatcher } from 'svelte'
 	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
-	import { goto } from '$app/navigation'
 
 	export let open = false
 	export let savingState:
@@ -31,7 +31,7 @@
 		| 'required-fields-empty-error' = null
 
 	const data: TCreatePetData = {
-		petAddress: '',
+		petAddress: { petAddress: '', petAddressCoords: $lsStore.usersLocation ?? [0, 0] },
 		petName: '',
 		petType: 'dog',
 		petAllergens: [],
@@ -107,7 +107,10 @@
 	></PetPictureInput>
 
 	<PetNameInput bind:value={data.petName}></PetNameInput>
-	<PetAddressInput bind:value={data.petAddress}></PetAddressInput>
+	<PetAddressInput
+		bind:coords={data.petAddress.petAddressCoords}
+		bind:value={data.petAddress.petAddress}
+	></PetAddressInput>
 	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>
 	<PetTreatInput maxInputLength={500} bind:value={data.petTreating}></PetTreatInput>

@@ -23,7 +23,7 @@
 
 	export let isOwner: boolean
 
-	$: petUrl = `${location.origin}/${petData._id}`
+	$: petUrl = `${location.origin}/pet/${petData._id}`
 </script>
 
 <Avatar src={petData.petPicture} size="xl"></Avatar>

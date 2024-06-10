@@ -16,12 +16,12 @@ export default queryField('getListOfPets', {
 		).documents
 
 		return pets.map((pet: (typeof pets)[number]) => ({
-			petAddress: pet.petAddress,
 			petId: pet._id,
 			petName: pet.petName,
 			petPicture: pet.petPicture,
 			ownerPhoneNumber: pet.ownerPhoneNumber,
 			petAllergens: pet.petAllergens,
+			petAddressId: pet.petAddressId,
 			petDescriptionCustomFieldIds: pet.petDescriptionCustomFieldIds,
 			petGender: pet.petGender,
 			userId: pet.userId,

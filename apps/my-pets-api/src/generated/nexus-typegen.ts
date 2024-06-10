@@ -12,6 +12,7 @@ declare global {
      * A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
      */
     url<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "URL";
+    coords<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Coords";
     petGender<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetGender";
     petType<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "StringOrNumber";
@@ -23,6 +24,7 @@ declare global {
      * A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
      */
     url<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "URL";
+    coords<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Coords";
     petGender<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetGender";
     petType<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "StringOrNumber";
@@ -35,13 +37,17 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  CreatePetAddressInput: { // input type
+    petAddress: string; // String!
+    petAddressCoords: NexusGenScalars['Coords']; // Coords!
+  }
   CreatePetDescriptionCustomField: { // input type
     text: string; // String!
     title: string; // String!
   }
   CreatePetInput: { // input type
     ownerPhoneNumber: string; // String!
-    petAddress: string; // String!
+    petAddress: NexusGenInputs['CreatePetAddressInput']; // CreatePetAddressInput!
     petAllergens: string[]; // [String!]!
     petDescriptionCustomFields: NexusGenInputs['CreatePetDescriptionCustomField'][]; // [CreatePetDescriptionCustomField!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
@@ -61,6 +67,7 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  Coords: [number, number]
   PetGender: 'male' | 'female'
   PetType: 'cat' | 'dog'
   StringOrNumber: string | number
@@ -80,7 +87,7 @@ export interface NexusGenObjects {
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
     ownerPhoneNumber: string; // String!
-    petAddress: string; // String!
+    petAddressId: string; // String!
     petAllergens: string[]; // [String!]!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
@@ -89,6 +96,10 @@ export interface NexusGenObjects {
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
     userId: string; // String!
+  }
+  PetAddress: { // root type
+    petAddress: string; // String!
+    petAddressCoords: NexusGenScalars['Coords']; // Coords!
   }
   PetDescriptionCustomField: { // root type
     _collectionId: string; // String!
@@ -134,7 +145,8 @@ export interface NexusGenFieldTypes {
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
     ownerPhoneNumber: string; // String!
-    petAddress: string; // String!
+    petAddress: NexusGenRootTypes['PetAddress']; // PetAddress!
+    petAddressId: string; // String!
     petAllergens: string[]; // [String!]!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petDescriptionCustomFields: NexusGenRootTypes['PetDescriptionCustomField'][]; // [PetDescriptionCustomField!]!
@@ -144,6 +156,10 @@ export interface NexusGenFieldTypes {
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
     userId: string; // String!
+  }
+  PetAddress: { // field return type
+    petAddress: string; // String!
+    petAddressCoords: NexusGenScalars['Coords']; // Coords!
   }
   PetDescriptionCustomField: { // field return type
     _collectionId: string; // String!
@@ -184,7 +200,8 @@ export interface NexusGenFieldTypeNames {
     _permissions: 'String'
     _updatedAt: 'String'
     ownerPhoneNumber: 'String'
-    petAddress: 'String'
+    petAddress: 'PetAddress'
+    petAddressId: 'String'
     petAllergens: 'String'
     petDescriptionCustomFieldIds: 'String'
     petDescriptionCustomFields: 'PetDescriptionCustomField'
@@ -194,6 +211,10 @@ export interface NexusGenFieldTypeNames {
     petTreating: 'String'
     petType: 'PetType'
     userId: 'String'
+  }
+  PetAddress: { // field return type name
+    petAddress: 'String'
+    petAddressCoords: 'Coords'
   }
   PetDescriptionCustomField: { // field return type name
     _collectionId: 'String'
