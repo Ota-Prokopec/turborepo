@@ -38,7 +38,7 @@ COPY turbo.json turbo.json
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
-RUN yarn turbo run build --filter=dev-pets-api...
+RUN yarn turbo run build --filter=my-pets-api...
 
 FROM base AS runner
 WORKDIR /app
@@ -49,4 +49,4 @@ RUN adduser --system --uid 1001 expressjs
 USER expressjs
 COPY --from=installer /app .
 
-CMD node apps/dev-pets-api/dist/index.js
+CMD node apps/my-pets-api/dist/index.js
