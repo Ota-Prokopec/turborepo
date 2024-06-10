@@ -34,12 +34,16 @@ export type GraphqlDocumentSkeleton = {
 	_databaseId: string
 	_permissions: string[]
 }
-
+/*
 export type GraphqlDocument<T extends Partial<GraphqlDocumentSkeleton> & object> = {
 	[Key in keyof T]: T[Key] extends Record<string, unknown>
 		? GraphqlDocument<T[Key]>
 		: T[Key]
 } & GraphqlDocumentSkeleton
+*/
+
+export type GraphqlDocument<T extends Partial<GraphqlDocumentSkeleton> & object> = T &
+	GraphqlDocumentSkeleton
 
 export type AppwriteDocToGraphqlDoc<T extends Models.Document> = GraphqlDocument<
 	OmitDocument<T>

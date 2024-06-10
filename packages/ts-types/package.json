@@ -28,5 +28,7 @@
 		"typescript": "5.4.5",
 		"dependency-check": "^4.1.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"zod": "^3.22.4"
+	}
 }

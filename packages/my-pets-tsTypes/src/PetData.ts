@@ -1,9 +1,9 @@
+import { zodCoords } from '@repo/ts-types'
 import { z } from 'zod'
 
 export const zodPetGender = z.union([z.literal('male'), z.literal('female')])
 
 export const zodPetData = z.object({
-	petAddress: z.string().min(1),
 	petName: z.string().min(1),
 	petType: z.union([z.literal('cat'), z.literal('dog')]),
 	petAllergens: z.string().array(),
@@ -12,6 +12,11 @@ export const zodPetData = z.object({
 	userId: z.string(),
 	petGender: zodPetGender,
 	petPicture: z.string().url().min(1),
+	petAddress: z.object({
+		petAddress: z.string().min(1),
+		petAddressCoords: zodCoords,
+	}),
+
 	petDescriptionCustomFields: z
 		.object({
 			title: z.string(),

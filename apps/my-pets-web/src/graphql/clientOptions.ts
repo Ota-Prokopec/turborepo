@@ -14,7 +14,7 @@ const requestMiddleware: RequestMiddleware = (req) => {
 		headers: {
 			...req.headers,
 			[PUBLIC_IOS_AUTHORIZATION_HEADER_NAME]: browser
-				? storage.cookieFallback?.a_session_experiences
+				? storage.cookieFallback?.a_session_6636972a0023b54e21bf
 				: undefined,
 		},
 	}

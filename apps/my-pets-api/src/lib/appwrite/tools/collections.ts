@@ -1,5 +1,7 @@
 import { Types } from '@repo/appwrite-ssr-graphql'
 import {
+	TPetAddressDocumentCreate,
+	TPetAddressGraphqlDocument,
 	TPetDocumentCreate,
 	TPetGraphqlDocument,
 	TpetDescriptionCustomFieldsDocumentCreate,
@@ -21,6 +23,10 @@ export const collectionsClient = (
 			TpetDescriptionCustomFieldsGraphqlDocument,
 			TpetDescriptionCustomFieldsDocumentCreate
 		>('my-pets', 'PetDescriptionCustomFields'),
+		petAddress: new Collection<TPetAddressGraphqlDocument, TPetAddressDocumentCreate>(
+			'my-pets',
+			'petAddress',
+		),
 	}
 }
 
@@ -33,5 +39,9 @@ export const collectionsAdmin = (
 			TpetDescriptionCustomFieldsGraphqlDocument,
 			TpetDescriptionCustomFieldsDocumentCreate
 		>('my-pets', 'PetDescriptionCustomFields'),
+		petAddress: new Collection<TPetAddressGraphqlDocument, TPetAddressDocumentCreate>(
+			'my-pets',
+			'petAddress',
+		),
 	}
 }

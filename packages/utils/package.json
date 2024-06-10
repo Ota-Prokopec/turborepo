@@ -29,10 +29,11 @@
 		"typescript": "5.4.5"
 	},
 	"dependencies": {
-		"@repo/ts-types": "*",
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
+		"@repo/ts-types": "*",
 		"appwrite": "^13.0.1",
+		"browser-image-compression": "^2.0.2",
 		"buffer": "^6.0.3",
 		"compressorjs": "^1.2.1",
 		"date-fns": "^2.30.0",

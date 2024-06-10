@@ -163,9 +163,9 @@ type RootTranslation = {
 			 */
 			title: string
 			/**
-			 * s​a​v​e
+			 * f​i​n​d​ ​y​o​u​r​ ​p​e​t​ ​a​c​c​u​r​a​t​e​ ​l​o​c​a​t​i​o​n​ ​u​s​i​n​g​ ​t​h​e​ ​m​a​p
 			 */
-			buttonSaveTitle: string
+			mapTitle: string
 		}
 		PetAllergensInput: {
 			/**
@@ -327,6 +327,16 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		PetAddressItem: {
+			/**
+			 * I​ ​l​i​v​e​ ​h​e​r​e
+			 */
+			title: string
+			/**
+			 * S​e​e​ ​o​n​ ​m​a​p
+			 */
+			seeOnMap: string
+		}
 	}
 	error: {
 		/**
@@ -486,9 +496,9 @@ export type TranslationFunctions = {
 			 */
 			title: () => LocalizedString
 			/**
-			 * save
+			 * find your pet accurate location using the map
 			 */
-			buttonSaveTitle: () => LocalizedString
+			mapTitle: () => LocalizedString
 		}
 		PetAllergensInput: {
 			/**
@@ -649,6 +659,16 @@ export type TranslationFunctions = {
 			 * Vývojář and majitel
 			 */
 			label: () => LocalizedString
+		}
+		PetAddressItem: {
+			/**
+			 * I live here
+			 */
+			title: () => LocalizedString
+			/**
+			 * See on map
+			 */
+			seeOnMap: () => LocalizedString
 		}
 	}
 	error: {

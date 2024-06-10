@@ -1,12 +1,11 @@
 import { s as subscribe } from "../../../chunks/utils.js";
-import { c as create_ssr_component, i as add_attribute, v as validate_component, a as each, m as missing_component, e as escape } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, h as add_attribute, v as validate_component, a as each, m as missing_component, e as escape } from "../../../chunks/ssr.js";
 import { C as Column } from "../../../chunks/Column.js";
 import { L as LL } from "../../../chunks/i18n-svelte.js";
 import { H as Heading } from "../../../chunks/Heading.js";
 import "../../../chunks/appwrite.js";
-import { F as FullPageLoading } from "../../../chunks/FullPageLoading.js";
-import { I as Icon } from "../../../chunks/Icon.js";
-/* empty css                                                     */import { R as Row } from "../../../chunks/Row.js";
+/* empty css                                                     */import { I as Icon } from "../../../chunks/Icon.js";
+import { R as Row } from "../../../chunks/Row.js";
 import "../../../chunks/index4.js";
 import { twMerge } from "tailwind-merge";
 import { P as Padding } from "../../../chunks/Padding.js";
@@ -16,12 +15,6 @@ const IconDiscord = create_ssr_component(($$result, $$props, $$bindings, slots) 
   if ($$props.class === void 0 && $$bindings.class && className !== void 0)
     $$bindings.class(className);
   return `<svg${add_attribute("class", className, 0)} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"><path fill="#8c9eff" d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"></path></svg>`;
-});
-const IconFacebook = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { class: className = "" } = $$props;
-  if ($$props.class === void 0 && $$bindings.class && className !== void 0)
-    $$bindings.class(className);
-  return `<svg${add_attribute("class", className, 0)} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48"><path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path><path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"></path></svg>`;
 });
 const IconGithub = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { class: className = "" } = $$props;
@@ -38,14 +31,13 @@ const IconGoogle = create_ssr_component(($$result, $$props, $$bindings, slots) =
 const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { isLoading = false } = $$props;
   const socials = [
-    { key: "facebook", icon: IconFacebook },
     { key: "google", icon: IconGoogle },
     { key: "discord", icon: IconDiscord },
     { key: "github", icon: IconGithub }
   ];
   if ($$props.isLoading === void 0 && $$bindings.isLoading && isLoading !== void 0)
     $$bindings.isLoading(isLoading);
-  return `${isLoading ? `${validate_component(FullPageLoading, "FullPageLoading").$$render($$result, {}, {}, {})}` : `${validate_component(Row, "Row").$$render(
+  return `${validate_component(Row, "Row").$$render(
     $$result,
     {
       class: "gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto"
@@ -70,7 +62,7 @@ const SignUpViaSocialMedia = create_ssr_component(($$result, $$props, $$bindings
         })}`;
       }
     }
-  )}`}`;
+  )}`;
 });
 const ButtonLinkToDeveloperPage = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $LL, $$unsubscribe_LL;

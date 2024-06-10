@@ -47,13 +47,13 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/(app)/(pets)/[petId]": [
-		"src/routes/(app)/(pets)/[petId]/+page.ts",
+	"/(app)/(pets)/pet/[petId]": [
+		"src/routes/(app)/(pets)/pet/[petId]/+page.ts",
 		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/(app)/(pets)/[petId]/edit": [
+	"/(app)/(pets)/pet/[petId]/edit": [
 		"src/routes/(app)/+layout.ts",
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"

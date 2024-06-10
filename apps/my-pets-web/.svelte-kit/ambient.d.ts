@@ -149,7 +149,6 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_package_dependencies_sveltekit_i18n: string;
 	export const npm_package_dependencies_date_fns: string;
-	export const npm_package_scripts_dev_pets_next: string;
 	export const npm_package_packageManager: string;
 	export const npm_package_name: string;
 	export const LANG: string;
@@ -261,7 +260,6 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_qrcode: string;
 	export const npm_package_dependencies__lordicon_element: string;
 	export const npm_package_scripts_test_unit: string;
-	export const NINJA_ENV: string;
 	export const NODE_ENV: string;
 }
 
@@ -282,6 +280,7 @@ declare module '$env/static/public' {
 	export const PUBLIC_CLIENT_HOSTNAME: string;
 	export const PUBLIC_SERVER_HOSTNAME: string;
 	export const PUBLIC_MAP_TILER_API_KEY: string;
+	export const PUBLIC_MAX_PICTURE_SIZE_IN_MB: string;
 	export const PUBLIC_DEV: string;
 }
 
@@ -422,7 +421,6 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_package_dependencies_sveltekit_i18n: string;
 		npm_package_dependencies_date_fns: string;
-		npm_package_scripts_dev_pets_next: string;
 		npm_package_packageManager: string;
 		npm_package_name: string;
 		LANG: string;
@@ -534,7 +532,6 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_qrcode: string;
 		npm_package_dependencies__lordicon_element: string;
 		npm_package_scripts_test_unit: string;
-		NINJA_ENV: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
@@ -560,6 +557,7 @@ declare module '$env/dynamic/public' {
 		PUBLIC_CLIENT_HOSTNAME: string;
 		PUBLIC_SERVER_HOSTNAME: string;
 		PUBLIC_MAP_TILER_API_KEY: string;
+		PUBLIC_MAX_PICTURE_SIZE_IN_MB: string;
 		PUBLIC_DEV: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}

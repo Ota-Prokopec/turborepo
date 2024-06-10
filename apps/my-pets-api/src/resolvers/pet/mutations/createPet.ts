@@ -3,7 +3,7 @@ import { ApolloError } from 'apollo-server-express'
 import { mutationField } from 'nexus'
 import { buckets } from '../../../lib/cloudinary'
 import { pick } from 'lodash'
-import { TCreatePetData } from '@repo/my-pets-tstypes'
+import { TCreatePetData, TPetData } from '@repo/my-pets-tstypes'
 import { Appwrite } from '../../../lib/appwrite/appwrite'
 import { ID } from 'appwrite'
 
@@ -27,6 +27,7 @@ export const createPet = async (
 ) => {
 	const { collections } = appwrite
 
+	// custom descriptions
 	const petDescriptionCustomFieldsPromise = params.petDescriptionCustomFields.map(
 		(field: (typeof params.petDescriptionCustomFields)[number]) => {
 			return collections.petDescriptionCustomField.createDocument(
@@ -39,20 +40,30 @@ export const createPet = async (
 		},
 	)
 
+	//upload picture
 	const uploadPetPictureResponsePromise = buckets.petPictures.uploadBase64(
 		params.petPicture,
 	)
 
-	const [uploadPetPictureResponse, ...petDescriptionCustomFields] = await Promise.all([
-		uploadPetPictureResponsePromise,
-		...petDescriptionCustomFieldsPromise,
-	])
+	// create address for pet
+	const petAddressCreatingPromise = collections.petAddress.createDocument({
+		petAddress: params.petAddress.petAddress,
+		latitude: params.petAddress.petAddressCoords[0],
+		longitude: params.petAddress.petAddressCoords[1],
+	})
+
+	const [uploadPetPictureResponse, petAddressDocument, ...petDescriptionCustomFields] =
+		await Promise.all([
+			uploadPetPictureResponsePromise,
+			petAddressCreatingPromise,
+			...petDescriptionCustomFieldsPromise,
+		])
 
 	const petDocument = await collections.pet.createDocument(
 		{
 			petPicture: uploadPetPictureResponse.secure_url,
 			ownerPhoneNumber: params.ownerPhoneNumber,
-			petAddress: params.petAddress,
+			petAddressId: petAddressDocument._id,
 			petAllergens: params.petAllergens,
 			petDescriptionCustomFieldIds: petDescriptionCustomFields.map((field) => field._id),
 			petGender: params.petGender,
@@ -76,6 +87,7 @@ export const createPet = async (
 		petTreating: params.petTreating,
 		petType: params.petType,
 		userId: userId,
+		petAddressId: petAddressDocument._id,
 		petId: petDocument._id,
 		...pick(petDocument, appwriteGraphqlKeys),
 	}

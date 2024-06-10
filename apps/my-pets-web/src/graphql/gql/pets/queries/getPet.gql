@@ -6,7 +6,7 @@ query getPet($petId: String!) {
 		_id
 		_permissions
 		_databaseId
-		petAddress
+
 		userId
 		petName
 		petType
@@ -25,6 +25,11 @@ query getPet($petId: String!) {
 			_databaseId
 			title
 			text
+		}
+		petAddressId
+		petAddress {
+			petAddress
+			petAddressCoords
 		}
 	}
 }
