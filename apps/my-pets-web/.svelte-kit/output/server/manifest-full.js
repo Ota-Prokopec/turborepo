@@ -10,7 +10,7 @@ return {
 	assets: new Set(["favicon.ico","icon.png","pictures/petPictureInputAvatar.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: null,
+		client: {"start":"_app/immutable/entry/start.8e2fd684.js","app":"_app/immutable/entry/app.8a8aedf0.js","imports":["_app/immutable/entry/start.8e2fd684.js","_app/immutable/chunks/scheduler.e2443e5e.js","_app/immutable/chunks/singletons.c499d927.js","_app/immutable/chunks/index.808b294c.js","_app/immutable/chunks/paths.55115a80.js","_app/immutable/entry/app.8a8aedf0.js","_app/immutable/chunks/preload-helper.a4192956.js","_app/immutable/chunks/scheduler.e2443e5e.js","_app/immutable/chunks/index.0d43c537.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),

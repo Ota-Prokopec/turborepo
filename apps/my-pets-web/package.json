@@ -51,6 +51,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@repo/appwrite-client": "*",
 		"@apollo/client": "^3.8.2",
 		"@cloudinary/url-gen": "^1.11.2",
 		"@graphql-codegen/typescript-graphql-request": "^5.0.0",
