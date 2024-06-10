@@ -55,7 +55,7 @@
 		"@repo/utils": "*",
 		"@repo/appwrite-client": "*",
 		"@repo/appwrite-types": "*",
-		"@repo/my-pets-tsTypes": "*",
+		"@repo/my-pets-tstypes": "*",
 		"@repo/ts-types": "*",
 		"@apollo/client": "^3.8.2",
 		"@cloudinary/url-gen": "^1.11.2",
