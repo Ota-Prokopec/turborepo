@@ -83,6 +83,7 @@ export const componentsCS = {
 	},
 	PetUrlItem: {
 		label: "pet's url",
+		copied: 'copied!',
 	},
 	EditPetButton: {
 		label: 'Edit pet',

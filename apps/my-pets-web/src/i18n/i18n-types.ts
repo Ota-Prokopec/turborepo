@@ -262,6 +262,10 @@ type RootTranslation = {
 			 * p​e​t​'​s​ ​u​r​l
 			 */
 			label: string
+			/**
+			 * c​o​p​i​e​d​!
+			 */
+			copied: string
 		}
 		EditPetButton: {
 			/**
@@ -581,6 +585,10 @@ export type TranslationFunctions = {
 			 * pet's url
 			 */
 			label: () => LocalizedString
+			/**
+			 * copied!
+			 */
+			copied: () => LocalizedString
 		}
 		EditPetButton: {
 			/**

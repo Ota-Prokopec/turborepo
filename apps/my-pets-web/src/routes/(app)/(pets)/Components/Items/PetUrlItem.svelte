@@ -33,7 +33,7 @@
 			</Row>
 		</Row>
 		{#if copied}
-			<Text>Copied!</Text>
+			<Text>{$LL.component.PetUrlItem.copied()}</Text>
 		{/if}
 	</Row>
 </Button>
