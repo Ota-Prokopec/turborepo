@@ -3,7 +3,7 @@ import type { BaseTranslation } from '../i18n-types'
 export const componentsCS = {
 	CookiesAlert: {
 		title:
-			'Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů..',
+			'Tato stránka používá soubory cookie k ukládání relací uživatelů a dat uživatelů.',
 		acceptButtonLabel: 'Přijmout soubory cookie',
 	},
 
@@ -19,96 +19,96 @@ export const componentsCS = {
 	},
 
 	NoPetFound: {
-		title: 'No pets found',
-		message: 'Go ahead and create a page for your pet!',
+		title: 'Žádná zvířata nebyla nalezena',
+		message: 'Vytvořte stránku pro svého mazlíčka!',
 	},
 	CreateNewPetModal: {
-		title: 'create new pet',
-		saveButtonLabel: 'save',
+		title: 'Vytvořit nového mazlíčka',
+		saveButtonLabel: 'Uložit',
 	},
 	UpdatePetModal: {
-		title: 'update your pet',
-		saveButtonLabel: 'update',
+		title: 'Aktualizujte svého mazlíčka',
+		saveButtonLabel: 'Aktualizovat',
 	},
 	PetNameInput: {
-		title: 'your pets name',
+		title: 'Jméno vašeho mazlíčka',
 	},
 	PetAddressInput: {
-		title: 'your pets address',
-		buttonSaveTitle: 'save',
+		title: 'Adresa vašeho mazlíčka',
+		buttonSaveTitle: 'Uložit',
 	},
 	PetAllergensInput: {
-		title: 'Allergens',
+		title: 'Alergeny',
 	},
 	OwnerPhoneNumberInput: {
-		title: 'Your phone number',
+		title: 'Vaše telefonní číslo',
 	},
 	PetTreatInput: {
-		title: 'How to treat your pet?',
+		title: 'Jak léčit vašeho mazlíčka?',
 	},
 	PetCustomTextInput: {
 		placeholder: {
-			title: 'title',
-			text: 'text',
+			title: 'Název',
+			text: 'Text',
 		},
 	},
 	SavingModal: {
-		label: 'saving...',
+		label: 'Ukládání...',
 	},
 	ErrorModal: {
-		title: 'Error occured',
-		text: 'Please try it again',
+		title: 'Došlo k chybě',
+		text: 'Zkuste to prosím znovu',
 	},
 	SavedModal: {
-		label: 'saved',
-		returningButtonLabel: 'go back',
+		label: 'Uloženo',
+		returningButtonLabel: 'Zpět',
 	},
 
 	PetAllergensItem: {
-		title: "Pet's allergens",
+		title: 'Alergeny mazlíčka',
 	},
 
 	PetTreatItem: {
-		title: 'How to treat me?',
+		title: 'Jak mě léčit?',
 	},
 	PetPictureInput: {
-		title: "Pet's picture",
+		title: 'Fotografie mazlíčka',
 	},
 	RequiredBadge: {
-		label: 'required',
+		label: 'Povinné',
 	},
 	RequiredFieldsEmptlyPetCreatingErrorModal: {
-		title: 'Required fields are empty',
-		text: 'Please fill up all required fields',
+		title: 'Povinná pole jsou prázdná',
+		text: 'Vyplňte prosím všechna povinná pole',
 	},
 	PetUrlItem: {
-		label: "pet's url",
+		label: 'URL mazlíčka',
 	},
 	EditPetButton: {
-		label: 'Edit pet',
+		label: 'Upravit mazlíčka',
 	},
 	DeletePetButton: {
-		label: 'Delete pet',
+		label: 'Smazat mazlíčka',
 		modal: {
-			title: 'Delete your pet',
-			text: 'If you delete your pet, you will not be able to recover it. Are you sure you want to do this?',
+			title: 'Smazat vašeho mazlíčka',
+			text: 'Pokud smažete svého mazlíčka, nebudete ho moci obnovit. Jste si jisti, že to chcete udělat?',
 		},
 	},
 	DeletingModal: {
-		label: 'deleting....',
+		label: 'Mazání...',
 	},
 	DeletedModal: {
-		label: 'deleted',
-		returningButtonLabel: 'go back',
+		label: 'Smazáno',
+		returningButtonLabel: 'Zpět',
 	},
 	LanguageSwitch: {
-		english: 'english',
-		czech: 'czech',
+		english: 'Angličtina',
+		czech: 'Čeština',
 	},
 	LogOutButton: {
-		label: 'Log out',
+		label: 'Odhlásit se',
 	},
 	ButtonLinkToDeveloperPage: {
-		label: 'Vývojář and majitel',
+		label: 'Vývojář a majitel',
 	},
 } satisfies BaseTranslation

@@ -13,10 +13,10 @@ export const pageCS = {
 		},
 	},
 	settings: {
-		language: 'Language',
-		colorTheme: 'Color theme',
+		language: 'Jazyk',
+		colorTheme: 'Barevné téma',
 		logOut: {
-			errorMessage: 'We were not able to sign you out',
+			errorMessage: 'Nemohli jsme Vás odhlásit, zkuste to znovu prosím',
 		},
 	},
 } satisfies BaseTranslation
