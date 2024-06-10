@@ -317,6 +317,12 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		ButtonLinkToDeveloperPage: {
+			/**
+			 * V​ý​v​o​j​á​ř​ ​a​n​d​ ​m​a​j​i​t​e​l
+			 */
+			label: string
+		}
 	}
 	error: {
 		/**
@@ -627,6 +633,12 @@ export type TranslationFunctions = {
 		LogOutButton: {
 			/**
 			 * Log out
+			 */
+			label: () => LocalizedString
+		}
+		ButtonLinkToDeveloperPage: {
+			/**
+			 * Vývojář and majitel
 			 */
 			label: () => LocalizedString
 		}

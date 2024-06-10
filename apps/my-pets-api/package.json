@@ -11,9 +11,8 @@
 		"generate-schema-barrels": "barrelsby --delete --exportDefault --singleQuotes --directory ./src/schema",
 		"generate-resolvers-barrels": "barrelsby --delete --exportDefault --singleQuotes --directory ./src/resolvers",
 		"generate-types-barrels": "barrelsby --delete --exportDefault --singleQuotes --directory ./src/graphqlTypes/",
-		"generate-arguments": "barrelsby --delete  --singleQuotes --exportDefault --directory ./src/arguments",
 		"generate-database-barrels": "barrelsby --delete  --singleQuotes --directory ./src/lib/database/",
-		"barrelsby": "yarn generate-types-barrels && yarn generate-schema-barrels && yarn generate-resolvers-barrels && yarn generate-arguments",
+		"barrelsby": "yarn generate-types-barrels && yarn generate-schema-barrels && yarn generate-resolvers-barrels",
 		"start": "node --experimental-modules ./dist/esm/index.js",
 		"preview": ""
 	},

@@ -6,12 +6,13 @@ import "../../chunks/lsStore.js";
 import { F as FullPageLoading } from "../../chunks/FullPageLoading.js";
 import { C as Center } from "../../chunks/Center.js";
 import { I as Icon } from "../../chunks/Icon.js";
-import { T as Text, B as Button } from "../../chunks/Text.js";
+import { T as Text } from "../../chunks/Text.js";
 import { H as Heading } from "../../chunks/Heading.js";
 import { w as writable } from "../../chunks/index2.js";
 import { twMerge } from "tailwind-merge";
 import { T as TransitionFrame } from "../../chunks/TransitionFrame.js";
 import { C as CloseButton } from "../../chunks/CloseButton.js";
+import { B as Button } from "../../chunks/Button.js";
 import { i as isValidTimeout, f as functionalUpdate, r as replaceEqualDeep, n as noop, t as timeUntilStale, e as ensureQueryKeyArray, g as getAbortController, R as Retryer, a as isCancelledError, b as getLogger, c as notifyManager, S as Subscribable, h as hashQueryKeyByOptions, p as parseFilterArgs, m as matchQuery, d as matchMutation, j as isCancelable, k as focusManager, o as onlineManager, l as parseQueryArgs, q as hashQueryKey, s as partialMatchKey } from "../../chunks/logger.js";
 const Alert = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$restProps = compute_rest_props($$props, ["dismissable", "defaultClass"]);

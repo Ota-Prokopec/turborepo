@@ -65,6 +65,14 @@
       "_ssr.js"
     ]
   },
+  "_Button.js": {
+    "file": "chunks/Button.js",
+    "imports": [
+      "_utils.js",
+      "_ssr.js",
+      "_Avatar2.js"
+    ]
+  },
   "_Card.js": {
     "file": "chunks/Card.js",
     "imports": [
@@ -104,7 +112,7 @@
       "_sdk.js",
       "_i18n-svelte.js",
       "_index4.js",
-      "_Text.js"
+      "_Button.js"
     ]
   },
   "_ErrorModal.js": {
@@ -166,6 +174,7 @@
       "_Card.js",
       "_index2.js",
       "_Text.js",
+      "_Button.js",
       "_ErrorModal.js",
       "_Icon.js",
       "_public.js",
@@ -339,6 +348,7 @@
       "_index3.js",
       "_Avatar2.js",
       "_Card.js",
+      "_Button.js",
       "_useQuery.js"
     ],
     "isEntry": true,
@@ -363,7 +373,7 @@
       "_i18n-svelte.js",
       "_index4.js",
       "_index3.js",
-      "_Text.js",
+      "_Button.js",
       "_useQuery.js"
     ],
     "isEntry": true,
@@ -413,10 +423,11 @@
       "_ssr.js",
       "_appwrite.js",
       "_i18n-svelte.js",
-      "_Text.js",
+      "_Button.js",
       "_Card.js",
       "_Column.js",
       "_lsStore.js",
+      "_Text.js",
       "_sdk.js"
     ],
     "isEntry": true,
@@ -454,6 +465,7 @@
       "_index2.js",
       "_TransitionFrame.js",
       "_CloseButton.js",
+      "_Button.js",
       "_logger.js"
     ],
     "isEntry": true,
@@ -475,7 +487,8 @@
       "_ssr.js",
       "_Avatar.js",
       "_Center.js",
-      "_Padding.js"
+      "_Padding.js",
+      "_Heading.js"
     ],
     "isEntry": true,
     "src": "src/routes/auth/+layout.svelte"
@@ -496,7 +509,8 @@
       "_Icon.js",
       "_Row.js",
       "_index4.js",
-      "_Padding.js"
+      "_Padding.js",
+      "_Button.js"
     ],
     "isEntry": true,
     "src": "src/routes/auth/+page.svelte"

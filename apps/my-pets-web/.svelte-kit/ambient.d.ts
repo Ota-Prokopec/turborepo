@@ -46,6 +46,7 @@ declare module '$env/static/private' {
 	export const TERM_PROGRAM: string;
 	export const npm_package_dependencies_flowbite: string;
 	export const npm_package_dependencies__svelteuidev_composables: string;
+	export const npm_package_dependencies__repo_appwrite_types: string;
 	export const npm_package_devDependencies_typescript_eslint: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte: string;
 	export const NODE: string;
@@ -77,6 +78,7 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies__vercel_analytics: string;
 	export const npm_package_dependencies_svelte_icons_pack: string;
 	export const npm_package_dependencies_svelte_carousel: string;
+	export const npm_package_dependencies__repo_appwrite_client: string;
 	export const npm_package_private: string;
 	export const npm_config_registry: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
@@ -94,6 +96,8 @@ declare module '$env/static/private' {
 	export const LS_COLORS: string;
 	export const npm_package_dependencies_svelte_loading_spinners: string;
 	export const npm_package_dependencies_mapbox_gl: string;
+	export const npm_package_dependencies__repo_ts_types: string;
+	export const npm_package_dependencies__repo_appwrite_ssr_graphql: string;
 	export const npm_package_scripts_check_watch: string;
 	export const COMMAND_MODE: string;
 	export const npm_package_dependencies_flowbite_svelte: string;
@@ -315,6 +319,7 @@ declare module '$env/dynamic/private' {
 		TERM_PROGRAM: string;
 		npm_package_dependencies_flowbite: string;
 		npm_package_dependencies__svelteuidev_composables: string;
+		npm_package_dependencies__repo_appwrite_types: string;
 		npm_package_devDependencies_typescript_eslint: string;
 		npm_package_devDependencies_eslint_plugin_svelte: string;
 		NODE: string;
@@ -346,6 +351,7 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies__vercel_analytics: string;
 		npm_package_dependencies_svelte_icons_pack: string;
 		npm_package_dependencies_svelte_carousel: string;
+		npm_package_dependencies__repo_appwrite_client: string;
 		npm_package_private: string;
 		npm_config_registry: string;
 		npm_package_devDependencies__sveltejs_kit: string;
@@ -363,6 +369,8 @@ declare module '$env/dynamic/private' {
 		LS_COLORS: string;
 		npm_package_dependencies_svelte_loading_spinners: string;
 		npm_package_dependencies_mapbox_gl: string;
+		npm_package_dependencies__repo_ts_types: string;
+		npm_package_dependencies__repo_appwrite_ssr_graphql: string;
 		npm_package_scripts_check_watch: string;
 		COMMAND_MODE: string;
 		npm_package_dependencies_flowbite_svelte: string;
