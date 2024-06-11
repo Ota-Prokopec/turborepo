@@ -16,16 +16,23 @@ export const zodPetData = z.object({
 		petAddress: z.string().min(1),
 		petAddressCoords: zodCoords,
 	}),
-
 	petDescriptionCustomFields: z
 		.object({
 			title: z.string(),
 			text: z.string(),
 		})
 		.array(),
+	lostPetLocations: z
+		.object({
+			coords: zodCoords,
+		})
+		.array(),
 })
 
-export const zodCreatingPetData = zodPetData.omit({ userId: true })
+export const zodCreatingPetData = zodPetData.omit({
+	userId: true,
+	lostPetLocations: true,
+})
 
 export type TPetData = z.infer<typeof zodPetData>
 

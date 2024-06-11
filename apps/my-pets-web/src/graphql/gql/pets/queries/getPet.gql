@@ -31,5 +31,8 @@ query getPet($petId: String!) {
 			petAddress
 			petAddressCoords
 		}
+		lostPetLocations {
+			coords
+		}
 	}
 }

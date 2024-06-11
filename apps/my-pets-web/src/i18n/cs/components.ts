@@ -116,4 +116,25 @@ export const componentsCS = {
 		title: 'Tady bydlím',
 		seeOnMap: 'See on map',
 	},
+	FoundPetButton: {
+		label: 'Našel jsem toto zvířátko!',
+		Modal: {
+			title: 'Našel jsem toto zvířátko',
+			text: 'Můžete poslat vaši lokaci majitelovi zvířátka.',
+			buttonLabel: 'Poslat moji přímou lokaci',
+			sent: 'Vaše lokace byla poslána',
+		},
+	},
+	SeeOnGoogleMapsButton: {
+		label: 'Vidět na Google map',
+	},
+	PetFoundLocationItem: {
+		buttonLabel: 'Vaše zvířátko bylo nalezeno, klikněte a zjistěte kde',
+		modal: {
+			title: 'Lokace kde bylo vaše zvířátko nalezeno',
+		},
+	},
+	NoContent: {
+		nothingHere: 'Tady nic',
+	},
 } satisfies BaseTranslation

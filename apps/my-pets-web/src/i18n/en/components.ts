@@ -116,4 +116,25 @@ export const componentsCS = {
 		title: 'I live here',
 		seeOnMap: 'See on map',
 	},
+	FoundPetButton: {
+		label: 'I found this pet!',
+		Modal: {
+			title: 'I found this pet',
+			text: 'You can send your current location to the owner of the dog.',
+			buttonLabel: 'Send my current location',
+			sent: 'Your current location has been sent',
+		},
+	},
+	SeeOnGoogleMapsButton: {
+		label: 'See on Google map',
+	},
+	PetFoundLocationItem: {
+		buttonLabel: 'Your pet was found, click and found out where',
+		modal: {
+			title: 'Locations where your pet was found',
+		},
+	},
+	NoContent: {
+		nothingHere: 'Nothing here',
+	},
 } satisfies BaseTranslation

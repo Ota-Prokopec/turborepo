@@ -337,6 +337,54 @@ type RootTranslation = {
 			 */
 			seeOnMap: string
 		}
+		FoundPetButton: {
+			/**
+			 * I​ ​f​o​u​n​d​ ​t​h​i​s​ ​p​e​t​!
+			 */
+			label: string
+			Modal: {
+				/**
+				 * I​ ​f​o​u​n​d​ ​t​h​i​s​ ​p​e​t
+				 */
+				title: string
+				/**
+				 * Y​o​u​ ​c​a​n​ ​s​e​n​d​ ​y​o​u​r​ ​c​u​r​r​e​n​t​ ​l​o​c​a​t​i​o​n​ ​t​o​ ​t​h​e​ ​o​w​n​e​r​ ​o​f​ ​t​h​e​ ​d​o​g​.
+				 */
+				text: string
+				/**
+				 * S​e​n​d​ ​m​y​ ​c​u​r​r​e​n​t​ ​l​o​c​a​t​i​o​n
+				 */
+				buttonLabel: string
+				/**
+				 * Y​o​u​r​ ​c​u​r​r​e​n​t​ ​l​o​c​a​t​i​o​n​ ​h​a​s​ ​b​e​e​n​ ​s​e​n​t
+				 */
+				sent: string
+			}
+		}
+		SeeOnGoogleMapsButton: {
+			/**
+			 * S​e​e​ ​o​n​ ​G​o​o​g​l​e​ ​m​a​p
+			 */
+			label: string
+		}
+		PetFoundLocationItem: {
+			/**
+			 * Y​o​u​r​ ​p​e​t​ ​w​a​s​ ​f​o​u​n​d​,​ ​c​l​i​c​k​ ​a​n​d​ ​f​o​u​n​d​ ​o​u​t​ ​w​h​e​r​e
+			 */
+			buttonLabel: string
+			modal: {
+				/**
+				 * L​o​c​a​t​i​o​n​s​ ​w​h​e​r​e​ ​y​o​u​r​ ​p​e​t​ ​w​a​s​ ​f​o​u​n​d
+				 */
+				title: string
+			}
+		}
+		NoContent: {
+			/**
+			 * N​o​t​h​i​n​g​ ​h​e​r​e
+			 */
+			nothingHere: string
+		}
 	}
 	error: {
 		/**
@@ -669,6 +717,54 @@ export type TranslationFunctions = {
 			 * See on map
 			 */
 			seeOnMap: () => LocalizedString
+		}
+		FoundPetButton: {
+			/**
+			 * I found this pet!
+			 */
+			label: () => LocalizedString
+			Modal: {
+				/**
+				 * I found this pet
+				 */
+				title: () => LocalizedString
+				/**
+				 * You can send your current location to the owner of the dog.
+				 */
+				text: () => LocalizedString
+				/**
+				 * Send my current location
+				 */
+				buttonLabel: () => LocalizedString
+				/**
+				 * Your current location has been sent
+				 */
+				sent: () => LocalizedString
+			}
+		}
+		SeeOnGoogleMapsButton: {
+			/**
+			 * See on Google map
+			 */
+			label: () => LocalizedString
+		}
+		PetFoundLocationItem: {
+			/**
+			 * Your pet was found, click and found out where
+			 */
+			buttonLabel: () => LocalizedString
+			modal: {
+				/**
+				 * Locations where your pet was found
+				 */
+				title: () => LocalizedString
+			}
+		}
+		NoContent: {
+			/**
+			 * Nothing here
+			 */
+			nothingHere: () => LocalizedString
 		}
 	}
 	error: {
