@@ -137,4 +137,7 @@ export const componentsCS = {
 	NoContent: {
 		nothingHere: 'Nothing here',
 	},
+	LoadingModal: {
+		label: 'loading...',
+	},
 } satisfies BaseTranslation

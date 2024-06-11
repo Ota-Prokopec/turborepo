@@ -385,6 +385,12 @@ type RootTranslation = {
 			 */
 			nothingHere: string
 		}
+		LoadingModal: {
+			/**
+			 * l​o​a​d​i​n​g​.​.​.
+			 */
+			label: string
+		}
 	}
 	error: {
 		/**
@@ -765,6 +771,12 @@ export type TranslationFunctions = {
 			 * Nothing here
 			 */
 			nothingHere: () => LocalizedString
+		}
+		LoadingModal: {
+			/**
+			 * loading...
+			 */
+			label: () => LocalizedString
 		}
 	}
 	error: {
