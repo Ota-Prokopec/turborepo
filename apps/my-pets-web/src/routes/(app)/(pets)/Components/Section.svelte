@@ -40,7 +40,7 @@
 	{#if isOwner}
 		<Right>
 			<Column>
-				<EditPetButton on:click={() => navigate(`/${petData._id}/edit`)} class=""
+				<EditPetButton on:click={() => navigate(`/pet/${petData._id}/edit`)} class=""
 				></EditPetButton>
 				<DeletePetButton
 					on:deleted={() => navigate('/', { invalidateAll: true })}
