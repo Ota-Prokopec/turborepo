@@ -3,6 +3,7 @@
 	import Right from '$lib/components/Common/Right.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
+	import IconBan from '$lib/components/Icons/IconBan.svelte'
 	import IconEdit from '$lib/components/Icons/IconEdit.svelte'
 	import DeletedModal from '$lib/components/MyPetsComponents/DeletedModal.svelte'
 	import DeletingModal from '$lib/components/MyPetsComponents/DeletingModal.svelte'
@@ -42,7 +43,7 @@
 	<Row class="gap-1 items-center">
 		<Text>{$LL.component.DeletePetButton.label()}</Text>
 		<Icon class="w-3 h-3">
-			<IconEdit></IconEdit>
+			<IconBan></IconBan>
 		</Icon>
 	</Row>
 </Button>
