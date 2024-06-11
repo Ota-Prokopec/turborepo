@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { user } from '$lib/appwrite/appwrite'
-	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import IconDiscord from '$lib/components/Icons/IconDiscord.svelte'
 	import IconGithub from '$lib/components/Icons/IconGithub.svelte'
 	import IconGoogle from '$lib/components/Icons/IconGoogle.svelte'
+	import LoadingModal from '$lib/components/MyPetsComponents/LoadingModal.svelte'
 	import { type SocialMediaToSignUp } from '@repo/my-pets-tstypes'
 	import { twMerge } from 'tailwind-merge'
 
@@ -45,10 +45,14 @@
 	] as const satisfies { key: SocialMediaToSignUp; icon: any }[]
 </script>
 
-<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
-	{#each socials as { icon, key }}
-		<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
-			<svelte:component this={icon} />
-		</Icon>
-	{/each}
-</Row>
+{#if isLoading}
+	<LoadingModal></LoadingModal>
+{:else}
+	<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
+		{#each socials as { icon, key }}
+			<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
+				<svelte:component this={icon} />
+			</Icon>
+		{/each}
+	</Row>
+{/if}
