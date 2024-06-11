@@ -79,6 +79,12 @@ export interface NexusGenObjects {
     userId: string; // String!
   }
   LostPetsLocation: { // root type
+    _collectionId: string; // String!
+    _createdAt: string; // String!
+    _databaseId: string; // String!
+    _id: string; // String!
+    _permissions: string[]; // [String!]!
+    _updatedAt: string; // String!
     coords: NexusGenScalars['Coords']; // Coords!
   }
   Mutation: {};
@@ -135,12 +141,19 @@ export interface NexusGenFieldTypes {
     userId: string; // String!
   }
   LostPetsLocation: { // field return type
+    _collectionId: string; // String!
+    _createdAt: string; // String!
+    _databaseId: string; // String!
+    _id: string; // String!
+    _permissions: string[]; // [String!]!
+    _updatedAt: string; // String!
     coords: NexusGenScalars['Coords']; // Coords!
   }
   Mutation: { // field return type
     createPet: NexusGenRootTypes['Pet']; // Pet!
     createRecordToLostPetsLocation: boolean; // Boolean!
     deletePet: boolean; // Boolean!
+    deleteRecordToLostPetsLocation: boolean; // Boolean!
     logout: boolean; // Boolean!
     updatePet: NexusGenRootTypes['Pet']; // Pet!
   }
@@ -195,12 +208,19 @@ export interface NexusGenFieldTypeNames {
     userId: 'String'
   }
   LostPetsLocation: { // field return type name
+    _collectionId: 'String'
+    _createdAt: 'String'
+    _databaseId: 'String'
+    _id: 'String'
+    _permissions: 'String'
+    _updatedAt: 'String'
     coords: 'Coords'
   }
   Mutation: { // field return type name
     createPet: 'Pet'
     createRecordToLostPetsLocation: 'Boolean'
     deletePet: 'Boolean'
+    deleteRecordToLostPetsLocation: 'Boolean'
     logout: 'Boolean'
     updatePet: 'Pet'
   }
@@ -262,6 +282,9 @@ export interface NexusGenArgTypes {
     }
     deletePet: { // args
       petId: string; // String!
+    }
+    deleteRecordToLostPetsLocation: { // args
+      documentId: string; // String!
     }
     updatePet: { // args
       data: NexusGenInputs['CreatePetInput']; // CreatePetInput!

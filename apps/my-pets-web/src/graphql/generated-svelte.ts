@@ -56,6 +56,12 @@ export type CreatePetInput = {
 
 export type LostPetsLocation = {
   __typename?: 'LostPetsLocation';
+  _collectionId: Scalars['String']['output'];
+  _createdAt: Scalars['String']['output'];
+  _databaseId: Scalars['String']['output'];
+  _id: Scalars['String']['output'];
+  _permissions: Array<Scalars['String']['output']>;
+  _updatedAt: Scalars['String']['output'];
   coords: Scalars['Coords']['output'];
 };
 
@@ -64,6 +70,7 @@ export type Mutation = {
   createPet: Pet;
   createRecordToLostPetsLocation: Scalars['Boolean']['output'];
   deletePet: Scalars['Boolean']['output'];
+  deleteRecordToLostPetsLocation: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
   updatePet: Pet;
 };
@@ -83,6 +90,11 @@ export type MutationCreateRecordToLostPetsLocationArgs = {
 
 export type MutationDeletePetArgs = {
   petId: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteRecordToLostPetsLocationArgs = {
+  documentId: Scalars['String']['input'];
 };
 
 
@@ -182,6 +194,13 @@ export type CreateRecordToLostPetsLocationMutationVariables = Exact<{
 
 export type CreateRecordToLostPetsLocationMutation = { __typename?: 'Mutation', createRecordToLostPetsLocation: boolean };
 
+export type DeleteRecordToLostPetsLocationMutationVariables = Exact<{
+  documentId: Scalars['String']['input'];
+}>;
+
+
+export type DeleteRecordToLostPetsLocationMutation = { __typename?: 'Mutation', deleteRecordToLostPetsLocation: boolean };
+
 export type CreatePetMutationVariables = Exact<{
   input: CreatePetInput;
 }>;
@@ -207,7 +226,7 @@ export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typena
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', coords: [number, number] }> }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
 
 export type GetPetQueryVariables = Exact<{
   petId: Scalars['String']['input'];
@@ -241,6 +260,11 @@ export const CreateRecordToLostPetsLocationDoc = gql`
     petId: $petId
     ownerUserId: $ownerUserId
   )
+}
+    `;
+export const DeleteRecordToLostPetsLocationDoc = gql`
+    mutation deleteRecordToLostPetsLocation($documentId: String!) {
+  deleteRecordToLostPetsLocation(documentId: $documentId)
 }
     `;
 export const CreatePetDoc = gql`
@@ -337,6 +361,12 @@ export const GetListOfPetsDoc = gql`
       petAddressCoords
     }
     lostPetLocations {
+      _createdAt
+      _updatedAt
+      _collectionId
+      _id
+      _permissions
+      _databaseId
       coords
     }
   }
@@ -471,6 +501,18 @@ export const createRecordToLostPetsLocation = (
           ) => {
             const m = client.mutate<CreateRecordToLostPetsLocationMutation, CreateRecordToLostPetsLocationMutationVariables>({
               mutation: CreateRecordToLostPetsLocationDoc,
+              ...options,
+            });
+            return m;
+          }
+export const deleteRecordToLostPetsLocation = (
+            options: Omit<
+              MutationOptions<any, DeleteRecordToLostPetsLocationMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<DeleteRecordToLostPetsLocationMutation, DeleteRecordToLostPetsLocationMutationVariables>({
+              mutation: DeleteRecordToLostPetsLocationDoc,
               ...options,
             });
             return m;

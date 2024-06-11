@@ -10,6 +10,8 @@ export { default as setSession } from './auth/queries/setSession';
 export * from './auth/queries/setSession';
 export { default as createRecordToLostPetsLocation } from './lostPetsLocation/mutations/createRecordToLostPetsLocation';
 export * from './lostPetsLocation/mutations/createRecordToLostPetsLocation';
+export { default as deleteRecordToLostPetsLocation } from './lostPetsLocation/mutations/deleteRecordToLostPetsLocation';
+export * from './lostPetsLocation/mutations/deleteRecordToLostPetsLocation';
 export { default as createPet } from './pet/mutations/createPet';
 export * from './pet/mutations/createPet';
 export { default as deletePet } from './pet/mutations/deletePet';

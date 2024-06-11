@@ -14,7 +14,7 @@ export default mutationField('createRecordToLostPetsLocation', {
 				longitude: args.coords[1],
 				petId: args.petId,
 			},
-			permissions.read(args.ownerUserId),
+			permissions.owner(args.ownerUserId),
 		)
 
 		return true

@@ -18,8 +18,8 @@
 	import Right from '$lib/components/Common/Right.svelte'
 	import { navigate } from '$lib/utils/navigator'
 	import DeletePetButton from './DeletePetButton.svelte'
-	import FoundPetButton from './FoundPetButton.svelte'
-	import PetFoundLocationItem from './Items/PetFoundLocationItem.svelte'
+	import IFoundPetButton from './IFoundPetButton.svelte'
+	import PetFoundLocationItem from './Items/PetFoundLocationItem/PetFoundLocationItem.svelte'
 	import { data } from '@maptiler/client'
 
 	export let petData: GraphqlDocument<TPetData>
@@ -49,11 +49,11 @@
 			</Column>
 		</Right>
 	{:else}
-		<FoundPetButton
+		<IFoundPetButton
 			class="mobile:w-full w-max flex justify-start"
 			ownerUserId={petData.userId}
 			petId={petData._id}
-		></FoundPetButton>
+		></IFoundPetButton>
 	{/if}
 
 	{#if petData.lostPetLocations.length && isOwner}

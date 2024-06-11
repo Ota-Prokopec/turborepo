@@ -1,6 +1,7 @@
 import { objectType, list } from 'nexus'
 import { Queries } from '../lib/appwrite/appwrite'
 import { ApolloError } from 'apollo-server-express'
+import { omit } from 'lodash'
 
 export default objectType({
 	name: 'Pet',
@@ -54,11 +55,13 @@ export default objectType({
 			resolve: async (source, args, ctx) => {
 				const { collections } = ctx.appwrite
 				const query = Queries.lostPetsLocation.equal('petId', source._id)
-				const list = await collections.lostPetsLocation.listDocuments([query])
 
 				try {
+					const list = await collections.lostPetsLocation.listDocuments([query])
+
 					return list.documents.map((document: (typeof list.documents)[number]) => ({
 						coords: [document.latitude, document.longitude],
+						...document,
 					}))
 				} catch (error) {
 					return []

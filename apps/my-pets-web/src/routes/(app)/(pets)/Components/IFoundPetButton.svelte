@@ -16,12 +16,12 @@
 	export let ownerUserId: string
 
 	let modalOpen = false
-	let sendingStatus: 'sending' | 'sent' | null | 'error' = null
+	let sendingStatus: 'sending' | 'sent' | null | 'error' | 'gpsOff' = null
 
 	const sendLocation = async () => {
+		sendingStatus = 'sending'
+		const coords = storage.usersLocation
 		try {
-			sendingStatus = 'sending'
-			const coords = storage.usersLocation
 			if (!coords) throw new Error('User does not have any location')
 			await sdk.createRecordToLostPetsLocation({
 				coords: coords,
@@ -30,7 +30,8 @@
 			})
 			sendingStatus = 'sent'
 		} catch (error) {
-			sendingStatus = 'error'
+			if (!coords) sendingStatus = 'gpsOff'
+			else sendingStatus = 'error'
 		}
 	}
 
@@ -46,6 +47,10 @@
 
 {#if sendingStatus === 'error'}
 	<ErrorModal></ErrorModal>
+{:else if sendingStatus === 'gpsOff'}
+	<ErrorModal>
+		{$LL.error.gpsIsOff()}
+	</ErrorModal>
 {:else}
 	<Modal bind:open={modalOpen} title={$LL.component.FoundPetButton.Modal.title()}>
 		<Text>{$LL.component.FoundPetButton.Modal.text()}</Text>

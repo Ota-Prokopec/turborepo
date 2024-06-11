@@ -1,3 +1,4 @@
+import { zodGraphqlDocument } from '@repo/appwrite-types'
 import { zodCoords } from '@repo/ts-types'
 import { z } from 'zod'
 
@@ -22,10 +23,12 @@ export const zodPetData = z.object({
 			text: z.string(),
 		})
 		.array(),
-	lostPetLocations: z
-		.object({
-			coords: zodCoords,
-		})
+	lostPetLocations: zodGraphqlDocument
+		.merge(
+			z.object({
+				coords: zodCoords,
+			}),
+		)
 		.array(),
 })
 

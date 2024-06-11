@@ -391,12 +391,22 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		DeleteButton: {
+			/**
+			 * D​e​l​e​t​e
+			 */
+			label: string
+		}
 	}
 	error: {
 		/**
 		 * D​o​š​l​o​ ​k​ ​n​e​o​č​e​k​á​v​a​n​é​ ​c​h​y​b​ě​,​ ​p​r​o​s​í​m​,​ ​s​d​í​l​e​j​t​e​ ​t​o​ ​s​ ​t​ý​m​e​m​ ​p​o​d​p​o​r​y
 		 */
 		unexpectedError: string
+		/**
+		 * V​a​š​e​ ​G​P​S​ ​j​e​ ​v​y​p​n​u​t​a​,​ ​p​r​o​s​í​m​e​ ​z​a​p​n​ě​t​e​ ​s​i​ ​G​P​S​,​ ​a​b​y​c​h​o​m​ ​b​y​l​i​ ​s​c​h​o​p​n​i​ ​u​r​č​i​t​ ​v​a​š​i​ ​p​o​l​o​h​u​.
+		 */
+		gpsIsOff: string
 	}
 }
 
@@ -778,12 +788,22 @@ export type TranslationFunctions = {
 			 */
 			label: () => LocalizedString
 		}
+		DeleteButton: {
+			/**
+			 * Delete
+			 */
+			label: () => LocalizedString
+		}
 	}
 	error: {
 		/**
 		 * Došlo k neočekávané chybě, prosím, sdílejte to s týmem podpory
 		 */
 		unexpectedError: () => LocalizedString
+		/**
+		 * Vaše GPS je vypnuta, prosíme zapněte si GPS, abychom byli schopni určit vaši polohu.
+		 */
+		gpsIsOff: () => LocalizedString
 	}
 }
 

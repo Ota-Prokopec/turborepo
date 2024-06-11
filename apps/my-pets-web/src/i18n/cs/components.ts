@@ -140,4 +140,7 @@ export const componentsCS = {
 	LoadingModal: {
 		label: 'načítání...',
 	},
+	DeleteButton: {
+		label: 'Vymazat',
+	},
 } satisfies BaseTranslation

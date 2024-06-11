@@ -20,7 +20,9 @@
 
 	export let map: Map | undefined = undefined
 	export let userCenter: Coords | undefined | null = $lsStore.usersLocation
+	export let disableGeolocation = false
 	$: usersLocation = $lsStore.usersLocation
+	export let interactive = true
 
 	export let zoom: number = 16
 	export let maxZoom: number | undefined = undefined
@@ -46,12 +48,14 @@
 <div class={twMerge('w-full h-full relative', className)}>
 	{#if userCenter}
 		<MapLibre
+			{interactive}
 			{style}
 			{maxZoom}
 			{minZoom}
 			bind:map
 			center={[userCenter[1], userCenter[0]]}
-			zoom={14}
+			{zoom}
+			on:click
 			bind:pitch={deg}
 			on:zoom={(e) => {
 				zoom = e.detail.map.getZoom()
@@ -61,13 +65,16 @@
 				dispatch('load', { userCenter })
 			}}
 		>
-			<GeolocateControl
-				position="top-left"
-				positionOptions={{ enableHighAccuracy: true }}
-				trackUserLocation
-				showAccuracyCircle={false}
-				showUserLocation
-			/>
+			{#if !disableGeolocation}
+				<GeolocateControl
+					position="top-left"
+					positionOptions={{ enableHighAccuracy: true }}
+					trackUserLocation
+					showAccuracyCircle={false}
+					showUserLocation
+				/>
+			{/if}
+
 			<FillExtrusionLayer
 				source="maptiler_planet"
 				sourceLayer="building"
