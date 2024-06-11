@@ -19,10 +19,14 @@
 	import { sdk } from '$src/graphql/sdk'
 	import { locale } from '$src/i18n/i18n-svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
+	import { createEventDispatcher } from 'svelte'
+
+	const dispatch = createEventDispatcher<{ deleted: undefined }>()
 
 	export let location: TPetData['lostPetLocations'][number]
 	let showMap = false
 	let deletingStatus: 'deleting' | 'deleted' | null | 'error' = null
+	export let disabled = false
 
 	const placePromise = mapTiler.reverseGeocoding(
 		location.coords[0],
@@ -30,6 +34,7 @@
 		{},
 	)
 	const date = new Date(location._createdAt)
+
 	const placeNamePromise = placePromise.then((place) => {
 		return place.at(0)?.place_name ?? location.coords
 	})
@@ -47,6 +52,8 @@
 			deletingStatus = 'deleting'
 			await sdk.deleteRecordToLostPetsLocation({ documentId: location._id })
 			deletingStatus = 'deleted'
+			disabled = true
+			dispatch('deleted')
 		} catch (error) {
 			deletingStatus = 'error'
 		}
@@ -61,7 +68,7 @@
 	<ErrorModal></ErrorModal>
 {/if}
 
-<Card class="!w-full">
+<Card {disabled} class="!w-full">
 	<Column>
 		<Columns columns="min-content auto" class="gap-2">
 			<Map

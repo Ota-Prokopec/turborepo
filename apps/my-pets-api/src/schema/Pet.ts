@@ -54,10 +54,13 @@ export default objectType({
 			type: list('LostPetsLocation'),
 			resolve: async (source, args, ctx) => {
 				const { collections } = ctx.appwrite
-				const query = Queries.lostPetsLocation.equal('petId', source._id)
+				const queries = [
+					Queries.lostPetsLocation.equal('petId', source._id),
+					Queries.lostPetsLocation.orderDesc('$createdAt'),
+				]
 
 				try {
-					const list = await collections.lostPetsLocation.listDocuments([query])
+					const list = await collections.lostPetsLocation.listDocuments(queries)
 
 					return list.documents.map((document: (typeof list.documents)[number]) => ({
 						coords: [document.latitude, document.longitude],

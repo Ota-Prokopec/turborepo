@@ -7,7 +7,7 @@
 
 	export let locations: TPetData['lostPetLocations']
 
-	let modalOpen = true
+	let modalOpen = false
 
 	let className = ''
 	export { className as class }
@@ -22,7 +22,11 @@
 		<NoContent></NoContent>
 	{:else}
 		{#each locations as location}
-			<PetFoundLocationCard {location}></PetFoundLocationCard>
+			<PetFoundLocationCard
+				on:deleted={() =>
+					(locations = locations.filter((item) => item._id !== location._id))}
+				{location}
+			></PetFoundLocationCard>
 		{/each}
 	{/if}
 </Modal>
