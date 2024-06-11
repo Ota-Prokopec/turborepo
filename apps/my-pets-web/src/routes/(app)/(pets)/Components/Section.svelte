@@ -1,26 +1,24 @@
 <script lang="ts">
 	import Avatar from '$lib/components/Common/Avatar.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
+	import Right from '$lib/components/Common/Right.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
+	import { navigate } from '$lib/utils/navigator'
+	import { type GraphqlDocument } from '@repo/appwrite-types'
 	import { type TPetData } from '@repo/my-pets-tstypes'
 	import OwnerPhoneNumberItem from '../Components/Items/OwnerPhoneNumberItem.svelte'
 	import PetAddressItem from '../Components/Items/PetAddressItem.svelte'
 	import PetAllergensItem from '../Components/Items/PetAllergensItem.svelte'
+	import PetDescriptionCustomFieldsItem from '../Components/Items/PetDescriptionCustomFieldsItem.svelte'
 	import PetGenderItem from '../Components/Items/PetGenderItem.svelte.svelte'
 	import PetNameItem from '../Components/Items/PetNameItem.svelte'
 	import PetTreatingItem from '../Components/Items/PetTreatingItem.svelte'
 	import PetTypeItem from '../Components/Items/PetTypeItem.svelte'
-	import PetDescriptionCustomFieldsItem from '../Components/Items/PetDescriptionCustomFieldsItem.svelte'
-	import PetUrl from './Items/PetUrlItem.svelte'
-	import { type GraphqlDocument } from '@repo/appwrite-types'
-	import Icon from '$lib/components/Common/Icon.svelte'
-	import EditPetButton from './EditPetButton.svelte'
-	import Right from '$lib/components/Common/Right.svelte'
-	import { navigate } from '$lib/utils/navigator'
 	import DeletePetButton from './DeletePetButton.svelte'
-	import FoundPetButton from './FoundPetButton.svelte'
-	import PetFoundLocationItem from './Items/PetFoundLocationItem.svelte'
-	import { data } from '@maptiler/client'
+	import EditPetButton from './EditPetButton.svelte'
+	import IFoundPetButton from './IFoundPetButton.svelte'
+	import PetFoundLocationItem from './Items/PetFoundLocationItem/PetFoundLocationItem.svelte'
+	import PetUrl from './Items/PetUrlItem.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -49,17 +47,17 @@
 			</Column>
 		</Right>
 	{:else}
-		<FoundPetButton
+		<IFoundPetButton
 			class="mobile:w-full w-max flex justify-start"
 			ownerUserId={petData.userId}
 			petId={petData._id}
-		></FoundPetButton>
+		></IFoundPetButton>
 	{/if}
 
 	{#if petData.lostPetLocations.length && isOwner}
 		<PetFoundLocationItem
 			class="mobile:w-full w-max flex justify-start"
-			locations={petData.lostPetLocations}
+			bind:locations={petData.lostPetLocations}
 		></PetFoundLocationItem>
 	{/if}
 

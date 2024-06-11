@@ -8,12 +8,14 @@
 	import { createEventDispatcher } from 'svelte'
 
 	const dispatch = createEventDispatcher<{ return: undefined }>()
+
+	export let open = true
 </script>
 
 <Modal
 	color="green"
 	class="w-[200px] h-[160px] max-w-full max-h-full z-50"
-	open
+	{open}
 	dismissable={false}
 >
 	<Column class="w-full h-full flex justify-center items-center">
@@ -23,6 +25,7 @@
 		</Icon>
 		<Button
 			on:click={() => {
+				open = false
 				dispatch('return')
 			}}>{$LL.component.DeletedModal.returningButtonLabel()}</Button
 		>

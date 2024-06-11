@@ -31,6 +31,12 @@ input CreatePetInput {
 }
 
 type LostPetsLocation {
+  _collectionId: String!
+  _createdAt: String!
+  _databaseId: String!
+  _id: String!
+  _permissions: [String!]!
+  _updatedAt: String!
   coords: Coords!
 }
 
@@ -38,6 +44,7 @@ type Mutation {
   createPet(input: CreatePetInput!): Pet!
   createRecordToLostPetsLocation(coords: Coords!, ownerUserId: String!, petId: String!): Boolean!
   deletePet(petId: String!): Boolean!
+  deleteRecordToLostPetsLocation(documentId: String!): Boolean!
   logout: Boolean!
   updatePet(data: CreatePetInput!, petId: String!): Pet!
 }

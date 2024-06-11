@@ -25,6 +25,12 @@ query getListOfPets {
 			petAddressCoords
 		}
 		lostPetLocations {
+			_createdAt
+			_updatedAt
+			_collectionId
+			_id
+			_permissions
+			_databaseId
 			coords
 		}
 	}

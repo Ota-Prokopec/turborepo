@@ -26,7 +26,6 @@
 			`${location.origin}/auth/oauth2/success`,
 			`${location.origin}/auth/oauth2/failure`,
 		)
-		isLoading = false
 	}
 
 	const socials = [
@@ -47,12 +46,11 @@
 
 {#if isLoading}
 	<LoadingModal></LoadingModal>
-{:else}
-	<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
-		{#each socials as { icon, key }}
-			<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
-				<svelte:component this={icon} />
-			</Icon>
-		{/each}
-	</Row>
 {/if}
+<Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
+	{#each socials as { icon, key }}
+		<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
+			<svelte:component this={icon} />
+		</Icon>
+	{/each}
+</Row>
