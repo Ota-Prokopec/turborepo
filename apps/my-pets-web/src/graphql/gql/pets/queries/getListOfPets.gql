@@ -24,5 +24,8 @@ query getListOfPets {
 			petAddress
 			petAddressCoords
 		}
+		lostPetLocations {
+			coords
+		}
 	}
 }

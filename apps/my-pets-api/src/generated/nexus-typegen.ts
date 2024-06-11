@@ -78,6 +78,9 @@ export interface NexusGenObjects {
   Account: { // root type
     userId: string; // String!
   }
+  LostPetsLocation: { // root type
+    coords: NexusGenScalars['Coords']; // Coords!
+  }
   Mutation: {};
   Pet: { // root type
     _collectionId: string; // String!
@@ -131,8 +134,12 @@ export interface NexusGenFieldTypes {
   Account: { // field return type
     userId: string; // String!
   }
+  LostPetsLocation: { // field return type
+    coords: NexusGenScalars['Coords']; // Coords!
+  }
   Mutation: { // field return type
     createPet: NexusGenRootTypes['Pet']; // Pet!
+    createRecordToLostPetsLocation: boolean; // Boolean!
     deletePet: boolean; // Boolean!
     logout: boolean; // Boolean!
     updatePet: NexusGenRootTypes['Pet']; // Pet!
@@ -144,6 +151,7 @@ export interface NexusGenFieldTypes {
     _id: string; // String!
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
+    lostPetLocations: NexusGenRootTypes['LostPetsLocation'][]; // [LostPetsLocation!]!
     ownerPhoneNumber: string; // String!
     petAddress: NexusGenRootTypes['PetAddress']; // PetAddress!
     petAddressId: string; // String!
@@ -186,8 +194,12 @@ export interface NexusGenFieldTypeNames {
   Account: { // field return type name
     userId: 'String'
   }
+  LostPetsLocation: { // field return type name
+    coords: 'Coords'
+  }
   Mutation: { // field return type name
     createPet: 'Pet'
+    createRecordToLostPetsLocation: 'Boolean'
     deletePet: 'Boolean'
     logout: 'Boolean'
     updatePet: 'Pet'
@@ -199,6 +211,7 @@ export interface NexusGenFieldTypeNames {
     _id: 'String'
     _permissions: 'String'
     _updatedAt: 'String'
+    lostPetLocations: 'LostPetsLocation'
     ownerPhoneNumber: 'String'
     petAddress: 'PetAddress'
     petAddressId: 'String'
@@ -241,6 +254,11 @@ export interface NexusGenArgTypes {
   Mutation: {
     createPet: { // args
       input: NexusGenInputs['CreatePetInput']; // CreatePetInput!
+    }
+    createRecordToLostPetsLocation: { // args
+      coords: NexusGenScalars['Coords']; // Coords!
+      ownerUserId: string; // String!
+      petId: string; // String!
     }
     deletePet: { // args
       petId: string; // String!

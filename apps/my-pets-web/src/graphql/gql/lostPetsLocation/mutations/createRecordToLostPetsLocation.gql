@@ -1,0 +1,11 @@
+mutation createRecordToLostPetsLocation(
+	$coords: Coords!
+	$petId: String!
+	$ownerUserId: String!
+) {
+	createRecordToLostPetsLocation(
+		coords: $coords
+		petId: $petId
+		ownerUserId: $ownerUserId
+	)
+}

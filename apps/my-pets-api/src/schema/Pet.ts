@@ -49,5 +49,21 @@ export default objectType({
 				}
 			},
 		})
+		t.field('lostPetLocations', {
+			type: list('LostPetsLocation'),
+			resolve: async (source, args, ctx) => {
+				const { collections } = ctx.appwrite
+				const query = Queries.lostPetsLocation.equal('petId', source._id)
+				const list = await collections.lostPetsLocation.listDocuments([query])
+
+				try {
+					return list.documents.map((document: (typeof list.documents)[number]) => ({
+						coords: [document.latitude, document.longitude],
+					}))
+				} catch (error) {
+					return []
+				}
+			},
+		})
 	},
 })

@@ -50,9 +50,15 @@ export type CreatePetInput = {
   petType: Scalars['PetType']['input'];
 };
 
+export type LostPetsLocation = {
+  __typename?: 'LostPetsLocation';
+  coords: Scalars['Coords']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createPet: Pet;
+  createRecordToLostPetsLocation: Scalars['Boolean']['output'];
   deletePet: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
   updatePet: Pet;
@@ -61,6 +67,13 @@ export type Mutation = {
 
 export type MutationCreatePetArgs = {
   input: CreatePetInput;
+};
+
+
+export type MutationCreateRecordToLostPetsLocationArgs = {
+  coords: Scalars['Coords']['input'];
+  ownerUserId: Scalars['String']['input'];
+  petId: Scalars['String']['input'];
 };
 
 
@@ -82,6 +95,7 @@ export type Pet = {
   _id: Scalars['String']['output'];
   _permissions: Array<Scalars['String']['output']>;
   _updatedAt: Scalars['String']['output'];
+  lostPetLocations: Array<LostPetsLocation>;
   ownerPhoneNumber: Scalars['String']['output'];
   petAddress: PetAddress;
   petAddressId: Scalars['String']['output'];
@@ -155,6 +169,15 @@ export type SetSessionQueryVariables = Exact<{
 
 export type SetSessionQuery = { __typename?: 'Query', setSession: boolean };
 
+export type CreateRecordToLostPetsLocationMutationVariables = Exact<{
+  coords: Scalars['Coords']['input'];
+  petId: Scalars['String']['input'];
+  ownerUserId: Scalars['String']['input'];
+}>;
+
+
+export type CreateRecordToLostPetsLocationMutation = { __typename?: 'Mutation', createRecordToLostPetsLocation: boolean };
+
 export type CreatePetMutationVariables = Exact<{
   input: CreatePetInput;
 }>;
@@ -180,14 +203,14 @@ export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typena
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', coords: [number, number] }> }> };
 
 export type GetPetQueryVariables = Exact<{
   petId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', coords: [number, number] }> } };
 
 
 export const GetAccountDocument = gql`
@@ -205,6 +228,15 @@ export const LogOutDocument = gql`
 export const SetSessionDocument = gql`
     query setSession($session: String!) {
   setSession(session: $session)
+}
+    `;
+export const CreateRecordToLostPetsLocationDocument = gql`
+    mutation createRecordToLostPetsLocation($coords: Coords!, $petId: String!, $ownerUserId: String!) {
+  createRecordToLostPetsLocation(
+    coords: $coords
+    petId: $petId
+    ownerUserId: $ownerUserId
+  )
 }
     `;
 export const CreatePetDocument = gql`
@@ -300,6 +332,9 @@ export const GetListOfPetsDocument = gql`
       petAddress
       petAddressCoords
     }
+    lostPetLocations {
+      coords
+    }
   }
 }
     `;
@@ -336,6 +371,9 @@ export const GetPetDocument = gql`
       petAddress
       petAddressCoords
     }
+    lostPetLocations {
+      coords
+    }
   }
 }
     `;
@@ -355,6 +393,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     setSession(variables: SetSessionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SetSessionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SetSessionQuery>(SetSessionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'setSession', 'query');
+    },
+    createRecordToLostPetsLocation(variables: CreateRecordToLostPetsLocationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CreateRecordToLostPetsLocationMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateRecordToLostPetsLocationMutation>(CreateRecordToLostPetsLocationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createRecordToLostPetsLocation', 'mutation');
     },
     createPet(variables: CreatePetMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<CreatePetMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePetMutation>(CreatePetDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPet', 'mutation');

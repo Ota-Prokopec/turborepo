@@ -1,5 +1,7 @@
 import { Types } from '@repo/appwrite-ssr-graphql'
 import {
+	TLostPetsLocationDocumentCreate,
+	TLostPetsLocationGraphqlDocument,
 	TPetAddressDocumentCreate,
 	TPetAddressGraphqlDocument,
 	TPetDocumentCreate,
@@ -27,6 +29,10 @@ export const collectionsClient = (
 			'my-pets',
 			'petAddress',
 		),
+		lostPetsLocation: new Collection<
+			TLostPetsLocationGraphqlDocument,
+			TLostPetsLocationDocumentCreate
+		>('my-pets', 'lostPetsLocations'),
 	}
 }
 
@@ -43,5 +49,9 @@ export const collectionsAdmin = (
 			'my-pets',
 			'petAddress',
 		),
+		lostPetsLocation: new Collection<
+			TLostPetsLocationGraphqlDocument,
+			TLostPetsLocationDocumentCreate
+		>('my-pets', 'lostPetsLocations'),
 	}
 }

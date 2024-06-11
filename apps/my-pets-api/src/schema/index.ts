@@ -4,6 +4,8 @@
 
 export { default as Account } from './Account';
 export * from './Account';
+export { default as LostPetsLocation } from './LostPetsLocation';
+export * from './LostPetsLocation';
 export { default as Pet } from './Pet';
 export * from './Pet';
 export { default as PetAddress } from './PetAddress';
