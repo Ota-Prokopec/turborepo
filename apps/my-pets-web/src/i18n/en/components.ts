@@ -143,4 +143,8 @@ export const componentsCS = {
 	DeleteButton: {
 		label: 'Delete',
 	},
+	Terms: {
+		terms: 'Conditions for application using',
+		acceptButtonLabel: 'Accept',
+	},
 } satisfies BaseTranslation

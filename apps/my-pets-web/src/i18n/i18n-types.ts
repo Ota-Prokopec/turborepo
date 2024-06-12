@@ -397,6 +397,16 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		Terms: {
+			/**
+			 * C​o​n​d​i​t​i​o​n​s​ ​f​o​r​ ​a​p​p​l​i​c​a​t​i​o​n​ ​u​s​i​n​g
+			 */
+			terms: string
+			/**
+			 * A​c​c​e​p​t
+			 */
+			acceptButtonLabel: string
+		}
 	}
 	error: {
 		/**
@@ -793,6 +803,16 @@ export type TranslationFunctions = {
 			 * Delete
 			 */
 			label: () => LocalizedString
+		}
+		Terms: {
+			/**
+			 * Conditions for application using
+			 */
+			terms: () => LocalizedString
+			/**
+			 * Accept
+			 */
+			acceptButtonLabel: () => LocalizedString
 		}
 	}
 	error: {
