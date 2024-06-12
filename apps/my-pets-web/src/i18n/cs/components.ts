@@ -143,4 +143,8 @@ export const componentsCS = {
 	DeleteButton: {
 		label: 'Vymazat',
 	},
+	Terms: {
+		terms: 'Podmínky pro užívání aplikace',
+		acceptButtonLabel: 'Akceptovat',
+	},
 } satisfies BaseTranslation

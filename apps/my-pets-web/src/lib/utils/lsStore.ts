@@ -9,6 +9,7 @@ export type Data = {
 	usersLocation?: Coords | null
 	colorTheme?: ColorTheme
 	language?: Locales
+	temrsAccepted?: boolean
 } & Record<string, any>
 
 const parseLocalStorageValue = (value: string) => {

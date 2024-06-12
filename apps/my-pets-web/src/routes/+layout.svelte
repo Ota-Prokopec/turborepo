@@ -11,8 +11,14 @@
 	import Text from '$lib/components/Common/Text.svelte'
 	import { alertStore } from './alertStore'
 	import { Button } from 'flowbite-svelte'
+	import lsStore from '$lib/utils/lsStore'
+	import Terms from '$lib/components/MyPetsComponents/Terms.svelte'
 	const queryClient = new QueryClient()
 </script>
+
+{#if !$lsStore.temrsAccepted}
+	<Terms class=" z-50"></Terms>
+{/if}
 
 <Alert
 	class="z-[9999] absolute top-0 max-w-[500px] w-[95%] m-2"

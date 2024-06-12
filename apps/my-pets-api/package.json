@@ -32,12 +32,12 @@
 		"vitest": "^0.34.6"
 	},
 	"dependencies": {
-		"@repo/cloudinary-server": "*",
-		"@repo/my-pets-tstypes": "*",
+		"@cloudinary/url-gen": "^1.15.0",
 		"@repo/appwrite-permissions": "*",
 		"@repo/appwrite-ssr-graphql": "*",
+		"@repo/cloudinary-server": "*",
+		"@repo/my-pets-tstypes": "*",
 		"@repo/utils": "*",
-		"@cloudinary/url-gen": "^1.15.0",
 		"@types/cookie-parser": "^1.4.3",
 		"apollo-server-express": "^3.12.1",
 		"appwrite": "^13.0.0",
@@ -57,6 +57,7 @@
 		"sharp": "^0.33.1",
 		"tsconfig": "*",
 		"vite-plugin-node": "^3.0.2",
+		"web-push": "^3.6.7",
 		"wikipedia": "^2.1.1"
 	}
 }
