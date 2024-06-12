@@ -3,7 +3,6 @@ import { error, redirect } from '@sveltejs/kit'
 import { LayoutServerLoad } from './$types'
 
 export const ssr = false
-export const prerender = true
 
 export const load: LayoutServerLoad = async (event) => {
 	const routeId = event.route.id
