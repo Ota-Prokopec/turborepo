@@ -30,7 +30,7 @@
 		| 'error'
 		| 'required-fields-empty-error' = null
 
-	const data: TCreatePetData = {
+	let data: TCreatePetData = {
 		petAddress: { petAddress: '', petAddressCoords: $lsStore.usersLocation ?? [0, 0] },
 		petName: '',
 		petType: 'dog',
@@ -108,8 +108,12 @@
 
 	<PetNameInput bind:value={data.petName}></PetNameInput>
 	<PetAddressInput
-		bind:coords={data.petAddress.petAddressCoords}
-		bind:value={data.petAddress.petAddress}
+		coords={data.petAddress.petAddressCoords}
+		value={data.petAddress.petAddress}
+		on:change={(e) => {
+			data.petAddress.petAddress = e.detail.value
+			data.petAddress.petAddressCoords = e.detail.coords
+		}}
 	></PetAddressInput>
 	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>
