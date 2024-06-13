@@ -7,12 +7,19 @@
 		FillExtrusionLayer,
 		GeolocateControl,
 		MapLibre,
+		NavigationControl,
 		ZoomRange,
 		type Map,
 	} from 'svelte-maplibre'
 	import { twMerge } from 'tailwind-merge'
 	import FullPageLoading from '../Common/FullPageLoading.svelte'
-	import { MapLibreGL, IControl, NavigationControl } from 'maplibre-gl'
+	import { MapLibreGL, IControl } from 'maplibre-gl'
+	import Column from '../Common/Column.svelte'
+	import Icon from '../Common/Icon.svelte'
+	import IconAdd from '../Icons/IconAdd.svelte'
+	import IconTimes from '../Icons/IconTimes.svelte'
+	import IconPlus from '../Icons/IconPlus.svelte'
+	import IconMinus from '../Icons/IconMinus.svelte'
 
 	const dispatch = createEventDispatcher<{
 		load: { userCenter: Coords }
@@ -23,9 +30,10 @@
 	export let map: Map | undefined = undefined
 	export let userCenter: Coords | undefined | null = $lsStore.usersLocation
 	export let disableGeolocation = false
-	export let activeZoomRange = false
+	export let disableNavigation = false
 	$: usersLocation = $lsStore.usersLocation
 	export let interactive = true
+	export let defaultZoom = 16
 
 	export let zoom: number = 16
 	export let maxZoom: number | undefined = undefined
@@ -44,8 +52,6 @@
 		dispatch('moveend', { moveEndLocation: [mapBoxCenter.lat, mapBoxCenter.lng] })
 	})
 
-	$: map?.scrollZoom.enable({ around: 'center' })
-
 	let className = ''
 	export { className as class }
 </script>
@@ -59,14 +65,15 @@
 			{minZoom}
 			bind:map
 			center={[userCenter[1], userCenter[0]]}
-			{zoom}
 			on:click
+			zoom={defaultZoom}
 			bind:pitch={deg}
 			on:zoom={(e) => {
 				zoom = e.detail.map.getZoom()
 			}}
 			on:load={(e) => {
 				if (!userCenter) throw new Error('center is not defined')
+
 				dispatch('load', { userCenter })
 			}}
 		>
@@ -78,6 +85,9 @@
 					showAccuracyCircle={false}
 					showUserLocation
 				/>
+			{/if}
+			{#if !disableNavigation}
+				<NavigationControl position="top-right"></NavigationControl>
 			{/if}
 
 			<FillExtrusionLayer
