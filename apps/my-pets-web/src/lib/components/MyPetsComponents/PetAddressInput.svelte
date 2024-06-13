@@ -17,6 +17,9 @@
 	import Text from '../Common/Text.svelte'
 	import RequiredBadge from '../Badges/RequiredBadge.svelte'
 	import Loading from '../Common/Loading.svelte'
+	import { createEventDispatcher } from 'svelte'
+
+	const dispatch = createEventDispatcher<{ change: { value: string; coords: Coords } }>()
 
 	export let value: string
 	export let coords: Coords = $lsStore.usersLocation ?? [0, 0]
@@ -39,6 +42,7 @@
 <Card>
 	<Column>
 		<Input
+			on:input={() => dispatch('change', { value: value, coords: coords })}
 			bind:value
 			class={twMerge('w-full', className)}
 			floatingLabel={$LL.component.PetAddressInput.title()}
@@ -65,7 +69,12 @@
 			<RequiredBadge class="absolute top-[45px] right-[-8px] z-20"></RequiredBadge>
 			<Text class="text-center">{$LL.component.PetAddressInput.mapTitle()}</Text>
 			<GeocodingMap class="min-h-[400px] top-[10px] ">
-				<Marker draggable class="z-50 " bind:location={coords}>
+				<Marker
+					on:dragend={() => dispatch('change', { value: value, coords: coords })}
+					draggable
+					class="z-50 "
+					bind:location={coords}
+				>
 					<Icon class="child:h-10 child:w-10"><IconLocation /></Icon>
 				</Marker>
 			</GeocodingMap>
