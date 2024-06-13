@@ -15,7 +15,7 @@
 	$: valueAsPhoneFormat = value as E164Number
 </script>
 
-<Columns class="items-center" columns="auto auto">
+<Columns class="items-center flex" columns="auto auto">
 	<Text class="">CZ +420</Text>
 	<TelInput
 		{placeholder}

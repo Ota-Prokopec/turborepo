@@ -11,7 +11,7 @@
 	export { className as class }
 </script>
 
-<Card class="flex flex-wrap flex-col !gap-2">
+<Card class="flex flex-wrap flex-col !gap-2 relative">
 	<Text>{$LL.component.OwnerPhoneNumberInput.title()}</Text>
 	<RequiredBadge class="absolute top-[-8px] right-[-8px]"></RequiredBadge>
 

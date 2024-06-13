@@ -18,7 +18,7 @@
 	export let value: (typeof items)[number]['key'] = 'dog'
 </script>
 
-<Tabs class="w-min" let:key bind:active={value} {items}>
+<Tabs class="w-min bg-black" let:key bind:active={value} {items}>
 	<Icon class="w-6 h-6 child:fill-white">
 		{#if key === 'cat'}
 			<IconCat></IconCat>
