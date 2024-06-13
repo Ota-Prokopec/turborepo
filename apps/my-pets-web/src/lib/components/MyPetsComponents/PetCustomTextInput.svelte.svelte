@@ -16,7 +16,7 @@
 </script>
 
 <Card class="w-full h-auto max-w-none !gap-4 flex flex-wrap flex-col">
-	<Text>Custom</Text>
+	<Text>{$LL.component.PetCustomTextInput.title()}</Text>
 
 	<Column class="ml-2">
 		{#each fields as { title, text }}

@@ -47,6 +47,7 @@ export const componentsCS = {
 		title: 'Jak se starat o vašeho mazlíčka?',
 	},
 	PetCustomTextInput: {
+		title: 'Vlastní políčka',
 		placeholder: {
 			title: 'Název',
 			text: 'Text',

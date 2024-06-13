@@ -186,6 +186,10 @@ type RootTranslation = {
 			title: string
 		}
 		PetCustomTextInput: {
+			/**
+			 * C​u​s​t​o​m​ ​f​i​e​l​d​s
+			 */
+			title: string
 			placeholder: {
 				/**
 				 * t​i​t​l​e
@@ -595,6 +599,10 @@ export type TranslationFunctions = {
 			title: () => LocalizedString
 		}
 		PetCustomTextInput: {
+			/**
+			 * Custom fields
+			 */
+			title: () => LocalizedString
 			placeholder: {
 				/**
 				 * title
