@@ -18,6 +18,7 @@
 	import RequiredBadge from '../Badges/RequiredBadge.svelte'
 	import Loading from '../Common/Loading.svelte'
 	import { createEventDispatcher } from 'svelte'
+	import Map from '../Map/Map.svelte'
 
 	const dispatch = createEventDispatcher<{ change: { value: string; coords: Coords } }>()
 
@@ -31,6 +32,7 @@
 
 			const city = await mapTiler.reverseGeocoding(coords[0], coords[1], {})
 			value = city.at(0)?.place_name ?? ''
+			dispatch('change', { value: value, coords: coords })
 		} catch (error) {}
 		isTrasferingLoading = false
 	}
@@ -68,7 +70,7 @@
 		<Column class="gap-0 relative">
 			<RequiredBadge class="absolute top-[45px] right-[-8px] z-20"></RequiredBadge>
 			<Text class="text-center">{$LL.component.PetAddressInput.mapTitle()}</Text>
-			<GeocodingMap class="min-h-[400px] top-[10px] ">
+			<Map class="min-h-[400px] top-[10px] ">
 				<Marker
 					on:dragend={() => dispatch('change', { value: value, coords: coords })}
 					draggable
@@ -77,7 +79,7 @@
 				>
 					<Icon class="child:h-10 child:w-10"><IconLocation /></Icon>
 				</Marker>
-			</GeocodingMap>
+			</Map>
 		</Column>
 	</Column>
 </Card>

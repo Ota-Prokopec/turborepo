@@ -3,6 +3,9 @@
 *:after {
 	box-sizing: border-box;
 }
+* {
+	touch-action: manipulation;
+}
 
 @import url('normalize.scss');
 
