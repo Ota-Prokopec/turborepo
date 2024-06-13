@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DeleteButton from '$lib/components/Buttons/DeleteButton.svelte'
 	import SeeOnGoogleMapsButton from '$lib/components/Buttons/SeeOnGoogleMapsButton.svelte'
+	import SeeOnMapButton from '$lib/components/Buttons/SeeOnMapButton.svelte'
 	import Card from '$lib/components/Common/Card.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
 	import Columns from '$lib/components/Common/Columns.svelte'
@@ -73,10 +74,11 @@
 		<Columns columns="min-content auto" class="gap-2">
 			<Map
 				on:click={() => (showMap = true)}
-				zoom={8}
+				defaultZoom={8}
 				userCenter={location.coords}
 				interactive={false}
 				disableGeolocation
+				disableNavigation
 				class="w-[100px] h-[100px] !rounded-lg overflow-hidden"
 			>
 				<Marker class="w-8 h-8 z-20" location={location.coords}>
@@ -92,9 +94,9 @@
 
 		{#if showMap}
 			<Map
-				activeZoomRange
 				zoom={8}
 				on:click={() => (showMap = true)}
+				userCenter={location.coords}
 				class="w-full h-[350px] !rounded-lg overflow-hidden"
 			>
 				<Marker class="w-8 h-8 z-20" location={location.coords}>
@@ -106,6 +108,9 @@
 		<Text class="ml-2 !text-gray-400">{normalizedDate}</Text>
 		<Right>
 			<Row class="gap-2">
+				{#if !showMap}
+					<SeeOnMapButton on:click={() => (showMap = true)}></SeeOnMapButton>
+				{/if}
 				<SeeOnGoogleMapsButton coords={location.coords}></SeeOnGoogleMapsButton>
 				<DeleteButton on:click={deleteLocation}></DeleteButton>
 			</Row>

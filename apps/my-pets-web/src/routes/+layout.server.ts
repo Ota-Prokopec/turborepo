@@ -15,7 +15,11 @@ export const load: LayoutServerLoad = async (event) => {
 			user,
 		}
 	} catch (error) {
-		if (event.url.href?.includes('auth') || event.url.href?.includes('/pet/')) {
+		if (
+			event.url.href?.includes('auth') ||
+			event.url.href?.includes('/pet/') ||
+			event.url.href?.includes('/map')
+		) {
 			return { user: null }
 		}
 
