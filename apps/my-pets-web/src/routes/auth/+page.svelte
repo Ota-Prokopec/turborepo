@@ -6,6 +6,8 @@
 	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
 	import Padding from '$lib/components/Common/Padding.svelte'
 	import ButtonLinkToDeveloperPage from '$lib/components/Buttons/ButtonLinkToDeveloperPage.svelte'
+	import Icon from '$lib/components/Common/Icon.svelte'
+	import IconBan from '$lib/components/Icons/IconBan.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">

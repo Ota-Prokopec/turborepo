@@ -47,6 +47,7 @@ export const componentsCS = {
 		title: 'How to treat your pet?',
 	},
 	PetCustomTextInput: {
+		title: 'Custom fields',
 		placeholder: {
 			title: 'title',
 			text: 'text',
