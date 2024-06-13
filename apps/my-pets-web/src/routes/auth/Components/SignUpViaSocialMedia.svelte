@@ -49,7 +49,11 @@
 {/if}
 <Row class="gap-10 items-center justify-center dark:bg-gray-200 rounded-xl w-auto">
 	{#each socials as { icon, key }}
-		<Icon disableDefaultDarkMode class={twMerge('w-14')} on:click={() => login(key)}>
+		<Icon
+			disableDefaultDarkMode
+			class={twMerge('child:w-14 child:h-14')}
+			on:click={() => login(key)}
+		>
 			<svelte:component this={icon} />
 		</Icon>
 	{/each}

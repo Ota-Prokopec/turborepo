@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { Avatar } from 'flowbite-svelte';
-	import { twMerge } from 'tailwind-merge';
+	import { goto } from '$app/navigation'
+	import { Avatar } from 'flowbite-svelte'
+	import { twMerge } from 'tailwind-merge'
 
-	export let icon: string | URL | null = null;
-	export let outlineOnly: boolean = false;
-	export let disabled = false;
-	export let disableDefaultDarkMode = false;
+	export let icon: string | URL | null = null
+	export let outlineOnly: boolean = false
+	export let disabled = false
+	export let disableDefaultDarkMode = false
 
-	let className: string = '';
-	export { className as class };
+	let className: string = ''
+	export { className as class }
 </script>
 
 <!-- svelte-ignore a11y-mouse-events-have-key-events -->
@@ -21,9 +21,9 @@
 	on:touchend
 	on:click
 	class={twMerge(
-		'w-min h-min flex justify-center items-center',
+		'w-min h-min flex justify-center items-center child:w-6 child:h-6',
 		!disableDefaultDarkMode && 'dark:text-white text-black fill-black dark:fill-white',
-		className
+		className,
 	)}
 >
 	{#if typeof icon === 'string' && icon.startsWith('http')}
@@ -44,6 +44,10 @@
 	}
 	.outlineOnly {
 		color: white;
-		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		text-shadow:
+			-1px -1px 0 #000,
+			1px -1px 0 #000,
+			-1px 1px 0 #000,
+			1px 1px 0 #000;
 	}
 </style>
