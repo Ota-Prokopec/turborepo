@@ -23,7 +23,7 @@
 			<Text class="text-xl font-bold">1. Acceptance of Terms</Text>
 
 			<Text>
-				By accessing or using the TourMate.cz mobile application ("the App"), you agree to
+				By accessing or using the mypets.cz mobile application ("the App"), you agree to
 				comply with and be bound by these Terms and Conditions. If you do not agree with
 				these terms, please refrain from using the App.
 			</Text>
@@ -33,29 +33,20 @@
 			<Text>
 				Users are solely responsible for the accuracy, completeness, and legality of any
 				data, including images, they upload, submit, or otherwise make available through
-				the App. TourMate.cz is not responsible for the content users generate within the
+				the App. Mypets.cz is not responsible for the content users generate within the
 				app.
 			</Text>
 
-			<Text class="text-xl font-bold">3. Privacy and Personal Information</Text>
-
-			<Text>
-				TourMate.cz respects your privacy and is committed to protecting your personal
-				information. Our Privacy Policy, available at [Privacy Policy Link], outlines how
-				we collect, use, and protect your personal information. By using the App, you
-				agree to the terms outlined in the Privacy Policy.</Text
-			>
-
-			<Text class="text-xl font-bold">4. Cookies</Text>
+			<Text class="text-xl font-bold">3. Cookies</Text>
 
 			<Text
-				>TourMate.cz may use cookies to enhance your user experience. Cookies are small
+				>Mypets.cz may use cookies to enhance your user experience. Cookies are small
 				pieces of data stored on your device that help improve the functionality of the
 				App. By using the App, you consent to the use of cookies in accordance with our
 				Cookie Policy, available at [Cookie Policy Link].</Text
 			>
 
-			<Text class="text-xl font-bold">5. User Account</Text>
+			<Text class="text-xl font-bold">4. User Account</Text>
 
 			<Text>
 				To access certain features of the App, you may be required to create a user
@@ -64,43 +55,43 @@
 				your account are your responsibility.</Text
 			>
 
-			<Text class="text-xl font-bold">7. Limitation of Liability</Text>
+			<Text class="text-xl font-bold">5. Limitation of Liability</Text>
 
 			<Text>
-				TourMate.cz is not liable for any direct, indirect, incidental, consequential, or
+				Mypets.cz is not liable for any direct, indirect, incidental, consequential, or
 				punitive damages arising out of your use of the App, including but not limited to
 				loss of data, profits, or business interruption.
 			</Text>
 
-			<Text class="text-xl font-bold">8. Changes to Terms and Conditions</Text>
+			<Text class="text-xl font-bold">6. Changes to Terms and Conditions</Text>
 
 			<Text>
-				TourMate.cz reserves the right to update, modify, or replace these Terms and
+				Mypets.cz reserves the right to update, modify, or replace these Terms and
 				Conditions at any time without prior notice. It is your responsibility to review
 				these terms periodically. Continued use of the App after any changes signifies
 				your acceptance of the updated terms.</Text
 			>
 
-			<Text class="text-xl font-bold">9. Termination of Access</Text>
+			<Text class="text-xl font-bold">7. Termination of Access</Text>
 
 			<Text>
-				TourMate.cz reserves the right to terminate or suspend your access to the App at
-				its sole discretion, without prior notice, for any reason, including but not
-				limited to a violation of these Terms and Conditions.
+				Mypets.cz reserves the right to terminate or suspend your access to the App at its
+				sole discretion, without prior notice, for any reason, including but not limited
+				to a violation of these Terms and Conditions.
 			</Text>
 
-			<Text class="text-xl font-bold">10. Governing Law</Text>
+			<Text class="text-xl font-bold">8. Governing Law</Text>
 
 			<Text>
 				These Terms and Conditions are governed by and construed in accordance with the
 				laws of [Jurisdiction]. Any disputes arising out of or related to these terms
 				shall be subject to the exclusive jurisdiction of the courts in [Jurisdiction]. By
-				using the TourMate.cz App, you acknowledge that you have read, understood, and
+				using the Mypets.cz App, you acknowledge that you have read, understood, and
 				agreed to these Terms and Conditions. If you have any questions or concerns,
 				please contact us at [Contact Email].
 			</Text>
 
-			<Text class="text-xl font-bold">11. Users location</Text>
+			<Text class="text-xl font-bold">9. Users location</Text>
 
 			<Text>
 				The user's location will be stored in your browser's local storage. You can yours
@@ -108,7 +99,7 @@
 				owner know where the pet is is currently located.
 			</Text>
 
-			<Text class="text-xl font-bold">12. responsibility</Text>
+			<Text class="text-xl font-bold">10. responsibility</Text>
 
 			<Text>
 				The application is not responsible for content the user loads into application.
@@ -118,7 +109,7 @@
 			<Text class="text-xl font-bold">1. Přijetí podmínek</Text>
 
 			<Text>
-				Přístupem nebo používáním mobilní aplikace TourMate.cz ("Aplikace") souhlasíte s
+				Přístupem nebo používáním mobilní aplikace mypets.cz ("Aplikace") souhlasíte s
 				dodržováním a vázáním těmito obchodními podmínkami. Pokud s těmito podmínkami
 				nesouhlasíte, prosím, zdržte se používání Aplikace.
 			</Text>
@@ -128,31 +119,21 @@
 			<Text>
 				Uživatelé jsou výhradně zodpovědní za přesnost, úplnost a legálnost jakýchkoli
 				dat, včetně obrázků, které nahrávají, odesílají nebo jinak poskytují
-				prostřednictvím Aplikace. TourMate.cz není zodpovědný za obsah, který uživatelé
+				prostřednictvím Aplikace. Mypets.cz není zodpovědný za obsah, který uživatelé
 				generují v rámci aplikace.
 			</Text>
 
-			<Text class="text-xl font-bold">3. Ochrana soukromí a osobní údaje</Text>
+			<Text class="text-xl font-bold">3. Cookies</Text>
 
 			<Text>
-				TourMate.cz respektuje vaše soukromí a zavazuje se chránit vaše osobní údaje. Naše
-				Zásady ochrany osobních údajů, dostupné na [Odkaz na zásady ochrany osobních
-				údajů], upřesňují, jak shromažďujeme, používáme a chráníme vaše osobní údaje.
-				Používáním Aplikace souhlasíte s podmínkami uvedenými v Zásadách ochrany osobních
-				údajů.
+				Mypets.cz může využívat soubory cookies ke zlepšení vašeho uživatelského zážitku.
+				Cookies jsou malé úlomky dat uložené na vašem zařízení, které pomáhají zlepšit
+				funkcionalitu Aplikace. Používáním Aplikace souhlasíte s používáním cookies v
+				souladu s našimi Zásadami používání cookies, dostupnými na [Odkaz na zásady
+				používání cookies].
 			</Text>
 
-			<Text class="text-xl font-bold">4. Cookies</Text>
-
-			<Text>
-				TourMate.cz může využívat soubory cookies ke zlepšení vašeho uživatelského
-				zážitku. Cookies jsou malé úlomky dat uložené na vašem zařízení, které pomáhají
-				zlepšit funkcionalitu Aplikace. Používáním Aplikace souhlasíte s používáním
-				cookies v souladu s našimi Zásadami používání cookies, dostupnými na [Odkaz na
-				zásady používání cookies].
-			</Text>
-
-			<Text class="text-xl font-bold">5. Uživatelský účet</Text>
+			<Text class="text-xl font-bold">4. Uživatelský účet</Text>
 
 			<Text>
 				K přístupu k určitým funkcím Aplikace může být vyžadováno vytvoření uživatelského
@@ -161,32 +142,32 @@
 				účtem, nesete odpovědnost.
 			</Text>
 
-			<Text class="text-xl font-bold">7. Omezení odpovědnosti</Text>
+			<Text class="text-xl font-bold">5. Omezení odpovědnosti</Text>
 
 			<Text>
-				TourMate.cz nenese odpovědnost za přímé, nepřímé, náhodné, následné nebo postihové
+				Mypets.cz nenese odpovědnost za přímé, nepřímé, náhodné, následné nebo postihové
 				škody vzniklé v důsledku vašeho používání Aplikace, včetně, ale neomezeně, ztráty
 				dat, zisku nebo přerušení podnikání.
 			</Text>
 
-			<Text class="text-xl font-bold">8. Změny v obchodních podmínkách</Text>
+			<Text class="text-xl font-bold">6. Změny v podmínkách</Text>
 
 			<Text>
-				TourMate.cz si vyhrazuje právo aktualizovat, upravit nebo nahradit tyto Obchodní
+				Mypets.cz si vyhrazuje právo aktualizovat, upravit nebo nahradit tyto Obchodní
 				podmínky kdykoliv bez předchozího upozornění. Je vaší odpovědností pravidelně tyto
 				podmínky zkontrolovat. Pokračující používání Aplikace po jakýchkoli změnách
 				znamená váš souhlas s aktualizovanými podmínkami.
 			</Text>
 
-			<Text class="text-xl font-bold">9. Ukončení přístupu</Text>
+			<Text class="text-xl font-bold">7. Ukončení přístupu</Text>
 
 			<Text>
-				TourMate.cz si vyhrazuje právo ukončit nebo pozastavit váš přístup k Aplikaci
-				podle svého výhradního uvážení, bez předchozího upozornění, z jakéhokoli důvodu,
-				včetně porušení těchto Obchodních podmínek.
+				Mypets.cz si vyhrazuje právo ukončit nebo pozastavit váš přístup k Aplikaci podle
+				svého výhradního uvážení, bez předchozího upozornění, z jakéhokoli důvodu, včetně
+				porušení těchto Obchodních podmínek.
 			</Text>
 
-			<Text class="text-xl font-bold">10. Uplatňování práva</Text>
+			<Text class="text-xl font-bold">8. Uplatňování práva</Text>
 
 			<Text>
 				Tyto Obchodní podmínky podléhají a jsou vykládány v souladu s právem [Jurisdikce].
@@ -194,7 +175,7 @@
 				výlučné jurisdikce soudů v [Jurisdikce]. Používáním Aplikace Tour
 			</Text>
 
-			<Text class="text-xl font-bold">11. Uživatelova poloha</Text>
+			<Text class="text-xl font-bold">9. Uživatelova poloha</Text>
 
 			<Text>
 				Poloha uživatele bude uložena v lokálním úložišti vašeho prohlížeče. Můžete svou
@@ -202,7 +183,7 @@
 				kde se právě nachází.
 			</Text>
 
-			<Text class="text-xl font-bold">12. odpovědnost</Text>
+			<Text class="text-xl font-bold">10. odpovědnost</Text>
 
 			<Text>
 				Aplikace nenese žádnou odpovědnost za obsah, který uživatel do aplikace zadá. Vy
