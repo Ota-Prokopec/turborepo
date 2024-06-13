@@ -332,10 +332,6 @@ type RootTranslation = {
 			 * I​ ​l​i​v​e​ ​h​e​r​e
 			 */
 			title: string
-			/**
-			 * S​e​e​ ​o​n​ ​m​a​p
-			 */
-			seeOnMap: string
 		}
 		FoundPetButton: {
 			/**
@@ -406,6 +402,12 @@ type RootTranslation = {
 			 * A​c​c​e​p​t
 			 */
 			acceptButtonLabel: string
+		}
+		SeeOnMapButton: {
+			/**
+			 * S​e​e​ ​o​n​ ​m​a​p
+			 */
+			label: string
 		}
 	}
 	error: {
@@ -739,10 +741,6 @@ export type TranslationFunctions = {
 			 * I live here
 			 */
 			title: () => LocalizedString
-			/**
-			 * See on map
-			 */
-			seeOnMap: () => LocalizedString
 		}
 		FoundPetButton: {
 			/**
@@ -813,6 +811,12 @@ export type TranslationFunctions = {
 			 * Accept
 			 */
 			acceptButtonLabel: () => LocalizedString
+		}
+		SeeOnMapButton: {
+			/**
+			 * See on map
+			 */
+			label: () => LocalizedString
 		}
 	}
 	error: {

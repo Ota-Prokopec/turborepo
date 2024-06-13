@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SeeOnGoogleMapsButton from '$lib/components/Buttons/SeeOnGoogleMapsButton.svelte'
+	import SeeOnMapButton from '$lib/components/Buttons/SeeOnMapButton.svelte'
 	import Card from '$lib/components/Common/Card.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
@@ -9,7 +11,6 @@
 	import Marker from '$lib/components/Map/Marker.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
-	import { Button } from 'flowbite-svelte'
 
 	export let petAddress: TPetData['petAddress']
 
@@ -28,9 +29,7 @@
 		</Row>
 
 		{#if !viewMap}
-			<Button on:click={() => (viewMap = true)}
-				>{$LL.component.PetAddressItem.seeOnMap()}</Button
-			>
+			<SeeOnMapButton on:click={() => (viewMap = true)}></SeeOnMapButton>
 		{:else}
 			<Map class="w-full h-[500px]">
 				<Marker class="z-30" location={petAddress.petAddressCoords}>
@@ -38,5 +37,6 @@
 				</Marker>
 			</Map>
 		{/if}
+		<SeeOnGoogleMapsButton coords={petAddress.petAddressCoords}></SeeOnGoogleMapsButton>
 	</Column>
 </Card>

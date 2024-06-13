@@ -114,7 +114,6 @@ export const componentsCS = {
 	},
 	PetAddressItem: {
 		title: 'I live here',
-		seeOnMap: 'See on map',
 	},
 	FoundPetButton: {
 		label: 'I found this pet!',
@@ -146,5 +145,8 @@ export const componentsCS = {
 	Terms: {
 		terms: 'Conditions for application using',
 		acceptButtonLabel: 'Accept',
+	},
+	SeeOnMapButton: {
+		label: 'See on map',
 	},
 } satisfies BaseTranslation

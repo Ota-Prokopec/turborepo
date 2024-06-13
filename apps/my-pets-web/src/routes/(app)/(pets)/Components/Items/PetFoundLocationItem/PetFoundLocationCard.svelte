@@ -74,6 +74,7 @@
 			<Map
 				on:click={() => (showMap = true)}
 				zoom={8}
+				userCenter={location.coords}
 				interactive={false}
 				disableGeolocation
 				class="w-[100px] h-[100px] !rounded-lg overflow-hidden"
@@ -91,6 +92,8 @@
 
 		{#if showMap}
 			<Map
+				activeZoomRange
+				zoom={8}
 				on:click={() => (showMap = true)}
 				class="w-full h-[350px] !rounded-lg overflow-hidden"
 			>

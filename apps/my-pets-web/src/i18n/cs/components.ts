@@ -114,7 +114,6 @@ export const componentsCS = {
 	},
 	PetAddressItem: {
 		title: 'Tady bydlím',
-		seeOnMap: 'See on map',
 	},
 	FoundPetButton: {
 		label: 'Našel jsem toto zvířátko!',
@@ -126,7 +125,7 @@ export const componentsCS = {
 		},
 	},
 	SeeOnGoogleMapsButton: {
-		label: 'Vidět na Google map',
+		label: 'Vidět na Google mapách',
 	},
 	PetFoundLocationItem: {
 		buttonLabel: 'Vaše zvířátko bylo nalezeno, klikněte a zjistěte kde',
@@ -146,5 +145,8 @@ export const componentsCS = {
 	Terms: {
 		terms: 'Podmínky pro užívání aplikace',
 		acceptButtonLabel: 'Akceptovat',
+	},
+	SeeOnMapButton: {
+		label: 'Vidět na mapách',
 	},
 } satisfies BaseTranslation

@@ -7,10 +7,12 @@
 		FillExtrusionLayer,
 		GeolocateControl,
 		MapLibre,
+		ZoomRange,
 		type Map,
 	} from 'svelte-maplibre'
 	import { twMerge } from 'tailwind-merge'
 	import FullPageLoading from '../Common/FullPageLoading.svelte'
+	import { MapLibreGL, IControl, NavigationControl } from 'maplibre-gl'
 
 	const dispatch = createEventDispatcher<{
 		load: { userCenter: Coords }
@@ -21,6 +23,7 @@
 	export let map: Map | undefined = undefined
 	export let userCenter: Coords | undefined | null = $lsStore.usersLocation
 	export let disableGeolocation = false
+	export let activeZoomRange = false
 	$: usersLocation = $lsStore.usersLocation
 	export let interactive = true
 
@@ -41,6 +44,8 @@
 		dispatch('moveend', { moveEndLocation: [mapBoxCenter.lat, mapBoxCenter.lng] })
 	})
 
+	$: map?.scrollZoom.enable({ around: 'center' })
+
 	let className = ''
 	export { className as class }
 </script>
@@ -60,7 +65,7 @@
 			on:zoom={(e) => {
 				zoom = e.detail.map.getZoom()
 			}}
-			on:load={() => {
+			on:load={(e) => {
 				if (!userCenter) throw new Error('center is not defined')
 				dispatch('load', { userCenter })
 			}}
