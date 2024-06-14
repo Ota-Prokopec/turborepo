@@ -1,0 +1,35 @@
+{
+	"runOnStartup": true,
+	"artificialDelayMilliseconds": 700,
+	"keepExistingTerminalsOpen": false,
+	"restoreTerminals.terminals": [
+		{
+			"splitTerminals": [
+				{
+					"name": "mypets-web",
+					"commands": ["yarn dev-pets-web"]
+				},
+				{
+					"name": "mypets-api",
+					"commands": ["yarn dev-pets-api"]
+				}
+			]
+		},
+		{
+			"splitTerminals": [
+				{
+					"name": "i18n",
+					"commands": ["cd apps/my-pets-web", "yarn typesafe-i18n"]
+				},
+				{
+					"name": "web",
+					"commands": ["cd apps/my-pets-web", "clear"]
+				},
+				{
+					"name": "api",
+					"commands": ["cd apps/my-pets-api", "clear"]
+				}
+			]
+		}
+	]
+}

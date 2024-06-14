@@ -51,6 +51,16 @@ type RootTranslation = {
 				errorMessage: string
 			}
 		}
+		selling: {
+			/**
+			 * T​h​i​s​ ​t​a​g​ ​f​e​a​t​u​r​e​s​ ​b​o​t​h​ ​a​ ​Q​R​ ​c​o​d​e​ ​a​n​d​ ​N​F​C​ ​t​e​c​h​n​o​l​o​g​y​ ​t​o​ ​m​a​k​e​ ​i​t​ ​e​a​s​y​ ​f​o​r​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​t​o​ ​a​c​c​e​s​s​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​ ​o​r​ ​p​l​a​c​i​n​g​ ​a​n​ ​N​F​C​-​e​n​a​b​l​e​d​ ​d​e​v​i​c​e​ ​n​e​a​r​ ​t​h​e​ ​t​a​g​,​ ​t​h​e​y​ ​c​a​n​ ​r​e​t​r​i​e​v​e​ ​y​o​u​r​ ​p​e​t​'​s​ ​d​e​t​a​i​l​s​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​i​t​s​ ​l​o​c​a​t​i​o​n​.​ ​T​h​e​ ​Q​R​ ​c​o​d​e​ ​a​l​l​o​w​s​ ​f​o​r​ ​q​u​i​c​k​ ​a​c​c​e​s​s​ ​b​y​ ​t​a​k​i​n​g​ ​a​ ​p​h​o​t​o​,​ ​w​h​i​l​e​ ​t​h​e​ ​N​F​C​ ​f​u​n​c​t​i​o​n​a​l​i​t​y​ ​p​r​o​v​i​d​e​s​ ​i​n​s​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​ ​w​i​t​h​ ​a​ ​t​a​p​.
+			 */
+			sellingTagNFC: string
+			/**
+			 * T​h​i​s​ ​t​a​g​ ​f​e​a​t​u​r​e​s​ ​a​ ​Q​R​ ​c​o​d​e​,​ ​m​a​k​i​n​g​ ​i​t​ ​e​a​s​y​ ​f​o​r​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​t​o​ ​a​c​c​e​s​s​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​,​ ​t​h​e​y​ ​c​a​n​ ​r​e​t​r​i​e​v​e​ ​y​o​u​r​ ​p​e​t​'​s​ ​d​e​t​a​i​l​s​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​i​t​s​ ​l​o​c​a​t​i​o​n​.​ ​T​h​e​ ​Q​R​ ​c​o​d​e​ ​a​l​l​o​w​s​ ​f​o​r​ ​q​u​i​c​k​ ​a​c​c​e​s​s​ ​b​y​ ​t​a​k​i​n​g​ ​a​ ​p​h​o​t​o​.
+			 */
+			sellingTagQR: string
+		}
 	}
 	common: {
 		/**
@@ -413,14 +423,20 @@ type RootTranslation = {
 			 */
 			label: string
 		}
+		SellingCard: {
+			/**
+			 * s​i​z​e​s
+			 */
+			sizes: string
+		}
 	}
 	error: {
 		/**
-		 * D​o​š​l​o​ ​k​ ​n​e​o​č​e​k​á​v​a​n​é​ ​c​h​y​b​ě​,​ ​p​r​o​s​í​m​,​ ​s​d​í​l​e​j​t​e​ ​t​o​ ​s​ ​t​ý​m​e​m​ ​p​o​d​p​o​r​y
+		 * T​h​e​r​e​ ​w​a​s​ ​a​n​ ​u​n​e​x​p​e​c​t​e​d​ ​e​r​r​o​r​,​ ​p​l​e​a​s​e​ ​s​h​a​r​e​ ​t​h​i​s​ ​w​i​t​h​ ​t​h​e​ ​t​e​a​m​ ​o​f​ ​h​e​l​p​.
 		 */
 		unexpectedError: string
 		/**
-		 * V​a​š​e​ ​G​P​S​ ​j​e​ ​v​y​p​n​u​t​a​,​ ​p​r​o​s​í​m​e​ ​z​a​p​n​ě​t​e​ ​s​i​ ​G​P​S​,​ ​a​b​y​c​h​o​m​ ​b​y​l​i​ ​s​c​h​o​p​n​i​ ​u​r​č​i​t​ ​v​a​š​i​ ​p​o​l​o​h​u​.
+		 * Y​o​u​r​ ​G​P​S​ ​i​s​ ​o​f​f​,​ ​p​l​e​a​s​e​ ​t​u​r​n​ ​y​o​u​r​ ​G​P​S​ ​o​n​,​ ​t​h​a​t​ ​w​e​ ​c​o​u​l​d​ ​d​e​t​e​r​m​i​n​a​t​e​ ​w​h​e​r​e​ ​y​o​u​ ​a​r​e​.​ ​M​a​y​b​e​ ​y​o​u​ ​j​u​s​t​ ​d​i​d​ ​n​o​t​ ​g​r​a​n​t​e​d​ ​t​h​e​ ​G​P​S​ ​f​o​r​ ​G​o​o​g​l​e​/​S​a​f​a​r​i​ ​o​f​ ​o​u​r​ ​a​p​p​l​i​c​a​t​i​o​n​ ​M​y​p​e​t​s​,​ ​p​l​e​a​s​e​ ​d​o​ ​i​t​ ​a​n​d​ ​t​h​e​n​ ​t​r​y​ ​i​t​ ​a​g​a​i​n​.
 		 */
 		gpsIsOff: string
 	}
@@ -463,6 +479,16 @@ export type TranslationFunctions = {
 				 */
 				errorMessage: () => LocalizedString
 			}
+		}
+		selling: {
+			/**
+			 * This tag features both a QR code and NFC technology to make it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone or placing an NFC-enabled device near the tag, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo, while the NFC functionality provides instant information with a tap.
+			 */
+			sellingTagNFC: () => LocalizedString
+			/**
+			 * This tag features a QR code, making it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo.
+			 */
+			sellingTagQR: () => LocalizedString
 		}
 	}
 	common: {
@@ -826,14 +852,20 @@ export type TranslationFunctions = {
 			 */
 			label: () => LocalizedString
 		}
+		SellingCard: {
+			/**
+			 * sizes
+			 */
+			sizes: () => LocalizedString
+		}
 	}
 	error: {
 		/**
-		 * Došlo k neočekávané chybě, prosím, sdílejte to s týmem podpory
+		 * There was an unexpected error, please share this with the team of help.
 		 */
 		unexpectedError: () => LocalizedString
 		/**
-		 * Vaše GPS je vypnuta, prosíme zapněte si GPS, abychom byli schopni určit vaši polohu.
+		 * Your GPS is off, please turn your GPS on, that we could determinate where you are. Maybe you just did not granted the GPS for Google/Safari of our application Mypets, please do it and then try it again.
 		 */
 		gpsIsOff: () => LocalizedString
 	}
