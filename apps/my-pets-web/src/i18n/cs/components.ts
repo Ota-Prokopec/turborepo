@@ -150,4 +150,7 @@ export const componentsCS = {
 	SeeOnMapButton: {
 		label: 'Vidět na mapách',
 	},
+	SellingCard: {
+		sizes: 'velikosti',
+	},
 } satisfies BaseTranslation

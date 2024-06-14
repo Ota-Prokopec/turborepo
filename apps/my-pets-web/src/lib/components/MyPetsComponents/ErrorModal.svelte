@@ -5,7 +5,7 @@
 	import Text from '../Common/Text.svelte'
 </script>
 
-<Modal color="red" class="w-[200px] h-auto max-w-full max-h-full z-50" open>
+<Modal color="red" class="w-max h-auto max-w-full max-h-full z-50" open>
 	<Column class="w-full h-full flex justify-center items-center">
 		<Text class="!text-red-500 font-bold">{$LL.component.ErrorModal.title()}</Text>
 		<Text class="!text-red-500">{$LL.component.ErrorModal.text()}</Text>

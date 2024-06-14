@@ -1,15 +1,14 @@
 <script lang="ts">
-	import Card from '$lib/components/Common/Card.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
 	import Loading from '$lib/components/Common/Loading.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
 	import IconCheck from '$lib/components/Icons/IconCheck.svelte'
 	import ErrorModal from '$lib/components/MyPetsComponents/ErrorModal.svelte'
-	import lsStore, { storage } from '$lib/utils/lsStore'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
-	import { getUsersLocation } from '@repo/utils'
+	import { type Coords } from '@repo/ts-types'
+	import { getUsersLocation, isGeolocationGranted } from '@repo/utils'
 	import { Button, Modal } from 'flowbite-svelte'
 	import { twMerge } from 'tailwind-merge'
 
@@ -21,9 +20,13 @@
 
 	const sendLocation = async () => {
 		sendingStatus = 'sending'
-		const coords = await getUsersLocation({ enableHighAccuracy: true })
+		if (!(await isGeolocationGranted())) {
+			sendingStatus = 'gpsOff'
+			throw new Error('Users geolocation is off')
+		}
 		try {
-			if (!coords) throw new Error('User does not have any location')
+			const coords: Coords = await getUsersLocation({ enableHighAccuracy: true })
+
 			await sdk.createRecordToLostPetsLocation({
 				coords: coords,
 				petId: petId,
@@ -31,8 +34,7 @@
 			})
 			sendingStatus = 'sent'
 		} catch (error) {
-			if (!coords) sendingStatus = 'gpsOff'
-			else sendingStatus = 'error'
+			sendingStatus = 'error'
 		}
 	}
 

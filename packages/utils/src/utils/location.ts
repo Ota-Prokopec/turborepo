@@ -34,9 +34,15 @@ export type IPApiResponse = {
 
 export const metersOfOneDegree = 111000
 
+export const isGeolocationGranted = async (): Promise<boolean> => {
+	const res = await navigator.permissions.query({ name: 'geolocation' })
+	return res.state === 'denied' ? false : true
+}
+
 export const getUsersLocation = (
 	options: PositionOptions = { enableHighAccuracy: false },
 ): Promise<Coords> => {
+	if (!isGeolocationGranted()) throw new Error('Users geolocation is not granted')
 	return new Promise((res) => {
 		if (typeof window === 'undefined') throw new Error('You called this on server side')
 
