@@ -6,6 +6,8 @@ import {
 	TPetAddressGraphqlDocument,
 	TPetDocumentCreate,
 	TPetGraphqlDocument,
+	TPetIdTranslationDocumentCreate,
+	TPetIdTranslationGraphqlDocument,
 	TpetDescriptionCustomFieldsDocumentCreate,
 	TpetDescriptionCustomFieldsGraphqlDocument,
 } from '@repo/my-pets-tstypes'
@@ -33,6 +35,10 @@ export const collectionsClient = (
 			TLostPetsLocationGraphqlDocument,
 			TLostPetsLocationDocumentCreate
 		>('my-pets', 'lostPetsLocations'),
+		petIdTranslation: new Collection<
+			TPetIdTranslationGraphqlDocument,
+			TPetIdTranslationDocumentCreate
+		>('my-pets', 'petIdTranslation'),
 	}
 }
 
@@ -53,5 +59,9 @@ export const collectionsAdmin = (
 			TLostPetsLocationGraphqlDocument,
 			TLostPetsLocationDocumentCreate
 		>('my-pets', 'lostPetsLocations'),
+		petIdTranslation: new Collection<
+			TPetIdTranslationGraphqlDocument,
+			TPetIdTranslationDocumentCreate
+		>('my-pets', 'petIdTranslation'),
 	}
 }

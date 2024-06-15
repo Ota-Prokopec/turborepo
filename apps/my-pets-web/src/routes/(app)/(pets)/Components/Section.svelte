@@ -18,13 +18,13 @@
 	import EditPetButton from './EditPetButton.svelte'
 	import IFoundPetButton from './IFoundPetButton.svelte'
 	import PetFoundLocationItem from './Items/PetFoundLocationItem/PetFoundLocationItem.svelte'
-	import PetUrl from './Items/PetUrlItem.svelte'
+	import PetUrlItem from './Items/PetUrlItem.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
 	export let isOwner: boolean
 
-	$: petUrl = `${location.origin}/pet/${petData._id}`
+	$: petUrl = `${location.origin}/pet/${petData.linkId}`
 </script>
 
 <Avatar src={petData.petPicture} size="xl"></Avatar>
@@ -38,7 +38,7 @@
 	{#if isOwner}
 		<Right>
 			<Column>
-				<EditPetButton on:click={() => navigate(`/pet/${petData._id}/edit`)} class=""
+				<EditPetButton on:click={() => navigate(`/pet/${petData.linkId}/edit`)} class=""
 				></EditPetButton>
 				<DeletePetButton
 					on:deleted={() => navigate('/', { invalidateAll: true })}
@@ -61,7 +61,7 @@
 		></PetFoundLocationItem>
 	{/if}
 
-	<PetUrl class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrl>
+	<PetUrlItem class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrlItem>
 	<Column class="w-full max-w-[600px]">
 		<PetNameItem petName={petData.petName}></PetNameItem>
 		<PetAddressItem petAddress={petData.petAddress}></PetAddressItem>

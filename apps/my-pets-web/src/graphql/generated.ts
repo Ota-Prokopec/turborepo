@@ -107,6 +107,7 @@ export type Pet = {
   _id: Scalars['String']['output'];
   _permissions: Array<Scalars['String']['output']>;
   _updatedAt: Scalars['String']['output'];
+  linkId: Scalars['String']['output'];
   lostPetLocations: Array<LostPetsLocation>;
   ownerPhoneNumber: Scalars['String']['output'];
   petAddress: PetAddress;
@@ -151,7 +152,7 @@ export type Query = {
 
 
 export type QueryGetPetArgs = {
-  petId: Scalars['String']['input'];
+  petLinkId: Scalars['String']['input'];
 };
 
 
@@ -222,14 +223,14 @@ export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typena
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, linkId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
 
 export type GetPetQueryVariables = Exact<{
-  petId: Scalars['String']['input'];
+  petLinkId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, linkId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> } };
 
 
 export const GetAccountDocument = gql`
@@ -365,12 +366,13 @@ export const GetListOfPetsDocument = gql`
       _databaseId
       coords
     }
+    linkId
   }
 }
     `;
 export const GetPetDocument = gql`
-    query getPet($petId: String!) {
-  getPet(petId: $petId) {
+    query getPet($petLinkId: String!) {
+  getPet(petLinkId: $petLinkId) {
     _createdAt
     _updatedAt
     _collectionId
@@ -410,6 +412,7 @@ export const GetPetDocument = gql`
       _databaseId
       coords
     }
+    linkId
   }
 }
     `;

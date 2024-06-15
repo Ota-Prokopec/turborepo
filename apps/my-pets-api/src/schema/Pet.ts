@@ -71,5 +71,16 @@ export default objectType({
 				}
 			},
 		})
+		t.field('linkId', {
+			type: 'String',
+			resolve: async (source, args, ctx) => {
+				const { collections } = ctx.appwrite
+
+				const query = Queries.petIdTranslation.equal('petId', source._id)
+				const linkIdDocument = await collections.petIdTranslation.getDocument([query])
+				if (!linkIdDocument) throw new Error('Link id document does not exist')
+				return linkIdDocument.linkId
+			},
+		})
 	},
 })

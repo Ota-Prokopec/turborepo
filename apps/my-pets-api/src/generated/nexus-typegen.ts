@@ -164,6 +164,7 @@ export interface NexusGenFieldTypes {
     _id: string; // String!
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
+    linkId: string; // String!
     lostPetLocations: NexusGenRootTypes['LostPetsLocation'][]; // [LostPetsLocation!]!
     ownerPhoneNumber: string; // String!
     petAddress: NexusGenRootTypes['PetAddress']; // PetAddress!
@@ -231,6 +232,7 @@ export interface NexusGenFieldTypeNames {
     _id: 'String'
     _permissions: 'String'
     _updatedAt: 'String'
+    linkId: 'String'
     lostPetLocations: 'LostPetsLocation'
     ownerPhoneNumber: 'String'
     petAddress: 'PetAddress'
@@ -293,7 +295,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     getPet: { // args
-      petId: string; // String!
+      petLinkId: string; // String!
     }
     setSession: { // args
       session: string; // String!
