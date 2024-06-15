@@ -76,6 +76,16 @@ export const createPet = async (
 		petDocumentId,
 	)
 
+	const linkId = await collections.petIdTranslation.getDocumentsCount()
+
+	const petIdTranslationDocument = await collections.petIdTranslation.createDocument(
+		{
+			linkId: linkId.toString(),
+			petId: petDocument._id,
+		},
+		permissions.owner(userId),
+	)
+
 	return {
 		ownerPhoneNumber: params.ownerPhoneNumber,
 		petAddress: params.petAddress,

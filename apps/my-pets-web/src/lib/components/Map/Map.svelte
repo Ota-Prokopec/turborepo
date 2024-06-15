@@ -1,25 +1,17 @@
 <script lang="ts">
 	import { PUBLIC_MAP_TILER_API_KEY } from '$env/static/public'
 	import { lsStore } from '$lib/utils/lsStore'
-	import type { Base64, Coords } from '@repo/ts-types'
-	import { createEventDispatcher, onMount } from 'svelte'
+	import type { Coords } from '@repo/ts-types'
+	import { createEventDispatcher } from 'svelte'
 	import {
 		FillExtrusionLayer,
 		GeolocateControl,
 		MapLibre,
 		NavigationControl,
-		ZoomRange,
 		type Map,
 	} from 'svelte-maplibre'
 	import { twMerge } from 'tailwind-merge'
 	import FullPageLoading from '../Common/FullPageLoading.svelte'
-	import { MapLibreGL, IControl } from 'maplibre-gl'
-	import Column from '../Common/Column.svelte'
-	import Icon from '../Common/Icon.svelte'
-	import IconAdd from '../Icons/IconAdd.svelte'
-	import IconTimes from '../Icons/IconTimes.svelte'
-	import IconPlus from '../Icons/IconPlus.svelte'
-	import IconMinus from '../Icons/IconMinus.svelte'
 
 	const dispatch = createEventDispatcher<{
 		load: { userCenter: Coords }
@@ -28,7 +20,7 @@
 	}>()
 
 	export let map: Map | undefined = undefined
-	export let userCenter: Coords | undefined | null = $lsStore.usersLocation
+	export let userCenter: Coords = $lsStore.usersLocation ?? [0, 0]
 	export let disableGeolocation = false
 	export let disableNavigation = false
 	$: usersLocation = $lsStore.usersLocation
@@ -57,85 +49,81 @@
 </script>
 
 <div class={twMerge('w-full h-full relative', className)}>
-	{#if userCenter}
-		<MapLibre
-			{interactive}
-			{style}
-			{maxZoom}
-			{minZoom}
-			bind:map
-			center={[userCenter[1], userCenter[0]]}
-			on:click
-			zoom={defaultZoom}
-			bind:pitch={deg}
-			on:zoom={(e) => {
-				zoom = e.detail.map.getZoom()
-			}}
-			on:load={(e) => {
-				if (!userCenter) throw new Error('center is not defined')
+	<MapLibre
+		{interactive}
+		{style}
+		{maxZoom}
+		{minZoom}
+		bind:map
+		center={[userCenter[1], userCenter[0]]}
+		on:click
+		zoom={defaultZoom}
+		bind:pitch={deg}
+		on:zoom={(e) => {
+			zoom = e.detail.map.getZoom()
+		}}
+		on:load={(e) => {
+			if (!userCenter) throw new Error('center is not defined')
 
-				dispatch('load', { userCenter })
-			}}
-		>
-			{#if !disableGeolocation}
-				<GeolocateControl
-					position="top-left"
-					positionOptions={{ enableHighAccuracy: true }}
-					trackUserLocation
-					showAccuracyCircle={false}
-					showUserLocation
-				/>
-			{/if}
-			{#if !disableNavigation}
-				<NavigationControl position="top-right"></NavigationControl>
-			{/if}
-
-			<FillExtrusionLayer
-				source="maptiler_planet"
-				sourceLayer="building"
-				beforeLayerType={(l) => l.type === 'symbol' && !!l.paint?.['text-color']}
-				minzoom={14}
-				paint={{
-					// Show lower buildings in green, higher in red.
-					'fill-extrusion-color': [
-						'interpolate',
-						['linear'],
-						['get', 'render_height'],
-						0,
-						'#0a0',
-						70,
-						'#a00',
-					],
-
-					// use an 'interpolate' expression to add a smooth transition effect to the
-					// buildings as the user zooms in
-					'fill-extrusion-height': [
-						'interpolate',
-						['linear'],
-						['zoom'],
-						14,
-						0,
-						14.05,
-						['get', 'render_height'],
-					],
-					'fill-extrusion-base': [
-						'interpolate',
-						['linear'],
-						['zoom'],
-						14,
-						0,
-						14.05,
-						['get', 'render_min_height'],
-					],
-					'fill-extrusion-opacity': 0.6,
-				}}
+			dispatch('load', { userCenter })
+		}}
+	>
+		{#if !disableGeolocation}
+			<GeolocateControl
+				position="top-left"
+				positionOptions={{ enableHighAccuracy: true }}
+				trackUserLocation
+				showAccuracyCircle={false}
+				showUserLocation
 			/>
+		{/if}
+		{#if !disableNavigation}
+			<NavigationControl position="top-right"></NavigationControl>
+		{/if}
 
-			<slot />
-		</MapLibre>
-	{:else}
-		<FullPageLoading />
-	{/if}
+		<FillExtrusionLayer
+			source="maptiler_planet"
+			sourceLayer="building"
+			beforeLayerType={(l) => l.type === 'symbol' && !!l.paint?.['text-color']}
+			minzoom={14}
+			paint={{
+				// Show lower buildings in green, higher in red.
+				'fill-extrusion-color': [
+					'interpolate',
+					['linear'],
+					['get', 'render_height'],
+					0,
+					'#0a0',
+					70,
+					'#a00',
+				],
+
+				// use an 'interpolate' expression to add a smooth transition effect to the
+				// buildings as the user zooms in
+				'fill-extrusion-height': [
+					'interpolate',
+					['linear'],
+					['zoom'],
+					14,
+					0,
+					14.05,
+					['get', 'render_height'],
+				],
+				'fill-extrusion-base': [
+					'interpolate',
+					['linear'],
+					['zoom'],
+					14,
+					0,
+					14.05,
+					['get', 'render_min_height'],
+				],
+				'fill-extrusion-opacity': 0.6,
+			}}
+		/>
+
+		<slot />
+	</MapLibre>
 </div>
 
 <style>

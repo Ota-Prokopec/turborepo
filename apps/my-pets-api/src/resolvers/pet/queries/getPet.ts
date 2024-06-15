@@ -4,11 +4,17 @@ import { Queries } from '../../../lib/appwrite/appwrite'
 
 export default queryField('getPet', {
 	type: 'Pet',
-	args: { petId: stringArg() },
+	args: { petLinkId: stringArg() },
 	resolve: async (source, args, ctx, info) => {
 		const { collections } = ctx.appwrite
 
-		const queries = Queries.pet.equal('$id', args.petId)
+		const petLinkIdDocument = await collections.petIdTranslation.getDocument([
+			Queries.petIdTranslation.equal('linkId', args.petLinkId),
+		])
+
+		if (!petLinkIdDocument) throw new ApolloError('pet link id document does not exist')
+
+		const queries = Queries.pet.equal('$id', petLinkIdDocument?.petId)
 
 		const pet = await collections.pet.getDocument([queries])
 

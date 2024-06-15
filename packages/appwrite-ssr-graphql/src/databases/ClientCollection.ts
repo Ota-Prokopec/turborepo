@@ -249,5 +249,11 @@ export default (client: Client) => {
 			}))
 			return data
 		}
+
+		async getDocumentsCount() {
+			const queries = [Query.limit(1)]
+			return (await databases.listDocuments(this.databaseId, this.collectionId, queries))
+				.total
+		}
 	}
 }

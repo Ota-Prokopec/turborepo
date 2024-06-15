@@ -6,10 +6,10 @@
 	import UpdatePetModal from '../../../notfound/Components/UpdatePetModal.svelte'
 	import { navigate } from '$lib/utils/navigator'
 
-	const petId: string = $page.params.petId
+	const petLinkId: string = $page.params.petLinkId
 
 	$: petData = useQuery('getPetData', async () => {
-		return (await sdk.getPet({ petId: petId })).getPet
+		return (await sdk.getPet({ petLinkId: petLinkId })).getPet
 	})
 </script>
 
@@ -17,6 +17,7 @@
 	<FullPageLoading></FullPageLoading>
 {:else if $petData.data}
 	<UpdatePetModal
+		on:returnBack={() => console.log('return')}
 		on:returnBack={() => navigate('/', { invalidateAll: true })}
 		open
 		currentData={$petData.data}

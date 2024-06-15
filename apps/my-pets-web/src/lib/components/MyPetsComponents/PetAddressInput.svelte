@@ -70,7 +70,7 @@
 		<Column class="gap-0 relative">
 			<RequiredBadge class="absolute top-[45px] right-[-8px] z-20"></RequiredBadge>
 			<Text class="text-center">{$LL.component.PetAddressInput.mapTitle()}</Text>
-			<Map class="min-h-[400px] top-[10px] ">
+			<Map userCenter={coords} class="min-h-[400px] top-[10px] ">
 				<Marker
 					on:dragend={() => dispatch('change', { value: value, coords: coords })}
 					draggable

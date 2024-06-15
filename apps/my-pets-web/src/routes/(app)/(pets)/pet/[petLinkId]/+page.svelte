@@ -9,10 +9,10 @@
 
 	export let data: PageData
 
-	const petId: string = $page.params.petId
+	const petLinkId: string = data.petLinkId
 
 	$: petData = useQuery('getPetData', async () => {
-		return (await sdk.getPet({ petId: petId })).getPet
+		return (await sdk.getPet({ petLinkId: petLinkId })).getPet
 	})
 </script>
 

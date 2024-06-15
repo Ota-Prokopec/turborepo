@@ -43,10 +43,22 @@ export const deletePet = async (petId: string, appwrite: Appwrite) => {
 	//*delete pet document
 	const deletingPetDocumentPromise = collections.pet.deleteDocument(petDocument._id)
 
-	const [deletedCustomFields, deletedPetPicture, deletedPetDocument] = await Promise.all([
+	//*deleting pet id translation
+	const deletingPetIdTranslationDocumentPromise =
+		collections.petIdTranslation.deleteDocument([
+			Queries.petIdTranslation.equal('petId', petId),
+		])
+
+	const [
+		deletedCustomFields,
+		deletedPetPicture,
+		deletedPetDocument,
+		deletedPetIdTranslationDocument,
+	] = await Promise.all([
 		deletingCustomFieldsPromise,
 		deletingPetPicturePromise,
 		deletingPetDocumentPromise,
+		deletingPetIdTranslationDocumentPromise,
 	])
 
 	return true

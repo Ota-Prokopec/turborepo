@@ -1,5 +1,5 @@
-query getPet($petId: String!) {
-	getPet(petId: $petId) {
+query getPet($petLinkId: String!) {
+	getPet(petLinkId: $petLinkId) {
 		_createdAt
 		_updatedAt
 		_collectionId
@@ -40,5 +40,6 @@ query getPet($petId: String!) {
 			_databaseId
 			coords
 		}
+		linkId
 	}
 }
