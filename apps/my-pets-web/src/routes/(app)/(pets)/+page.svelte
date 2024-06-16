@@ -13,10 +13,11 @@
 	import Section from './Components/Section.svelte'
 	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
+	import MyPetsLoadingFullPage from '$lib/components/MyPetsComponents/MyPetsLoadingFullPage.svelte'
 
 	export let data: PageData
 
-	let pageState: 'loading' | 'loaded' | 'error' | null = null
+	let pageState: 'loading' | 'loaded' | 'error' | null = 'loading'
 
 	let myPetsData:
 		| Awaited<ReturnType<typeof sdk.getListOfPets>>['getListOfPets']
