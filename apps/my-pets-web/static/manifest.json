@@ -1,6 +1,6 @@
 {
-	"name": "My pets",
-	"short_name": "My pets",
+	"name": "My Pets",
+	"short_name": "My Pets",
 	"theme_color": "#fff",
 	"background_color": "#fff",
 	"display": "standalone",
@@ -8,11 +8,7 @@
 	"scope": "/",
 	"id": "/",
 	"start_url": "/",
-	"background": {
-		"scripts": ["firebase-messaging-sw.js", "service_worker.ts"],
-		"persistent": true,
-		"type": "module"
-	},
+
 	"icons": [
 		{
 			"src": "icons/icon-72x72.png",
