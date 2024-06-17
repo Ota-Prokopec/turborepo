@@ -56,10 +56,13 @@ export const createPet = async (
 
 	//create microchipping if any
 	let petMicrochippingCreatingPromise = params.petMicrochipping
-		? collections.petMicrochipping.createDocument({
-				dateOfChipping: params.petMicrochipping.dateOfChipping.toISOString(),
-				locationOfChip: params.petMicrochipping.locationOfChip,
-			})
+		? collections.petMicrochipping.createDocument(
+				{
+					dateOfChipping: params.petMicrochipping.dateOfChipping.toISOString(),
+					locationOfChip: params.petMicrochipping.locationOfChip,
+				},
+				permissions.owner(userId),
+			)
 		: undefined
 
 	const [

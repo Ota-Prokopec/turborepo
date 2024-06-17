@@ -42,7 +42,7 @@
 		petGender: 'female',
 		petDescriptionCustomFields: [{ text: '', title: '' }],
 		petPicture: '',
-		petBirthDate: new Date(),
+		petBirthDate: new Date(Date.now()),
 		petMicrochipping: null,
 	}
 

@@ -26,6 +26,8 @@
 	import { Button, Modal } from 'flowbite-svelte'
 	import { createEventDispatcher } from 'svelte'
 	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
+	import PetMicrochipDataInput from '$lib/components/MyPetsComponents/PetMicrochipDataInput.svelte'
+	import PetAgeInput from '$lib/components/MyPetsComponents/PetAgeInput.svelte'
 
 	const dispatch = createEventDispatcher<{ returnBack: undefined }>()
 
@@ -103,6 +105,8 @@
 	></PetPictureInput>
 
 	<PetNameInput bind:value={updatingData.petName}></PetNameInput>
+	<PetAgeInput bind:date={updatingData.petBirthDate}></PetAgeInput>
+
 	<PetAddressInput
 		bind:value={updatingData.petAddress.petAddress}
 		bind:coords={updatingData.petAddress.petAddressCoords}
@@ -112,6 +116,9 @@
 	<PetAllergensInput></PetAllergensInput>
 	<PetTreatInput maxInputLength={500} bind:value={updatingData.petTreating}
 	></PetTreatInput>
+	<PetMicrochipDataInput bind:data={updatingData.petMicrochipping}
+	></PetMicrochipDataInput>
+
 	<PetCustomTextInput
 		fields={updatingData.petDescriptionCustomFields}
 		aboutMaxLength={500}

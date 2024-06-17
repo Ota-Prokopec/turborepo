@@ -16,7 +16,6 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   Coords: { input: [number, number]; output: [number, number]; }
-  /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: { input: Date; output: Date; }
   PetGender: { input: 'male'|'female'; output: 'male'|'female'; }
   PetType: { input: 'cat'|'dog'; output: 'cat'|'dog'; }

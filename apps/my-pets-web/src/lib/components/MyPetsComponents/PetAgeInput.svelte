@@ -4,6 +4,8 @@
 
 	export let date: Date
 
+	console.log(date)
+
 	let className = ''
 	export { className as class }
 </script>
