@@ -1,6 +1,7 @@
 import { zodGraphqlDocument } from '@repo/appwrite-types'
 import { zodCoords } from '@repo/ts-types'
 import { z } from 'zod'
+import { petMicrochippingZodSchema } from './Documents/PetMicrochipping'
 
 export const zodPetGender = z.union([z.literal('male'), z.literal('female')])
 
@@ -14,6 +15,10 @@ export const zodPetData = z.object({
 	linkId: z.string(),
 	petGender: zodPetGender,
 	petPicture: z.string().url().min(1),
+	petMicrochippingId: z.string().optional().or(z.null()),
+	petMicrochipping: petMicrochippingZodSchema.optional().or(z.null()),
+	petBirthDate: z.date(),
+	petAge: z.number(),
 	petAddress: z.object({
 		petAddress: z.string().min(1),
 		petAddressCoords: zodCoords,
@@ -37,6 +42,8 @@ export const zodCreatingPetData = zodPetData.omit({
 	userId: true,
 	lostPetLocations: true,
 	linkId: true,
+	petAge: true,
+	petMicrochippingId: true,
 })
 
 export type TPetData = z.infer<typeof zodPetData>

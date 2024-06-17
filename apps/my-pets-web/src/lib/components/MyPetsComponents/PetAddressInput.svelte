@@ -42,14 +42,17 @@
 </script>
 
 <Card>
-	<Column>
+	<RequiredBadge class="absolute top-[-10px] right-[-8px] z-20"></RequiredBadge>
+
+	<Column class="mt-[10px]">
 		<Input
+			maxLength={200}
+			showLetterCount
 			on:input={() => dispatch('change', { value: value, coords: coords })}
 			bind:value
 			class={twMerge('w-full', className)}
 			floatingLabel={$LL.component.PetAddressInput.title()}
 			icon
-			required
 			iconPosition="right"
 		>
 			<Icon class="w-6 h-6">
@@ -68,7 +71,6 @@
 		</Center>
 
 		<Column class="gap-0 relative">
-			<RequiredBadge class="absolute top-[45px] right-[-8px] z-20"></RequiredBadge>
 			<Text class="text-center">{$LL.component.PetAddressInput.mapTitle()}</Text>
 			<Map userCenter={coords} class="min-h-[400px] top-[10px] ">
 				<Marker

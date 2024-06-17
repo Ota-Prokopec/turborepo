@@ -34,5 +34,12 @@ query getListOfPets {
 			coords
 		}
 		linkId
+		petBirthDate
+		petMicrochippingId
+		petMicrochipping {
+			locationOfChip
+			dateOfChipping
+		}
+		petAge
 	}
 }

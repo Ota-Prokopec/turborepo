@@ -1,34 +1,3 @@
 mutation updatePet($petId: String!, $data: CreatePetInput!) {
-	updatePet(petId: $petId, data: $data) {
-		_createdAt
-		_updatedAt
-		_collectionId
-		_id
-		_permissions
-		_databaseId
-		userId
-		petName
-		petType
-		petAllergens
-		ownerPhoneNumber
-		petTreating
-		petPicture
-		petDescriptionCustomFieldIds
-		petGender
-		petDescriptionCustomFields {
-			_createdAt
-			_updatedAt
-			_collectionId
-			_id
-			_permissions
-			_databaseId
-			title
-			text
-		}
-		petAddressId
-		petAddress {
-			petAddress
-			petAddressCoords
-		}
-	}
+	updatePet(petId: $petId, data: $data)
 }

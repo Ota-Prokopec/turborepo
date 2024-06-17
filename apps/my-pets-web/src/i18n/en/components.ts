@@ -153,4 +153,21 @@ export const componentsCS = {
 	SellingCard: {
 		sizes: 'sizes',
 	},
+	PetAgeInput: {
+		datePicker: {
+			label: 'Date of birthday',
+		},
+	},
+	PetMicrochipDataInput: {
+		petChip: "pet's chip",
+		buttonAddChipInformationLabel: 'add information about chip',
+		buttonRemoveChipInformationLabel: 'remove information about chip',
+
+		locationInput: {
+			label: 'Where is located',
+		},
+		datePicker: {
+			label: 'Date of inserting the chip',
+		},
+	},
 } satisfies BaseTranslation

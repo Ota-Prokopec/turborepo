@@ -10,6 +10,7 @@
 </script>
 
 <Input
+	maxLength={500}
 	bind:value
 	required
 	class={twMerge('w-full', className)}

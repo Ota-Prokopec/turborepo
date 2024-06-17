@@ -14,3 +14,5 @@ export { default as PetDescribingCustomField } from './PetDescribingCustomField'
 export * from './PetDescribingCustomField';
 export { default as Session } from './Session';
 export * from './Session';
+export { default as petMicrochipping } from './petMicrochipping';
+export * from './petMicrochipping';

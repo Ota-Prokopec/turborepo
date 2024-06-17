@@ -13,6 +13,11 @@ input CreatePetAddressInput {
   petAddressCoords: Coords!
 }
 
+input CreatePetChippingInput {
+  dateOfChipping: Date!
+  locationOfChip: String!
+}
+
 input CreatePetDescriptionCustomField {
   text: String!
   title: String!
@@ -22,13 +27,20 @@ input CreatePetInput {
   ownerPhoneNumber: String!
   petAddress: CreatePetAddressInput!
   petAllergens: [String!]!
+  petBirthDate: Date!
   petDescriptionCustomFields: [CreatePetDescriptionCustomField!]!
   petGender: PetGender!
+  petMicrochipping: CreatePetChippingInput
   petName: String!
   petPicture: String!
   petTreating: String!
   petType: PetType!
 }
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
 
 type LostPetsLocation {
   _collectionId: String!
@@ -41,12 +53,12 @@ type LostPetsLocation {
 }
 
 type Mutation {
-  createPet(input: CreatePetInput!): Pet!
+  createPet(input: CreatePetInput!): Boolean!
   createRecordToLostPetsLocation(coords: Coords!, ownerUserId: String!, petId: String!): Boolean!
   deletePet(petId: String!): Boolean!
   deleteRecordToLostPetsLocation(documentId: String!): Boolean!
   logout: Boolean!
-  updatePet(data: CreatePetInput!, petId: String!): Pet!
+  updatePet(data: CreatePetInput!, petId: String!): Boolean!
 }
 
 type Pet {
@@ -61,10 +73,14 @@ type Pet {
   ownerPhoneNumber: String!
   petAddress: PetAddress!
   petAddressId: String!
+  petAge: Float!
   petAllergens: [String!]!
+  petBirthDate: Date!
   petDescriptionCustomFieldIds: [String!]!
   petDescriptionCustomFields: [PetDescriptionCustomField!]!
   petGender: PetGender!
+  petMicrochipping: petMicrochipping
+  petMicrochippingId: String
   petName: String!
 
   """Pet Picture is pet pictures URL"""
@@ -111,3 +127,8 @@ scalar StringOrNumber
 A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
 """
 scalar URL
+
+type petMicrochipping {
+  dateOfChipping: Date!
+  locationOfChip: String!
+}

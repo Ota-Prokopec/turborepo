@@ -1,5 +1,4 @@
 import { Document, GraphqlDocument } from '@repo/appwrite-types'
-import { Coords } from '@repo/ts-types'
 
 export type TPetDocumentCreate = {
 	petName: string
@@ -12,6 +11,8 @@ export type TPetDocumentCreate = {
 	petPicture: string
 	petDescriptionCustomFieldIds: string[]
 	petAddressId: string
+	petBirthDate: string
+	petMicrochippingId?: string
 }
 
 export type TPetDocument = Document<TPetDocumentCreate>

@@ -153,4 +153,21 @@ export const componentsCS = {
 	SellingCard: {
 		sizes: 'velikosti',
 	},
+	PetAgeInput: {
+		datePicker: {
+			label: 'Datum narození',
+		},
+	},
+	PetMicrochipDataInput: {
+		petChip: 'čip zvířete',
+		buttonAddChipInformationLabel: 'Přidat informace o čipu',
+		buttonRemoveChipInformationLabel: 'Odebrat informace o čipu',
+
+		locationInput: {
+			label: 'Kde se nachází',
+		},
+		datePicker: {
+			label: 'Datum vložení čipu',
+		},
+	},
 } satisfies BaseTranslation

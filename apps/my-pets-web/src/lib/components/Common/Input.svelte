@@ -4,6 +4,7 @@
 	import { createEventDispatcher, onMount } from 'svelte'
 	import { twMerge } from 'tailwind-merge'
 	import RequiredBadge from '../Badges/RequiredBadge.svelte'
+	import Text from './Text.svelte'
 
 	const dispatch = createEventDispatcher()
 	export let value = ''
@@ -18,6 +19,7 @@
 	export let disabled = false
 	export let autocomplete = ''
 	export let required = false
+	export let showLetterCount = false
 
 	export let ableClickIcon = true
 
@@ -71,8 +73,8 @@
 			class={`absolute inset-y-0 ${
 				iconPosition === 'left' ? 'left-0 pl-3' : 'right-0 pr-3'
 			} flex items-center  pointer-events-none ${
-				!ableClickIcon ? 'pointer-events-none' : 'pointer-events-auto z-10'
-			} z-20 `}
+				!ableClickIcon ? 'pointer-events-none' : 'pointer-events-auto'
+			}  `}
 			on:click={iconClick}
 		>
 			{#if typeof icon === 'string'}
@@ -88,7 +90,18 @@
 	{/if}
 
 	{#if required}
-		<RequiredBadge class="absolute top-[-8px] right-[-8px]"></RequiredBadge>
+		<RequiredBadge
+			class={twMerge(
+				'absolute  right-[-8px]',
+				showLetterCount ? 'bottom-[-8px]' : 'top-[-8px]',
+			)}
+		></RequiredBadge>
+	{/if}
+
+	{#if showLetterCount}
+		<Text class="text-[11px] absolute right-0 top-[-20px] pr-1"
+			>{value.length}/{maxLength}</Text
+		>
 	{/if}
 
 	<input
@@ -119,7 +132,7 @@
 		<label
 			for={id}
 			class={twMerge(
-				'absolute ml-4 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-700 rounded-full px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
+				'absolute ml-4 text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2  origin-[0] bg-gray-50 dark:bg-gray-700 rounded-full px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1',
 				iconPosition === 'left' ? 'pl-6' : iconPosition === 'right' ? 'pr-6' : '',
 			)}>{floatingLabel}</label
 		>

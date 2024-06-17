@@ -4,13 +4,15 @@ import { deletePet } from './deletePet'
 import { createPet } from './createPet'
 
 export default mutationField('updatePet', {
-	type: 'Pet',
+	type: 'Boolean',
 	args: { petId: stringArg(), data: 'CreatePetInput' },
 	resolve: async (source, args, ctx, info) => {
 		if (!ctx.isAuthed(ctx.user)) throw new ApolloError('User is not authenticated')
 
 		await deletePet(args.petId, ctx.appwrite)
 
-		return await createPet(args.data, ctx.appwrite, ctx.user.$id)
+		await createPet(args.data, ctx.appwrite, ctx.user.$id)
+
+		return true
 	},
 })

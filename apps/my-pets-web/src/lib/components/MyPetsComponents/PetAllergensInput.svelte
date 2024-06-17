@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Input } from 'flowbite-svelte'
 	import Card from '../Common/Card.svelte'
 	import Column from '../Common/Column.svelte'
 	import Icon from '../Common/Icon.svelte'
@@ -10,6 +9,7 @@
 	import IconXMark from '../Icons/IconXMark.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 	import MyPetsPaginator from './MyPetsPaginator.svelte'
+	import Input from '../Common/Input.svelte'
 
 	export let allergens: string[] = ['']
 </script>
@@ -19,7 +19,7 @@
 
 	<Column class="ml-2">
 		{#each allergens as allergen}
-			<Input bind:value={allergen} class="w-full" />
+			<Input maxLength={255} showLetterCount bind:value={allergen} class="w-full" />
 		{/each}
 		<Right>
 			<MyPetsPaginator

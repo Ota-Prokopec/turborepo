@@ -8,14 +8,16 @@ import { Appwrite } from '../../../lib/appwrite/appwrite'
 import { ID } from 'appwrite'
 
 export default mutationField('createPet', {
-	type: 'Pet',
+	type: 'Boolean',
 	args: { input: 'CreatePetInput' },
 	resolve: async (source, args, ctx, info) => {
 		if (!ctx.isAuthed(ctx.user)) throw new ApolloError('User is not authenticated')
 
 		const params = args.input
 
-		return await createPet(params, ctx.appwrite, ctx.user.$id)
+		await createPet(params, ctx.appwrite, ctx.user.$id)
+
+		return true
 	},
 })
 
@@ -52,12 +54,25 @@ export const createPet = async (
 		longitude: params.petAddress.petAddressCoords[1],
 	})
 
-	const [uploadPetPictureResponse, petAddressDocument, ...petDescriptionCustomFields] =
-		await Promise.all([
-			uploadPetPictureResponsePromise,
-			petAddressCreatingPromise,
-			...petDescriptionCustomFieldsPromise,
-		])
+	//create microchipping if any
+	let petMicrochippingCreatingPromise = params.petMicrochipping
+		? collections.petMicrochipping.createDocument({
+				dateOfChipping: params.petMicrochipping.dateOfChipping.toISOString(),
+				locationOfChip: params.petMicrochipping.locationOfChip,
+			})
+		: undefined
+
+	const [
+		uploadPetPictureResponse,
+		petAddressDocument,
+		petMicrochippingDocument,
+		...petDescriptionCustomFields
+	] = await Promise.all([
+		uploadPetPictureResponsePromise,
+		petAddressCreatingPromise,
+		petMicrochippingCreatingPromise,
+		...petDescriptionCustomFieldsPromise,
+	])
 
 	const petDocument = await collections.pet.createDocument(
 		{
@@ -71,6 +86,8 @@ export const createPet = async (
 			petTreating: params.petTreating,
 			petType: params.petType,
 			userId: userId,
+			petBirthDate: params.petBirthDate.toISOString(),
+			petMicrochippingId: petMicrochippingDocument?._id,
 		},
 		permissions.owner(userId),
 		petDocumentId,
@@ -99,6 +116,7 @@ export const createPet = async (
 		userId: userId,
 		petAddressId: petAddressDocument._id,
 		petId: petDocument._id,
+		petBirthDate: new Date(petDocument.petBirthDate),
 		...pick(petDocument, appwriteGraphqlKeys),
 	}
 }

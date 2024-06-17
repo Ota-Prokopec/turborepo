@@ -429,6 +429,40 @@ type RootTranslation = {
 			 */
 			sizes: string
 		}
+		PetAgeInput: {
+			datePicker: {
+				/**
+				 * D​a​t​e​ ​o​f​ ​b​i​r​t​h​d​a​y
+				 */
+				label: string
+			}
+		}
+		PetMicrochipDataInput: {
+			/**
+			 * p​e​t​'​s​ ​c​h​i​p
+			 */
+			petChip: string
+			/**
+			 * a​d​d​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​b​o​u​t​ ​c​h​i​p
+			 */
+			buttonAddChipInformationLabel: string
+			/**
+			 * r​e​m​o​v​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​b​o​u​t​ ​c​h​i​p
+			 */
+			buttonRemoveChipInformationLabel: string
+			locationInput: {
+				/**
+				 * W​h​e​r​e​ ​i​s​ ​l​o​c​a​t​e​d
+				 */
+				label: string
+			}
+			datePicker: {
+				/**
+				 * D​a​t​e​ ​o​f​ ​i​n​s​e​r​t​i​n​g​ ​t​h​e​ ​c​h​i​p
+				 */
+				label: string
+			}
+		}
 	}
 	error: {
 		/**
@@ -857,6 +891,40 @@ export type TranslationFunctions = {
 			 * sizes
 			 */
 			sizes: () => LocalizedString
+		}
+		PetAgeInput: {
+			datePicker: {
+				/**
+				 * Date of birthday
+				 */
+				label: () => LocalizedString
+			}
+		}
+		PetMicrochipDataInput: {
+			/**
+			 * pet's chip
+			 */
+			petChip: () => LocalizedString
+			/**
+			 * add information about chip
+			 */
+			buttonAddChipInformationLabel: () => LocalizedString
+			/**
+			 * remove information about chip
+			 */
+			buttonRemoveChipInformationLabel: () => LocalizedString
+			locationInput: {
+				/**
+				 * Where is located
+				 */
+				label: () => LocalizedString
+			}
+			datePicker: {
+				/**
+				 * Date of inserting the chip
+				 */
+				label: () => LocalizedString
+			}
 		}
 	}
 	error: {

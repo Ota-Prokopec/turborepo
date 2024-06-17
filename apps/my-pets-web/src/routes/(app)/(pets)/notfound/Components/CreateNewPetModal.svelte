@@ -21,6 +21,8 @@
 	import { zodCreatingPetData, type TCreatePetData } from '@repo/my-pets-tstypes'
 	import { Button, Modal } from 'flowbite-svelte'
 	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
+	import PetAgeInput from '$lib/components/MyPetsComponents/PetAgeInput.svelte'
+	import PetMicrochipDataInput from '$lib/components/MyPetsComponents/PetMicrochipDataInput.svelte'
 
 	export let open = false
 	export let savingState:
@@ -40,6 +42,8 @@
 		petGender: 'female',
 		petDescriptionCustomFields: [{ text: '', title: '' }],
 		petPicture: '',
+		petBirthDate: new Date(),
+		petMicrochipping: null,
 	}
 
 	const save = async () => {
@@ -107,6 +111,8 @@
 	></PetPictureInput>
 
 	<PetNameInput bind:value={data.petName}></PetNameInput>
+	<PetAgeInput bind:date={data.petBirthDate}></PetAgeInput>
+	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
 	<PetAddressInput
 		coords={data.petAddress.petAddressCoords}
 		value={data.petAddress.petAddress}
@@ -115,9 +121,9 @@
 			data.petAddress.petAddressCoords = e.detail.coords
 		}}
 	></PetAddressInput>
-	<OwnerPhoneNumberInput bind:value={data.ownerPhoneNumber}></OwnerPhoneNumberInput>
 	<PetAllergensInput></PetAllergensInput>
 	<PetTreatInput maxInputLength={500} bind:value={data.petTreating}></PetTreatInput>
+	<PetMicrochipDataInput bind:data={data.petMicrochipping}></PetMicrochipDataInput>
 	<PetCustomTextInput bind:fields={data.petDescriptionCustomFields} aboutMaxLength={500}
 	></PetCustomTextInput>
 	<Right>
