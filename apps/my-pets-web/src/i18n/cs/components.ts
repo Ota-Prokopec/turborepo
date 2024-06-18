@@ -153,4 +153,21 @@ export const componentsCS = {
 	SellingCard: {
 		sizes: 'velikosti',
 	},
+	PetAgeInput: {
+		datePicker: {
+			label: 'Datum narození',
+		},
+	},
+	PetAgeItem: {
+		yearsOld: 'let starý',
+		born: 'narozen',
+	},
+	PetWeightInput: {
+		title: 'Hmotnost zvířete',
+		buttonAddWeight: 'Přidat hmotnost',
+		buttonRemoveWeight: 'Odebrat hmotnost',
+	},
+	PetWeightItem: {
+		title: 'Moje hmotnost je',
+	},
 } satisfies BaseTranslation

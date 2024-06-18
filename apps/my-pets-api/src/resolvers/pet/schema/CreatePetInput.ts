@@ -14,5 +14,7 @@ export default inputObjectType({
 		t.list.field('petDescriptionCustomFields', {
 			type: 'CreatePetDescriptionCustomField',
 		})
+		t.field('petBirthDate', { type: 'Date' })
+		t.nullable.float('petWeight')
 	},
 })

@@ -19,6 +19,9 @@
 	import IFoundPetButton from './IFoundPetButton.svelte'
 	import PetFoundLocationItem from './Items/PetFoundLocationItem/PetFoundLocationItem.svelte'
 	import PetUrlItem from './Items/PetUrlItem.svelte'
+	import PetAgeItem from './Items/PetAgeItem.svelte'
+	import PetWeightInput from '$lib/components/MyPetsComponents/PetWeightInput.svelte'
+	import PetWeightItem from './Items/PetWeightItem.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -38,7 +41,10 @@
 	{#if isOwner}
 		<Right>
 			<Column>
-				<EditPetButton on:click={() => navigate(`/pet/${petData.linkId}/edit`)} class=""
+				<EditPetButton
+					on:click={() =>
+						navigate(`/pet/${petData.linkId}/edit`, { invalidateAll: true })}
+					class=""
 				></EditPetButton>
 				<DeletePetButton
 					on:deleted={() => navigate('/', { invalidateAll: true })}
@@ -64,8 +70,12 @@
 	<PetUrlItem class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrlItem>
 	<Column class="w-full max-w-[600px]">
 		<PetNameItem petName={petData.petName}></PetNameItem>
-		<PetAddressItem petAddress={petData.petAddress}></PetAddressItem>
 		<OwnerPhoneNumberItem number={petData.ownerPhoneNumber}></OwnerPhoneNumberItem>
+		<PetAgeItem birthDate={petData.petBirthDate} age={petData.petAge}></PetAgeItem>
+		{#if petData.petWeight}
+			<PetWeightItem weight={petData.petWeight}></PetWeightItem>
+		{/if}
+		<PetAddressItem petAddress={petData.petAddress}></PetAddressItem>
 
 		{#if petData.petAllergens.length}
 			<PetAllergensItem petAllergens={petData.petAllergens}></PetAllergensItem>
@@ -74,6 +84,7 @@
 		{#if petData.petTreating.length}
 			<PetTreatingItem text={petData.petTreating}></PetTreatingItem>
 		{/if}
+
 		{#if petData.petDescriptionCustomFields.length}
 			<PetDescriptionCustomFieldsItem fields={petData.petDescriptionCustomFields}
 			></PetDescriptionCustomFieldsItem>

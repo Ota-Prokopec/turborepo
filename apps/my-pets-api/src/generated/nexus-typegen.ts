@@ -13,6 +13,7 @@ declare global {
      */
     url<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "URL";
     coords<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Coords";
+    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Date";
     petGender<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetGender";
     petType<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "StringOrNumber";
@@ -25,6 +26,7 @@ declare global {
      */
     url<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "URL";
     coords<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Coords";
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Date";
     petGender<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetGender";
     petType<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "PetType";
     stringOrNumber<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "StringOrNumber";
@@ -49,12 +51,14 @@ export interface NexusGenInputs {
     ownerPhoneNumber: string; // String!
     petAddress: NexusGenInputs['CreatePetAddressInput']; // CreatePetAddressInput!
     petAllergens: string[]; // [String!]!
+    petBirthDate: NexusGenScalars['Date']; // Date!
     petDescriptionCustomFields: NexusGenInputs['CreatePetDescriptionCustomField'][]; // [CreatePetDescriptionCustomField!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
     petName: string; // String!
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight?: number | null; // Float
   }
 }
 
@@ -68,6 +72,7 @@ export interface NexusGenScalars {
   Boolean: boolean
   ID: string
   Coords: [number, number]
+  Date: Date
   PetGender: 'male' | 'female'
   PetType: 'cat' | 'dog'
   StringOrNumber: string | number
@@ -98,12 +103,15 @@ export interface NexusGenObjects {
     ownerPhoneNumber: string; // String!
     petAddressId: string; // String!
     petAllergens: string[]; // [String!]!
+    petBirthDate: string; // String!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
+    petMicrochippingId?: string | null; // String
     petName: string; // String!
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight?: number | null; // Float
     userId: string; // String!
   }
   PetAddress: { // root type
@@ -150,12 +158,12 @@ export interface NexusGenFieldTypes {
     coords: NexusGenScalars['Coords']; // Coords!
   }
   Mutation: { // field return type
-    createPet: NexusGenRootTypes['Pet']; // Pet!
+    createPet: boolean; // Boolean!
     createRecordToLostPetsLocation: boolean; // Boolean!
     deletePet: boolean; // Boolean!
     deleteRecordToLostPetsLocation: boolean; // Boolean!
     logout: boolean; // Boolean!
-    updatePet: NexusGenRootTypes['Pet']; // Pet!
+    updatePet: boolean; // Boolean!
   }
   Pet: { // field return type
     _collectionId: string; // String!
@@ -169,14 +177,18 @@ export interface NexusGenFieldTypes {
     ownerPhoneNumber: string; // String!
     petAddress: NexusGenRootTypes['PetAddress']; // PetAddress!
     petAddressId: string; // String!
+    petAge: number; // Float!
     petAllergens: string[]; // [String!]!
+    petBirthDate: string; // String!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petDescriptionCustomFields: NexusGenRootTypes['PetDescriptionCustomField'][]; // [PetDescriptionCustomField!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
+    petMicrochippingId: string | null; // String
     petName: string; // String!
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight: number | null; // Float
     userId: string; // String!
   }
   PetAddress: { // field return type
@@ -218,12 +230,12 @@ export interface NexusGenFieldTypeNames {
     coords: 'Coords'
   }
   Mutation: { // field return type name
-    createPet: 'Pet'
+    createPet: 'Boolean'
     createRecordToLostPetsLocation: 'Boolean'
     deletePet: 'Boolean'
     deleteRecordToLostPetsLocation: 'Boolean'
     logout: 'Boolean'
-    updatePet: 'Pet'
+    updatePet: 'Boolean'
   }
   Pet: { // field return type name
     _collectionId: 'String'
@@ -237,14 +249,18 @@ export interface NexusGenFieldTypeNames {
     ownerPhoneNumber: 'String'
     petAddress: 'PetAddress'
     petAddressId: 'String'
+    petAge: 'Float'
     petAllergens: 'String'
+    petBirthDate: 'String'
     petDescriptionCustomFieldIds: 'String'
     petDescriptionCustomFields: 'PetDescriptionCustomField'
     petGender: 'PetGender'
+    petMicrochippingId: 'String'
     petName: 'String'
     petPicture: 'String'
     petTreating: 'String'
     petType: 'PetType'
+    petWeight: 'Float'
     userId: 'String'
   }
   PetAddress: { // field return type name

@@ -1,5 +1,5 @@
 import { Types } from '@repo/appwrite-ssr-graphql'
-import {
+import type {
 	TLostPetsLocationDocumentCreate,
 	TLostPetsLocationGraphqlDocument,
 	TPetAddressDocumentCreate,

@@ -14,6 +14,9 @@ export const zodPetData = z.object({
 	linkId: z.string(),
 	petGender: zodPetGender,
 	petPicture: z.string().url().min(1),
+	petBirthDate: z.date(),
+	petWeight: z.number({ description: 'in kg' }).optional().or(z.null()),
+	petAge: z.number(),
 	petAddress: z.object({
 		petAddress: z.string().min(1),
 		petAddressCoords: zodCoords,
@@ -37,6 +40,7 @@ export const zodCreatingPetData = zodPetData.omit({
 	userId: true,
 	lostPetLocations: true,
 	linkId: true,
+	petAge: true,
 })
 
 export type TPetData = z.infer<typeof zodPetData>

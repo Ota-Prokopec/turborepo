@@ -153,4 +153,21 @@ export const componentsCS = {
 	SellingCard: {
 		sizes: 'sizes',
 	},
+	PetAgeInput: {
+		datePicker: {
+			label: 'Date of birthday',
+		},
+	},
+	PetAgeItem: {
+		yearsOld: 'years old',
+		born: 'born',
+	},
+	PetWeightInput: {
+		title: "Pet's weight",
+		buttonAddWeight: 'Add weight',
+		buttonRemoveWeight: 'Remove weight',
+	},
+	PetWeightItem: {
+		title: 'My weight is',
+	},
 } satisfies BaseTranslation

@@ -1,0 +1,9 @@
+import { sdkssr } from '$src/graphql/sdkssr'
+import { PageServerLoad } from './$types'
+
+export const load: PageServerLoad = async (event) => {
+	const petData = (await sdkssr(event).getPet({ petLinkId: event.params.petLinkId }))
+		.getPet
+
+	return { petData }
+}

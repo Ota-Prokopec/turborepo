@@ -7,6 +7,7 @@ const codegenConfigConfig: CodegenConfig['config'] = {
 		PetGender: "'male'|'female'",
 		PetType: "'cat'|'dog'",
 		Coords: '[number, number]',
+		Date: 'Date',
 	},
 }
 

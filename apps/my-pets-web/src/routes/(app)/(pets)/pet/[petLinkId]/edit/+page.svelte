@@ -5,21 +5,20 @@
 	import { useQuery } from '@sveltestack/svelte-query'
 	import UpdatePetModal from '../../../notfound/Components/UpdatePetModal.svelte'
 	import { navigate } from '$lib/utils/navigator'
+	import type { PageData } from './$types'
 
 	const petLinkId: string = $page.params.petLinkId
 
-	$: petData = useQuery('getPetData', async () => {
-		return (await sdk.getPet({ petLinkId: petLinkId })).getPet
-	})
+	export let data: PageData
+	const petData = data.petData
 </script>
 
-{#if $petData.isLoading}
-	<FullPageLoading></FullPageLoading>
-{:else if $petData.data}
-	<UpdatePetModal
-		on:returnBack={() => console.log('return')}
-		on:returnBack={() => navigate('/', { invalidateAll: true })}
-		open
-		currentData={$petData.data}
-	></UpdatePetModal>
-{/if}
+<UpdatePetModal
+	on:returnBack={() => console.log('return')}
+	on:returnBack={() => navigate('/', { invalidateAll: true })}
+	open
+	currentData={{
+		...petData,
+		petBirthDate: new Date(petData.petBirthDate),
+	}}
+></UpdatePetModal>

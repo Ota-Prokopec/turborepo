@@ -1,18 +1,17 @@
 <script lang="ts">
+	import '../app.css'
+
 	import { navigating } from '$app/stores'
 	import CookiesAlert from '$lib/components/Common/CookiesAlert.svelte'
 	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
-	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query'
 	import OfflinePage from '$lib/components/Pages/OfflinePage.svelte'
 	import { isOnline } from '$lib/utils/online'
+	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query'
 
-	import '../app.css'
 	import Alert from '$lib/components/Alert/Alert.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
-	import { alertStore } from './alertStore'
 	import { Button } from 'flowbite-svelte'
-	import lsStore from '$lib/utils/lsStore'
-	import Terms from '$lib/components/MyPetsComponents/Terms.svelte'
+	import { alertStore } from './alertStore'
 	const queryClient = new QueryClient()
 </script>
 

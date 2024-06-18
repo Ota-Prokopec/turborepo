@@ -20,6 +20,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   Coords: { input: [number, number]; output: [number, number]; }
+  Date: { input: Date; output: Date; }
   PetGender: { input: 'male'|'female'; output: 'male'|'female'; }
   PetType: { input: 'cat'|'dog'; output: 'cat'|'dog'; }
   StringOrNumber: { input: string|number; output: string|number; }
@@ -46,12 +47,14 @@ export type CreatePetInput = {
   ownerPhoneNumber: Scalars['String']['input'];
   petAddress: CreatePetAddressInput;
   petAllergens: Array<Scalars['String']['input']>;
+  petBirthDate: Scalars['Date']['input'];
   petDescriptionCustomFields: Array<CreatePetDescriptionCustomField>;
   petGender: Scalars['PetGender']['input'];
   petName: Scalars['String']['input'];
   petPicture: Scalars['String']['input'];
   petTreating: Scalars['String']['input'];
   petType: Scalars['PetType']['input'];
+  petWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LostPetsLocation = {
@@ -67,12 +70,12 @@ export type LostPetsLocation = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createPet: Pet;
+  createPet: Scalars['Boolean']['output'];
   createRecordToLostPetsLocation: Scalars['Boolean']['output'];
   deletePet: Scalars['Boolean']['output'];
   deleteRecordToLostPetsLocation: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
-  updatePet: Pet;
+  updatePet: Scalars['Boolean']['output'];
 };
 
 
@@ -116,15 +119,19 @@ export type Pet = {
   ownerPhoneNumber: Scalars['String']['output'];
   petAddress: PetAddress;
   petAddressId: Scalars['String']['output'];
+  petAge: Scalars['Float']['output'];
   petAllergens: Array<Scalars['String']['output']>;
+  petBirthDate: Scalars['String']['output'];
   petDescriptionCustomFieldIds: Array<Scalars['String']['output']>;
   petDescriptionCustomFields: Array<PetDescriptionCustomField>;
   petGender: Scalars['PetGender']['output'];
+  petMicrochippingId?: Maybe<Scalars['String']['output']>;
   petName: Scalars['String']['output'];
   /** Pet Picture is pet pictures URL */
   petPicture: Scalars['String']['output'];
   petTreating: Scalars['String']['output'];
   petType: Scalars['PetType']['output'];
+  petWeight?: Maybe<Scalars['Float']['output']>;
   userId: Scalars['String']['output'];
 };
 
@@ -207,7 +214,7 @@ export type CreatePetMutationVariables = Exact<{
 }>;
 
 
-export type CreatePetMutation = { __typename?: 'Mutation', createPet: { __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, petAddressId: string, userId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
+export type CreatePetMutation = { __typename?: 'Mutation', createPet: boolean };
 
 export type DeletePetMutationVariables = Exact<{
   petId: Scalars['String']['input'];
@@ -222,19 +229,19 @@ export type UpdatePetMutationVariables = Exact<{
 }>;
 
 
-export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] } } };
+export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: boolean };
 
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, linkId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, linkId: string, petBirthDate: string, petMicrochippingId?: string | null, petAge: number, petWeight?: number | null, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
 
 export type GetPetQueryVariables = Exact<{
   petLinkId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, linkId: string, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, linkId: string, petBirthDate: string, petMicrochippingId?: string | null, petAge: number, petWeight?: number | null, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> } };
 
 
 export const GetAccountDoc = gql`
@@ -270,27 +277,7 @@ export const DeleteRecordToLostPetsLocationDoc = gql`
     `;
 export const CreatePetDoc = gql`
     mutation createPet($input: CreatePetInput!) {
-  createPet(input: $input) {
-    _id
-    petName
-    petType
-    petAllergens
-    ownerPhoneNumber
-    petTreating
-    petDescriptionCustomFieldIds
-    petGender
-    petDescriptionCustomFields {
-      title
-      text
-    }
-    petPicture
-    petAddressId
-    userId
-    petAddress {
-      petAddress
-      petAddressCoords
-    }
-  }
+  createPet(input: $input)
 }
     `;
 export const DeletePetDoc = gql`
@@ -300,38 +287,7 @@ export const DeletePetDoc = gql`
     `;
 export const UpdatePetDoc = gql`
     mutation updatePet($petId: String!, $data: CreatePetInput!) {
-  updatePet(petId: $petId, data: $data) {
-    _createdAt
-    _updatedAt
-    _collectionId
-    _id
-    _permissions
-    _databaseId
-    userId
-    petName
-    petType
-    petAllergens
-    ownerPhoneNumber
-    petTreating
-    petPicture
-    petDescriptionCustomFieldIds
-    petGender
-    petDescriptionCustomFields {
-      _createdAt
-      _updatedAt
-      _collectionId
-      _id
-      _permissions
-      _databaseId
-      title
-      text
-    }
-    petAddressId
-    petAddress {
-      petAddress
-      petAddressCoords
-    }
-  }
+  updatePet(petId: $petId, data: $data)
 }
     `;
 export const GetListOfPetsDoc = gql`
@@ -371,6 +327,10 @@ export const GetListOfPetsDoc = gql`
       coords
     }
     linkId
+    petBirthDate
+    petMicrochippingId
+    petAge
+    petWeight
   }
 }
     `;
@@ -417,6 +377,10 @@ export const GetPetDoc = gql`
       coords
     }
     linkId
+    petBirthDate
+    petMicrochippingId
+    petAge
+    petWeight
   }
 }
     `;

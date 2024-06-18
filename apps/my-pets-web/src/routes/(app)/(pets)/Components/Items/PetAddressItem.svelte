@@ -31,7 +31,7 @@
 		{#if !viewMap}
 			<SeeOnMapButton on:click={() => (viewMap = true)}></SeeOnMapButton>
 		{:else}
-			<Map class="w-full h-[500px]">
+			<Map userCenter={petAddress.petAddressCoords} class="w-full h-[500px]">
 				<Marker class="z-30" location={petAddress.petAddressCoords}>
 					<Icon class="w-7 h-7"><IconLocation></IconLocation></Icon>
 				</Marker>

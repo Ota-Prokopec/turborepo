@@ -20,6 +20,6 @@ export default queryField('getPet', {
 
 		if (!pet) throw new ApolloError('pet was not found')
 
-		return pet
+		return { ...pet }
 	},
 })

@@ -8,14 +8,16 @@ import { Appwrite } from '../../../lib/appwrite/appwrite'
 import { ID } from 'appwrite'
 
 export default mutationField('createPet', {
-	type: 'Pet',
+	type: 'Boolean',
 	args: { input: 'CreatePetInput' },
 	resolve: async (source, args, ctx, info) => {
 		if (!ctx.isAuthed(ctx.user)) throw new ApolloError('User is not authenticated')
 
 		const params = args.input
 
-		return await createPet(params, ctx.appwrite, ctx.user.$id)
+		await createPet(params, ctx.appwrite, ctx.user.$id)
+
+		return true
 	},
 })
 
@@ -71,6 +73,8 @@ export const createPet = async (
 			petTreating: params.petTreating,
 			petType: params.petType,
 			userId: userId,
+			petBirthDate: params.petBirthDate.toISOString(),
+			petWeight: params.petWeight,
 		},
 		permissions.owner(userId),
 		petDocumentId,
@@ -99,6 +103,7 @@ export const createPet = async (
 		userId: userId,
 		petAddressId: petAddressDocument._id,
 		petId: petDocument._id,
+		petBirthDate: petDocument.petBirthDate,
 		...pick(petDocument, appwriteGraphqlKeys),
 	}
 }

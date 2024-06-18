@@ -6,6 +6,8 @@ export { default as index } from './generated/index';
 export * from './generated/index';
 export { default as Coords } from './scalarTypes/custom/Coords';
 export * from './scalarTypes/custom/Coords';
+export { default as Date } from './scalarTypes/custom/Date';
+export * from './scalarTypes/custom/Date';
 export { default as PetGender } from './scalarTypes/custom/PetGender';
 export * from './scalarTypes/custom/PetGender';
 export { default as PetType } from './scalarTypes/custom/PetType';

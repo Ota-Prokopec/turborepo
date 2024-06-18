@@ -429,6 +429,44 @@ type RootTranslation = {
 			 */
 			sizes: string
 		}
+		PetAgeInput: {
+			datePicker: {
+				/**
+				 * D​a​t​e​ ​o​f​ ​b​i​r​t​h​d​a​y
+				 */
+				label: string
+			}
+		}
+		PetAgeItem: {
+			/**
+			 * y​e​a​r​s​ ​o​l​d
+			 */
+			yearsOld: string
+			/**
+			 * b​o​r​n
+			 */
+			born: string
+		}
+		PetWeightInput: {
+			/**
+			 * P​e​t​'​s​ ​w​e​i​g​h​t
+			 */
+			title: string
+			/**
+			 * A​d​d​ ​w​e​i​g​h​t
+			 */
+			buttonAddWeight: string
+			/**
+			 * R​e​m​o​v​e​ ​w​e​i​g​h​t
+			 */
+			buttonRemoveWeight: string
+		}
+		PetWeightItem: {
+			/**
+			 * M​y​ ​w​e​i​g​h​t​ ​i​s
+			 */
+			title: string
+		}
 	}
 	error: {
 		/**
@@ -857,6 +895,44 @@ export type TranslationFunctions = {
 			 * sizes
 			 */
 			sizes: () => LocalizedString
+		}
+		PetAgeInput: {
+			datePicker: {
+				/**
+				 * Date of birthday
+				 */
+				label: () => LocalizedString
+			}
+		}
+		PetAgeItem: {
+			/**
+			 * years old
+			 */
+			yearsOld: () => LocalizedString
+			/**
+			 * born
+			 */
+			born: () => LocalizedString
+		}
+		PetWeightInput: {
+			/**
+			 * Pet's weight
+			 */
+			title: () => LocalizedString
+			/**
+			 * Add weight
+			 */
+			buttonAddWeight: () => LocalizedString
+			/**
+			 * Remove weight
+			 */
+			buttonRemoveWeight: () => LocalizedString
+		}
+		PetWeightItem: {
+			/**
+			 * My weight is
+			 */
+			title: () => LocalizedString
 		}
 	}
 	error: {
