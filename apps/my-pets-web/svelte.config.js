@@ -1,15 +1,18 @@
+import { preprocessMeltUI, sequence } from '@melt-ui/pp'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 import adapter from '@sveltejs/adapter-vercel'
 import path from 'path'
-
-/** @type {import('@sveltejs/kit').Config} */
+/** @type {import('@sveltejs/kit').Config}*/
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: [vitePreprocess()],
+	preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
 	kit: {
 		adapter: adapter(),
-		env: { dir: '../../', publicPrefix: 'PUBLIC_' },
+		env: {
+			dir: '../../',
+			publicPrefix: 'PUBLIC_',
+		},
 		alias: {
 			$lib: path.resolve('src', 'lib'),
 			$root: path.resolve('/'),
@@ -18,5 +21,4 @@ const config = {
 		},
 	},
 }
-
 export default config

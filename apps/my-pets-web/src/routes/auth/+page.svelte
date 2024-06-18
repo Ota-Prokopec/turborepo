@@ -8,6 +8,7 @@
 	import ButtonLinkToDeveloperPage from '$lib/components/Buttons/ButtonLinkToDeveloperPage.svelte'
 	import Icon from '$lib/components/Common/Icon.svelte'
 	import IconBan from '$lib/components/Icons/IconBan.svelte'
+	import RegisterViaPhone from './Components/RegisterViaPhone.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">
@@ -16,6 +17,7 @@
 	</Padding>
 
 	<SignUpViaSocialMedia></SignUpViaSocialMedia>
+	<RegisterViaPhone></RegisterViaPhone>
 
 	<ButtonLinkToDeveloperPage></ButtonLinkToDeveloperPage>
 </Column>

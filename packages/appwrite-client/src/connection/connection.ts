@@ -11,7 +11,6 @@ import {
 	ID,
 	type Models,
 } from 'appwrite'
-import { createAuthDispatcher } from '../svelte/main'
 import { Query } from 'appwrite'
 import database from '../database/database'
 
@@ -22,9 +21,7 @@ export default <Preferences extends Models.Preferences>(client: Client) => {
 	const avatars = new Avatars(client)
 	const graphql = new Graphql(client)
 	const account = new Account(client)
-	const Auth = createAuthDispatcher<Preferences>(account)
 	const Collection = database(client)
-	const user = new Auth()
 
 	return {
 		client,
@@ -35,7 +32,6 @@ export default <Preferences extends Models.Preferences>(client: Client) => {
 		graphql,
 		account,
 		database,
-		user,
 		Collection,
 		Query,
 		Role,

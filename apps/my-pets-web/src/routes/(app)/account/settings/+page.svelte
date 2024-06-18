@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
-	import { user } from '$lib/appwrite/appwrite'
+	import { PUBLIC_SESSION_NAME } from '$env/static/public'
+	import { account } from '$lib/appwrite/appwrite'
 	import LogOutButton from '$lib/components/Buttons/LogOutButton.svelte'
 	import Card from '$lib/components/Common/Card.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
@@ -14,9 +15,9 @@
 
 	const logOut = async () => {
 		try {
-			await user.deleteSessions()
+			await account.deleteSessions()
 			await sdk.logOut()
-			$lsStore.cookieFallback = { a_session_6636972a0023b54e21bf: '' }
+			$lsStore.cookieFallback = { [PUBLIC_SESSION_NAME]: '' }
 			goto('/auth')
 		} catch (error) {
 			alert('', $LL.page.settings.logOut.errorMessage(), { color: 'red' })

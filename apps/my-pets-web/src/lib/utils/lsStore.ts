@@ -5,7 +5,7 @@ import * as lodash from 'lodash'
 import { writable } from 'svelte/store'
 
 export type Data = {
-	cookieFallback?: Record<'a_session_6636972a0023b54e21bf', string> | null
+	cookieFallback?: Record<string, string> | null
 	usersLocation?: Coords | null
 	colorTheme?: ColorTheme
 	language?: Locales

@@ -12,8 +12,8 @@ const client = appwrite<Record<string, never>>(
 )
 
 const collections = myCollections(client.Collection)
-const user = client.user
 
 export default client
+const account = client.account
 
-export { collections, Queries, user }
+export { collections, Queries, account }

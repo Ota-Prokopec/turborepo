@@ -2,6 +2,7 @@ import { browser } from '$app/environment'
 import {
 	PUBLIC_IOS_AUTHORIZATION_HEADER_NAME,
 	PUBLIC_SERVER_HOSTNAME,
+	PUBLIC_SESSION_NAME,
 } from '$env/static/public'
 import { storage } from '$lib/utils/lsStore'
 import { RequestConfig, RequestMiddleware } from 'graphql-request/build/esm/types'
@@ -13,9 +14,10 @@ const requestMiddleware: RequestMiddleware = (req) => {
 		...req,
 		headers: {
 			...req.headers,
-			[PUBLIC_IOS_AUTHORIZATION_HEADER_NAME]: browser
-				? storage.cookieFallback?.a_session_6636972a0023b54e21bf
-				: undefined,
+			[PUBLIC_IOS_AUTHORIZATION_HEADER_NAME]:
+				browser && storage.cookieFallback
+					? storage.cookieFallback[PUBLIC_SESSION_NAME]
+					: undefined,
 		},
 	}
 }
