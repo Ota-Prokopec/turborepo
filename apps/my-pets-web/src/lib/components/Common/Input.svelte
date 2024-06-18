@@ -7,7 +7,7 @@
 	import Text from './Text.svelte'
 
 	const dispatch = createEventDispatcher()
-	export let value = ''
+	export let value: string = ''
 	export let placeholder = ''
 	export let floatingLabel = ''
 	export let id = elementIdGenerator()
@@ -20,8 +20,19 @@
 	export let autocomplete = ''
 	export let required = false
 	export let showLetterCount = false
-
+	export let pattern: RegExp | null = null
 	export let ableClickIcon = true
+
+	$: control(value)
+
+	const control = (inputString: string) => {
+		if (pattern) value = patternControl(inputString)
+	}
+
+	const patternControl = (v: string) => {
+		if (!pattern) throw new Error('there is no pattern')
+		return v.replace(pattern, '')
+	}
 
 	export let type:
 		| 'color'

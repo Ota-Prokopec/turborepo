@@ -158,16 +158,16 @@ export const componentsCS = {
 			label: 'Datum narození',
 		},
 	},
-	PetMicrochipDataInput: {
-		petChip: 'čip zvířete',
-		buttonAddChipInformationLabel: 'Přidat informace o čipu',
-		buttonRemoveChipInformationLabel: 'Odebrat informace o čipu',
-
-		locationInput: {
-			label: 'Kde se nachází',
-		},
-		datePicker: {
-			label: 'Datum vložení čipu',
-		},
+	PetAgeItem: {
+		yearsOld: 'let starý',
+		born: 'narozen',
+	},
+	PetWeightInput: {
+		title: 'Hmotnost zvířete',
+		buttonAddWeight: 'Přidat hmotnost',
+		buttonRemoveWeight: 'Odebrat hmotnost',
+	},
+	PetWeightItem: {
+		title: 'Moje hmotnost je',
 	},
 } satisfies BaseTranslation

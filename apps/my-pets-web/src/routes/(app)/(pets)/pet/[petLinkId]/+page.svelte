@@ -20,7 +20,12 @@
 	<FullPageLoading></FullPageLoading>
 {:else if $petData.data}
 	<Center class="w-full flex-wrap flex-col pt-20">
-		<Section isOwner={$petData.data.userId === data.user?.userId} petData={$petData.data}
+		<Section
+			isOwner={$petData.data.userId === data.user?.userId}
+			petData={{
+				...$petData.data,
+				petBirthDate: new Date($petData.data.petBirthDate),
+			}}
 		></Section>
 	</Center>
 {/if}

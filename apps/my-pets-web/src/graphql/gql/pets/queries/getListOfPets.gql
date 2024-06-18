@@ -36,10 +36,8 @@ query getListOfPets {
 		linkId
 		petBirthDate
 		petMicrochippingId
-		petMicrochipping {
-			locationOfChip
-			dateOfChipping
-		}
+
 		petAge
+		petWeight
 	}
 }

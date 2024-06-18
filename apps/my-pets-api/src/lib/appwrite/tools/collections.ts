@@ -8,8 +8,6 @@ import {
 	TPetGraphqlDocument,
 	TPetIdTranslationDocumentCreate,
 	TPetIdTranslationGraphqlDocument,
-	TPetMicroChippingDocumentCreate,
-	TPetMicroChippingGraphqlDocument,
 	TpetDescriptionCustomFieldsDocumentCreate,
 	TpetDescriptionCustomFieldsGraphqlDocument,
 } from '@repo/my-pets-tstypes'
@@ -41,10 +39,6 @@ export const collectionsClient = (
 			TPetIdTranslationGraphqlDocument,
 			TPetIdTranslationDocumentCreate
 		>('my-pets', 'petIdTranslation'),
-		petMicrochipping: new Collection<
-			TPetMicroChippingGraphqlDocument,
-			TPetMicroChippingDocumentCreate
-		>('my-pets', 'petMicrochipping'),
 	}
 }
 
@@ -69,9 +63,5 @@ export const collectionsAdmin = (
 			TPetIdTranslationGraphqlDocument,
 			TPetIdTranslationDocumentCreate
 		>('my-pets', 'petIdTranslation'),
-		petMicrochipping: new Collection<
-			TPetMicroChippingGraphqlDocument,
-			TPetMicroChippingDocumentCreate
-		>('my-pets', 'petMicrochipping'),
 	}
 }

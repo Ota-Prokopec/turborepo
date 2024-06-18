@@ -19,9 +19,10 @@ export default objectType({
 		t.string('ownerPhoneNumber')
 		t.string('petTreating')
 		t.string('petAddressId')
+		t.nullable.float('petWeight')
 		t.string('petPicture', { description: 'Pet Picture is pet pictures URL' })
 		t.list.string('petDescriptionCustomFieldIds')
-		t.field('petBirthDate', { type: 'Date' })
+		t.field('petBirthDate', { type: 'String' })
 		t.nullable.string('petMicrochippingId')
 		t.field('petGender', { type: 'PetGender' }),
 			t.field('petDescriptionCustomFields', {
@@ -84,26 +85,7 @@ export default objectType({
 				return linkIdDocument.linkId
 			},
 		})
-		t.field('petMicrochipping', {
-			type: nullable('petMicrochipping'),
-			resolve: async (source, args, ctx) => {
-				const { collections } = ctx.appwrite
 
-				if (!source.petMicrochippingId) return null
-
-				const query = Queries.petMicrochipping.equal('$id', source.petMicrochippingId)
-				const microchippingDocument = await collections.petMicrochipping.getDocument([
-					query,
-				])
-
-				if (!microchippingDocument)
-					throw new ApolloError('Microchipping id is not correct')
-				return {
-					dateOfChipping: new Date(microchippingDocument.dateOfChipping),
-					locationOfChip: microchippingDocument.locationOfChip,
-				}
-			},
-		})
 		t.field('petAge', {
 			type: 'Float',
 			resolve: async (source, args, ctx) => {
@@ -113,7 +95,7 @@ export default objectType({
 					var ageDate = new Date(ageDifMs) // miliseconds from epoch
 					return Math.abs(ageDate.getUTCFullYear() - 1970)
 				}
-				return calculateAge(source.petBirthDate)
+				return calculateAge(new Date(source.petBirthDate))
 			},
 		})
 	},

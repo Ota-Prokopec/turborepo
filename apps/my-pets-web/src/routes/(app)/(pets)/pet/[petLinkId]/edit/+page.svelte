@@ -20,6 +20,9 @@
 		on:returnBack={() => console.log('return')}
 		on:returnBack={() => navigate('/', { invalidateAll: true })}
 		open
-		currentData={$petData.data}
+		currentData={{
+			...$petData.data,
+			petBirthDate: new Date($petData.data.petBirthDate),
+		}}
 	></UpdatePetModal>
 {/if}

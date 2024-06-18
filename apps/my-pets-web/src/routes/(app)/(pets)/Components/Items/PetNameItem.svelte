@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Text from '$lib/components/Common/Text.svelte'
 
-	let modalOpen = false
 	export let petName: string
 </script>
 

@@ -19,7 +19,6 @@ export default queryField('getListOfPets', {
 			petId: pet._id,
 			...pet,
 			...pick(pet, appwriteGraphqlKeys),
-			petBirthDate: new Date(pet.petBirthDate),
 		}))
 	},
 })

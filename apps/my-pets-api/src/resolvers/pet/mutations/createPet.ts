@@ -54,17 +54,6 @@ export const createPet = async (
 		longitude: params.petAddress.petAddressCoords[1],
 	})
 
-	//create microchipping if any
-	let petMicrochippingCreatingPromise = params.petMicrochipping
-		? collections.petMicrochipping.createDocument(
-				{
-					dateOfChipping: params.petMicrochipping.dateOfChipping.toISOString(),
-					locationOfChip: params.petMicrochipping.locationOfChip,
-				},
-				permissions.owner(userId),
-			)
-		: undefined
-
 	const [
 		uploadPetPictureResponse,
 		petAddressDocument,
@@ -73,7 +62,6 @@ export const createPet = async (
 	] = await Promise.all([
 		uploadPetPictureResponsePromise,
 		petAddressCreatingPromise,
-		petMicrochippingCreatingPromise,
 		...petDescriptionCustomFieldsPromise,
 	])
 
@@ -90,7 +78,7 @@ export const createPet = async (
 			petType: params.petType,
 			userId: userId,
 			petBirthDate: params.petBirthDate.toISOString(),
-			petMicrochippingId: petMicrochippingDocument?._id,
+			petWeight: params.petWeight,
 		},
 		permissions.owner(userId),
 		petDocumentId,
@@ -119,7 +107,7 @@ export const createPet = async (
 		userId: userId,
 		petAddressId: petAddressDocument._id,
 		petId: petDocument._id,
-		petBirthDate: new Date(petDocument.petBirthDate),
+		petBirthDate: petDocument.petBirthDate,
 		...pick(petDocument, appwriteGraphqlKeys),
 	}
 }

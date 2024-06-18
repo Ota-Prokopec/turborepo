@@ -1,10 +1,10 @@
-import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
-import clientOptions from './clientOptions';
+import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client'
+import { onError } from '@apollo/client/link/error'
+import clientOptions from './clientOptions'
 
 const cache = new InMemoryCache({
-	addTypename: false
-});
+	addTypename: false,
+})
 
 export default new ApolloClient({
 	// Provide required constructor fields
@@ -14,10 +14,10 @@ export default new ApolloClient({
 	queryDeduplication: false,
 	defaultOptions: {
 		watchQuery: {
-			fetchPolicy: 'cache-and-network'
-		}
-	}
-});
+			fetchPolicy: 'cache-and-network',
+		},
+	},
+})
 
 /*
 query Posts($email: String!) {

@@ -15,6 +15,6 @@ export default inputObjectType({
 			type: 'CreatePetDescriptionCustomField',
 		})
 		t.field('petBirthDate', { type: 'Date' })
-		t.nullable.field('petMicrochipping', { type: 'CreatePetChippingInput' })
+		t.nullable.float('petWeight')
 	},
 })

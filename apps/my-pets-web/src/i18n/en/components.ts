@@ -158,16 +158,16 @@ export const componentsCS = {
 			label: 'Date of birthday',
 		},
 	},
-	PetMicrochipDataInput: {
-		petChip: "pet's chip",
-		buttonAddChipInformationLabel: 'add information about chip',
-		buttonRemoveChipInformationLabel: 'remove information about chip',
-
-		locationInput: {
-			label: 'Where is located',
-		},
-		datePicker: {
-			label: 'Date of inserting the chip',
-		},
+	PetAgeItem: {
+		yearsOld: 'years old',
+		born: 'born',
+	},
+	PetWeightInput: {
+		title: "Pet's weight",
+		buttonAddWeight: 'Add weight',
+		buttonRemoveWeight: 'Remove weight',
+	},
+	PetWeightItem: {
+		title: 'My weight is',
 	},
 } satisfies BaseTranslation

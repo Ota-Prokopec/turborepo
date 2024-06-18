@@ -27,7 +27,7 @@
 	onMount(async () => {
 		pageState = 'loading'
 		try {
-			myPetsData = (await sdk.getListOfPets()).getListOfPets satisfies TPetData[]
+			myPetsData = (await sdk.getListOfPets()).getListOfPets
 			currentPetId = myPetsData?.at(0)?._id ?? null
 			pageState = 'loaded'
 		} catch (error) {
@@ -66,7 +66,12 @@
 			</Row>
 
 			{#if currentPet}
-				<Section isOwner={currentPet.userId === data.user?.userId} petData={currentPet}
+				<Section
+					isOwner={currentPet.userId === data.user?.userId}
+					petData={{
+						...currentPet,
+						petBirthDate: new Date(currentPet.petBirthDate),
+					}}
 				></Section>
 			{/if}
 		</Column>

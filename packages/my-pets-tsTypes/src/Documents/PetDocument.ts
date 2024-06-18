@@ -12,7 +12,7 @@ export type TPetDocumentCreate = {
 	petDescriptionCustomFieldIds: string[]
 	petAddressId: string
 	petBirthDate: string
-	petMicrochippingId?: string
+	petWeight?: number | null | undefined
 }
 
 export type TPetDocument = Document<TPetDocumentCreate>

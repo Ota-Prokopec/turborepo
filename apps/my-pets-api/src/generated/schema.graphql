@@ -13,11 +13,6 @@ input CreatePetAddressInput {
   petAddressCoords: Coords!
 }
 
-input CreatePetChippingInput {
-  dateOfChipping: Date!
-  locationOfChip: String!
-}
-
 input CreatePetDescriptionCustomField {
   text: String!
   title: String!
@@ -30,11 +25,11 @@ input CreatePetInput {
   petBirthDate: Date!
   petDescriptionCustomFields: [CreatePetDescriptionCustomField!]!
   petGender: PetGender!
-  petMicrochipping: CreatePetChippingInput
   petName: String!
   petPicture: String!
   petTreating: String!
   petType: PetType!
+  petWeight: Float
 }
 
 scalar Date
@@ -72,11 +67,10 @@ type Pet {
   petAddressId: String!
   petAge: Float!
   petAllergens: [String!]!
-  petBirthDate: Date!
+  petBirthDate: String!
   petDescriptionCustomFieldIds: [String!]!
   petDescriptionCustomFields: [PetDescriptionCustomField!]!
   petGender: PetGender!
-  petMicrochipping: petMicrochipping
   petMicrochippingId: String
   petName: String!
 
@@ -84,6 +78,7 @@ type Pet {
   petPicture: String!
   petTreating: String!
   petType: PetType!
+  petWeight: Float
   userId: String!
 }
 
@@ -124,8 +119,3 @@ scalar StringOrNumber
 A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
 """
 scalar URL
-
-type petMicrochipping {
-  dateOfChipping: Date!
-  locationOfChip: String!
-}

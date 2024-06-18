@@ -24,8 +24,6 @@ export { default as getPet } from './pet/queries/getPet';
 export * from './pet/queries/getPet';
 export { default as CreatePetAddressInput } from './pet/schema/CreatePetAddressInput';
 export * from './pet/schema/CreatePetAddressInput';
-export { default as CreatePetChippingInput } from './pet/schema/CreatePetChippingInput';
-export * from './pet/schema/CreatePetChippingInput';
 export { default as CreatePetDescriptionCustomField } from './pet/schema/CreatePetDescriptionCustomField';
 export * from './pet/schema/CreatePetDescriptionCustomField';
 export { default as CreatePetInput } from './pet/schema/CreatePetInput';

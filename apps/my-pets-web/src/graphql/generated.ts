@@ -34,11 +34,6 @@ export type CreatePetAddressInput = {
   petAddressCoords: Scalars['Coords']['input'];
 };
 
-export type CreatePetChippingInput = {
-  dateOfChipping: Scalars['Date']['input'];
-  locationOfChip: Scalars['String']['input'];
-};
-
 export type CreatePetDescriptionCustomField = {
   text: Scalars['String']['input'];
   title: Scalars['String']['input'];
@@ -51,11 +46,11 @@ export type CreatePetInput = {
   petBirthDate: Scalars['Date']['input'];
   petDescriptionCustomFields: Array<CreatePetDescriptionCustomField>;
   petGender: Scalars['PetGender']['input'];
-  petMicrochipping?: InputMaybe<CreatePetChippingInput>;
   petName: Scalars['String']['input'];
   petPicture: Scalars['String']['input'];
   petTreating: Scalars['String']['input'];
   petType: Scalars['PetType']['input'];
+  petWeight?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type LostPetsLocation = {
@@ -122,17 +117,17 @@ export type Pet = {
   petAddressId: Scalars['String']['output'];
   petAge: Scalars['Float']['output'];
   petAllergens: Array<Scalars['String']['output']>;
-  petBirthDate: Scalars['Date']['output'];
+  petBirthDate: Scalars['String']['output'];
   petDescriptionCustomFieldIds: Array<Scalars['String']['output']>;
   petDescriptionCustomFields: Array<PetDescriptionCustomField>;
   petGender: Scalars['PetGender']['output'];
-  petMicrochipping?: Maybe<PetMicrochipping>;
   petMicrochippingId?: Maybe<Scalars['String']['output']>;
   petName: Scalars['String']['output'];
   /** Pet Picture is pet pictures URL */
   petPicture: Scalars['String']['output'];
   petTreating: Scalars['String']['output'];
   petType: Scalars['PetType']['output'];
+  petWeight?: Maybe<Scalars['Float']['output']>;
   userId: Scalars['String']['output'];
 };
 
@@ -175,12 +170,6 @@ export type QuerySetSessionArgs = {
 export type Session = {
   __typename?: 'Session';
   session: Scalars['String']['output'];
-};
-
-export type PetMicrochipping = {
-  __typename?: 'petMicrochipping';
-  dateOfChipping: Scalars['Date']['output'];
-  locationOfChip: Scalars['String']['output'];
 };
 
 export type GetAccountQueryVariables = Exact<{ [key: string]: never; }>;
@@ -241,14 +230,14 @@ export type UpdatePetMutation = { __typename?: 'Mutation', updatePet: boolean };
 export type GetListOfPetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, linkId: string, petBirthDate: Date, petMicrochippingId?: string | null, petAge: number, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }>, petMicrochipping?: { __typename?: 'petMicrochipping', locationOfChip: string, dateOfChipping: Date } | null }> };
+export type GetListOfPetsQuery = { __typename?: 'Query', getListOfPets: Array<{ __typename?: 'Pet', _id: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, userId: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petPicture: string, _permissions: Array<string>, _databaseId: string, _collectionId: string, _updatedAt: string, _createdAt: string, petAddressId: string, linkId: string, petBirthDate: string, petMicrochippingId?: string | null, petAge: number, petWeight?: number | null, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> }> };
 
 export type GetPetQueryVariables = Exact<{
   petLinkId: Scalars['String']['input'];
 }>;
 
 
-export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, linkId: string, petBirthDate: Date, petMicrochippingId?: string | null, petAge: number, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }>, petMicrochipping?: { __typename?: 'petMicrochipping', locationOfChip: string, dateOfChipping: Date } | null } };
+export type GetPetQuery = { __typename?: 'Query', getPet: { __typename?: 'Pet', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, userId: string, petName: string, petType: 'cat'|'dog', petAllergens: Array<string>, ownerPhoneNumber: string, petTreating: string, petPicture: string, petDescriptionCustomFieldIds: Array<string>, petGender: 'male'|'female', petAddressId: string, linkId: string, petBirthDate: string, petMicrochippingId?: string | null, petAge: number, petWeight?: number | null, petDescriptionCustomFields: Array<{ __typename?: 'PetDescriptionCustomField', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, title: string, text: string }>, petAddress: { __typename?: 'PetAddress', petAddress: string, petAddressCoords: [number, number] }, lostPetLocations: Array<{ __typename?: 'LostPetsLocation', _createdAt: string, _updatedAt: string, _collectionId: string, _id: string, _permissions: Array<string>, _databaseId: string, coords: [number, number] }> } };
 
 
 export const GetAccountDocument = gql`
@@ -336,11 +325,8 @@ export const GetListOfPetsDocument = gql`
     linkId
     petBirthDate
     petMicrochippingId
-    petMicrochipping {
-      locationOfChip
-      dateOfChipping
-    }
     petAge
+    petWeight
   }
 }
     `;
@@ -387,13 +373,10 @@ export const GetPetDocument = gql`
       coords
     }
     linkId
-    petMicrochipping {
-      locationOfChip
-      dateOfChipping
-    }
     petBirthDate
     petMicrochippingId
     petAge
+    petWeight
   }
 }
     `;

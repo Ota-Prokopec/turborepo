@@ -41,12 +41,10 @@ query getPet($petLinkId: String!) {
 			coords
 		}
 		linkId
-		petMicrochipping {
-			locationOfChip
-			dateOfChipping
-		}
+
 		petBirthDate
 		petMicrochippingId
 		petAge
+		petWeight
 	}
 }

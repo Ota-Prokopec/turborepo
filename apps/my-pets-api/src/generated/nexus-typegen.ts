@@ -43,10 +43,6 @@ export interface NexusGenInputs {
     petAddress: string; // String!
     petAddressCoords: NexusGenScalars['Coords']; // Coords!
   }
-  CreatePetChippingInput: { // input type
-    dateOfChipping: NexusGenScalars['Date']; // Date!
-    locationOfChip: string; // String!
-  }
   CreatePetDescriptionCustomField: { // input type
     text: string; // String!
     title: string; // String!
@@ -58,11 +54,11 @@ export interface NexusGenInputs {
     petBirthDate: NexusGenScalars['Date']; // Date!
     petDescriptionCustomFields: NexusGenInputs['CreatePetDescriptionCustomField'][]; // [CreatePetDescriptionCustomField!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
-    petMicrochipping?: NexusGenInputs['CreatePetChippingInput'] | null; // CreatePetChippingInput
     petName: string; // String!
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight?: number | null; // Float
   }
 }
 
@@ -107,7 +103,7 @@ export interface NexusGenObjects {
     ownerPhoneNumber: string; // String!
     petAddressId: string; // String!
     petAllergens: string[]; // [String!]!
-    petBirthDate: NexusGenScalars['Date']; // Date!
+    petBirthDate: string; // String!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
     petMicrochippingId?: string | null; // String
@@ -115,6 +111,7 @@ export interface NexusGenObjects {
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight?: number | null; // Float
     userId: string; // String!
   }
   PetAddress: { // root type
@@ -134,10 +131,6 @@ export interface NexusGenObjects {
   Query: {};
   Session: { // root type
     session: string; // String!
-  }
-  petMicrochipping: { // root type
-    dateOfChipping: NexusGenScalars['Date']; // Date!
-    locationOfChip: string; // String!
   }
 }
 
@@ -186,16 +179,16 @@ export interface NexusGenFieldTypes {
     petAddressId: string; // String!
     petAge: number; // Float!
     petAllergens: string[]; // [String!]!
-    petBirthDate: NexusGenScalars['Date']; // Date!
+    petBirthDate: string; // String!
     petDescriptionCustomFieldIds: string[]; // [String!]!
     petDescriptionCustomFields: NexusGenRootTypes['PetDescriptionCustomField'][]; // [PetDescriptionCustomField!]!
     petGender: NexusGenScalars['PetGender']; // PetGender!
-    petMicrochipping: NexusGenRootTypes['petMicrochipping'] | null; // petMicrochipping
     petMicrochippingId: string | null; // String
     petName: string; // String!
     petPicture: string; // String!
     petTreating: string; // String!
     petType: NexusGenScalars['PetType']; // PetType!
+    petWeight: number | null; // Float
     userId: string; // String!
   }
   PetAddress: { // field return type
@@ -220,10 +213,6 @@ export interface NexusGenFieldTypes {
   }
   Session: { // field return type
     session: string; // String!
-  }
-  petMicrochipping: { // field return type
-    dateOfChipping: NexusGenScalars['Date']; // Date!
-    locationOfChip: string; // String!
   }
 }
 
@@ -262,16 +251,16 @@ export interface NexusGenFieldTypeNames {
     petAddressId: 'String'
     petAge: 'Float'
     petAllergens: 'String'
-    petBirthDate: 'Date'
+    petBirthDate: 'String'
     petDescriptionCustomFieldIds: 'String'
     petDescriptionCustomFields: 'PetDescriptionCustomField'
     petGender: 'PetGender'
-    petMicrochipping: 'petMicrochipping'
     petMicrochippingId: 'String'
     petName: 'String'
     petPicture: 'String'
     petTreating: 'String'
     petType: 'PetType'
+    petWeight: 'Float'
     userId: 'String'
   }
   PetAddress: { // field return type name
@@ -296,10 +285,6 @@ export interface NexusGenFieldTypeNames {
   }
   Session: { // field return type name
     session: 'String'
-  }
-  petMicrochipping: { // field return type name
-    dateOfChipping: 'Date'
-    locationOfChip: 'String'
   }
 }
 

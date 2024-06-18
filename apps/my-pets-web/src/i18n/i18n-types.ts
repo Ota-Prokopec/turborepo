@@ -437,31 +437,35 @@ type RootTranslation = {
 				label: string
 			}
 		}
-		PetMicrochipDataInput: {
+		PetAgeItem: {
 			/**
-			 * p​e​t​'​s​ ​c​h​i​p
+			 * y​e​a​r​s​ ​o​l​d
 			 */
-			petChip: string
+			yearsOld: string
 			/**
-			 * a​d​d​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​b​o​u​t​ ​c​h​i​p
+			 * b​o​r​n
 			 */
-			buttonAddChipInformationLabel: string
+			born: string
+		}
+		PetWeightInput: {
 			/**
-			 * r​e​m​o​v​e​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​b​o​u​t​ ​c​h​i​p
+			 * P​e​t​'​s​ ​w​e​i​g​h​t
 			 */
-			buttonRemoveChipInformationLabel: string
-			locationInput: {
-				/**
-				 * W​h​e​r​e​ ​i​s​ ​l​o​c​a​t​e​d
-				 */
-				label: string
-			}
-			datePicker: {
-				/**
-				 * D​a​t​e​ ​o​f​ ​i​n​s​e​r​t​i​n​g​ ​t​h​e​ ​c​h​i​p
-				 */
-				label: string
-			}
+			title: string
+			/**
+			 * A​d​d​ ​w​e​i​g​h​t
+			 */
+			buttonAddWeight: string
+			/**
+			 * R​e​m​o​v​e​ ​w​e​i​g​h​t
+			 */
+			buttonRemoveWeight: string
+		}
+		PetWeightItem: {
+			/**
+			 * M​y​ ​w​e​i​g​h​t​ ​i​s
+			 */
+			title: string
 		}
 	}
 	error: {
@@ -900,31 +904,35 @@ export type TranslationFunctions = {
 				label: () => LocalizedString
 			}
 		}
-		PetMicrochipDataInput: {
+		PetAgeItem: {
 			/**
-			 * pet's chip
+			 * years old
 			 */
-			petChip: () => LocalizedString
+			yearsOld: () => LocalizedString
 			/**
-			 * add information about chip
+			 * born
 			 */
-			buttonAddChipInformationLabel: () => LocalizedString
+			born: () => LocalizedString
+		}
+		PetWeightInput: {
 			/**
-			 * remove information about chip
+			 * Pet's weight
 			 */
-			buttonRemoveChipInformationLabel: () => LocalizedString
-			locationInput: {
-				/**
-				 * Where is located
-				 */
-				label: () => LocalizedString
-			}
-			datePicker: {
-				/**
-				 * Date of inserting the chip
-				 */
-				label: () => LocalizedString
-			}
+			title: () => LocalizedString
+			/**
+			 * Add weight
+			 */
+			buttonAddWeight: () => LocalizedString
+			/**
+			 * Remove weight
+			 */
+			buttonRemoveWeight: () => LocalizedString
+		}
+		PetWeightItem: {
+			/**
+			 * My weight is
+			 */
+			title: () => LocalizedString
 		}
 	}
 	error: {

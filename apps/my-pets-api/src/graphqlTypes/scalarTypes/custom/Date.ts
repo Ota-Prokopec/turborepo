@@ -6,10 +6,6 @@ export default scalarType({
 	sourceType: 'Date',
 	deprecation: 'Date',
 
-	serialize: (outputValue: unknown) => {
-		if (!(outputValue instanceof Date)) throw new TypeError('output has to be type Date')
-		return new Date(outputValue) // Assuming you want to serialize the Date to a string format
-	},
 	parseValue: (inputValue: unknown) => {
 		if (typeof inputValue !== 'string' || isNaN(Date.parse(inputValue)))
 			throw new TypeError('input has to be a valid Date string')

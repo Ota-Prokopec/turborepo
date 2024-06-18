@@ -6,9 +6,16 @@
 
 	export let dateValue: Date = new Date()
 
-	export let stringValue: string = dateValue.toLocaleDateString().replaceAll('/', '.')
+	export let stringValue: string = dateValue.toJSON().slice(0, 10).replaceAll('/', '-')
 
 	$: dateValue = new Date(stringValue)
 </script>
 
-<Input bind:value={stringValue} {required} {floatingLabel} class="w-full" type="date" />
+<Input
+	value={stringValue}
+	datepicker
+	{required}
+	{floatingLabel}
+	class="w-full"
+	type="date"
+/>

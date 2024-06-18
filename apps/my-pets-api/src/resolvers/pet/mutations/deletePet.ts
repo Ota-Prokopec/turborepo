@@ -49,25 +49,16 @@ export const deletePet = async (petId: string, appwrite: Appwrite) => {
 			Queries.petIdTranslation.equal('petId', petId),
 		])
 
-	//*deleting pet chip information
-	const deletingPetChipInformationDocumentPromise = petDocument.petMicrochippingId
-		? collections.petMicrochipping.deleteDocument([
-				Queries.petMicrochipping.equal('$id', petDocument.petMicrochippingId),
-			])
-		: null
-
 	const [
 		deletedCustomFields,
 		deletedPetPicture,
 		deletedPetDocument,
 		deletedPetIdTranslationDocument,
-		deletedPetChipInformationDocument,
 	] = await Promise.all([
 		deletingCustomFieldsPromise,
 		deletingPetPicturePromise,
 		deletingPetDocumentPromise,
 		deletingPetIdTranslationDocumentPromise,
-		deletingPetChipInformationDocumentPromise,
 	])
 
 	return true
