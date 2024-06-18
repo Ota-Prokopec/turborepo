@@ -54,16 +54,12 @@ export const createPet = async (
 		longitude: params.petAddress.petAddressCoords[1],
 	})
 
-	const [
-		uploadPetPictureResponse,
-		petAddressDocument,
-		petMicrochippingDocument,
-		...petDescriptionCustomFields
-	] = await Promise.all([
-		uploadPetPictureResponsePromise,
-		petAddressCreatingPromise,
-		...petDescriptionCustomFieldsPromise,
-	])
+	const [uploadPetPictureResponse, petAddressDocument, ...petDescriptionCustomFields] =
+		await Promise.all([
+			uploadPetPictureResponsePromise,
+			petAddressCreatingPromise,
+			...petDescriptionCustomFieldsPromise,
+		])
 
 	const petDocument = await collections.pet.createDocument(
 		{

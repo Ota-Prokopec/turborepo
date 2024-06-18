@@ -73,7 +73,7 @@
 		{:else if savingState === 'saved'}
 			<SavedModal
 				on:goBack={() => {
-					goto('/', { invalidateAll: false })
+					goto('/', { invalidateAll: true })
 				}}
 			></SavedModal>
 		{:else if savingState === 'required-fields-empty-error'}

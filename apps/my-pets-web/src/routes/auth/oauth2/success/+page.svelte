@@ -17,7 +17,7 @@
 			//cookies for ssr
 			await sdk.setSession({ session: data.session })
 
-			goto(`/`, { invalidateAll: false })
+			goto(`/`, { invalidateAll: true })
 		} catch (error) {
 			alert('', $LL.page.oauth.success.errorMessage(), { color: 'red' })
 		}

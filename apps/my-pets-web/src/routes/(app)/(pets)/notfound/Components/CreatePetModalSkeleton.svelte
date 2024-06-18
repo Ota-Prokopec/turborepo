@@ -24,7 +24,7 @@
 
 <Modal
 	on:close={() => {
-		goto('/', { invalidateAll: false })
+		goto('/', { invalidateAll: true })
 	}}
 	class="relative"
 	{title}
@@ -57,7 +57,7 @@
 			data.petAddress.petAddressCoords = e.detail.coords
 		}}
 	></PetAddressInput>
-	<PetAllergensInput></PetAllergensInput>
+	<PetAllergensInput bind:allergens={data.petAllergens}></PetAllergensInput>
 	<PetTreatInput maxInputLength={500} bind:value={data.petTreating}></PetTreatInput>
 	<PetCustomTextInput bind:fields={data.petDescriptionCustomFields} aboutMaxLength={500}
 	></PetCustomTextInput>

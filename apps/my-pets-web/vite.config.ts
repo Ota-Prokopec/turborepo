@@ -29,6 +29,5 @@ export default defineConfig({
 	},
 	optimizeDeps: {
 		exclude: ['@urql/svelte'],
-		include: ['just-throttle', 'dayjs'],
 	},
 })

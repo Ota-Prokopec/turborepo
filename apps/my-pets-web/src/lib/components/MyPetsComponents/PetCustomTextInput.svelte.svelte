@@ -43,7 +43,7 @@
 					fields = [...fields, { title: '', text: '' }]
 				}}
 				on:remove={() => {
-					if (fields.length === 1) return
+					if (fields.length === 0) return
 					fields = fields.slice(0, fields.length - 1)
 				}}
 			></MyPetsPaginator>

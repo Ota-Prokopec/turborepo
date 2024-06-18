@@ -34,20 +34,21 @@
 		>[]
 	}
 
+	let updatingData = currentData
+
 	const update = async () => {
 		updatingState = 'updating'
 
 		try {
-			const updatingData = zodCreatingPetData.parse(currentData)
+			const dataToUpdate = zodCreatingPetData.parse(updatingData)
 
 			await sdk.updatePet({
 				petId: currentData._id,
 				data: {
-					...updatingData,
-					petPicture: await urlToBase64(updatingData.petPicture),
+					...dataToUpdate,
+					petPicture: await urlToBase64(dataToUpdate.petPicture),
 				},
 			})
-
 			updatingState = 'updated'
 		} catch (error) {
 			updatingState = 'error'
@@ -58,7 +59,7 @@
 <CreatePetModalSkeleton
 	{open}
 	title={$LL.component.CreateNewPetModal.title()}
-	bind:data={currentData}
+	bind:data={updatingData}
 >
 	<svelte:fragment slot="alerts">
 		{#if updatingState === 'updating'}
@@ -69,7 +70,7 @@
 			<SavedModal
 				on:goBack={() => (open = false)}
 				on:goBack={() => {
-					goto('/', { replaceState: false })
+					goto('/', { replaceState: true })
 				}}
 			></SavedModal>
 		{:else if updatingState === 'required-fields-empty-error'}
