@@ -24,9 +24,10 @@
 		try {
 			await account.deleteSessions()
 		} catch (error) {}
-		await account.createAnonymousSession()
-		await account.updatePhone()
-		await account.createPhoneSession(ID.unique(), `+420${phoneNumber}`)
+		const user = await account.create(ID.unique(), 'fadjlaj@fa.com', 'password')
+		await account.updatePhone(phoneNumber, 'password')
+
+		await account.createPhoneSession(user.$id, `+420${phoneNumber}`)
 		phoneToken = await account.createPhoneVerification()
 		console.log(phoneToken)
 	}
