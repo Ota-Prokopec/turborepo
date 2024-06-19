@@ -12,7 +12,7 @@
 
 <Modal
 	color="green"
-	class="w-[200px] h-[160px] max-w-full max-h-full z-50"
+	class="w-[200px] h-auto max-w-full max-h-full z-50"
 	open
 	dismissable={false}
 >
