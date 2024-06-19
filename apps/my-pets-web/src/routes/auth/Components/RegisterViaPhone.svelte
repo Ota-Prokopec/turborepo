@@ -12,7 +12,7 @@
 	import { Button, ButtonGroup, Modal } from 'flowbite-svelte'
 
 	export let phoneNumber: string = '737401386'
-	export let phoneVerificationCode: string[] = []
+	export let phoneVerificationCode: string = ''
 	let phoneToken:
 		| Awaited<ReturnType<typeof account.createPhoneVerification>>
 		| undefined = undefined

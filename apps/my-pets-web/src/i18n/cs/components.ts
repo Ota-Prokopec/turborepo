@@ -58,7 +58,6 @@ export const componentsCS = {
 	},
 	ErrorModal: {
 		title: 'Došlo k chybě',
-		text: 'Zkuste to prosím znovu',
 	},
 	SavedModal: {
 		label: 'Uloženo',
@@ -169,5 +168,20 @@ export const componentsCS = {
 	},
 	PetWeightItem: {
 		title: 'Moje hmotnost je',
+	},
+	DoneModal: {
+		returningButtonLabel: 'Jít zpět',
+		label: 'Hotovo',
+	},
+
+	UpdatePetIdTranslation: {
+		buttonLabel: 'Aktualizovat známku zvířátka',
+		modal: {
+			title: 'Aktualizovate si známku zvířátka',
+			text: 'Vložte svůj kód.',
+			updateTagButtonLabel: 'Aktualizovat známku',
+		},
+		error:
+			'Oups, něco se pokazilo, pokud si myslíte, že jste zadali správný kód a nemáte žádného jiného mazlíčka registrovaného s tímto kódem, kontaktujte nás.',
 	},
 } satisfies BaseTranslation

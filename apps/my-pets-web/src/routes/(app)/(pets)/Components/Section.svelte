@@ -22,6 +22,7 @@
 	import PetAgeItem from './Items/PetAgeItem.svelte'
 	import PetWeightInput from '$lib/components/MyPetsComponents/PetWeightInput.svelte'
 	import PetWeightItem from './Items/PetWeightItem.svelte'
+	import UpdatePetIdTranslation from '$lib/components/MyPetsComponents/UpdatePetIdTranslation.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -50,6 +51,7 @@
 					on:deleted={() => navigate('/', { invalidateAll: true })}
 					petId={petData._id}
 				></DeletePetButton>
+				<UpdatePetIdTranslation {petData}></UpdatePetIdTranslation>
 			</Column>
 		</Right>
 	{:else}

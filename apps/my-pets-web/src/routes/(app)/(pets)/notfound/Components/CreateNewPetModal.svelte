@@ -10,7 +10,7 @@
 	import { zodCreatingPetData, type TCreatePetData } from '@repo/my-pets-tstypes'
 	import { Button } from 'flowbite-svelte'
 	import CreatePetModalSkeleton from './CreatePetModalSkeleton.svelte'
-	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
+	import RequiredFieldsEmptlyPetCreatingErrorModal from '../../../../../lib/components/MyPetsComponents/RequiredFiledsEmptyErrorModal.svelte'
 
 	export let open = false
 	export let savingState:

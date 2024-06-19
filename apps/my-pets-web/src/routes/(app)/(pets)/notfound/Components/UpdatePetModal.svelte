@@ -15,7 +15,7 @@
 	import { urlToBase64 } from '@repo/utils'
 	import { Button } from 'flowbite-svelte'
 	import CreatePetModalSkeleton from './CreatePetModalSkeleton.svelte'
-	import RequiredFieldsEmptlyPetCreatingErrorModal from './RequiredFieldsEmptlyPetCreatingErrorModal.svelte'
+	import RequiredFieldsEmptlyPetCreatingErrorModal from '../../../../../lib/components/MyPetsComponents/RequiredFiledsEmptyErrorModal.svelte'
 
 	export let open = false
 	export let updatingState:

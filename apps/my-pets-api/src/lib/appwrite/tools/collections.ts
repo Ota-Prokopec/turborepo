@@ -1,15 +1,17 @@
 import { Types } from '@repo/appwrite-ssr-graphql'
-import type {
-	TLostPetsLocationDocumentCreate,
-	TLostPetsLocationGraphqlDocument,
-	TPetAddressDocumentCreate,
-	TPetAddressGraphqlDocument,
-	TPetDocumentCreate,
-	TPetGraphqlDocument,
-	TPetIdTranslationDocumentCreate,
-	TPetIdTranslationGraphqlDocument,
-	TpetDescriptionCustomFieldsDocumentCreate,
-	TpetDescriptionCustomFieldsGraphqlDocument,
+import {
+	TPetIdTranslationPassCodeGraphqlDocument,
+	type TLostPetsLocationDocumentCreate,
+	type TLostPetsLocationGraphqlDocument,
+	type TPetAddressDocumentCreate,
+	type TPetAddressGraphqlDocument,
+	type TPetDocumentCreate,
+	type TPetGraphqlDocument,
+	type TPetIdTranslationDocumentCreate,
+	type TPetIdTranslationGraphqlDocument,
+	type TPetIdTranslationPassCodeDocumentCreate,
+	type TpetDescriptionCustomFieldsDocumentCreate,
+	type TpetDescriptionCustomFieldsGraphqlDocument,
 } from '@repo/my-pets-tstypes'
 
 export type Collections = ReturnType<typeof collectionsAdmin>
@@ -63,5 +65,9 @@ export const collectionsAdmin = (
 			TPetIdTranslationGraphqlDocument,
 			TPetIdTranslationDocumentCreate
 		>('my-pets', 'petIdTranslation'),
+		petIdTranslationPassCode: new Collection<
+			TPetIdTranslationPassCodeGraphqlDocument,
+			TPetIdTranslationPassCodeDocumentCreate
+		>('my-pets', 'petIdTranslationPassCodes'),
 	}
 }

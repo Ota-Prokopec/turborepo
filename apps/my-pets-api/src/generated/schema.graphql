@@ -51,6 +51,7 @@ type Mutation {
   deleteRecordToLostPetsLocation(documentId: String!): Boolean!
   logout: Boolean!
   updatePet(data: CreatePetInput!, petId: String!): Boolean!
+  updatePetIdTranlation(input: UpdatePetIdTranslationInput!): Boolean!
 }
 
 type Pet {
@@ -119,3 +120,8 @@ scalar StringOrNumber
 A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
 """
 scalar URL
+
+input UpdatePetIdTranslationInput {
+  passCode: String!
+  petId: String!
+}

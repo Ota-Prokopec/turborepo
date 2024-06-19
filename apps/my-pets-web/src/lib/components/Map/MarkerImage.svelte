@@ -1,13 +1,11 @@
 <script lang="ts">
-	import type { Base64, Coords } from '@repo/ts-types'
-	import Marker from './Marker.svelte'
-	import { Avatar, Img } from 'flowbite-svelte'
+	import type { Coords } from '@repo/ts-types'
 	import { twMerge } from 'tailwind-merge'
+	import Marker from './Marker.svelte'
 
 	export let location: Coords
 	export let imgSrc: URL | string
 	export let zoom: number = 14
-	export let stacked = false
 
 	const avatarURL = imgSrc as unknown as string
 

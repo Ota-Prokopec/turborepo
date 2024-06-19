@@ -3,9 +3,6 @@
 	import DatePicker from '../Common/DatePicker.svelte'
 
 	export let date: Date
-
-	let className = ''
-	export { className as class }
 </script>
 
 <DatePicker

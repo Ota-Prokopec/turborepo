@@ -76,6 +76,7 @@ export type Mutation = {
   deleteRecordToLostPetsLocation: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
   updatePet: Scalars['Boolean']['output'];
+  updatePetIdTranlation: Scalars['Boolean']['output'];
 };
 
 
@@ -104,6 +105,11 @@ export type MutationDeleteRecordToLostPetsLocationArgs = {
 export type MutationUpdatePetArgs = {
   data: CreatePetInput;
   petId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdatePetIdTranlationArgs = {
+  input: UpdatePetIdTranslationInput;
 };
 
 export type Pet = {
@@ -176,6 +182,11 @@ export type Session = {
   session: Scalars['String']['output'];
 };
 
+export type UpdatePetIdTranslationInput = {
+  passCode: Scalars['String']['input'];
+  petId: Scalars['String']['input'];
+};
+
 export type GetAccountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -208,6 +219,13 @@ export type DeleteRecordToLostPetsLocationMutationVariables = Exact<{
 
 
 export type DeleteRecordToLostPetsLocationMutation = { __typename?: 'Mutation', deleteRecordToLostPetsLocation: boolean };
+
+export type UpdatePetIdTranslationMutationVariables = Exact<{
+  input: UpdatePetIdTranslationInput;
+}>;
+
+
+export type UpdatePetIdTranslationMutation = { __typename?: 'Mutation', updatePetIdTranlation: boolean };
 
 export type CreatePetMutationVariables = Exact<{
   input: CreatePetInput;
@@ -273,6 +291,11 @@ export const CreateRecordToLostPetsLocationDoc = gql`
 export const DeleteRecordToLostPetsLocationDoc = gql`
     mutation deleteRecordToLostPetsLocation($documentId: String!) {
   deleteRecordToLostPetsLocation(documentId: $documentId)
+}
+    `;
+export const UpdatePetIdTranslationDoc = gql`
+    mutation updatePetIdTranslation($input: UpdatePetIdTranslationInput!) {
+  updatePetIdTranlation(input: $input)
 }
     `;
 export const CreatePetDoc = gql`
@@ -486,6 +509,18 @@ export const deleteRecordToLostPetsLocation = (
           ) => {
             const m = client.mutate<DeleteRecordToLostPetsLocationMutation, DeleteRecordToLostPetsLocationMutationVariables>({
               mutation: DeleteRecordToLostPetsLocationDoc,
+              ...options,
+            });
+            return m;
+          }
+export const updatePetIdTranslation = (
+            options: Omit<
+              MutationOptions<any, UpdatePetIdTranslationMutationVariables>, 
+              "mutation"
+            >
+          ) => {
+            const m = client.mutate<UpdatePetIdTranslationMutation, UpdatePetIdTranslationMutationVariables>({
+              mutation: UpdatePetIdTranslationDoc,
               ...options,
             });
             return m;
