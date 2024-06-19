@@ -5,6 +5,7 @@ import {
 	TPetAddressDocument,
 	TPetDocument,
 	TPetIdTranslationDocument,
+	TPetIdTranslationPassCodeDocument,
 	TpetDescriptionCustomFieldsDocument,
 } from '@repo/my-pets-tstypes'
 
@@ -14,6 +15,7 @@ const query = {
 	petAddress: Query<TPetAddressDocument>(),
 	lostPetsLocation: Query<TLostPetsLocationDocument>(),
 	petIdTranslation: Query<TPetIdTranslationDocument>(),
+	petIdTranslationPassCode: Query<TPetIdTranslationPassCodeDocument>(),
 } satisfies Record<CollectionName, any>
 
 export type QueryType = (typeof query)[keyof typeof query]

@@ -320,15 +320,7 @@ export default (client: Client) => {
 		listIndexes() {
 			return databases.listIndexes(this.databaseId, this.collectionId)
 		}
-		createIndex(key: string, type: Types.IndexTypes, attributes: (keyof TDocumentGet)[]) {
-			return databases.createIndex(
-				this.databaseId,
-				this.collectionId,
-				key,
-				type,
-				attributes.map((att) => attributes.toString()),
-			)
-		}
+
 		getIndex(key: string) {
 			return databases.getIndex(this.databaseId, this.collectionId, key)
 		}

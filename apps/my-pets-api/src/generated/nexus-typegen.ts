@@ -60,6 +60,10 @@ export interface NexusGenInputs {
     petType: NexusGenScalars['PetType']; // PetType!
     petWeight?: number | null; // Float
   }
+  UpdatePetIdTranslationInput: { // input type
+    passCode: string; // String!
+    petId: string; // String!
+  }
 }
 
 export interface NexusGenEnums {
@@ -164,6 +168,7 @@ export interface NexusGenFieldTypes {
     deleteRecordToLostPetsLocation: boolean; // Boolean!
     logout: boolean; // Boolean!
     updatePet: boolean; // Boolean!
+    updatePetIdTranlation: boolean; // Boolean!
   }
   Pet: { // field return type
     _collectionId: string; // String!
@@ -236,6 +241,7 @@ export interface NexusGenFieldTypeNames {
     deleteRecordToLostPetsLocation: 'Boolean'
     logout: 'Boolean'
     updatePet: 'Boolean'
+    updatePetIdTranlation: 'Boolean'
   }
   Pet: { // field return type name
     _collectionId: 'String'
@@ -307,6 +313,9 @@ export interface NexusGenArgTypes {
     updatePet: { // args
       data: NexusGenInputs['CreatePetInput']; // CreatePetInput!
       petId: string; // String!
+    }
+    updatePetIdTranlation: { // args
+      input: NexusGenInputs['UpdatePetIdTranslationInput']; // UpdatePetIdTranslationInput!
     }
   }
   Query: {

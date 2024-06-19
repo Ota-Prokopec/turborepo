@@ -58,7 +58,6 @@ export const componentsCS = {
 	},
 	ErrorModal: {
 		title: 'Error occured',
-		text: 'Please try it again',
 	},
 	SavedModal: {
 		label: 'saved',
@@ -169,5 +168,19 @@ export const componentsCS = {
 	},
 	PetWeightItem: {
 		title: 'My weight is',
+	},
+	DoneModal: {
+		returningButtonLabel: 'Go back',
+		label: 'Done',
+	},
+	UpdatePetIdTranslation: {
+		buttonLabel: "Update pet's tag",
+		modal: {
+			title: "Update your pet's",
+			text: 'Put your code.',
+			updateTagButtonLabel: 'Update tag',
+		},
+		error:
+			'Oppps, something went wrong, if you think that you wrote a right code and you dont have any other pet registered with this code, please contact us.',
 	},
 } satisfies BaseTranslation

@@ -120,7 +120,7 @@
 		"mapbox-gl": "^2.15.0",
 		"maplibre-gl": "^3.3.0",
 		"markerjs2": "^2.31.0",
-		"node-appwrite": "^11.0.0",
+		"node-appwrite": "^13.0.0",
 		"node-base64-image": "^2.0.5",
 		"npm": "^9.8.1",
 		"pinch-zoom-js": "^2.3.5",

@@ -12,6 +12,10 @@ export { default as createRecordToLostPetsLocation } from './lostPetsLocation/mu
 export * from './lostPetsLocation/mutations/createRecordToLostPetsLocation';
 export { default as deleteRecordToLostPetsLocation } from './lostPetsLocation/mutations/deleteRecordToLostPetsLocation';
 export * from './lostPetsLocation/mutations/deleteRecordToLostPetsLocation';
+export { default as updatePetIdTranslation } from './management/mutations/updatePetIdTranslation';
+export * from './management/mutations/updatePetIdTranslation';
+export { default as UpdatePetIdTranslationInput } from './management/schema/UpdatePetIdTranslationInput';
+export * from './management/schema/UpdatePetIdTranslationInput';
 export { default as createPet } from './pet/mutations/createPet';
 export * from './pet/mutations/createPet';
 export { default as deletePet } from './pet/mutations/deletePet';

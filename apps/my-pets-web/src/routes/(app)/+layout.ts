@@ -1,5 +1,5 @@
 import { watchUsersLocation } from '@repo/utils'
-import { LayoutLoad } from '../$types'
+import type { LayoutLoad } from './$types'
 import { storage } from '$lib/utils/lsStore'
 import { browser } from '$app/environment'
 

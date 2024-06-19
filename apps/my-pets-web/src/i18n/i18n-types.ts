@@ -222,10 +222,6 @@ type RootTranslation = {
 			 * E​r​r​o​r​ ​o​c​c​u​r​e​d
 			 */
 			title: string
-			/**
-			 * P​l​e​a​s​e​ ​t​r​y​ ​i​t​ ​a​g​a​i​n
-			 */
-			text: string
 		}
 		SavedModal: {
 			/**
@@ -467,6 +463,40 @@ type RootTranslation = {
 			 */
 			title: string
 		}
+		DoneModal: {
+			/**
+			 * G​o​ ​b​a​c​k
+			 */
+			returningButtonLabel: string
+			/**
+			 * D​o​n​e
+			 */
+			label: string
+		}
+		UpdatePetIdTranslation: {
+			/**
+			 * U​p​d​a​t​e​ ​p​e​t​'​s​ ​t​a​g
+			 */
+			buttonLabel: string
+			modal: {
+				/**
+				 * U​p​d​a​t​e​ ​y​o​u​r​ ​p​e​t​'​s
+				 */
+				title: string
+				/**
+				 * P​u​t​ ​y​o​u​r​ ​c​o​d​e​.
+				 */
+				text: string
+				/**
+				 * U​p​d​a​t​e​ ​t​a​g
+				 */
+				updateTagButtonLabel: string
+			}
+			/**
+			 * O​p​p​p​s​,​ ​s​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g​,​ ​i​f​ ​y​o​u​ ​t​h​i​n​k​ ​t​h​a​t​ ​y​o​u​ ​w​r​o​t​e​ ​a​ ​r​i​g​h​t​ ​c​o​d​e​ ​a​n​d​ ​y​o​u​ ​d​o​n​t​ ​h​a​v​e​ ​a​n​y​ ​o​t​h​e​r​ ​p​e​t​ ​r​e​g​i​s​t​e​r​e​d​ ​w​i​t​h​ ​t​h​i​s​ ​c​o​d​e​,​ ​p​l​e​a​s​e​ ​c​o​n​t​a​c​t​ ​u​s​.
+			 */
+			error: string
+		}
 	}
 	error: {
 		/**
@@ -689,10 +719,6 @@ export type TranslationFunctions = {
 			 * Error occured
 			 */
 			title: () => LocalizedString
-			/**
-			 * Please try it again
-			 */
-			text: () => LocalizedString
 		}
 		SavedModal: {
 			/**
@@ -933,6 +959,40 @@ export type TranslationFunctions = {
 			 * My weight is
 			 */
 			title: () => LocalizedString
+		}
+		DoneModal: {
+			/**
+			 * Go back
+			 */
+			returningButtonLabel: () => LocalizedString
+			/**
+			 * Done
+			 */
+			label: () => LocalizedString
+		}
+		UpdatePetIdTranslation: {
+			/**
+			 * Update pet's tag
+			 */
+			buttonLabel: () => LocalizedString
+			modal: {
+				/**
+				 * Update your pet's
+				 */
+				title: () => LocalizedString
+				/**
+				 * Put your code.
+				 */
+				text: () => LocalizedString
+				/**
+				 * Update tag
+				 */
+				updateTagButtonLabel: () => LocalizedString
+			}
+			/**
+			 * Oppps, something went wrong, if you think that you wrote a right code and you dont have any other pet registered with this code, please contact us.
+			 */
+			error: () => LocalizedString
 		}
 	}
 	error: {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createPinInput } from '@melt-ui/svelte'
 
-	export let value: string[]
+	export let value: string
 	export let size: number = 5
 
 	const {
@@ -11,7 +11,7 @@
 		defaultValue: [],
 	})
 
-	$: value = $storeValue
+	$: value = $storeValue.join('')
 </script>
 
 <div {...$root} use:root class="flex items-center gap-2">

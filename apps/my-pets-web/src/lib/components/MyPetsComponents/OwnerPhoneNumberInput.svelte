@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL from '$src/i18n/i18n-svelte'
+	import { twMerge } from 'tailwind-merge'
 	import RequiredBadge from '../Badges/RequiredBadge.svelte'
 	import Card from '../Common/Card.svelte'
 	import PhoneInput from '../Common/PhoneInput.svelte'
@@ -11,7 +12,7 @@
 	export { className as class }
 </script>
 
-<Card class="flex flex-wrap flex-col !gap-2 relative">
+<Card class={twMerge('flex flex-wrap flex-col !gap-2 relative', className)}>
 	<Text>{$LL.component.OwnerPhoneNumberInput.title()}</Text>
 	<RequiredBadge class="absolute top-[-8px] right-[-8px]"></RequiredBadge>
 
