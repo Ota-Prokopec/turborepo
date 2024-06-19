@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { user } from '$lib/appwrite/appwrite'
+	import { account } from '$lib/appwrite/appwrite'
 	import Icon from '$lib/components/Common/Icon.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import IconDiscord from '$lib/components/Icons/IconDiscord.svelte'
@@ -13,7 +13,7 @@
 
 	const logout = async () => {
 		try {
-			await user.deleteSessions() //first things first, i will delete session, if some exists
+			await account.deleteSessions() //first things first, i will delete session, if some exists
 		} catch (error) {}
 	}
 
@@ -21,7 +21,7 @@
 		isLoading = true
 		await logout()
 
-		await user.createOAuth2Session(
+		await account.createOAuth2Session(
 			platform,
 			`${location.origin}/auth/oauth2/success`,
 			`${location.origin}/auth/oauth2/failure`,

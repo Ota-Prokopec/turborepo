@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { user } from '$lib/appwrite/appwrite'
 	import { lsStore } from '$lib/utils/lsStore'
 	import LL, { locale, setLocale } from '$src/i18n/i18n-svelte'
 	import { Select } from 'flowbite-svelte'

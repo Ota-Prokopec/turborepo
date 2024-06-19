@@ -11,7 +11,11 @@ export default mutationField('updatePet', {
 	resolve: async (source, args, ctx, info) => {
 		if (!ctx.isAuthed(ctx.user)) throw new ApolloError('User is not authenticated')
 
-		return await updatePet(args.data, ctx.appwrite, ctx.user.$id, args.petId)
+		try {
+			return await updatePet(args.data, ctx.appwrite, ctx.user.$id, args.petId)
+		} catch (error) {
+			throw error
+		}
 	},
 })
 

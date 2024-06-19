@@ -12,7 +12,7 @@
 </script>
 
 <Input
-	value={stringValue}
+	bind:value={stringValue}
 	datepicker
 	{required}
 	{floatingLabel}

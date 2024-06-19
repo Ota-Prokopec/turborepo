@@ -7,13 +7,14 @@
 	import { alert } from '$src/routes/alertStore'
 	import { onMount } from 'svelte'
 	import type { PageData } from './$types'
+	import { PUBLIC_SESSION_NAME } from '$env/static/public'
 
 	export let data: PageData
 
 	onMount(async () => {
 		try {
 			//session in localstorage for client to appwrite
-			storage.cookieFallback = { a_session_6636972a0023b54e21bf: data.session }
+			storage.cookieFallback = { [PUBLIC_SESSION_NAME]: data.session }
 			//cookies for ssr
 			await sdk.setSession({ session: data.session })
 

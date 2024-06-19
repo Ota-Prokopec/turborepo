@@ -1,13 +1,10 @@
 <script lang="ts">
+	import ButtonLinkToDeveloperPage from '$lib/components/Buttons/ButtonLinkToDeveloperPage.svelte'
 	import Column from '$lib/components/Common/Column.svelte'
-	import Text from '$lib/components/Common/Text.svelte'
+	import Padding from '$lib/components/Common/Padding.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 	import { Heading } from 'flowbite-svelte'
 	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
-	import Padding from '$lib/components/Common/Padding.svelte'
-	import ButtonLinkToDeveloperPage from '$lib/components/Buttons/ButtonLinkToDeveloperPage.svelte'
-	import Icon from '$lib/components/Common/Icon.svelte'
-	import IconBan from '$lib/components/Icons/IconBan.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">
