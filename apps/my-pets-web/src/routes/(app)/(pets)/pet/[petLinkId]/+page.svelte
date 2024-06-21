@@ -6,26 +6,39 @@
 	import { useQuery } from '@sveltestack/svelte-query'
 	import Section from '../../Components/Section.svelte'
 	import type { PageData } from './$types'
+	import PetNotFound from '$lib/components/MyPetsComponents/PetNotFound.svelte'
+	import { onMount } from 'svelte'
 
 	export let data: PageData
 
 	const petLinkId: string = data.petLinkId
 
-	$: petData = useQuery('getPetData', async () => {
-		return (await sdk.getPet({ petLinkId: petLinkId })).getPet
+	let petData: Awaited<ReturnType<typeof sdk.getPet>>['getPet'] | null
+	let status: 'loading' | 'not-found' | 'found' = 'loading'
+
+	onMount(async () => {
+		try {
+			status = 'loading'
+			petData = (await sdk.getPet({ petLinkId: petLinkId })).getPet
+			status = 'found'
+		} catch (error) {
+			status = 'not-found'
+		}
 	})
 </script>
 
-{#if $petData.isLoading}
+{#if status === 'loading'}
 	<FullPageLoading></FullPageLoading>
-{:else if $petData.data}
+{:else if status === 'found' && petData}
 	<Center class="w-full flex-wrap flex-col pt-20">
 		<Section
-			isOwner={$petData.data.userId === data.user?.userId}
+			isOwner={petData.userId === data.user.userId}
 			petData={{
-				...$petData.data,
-				petBirthDate: new Date($petData.data.petBirthDate),
+				...petData,
+				petBirthDate: new Date(petData.petBirthDate),
 			}}
 		></Section>
 	</Center>
+{:else if status === 'not-found'}
+	<PetNotFound></PetNotFound>
 {/if}
