@@ -184,4 +184,19 @@ export const componentsCS = {
 		error:
 			'Oups, něco se pokazilo, pokud si myslíte, že jste zadali správný kód a nemáte žádného jiného mazlíčka registrovaného s tímto kódem, kontaktujte nás.',
 	},
+	SignUpViaPhone: {
+		buttonLabel: 'Zaregistrujte se pomocí telefonního čísla',
+		phoneModal: {
+			title: 'Zadejte své telefonní číslo, pošleme vám ověřovací kód.',
+			sendButtonLabel: 'Odeslat',
+		},
+		verificationModal: {
+			title:
+				'Poslali jsme vám ověřovací kód, zadejte ho pro ověření vašeho telefonního čísla.',
+			verfifyButtonLabel: 'Ověřit',
+		},
+		tokenErrorMessage: 'Něco se pokazilo, zkontrolujte své číslo znovu.',
+		verificationErrorMessage:
+			'Něco se pokazilo při ověřování, zkontrolujte svůj kód znovu.',
+	},
 } satisfies BaseTranslation

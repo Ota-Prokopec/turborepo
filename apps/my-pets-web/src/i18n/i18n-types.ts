@@ -497,6 +497,40 @@ type RootTranslation = {
 			 */
 			error: string
 		}
+		SignUpViaPhone: {
+			/**
+			 * S​i​g​n​ ​u​p​ ​w​i​t​h​ ​p​h​o​n​e​ ​n​u​m​b​e​r
+			 */
+			buttonLabel: string
+			phoneModal: {
+				/**
+				 * W​r​i​t​e​ ​y​o​u​r​ ​p​h​o​n​e​ ​n​u​m​b​e​r​,​ ​w​e​ ​w​i​l​l​ ​s​e​n​d​ ​y​o​u​ ​a​ ​v​e​r​i​f​i​c​a​t​i​o​n​ ​c​o​d​e​.
+				 */
+				title: string
+				/**
+				 * S​e​n​d
+				 */
+				sendButtonLabel: string
+			}
+			verificationModal: {
+				/**
+				 * W​e​ ​s​e​n​t​ ​y​o​u​ ​a​ ​v​e​r​i​f​i​c​a​t​i​o​n​ ​c​o​d​e​,​ ​w​r​i​t​e​ ​i​t​ ​d​o​w​n​ ​t​o​ ​v​e​r​i​f​y​ ​y​o​u​r​ ​p​h​o​n​e​ ​n​u​m​b​e​r​.
+				 */
+				title: string
+				/**
+				 * V​e​r​i​f​y
+				 */
+				verfifyButtonLabel: string
+			}
+			/**
+			 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g​,​ ​c​h​e​c​k​ ​y​o​u​r​ ​n​u​m​b​e​r​ ​t​w​i​c​e​.
+			 */
+			tokenErrorMessage: string
+			/**
+			 * S​o​m​e​t​h​i​n​g​ ​w​e​n​t​ ​w​r​o​n​g​ ​w​i​t​h​ ​t​h​e​ ​v​e​r​i​f​i​c​a​t​i​o​n​,​ ​c​h​e​c​k​ ​y​o​u​r​ ​t​o​k​e​n​ ​t​w​i​c​e​.
+			 */
+			verificationErrorMessage: string
+		}
 	}
 	error: {
 		/**
@@ -993,6 +1027,40 @@ export type TranslationFunctions = {
 			 * Oppps, something went wrong, if you think that you wrote a right code and you dont have any other pet registered with this code, please contact us.
 			 */
 			error: () => LocalizedString
+		}
+		SignUpViaPhone: {
+			/**
+			 * Sign up with phone number
+			 */
+			buttonLabel: () => LocalizedString
+			phoneModal: {
+				/**
+				 * Write your phone number, we will send you a verification code.
+				 */
+				title: () => LocalizedString
+				/**
+				 * Send
+				 */
+				sendButtonLabel: () => LocalizedString
+			}
+			verificationModal: {
+				/**
+				 * We sent you a verification code, write it down to verify your phone number.
+				 */
+				title: () => LocalizedString
+				/**
+				 * Verify
+				 */
+				verfifyButtonLabel: () => LocalizedString
+			}
+			/**
+			 * Something went wrong, check your number twice.
+			 */
+			tokenErrorMessage: () => LocalizedString
+			/**
+			 * Something went wrong with the verification, check your token twice.
+			 */
+			verificationErrorMessage: () => LocalizedString
 		}
 	}
 	error: {

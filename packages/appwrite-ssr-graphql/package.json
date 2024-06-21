@@ -30,7 +30,7 @@
 	"dependencies": {
 		"@repo/appwrite-permissions": "*",
 		"@repo/appwrite-types": "*",
-		"appwrite": "^13.0.1",
+		"appwrite": "^15.0.0",
 		"lodash": "^4.17.21",
 		"node-appwrite": "^13.0.0",
 		"set-cookie-parser": "^2.6.0",

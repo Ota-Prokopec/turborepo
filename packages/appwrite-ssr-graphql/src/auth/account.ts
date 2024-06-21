@@ -57,7 +57,7 @@ export default (client: Client, hostname: string) => {
 				}),
 			})
 
-			return this.createSession(() => promise)
+			return this.createSessionViaSSR(() => promise)
 		}
 
 		createAnonymousSessionViaSSR() {
@@ -71,10 +71,10 @@ export default (client: Client, hostname: string) => {
 				} as HeadersInit,
 			})
 
-			return this.createSession(() => promise)
+			return this.createSessionViaSSR(() => promise)
 		}
 
-		async createSession(callbackFetch: () => Promise<Response>) {
+		async createSessionViaSSR(callbackFetch: () => Promise<Response>) {
 			try {
 				const response = await callbackFetch()
 

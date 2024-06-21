@@ -6,7 +6,7 @@
 	import IconGithub from '$lib/components/Icons/IconGithub.svelte'
 	import IconGoogle from '$lib/components/Icons/IconGoogle.svelte'
 	import LoadingModal from '$lib/components/MyPetsComponents/LoadingModal.svelte'
-	import { type SocialMediaToSignUp } from '@repo/my-pets-tstypes'
+	import { OAuthProvider } from 'appwrite'
 	import { twMerge } from 'tailwind-merge'
 
 	export let isLoading = false
@@ -17,7 +17,7 @@
 		} catch (error) {}
 	}
 
-	const login = async (platform: SocialMediaToSignUp) => {
+	const login = async (platform: OAuthProvider) => {
 		isLoading = true
 		await logout()
 
@@ -30,18 +30,18 @@
 
 	const socials = [
 		{
-			key: 'google',
+			key: OAuthProvider.Google,
 			icon: IconGoogle,
 		},
 		{
-			key: 'discord',
+			key: OAuthProvider.Discord,
 			icon: IconDiscord,
 		},
 		{
-			key: 'github',
+			key: OAuthProvider.Github,
 			icon: IconGithub,
 		},
-	] as const satisfies { key: SocialMediaToSignUp; icon: any }[]
+	] as const
 </script>
 
 {#if isLoading}

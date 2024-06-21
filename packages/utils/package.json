@@ -32,7 +32,7 @@
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
 		"@repo/ts-types": "*",
-		"appwrite": "^13.0.1",
+		"appwrite": "^15.0.0",
 		"browser-image-compression": "^2.0.2",
 		"buffer": "^6.0.3",
 		"compressorjs": "^1.2.1",
