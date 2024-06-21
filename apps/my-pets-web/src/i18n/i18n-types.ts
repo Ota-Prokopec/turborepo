@@ -531,6 +531,16 @@ type RootTranslation = {
 			 */
 			verificationErrorMessage: string
 		}
+		PetNotFound: {
+			/**
+			 * P​e​t​ ​y​o​u​ ​a​r​e​ ​l​o​o​k​i​n​g​ ​f​o​r​ ​w​a​s​ ​n​o​t​ ​f​o​u​n​d​ ​i​n​ ​o​u​r​ ​d​a​t​a​b​a​s​e​.
+			 */
+			title: string
+			/**
+			 * I​f​ ​t​h​i​s​ ​i​s​ ​y​o​u​r​ ​t​a​g​,​ ​y​o​u​ ​h​a​v​e​ ​t​o​ ​r​e​g​i​s​t​e​r​ ​i​t​ ​f​i​r​s​t​.​ ​Y​o​u​ ​c​a​n​ ​d​o​ ​t​h​i​s​ ​i​n​ ​y​o​u​r​ ​p​e​t​ ​p​r​o​f​i​l​e​.
+			 */
+			message: string
+		}
 	}
 	error: {
 		/**
@@ -1061,6 +1071,16 @@ export type TranslationFunctions = {
 			 * Something went wrong with the verification, check your token twice.
 			 */
 			verificationErrorMessage: () => LocalizedString
+		}
+		PetNotFound: {
+			/**
+			 * Pet you are looking for was not found in our database.
+			 */
+			title: () => LocalizedString
+			/**
+			 * If this is your tag, you have to register it first. You can do this in your pet profile.
+			 */
+			message: () => LocalizedString
 		}
 	}
 	error: {

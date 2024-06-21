@@ -199,4 +199,9 @@ export const componentsCS = {
 		verificationErrorMessage:
 			'Něco se pokazilo při ověřování, zkontrolujte svůj kód znovu.',
 	},
+	PetNotFound: {
+		title: 'Zvíře, které hledáte, nebylo nalezeno v naší databázi.',
+		message:
+			'Pokud je toto váš štítek, musíte jej nejprve zaregistrovat. Můžete to udělat v profilu vašeho zvířete.',
+	},
 } satisfies BaseTranslation

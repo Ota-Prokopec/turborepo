@@ -198,4 +198,9 @@ export const componentsCS = {
 		verificationErrorMessage:
 			'Something went wrong with the verification, check your token twice.',
 	},
+	PetNotFound: {
+		title: 'Pet you are looking for was not found in our database.',
+		message:
+			'If this is your tag, you have to register it first. You can do this in your pet profile.',
+	},
 } satisfies BaseTranslation
