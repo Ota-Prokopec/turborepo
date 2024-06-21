@@ -183,4 +183,19 @@ export const componentsCS = {
 		error:
 			'Oppps, something went wrong, if you think that you wrote a right code and you dont have any other pet registered with this code, please contact us.',
 	},
+	SignUpViaPhone: {
+		buttonLabel: 'Sign up with phone number',
+		phoneModal: {
+			title: 'Write your phone number, we will send you a verification code.',
+			sendButtonLabel: 'Send',
+		},
+		verificationModal: {
+			title:
+				'We sent you a verification code, write it down to verify your phone number.',
+			verfifyButtonLabel: 'Verify',
+		},
+		tokenErrorMessage: 'Something went wrong, check your number twice.',
+		verificationErrorMessage:
+			'Something went wrong with the verification, check your token twice.',
+	},
 } satisfies BaseTranslation

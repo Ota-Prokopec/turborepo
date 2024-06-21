@@ -5,6 +5,7 @@
 	import LL from '$src/i18n/i18n-svelte'
 	import { Heading } from 'flowbite-svelte'
 	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
+	import SignUpViaPhone from './Components/SignUpViaPhone.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">
@@ -13,6 +14,7 @@
 	</Padding>
 
 	<SignUpViaSocialMedia></SignUpViaSocialMedia>
+	<SignUpViaPhone></SignUpViaPhone>
 
 	<ButtonLinkToDeveloperPage></ButtonLinkToDeveloperPage>
 </Column>

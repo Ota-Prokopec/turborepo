@@ -10,13 +10,13 @@ export type Data = {
 	colorTheme?: ColorTheme
 	language?: Locales
 	temrsAccepted?: boolean
-} & Record<string, any>
+} & Record<string, unknown>
 
 const parseLocalStorageValue = (value: string) => {
 	if (value === 'undefined') return undefined
 	try {
 		return JSON.parse(value)
-	} catch (error) {
+	} catch {
 		return value
 	}
 }
@@ -24,7 +24,10 @@ const parseLocalStorageValue = (value: string) => {
 const data: Data = !browser
 	? {}
 	: Object.entries<string>(localStorage)
-			.map(([key, value]) => [key, parseLocalStorageValue(value)] as [keyof Storage, any])
+			.map(
+				([key, value]) =>
+					[key, parseLocalStorageValue(value)] as [keyof Storage, unknown],
+			)
 			.reduce((res, current) => {
 				res[current[0]] = current[1]
 				return res
@@ -46,12 +49,12 @@ export const typedStore = <Type>() => {
 }
 
 export const storage = new Proxy(data, {
-	get: (target, prop, receiver) => {
+	get: (target, prop) => {
 		const item = localStorage.getItem(prop.toString())
 		const res = item ? parseLocalStorageValue(item) : item
 		return res
 	},
-	set: (target, prop, value, receiver) => {
+	set: (target, prop, value) => {
 		lsStore.update((currentData) => ({ ...currentData, [prop.toString()]: value }))
 		return true
 	},
