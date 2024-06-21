@@ -9,7 +9,7 @@ export const pageCS = {
 	oauth: {
 		success: {
 			errorMessage:
-				'We are sorry, we were not able to sign you in the Tourmate. Please try it again.',
+				'We are sorry, we were not able to sign you in the My Pets. Please try it again.',
 		},
 	},
 	settings: {
