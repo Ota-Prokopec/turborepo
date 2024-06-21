@@ -9,7 +9,7 @@ export const pageCS = {
 	oauth: {
 		success: {
 			errorMessage:
-				'Omlouváme se, nebylo nám možné přihlásit vás do aplikace Tourmate. Prosím, zkuste to znovu.',
+				'Omlouváme se, nebylo nám možné přihlásit vás do aplikace My Pets. Prosím, zkuste to znovu.',
 		},
 	},
 	settings: {

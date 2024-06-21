@@ -1,10 +1,29 @@
 {
 	"$schema": "https://turbo.build/schema.json",
 	"globalDependencies": [".env"],
-	"pipeline": {
+	"globalEnv": [
+		"APPWRITE_PROJECT_ID",
+		"APPWRITE_ENDPOINT",
+		"APPWRITE_API_KEY",
+		"CLIENT_HOSTNAME",
+		"SERVER_HOSTNAME",
+		"MAP_TILER_API_KEY",
+		"CLOUDINARY_API_KEY",
+		"CLOUDINARY_CLOUD_NAME",
+		"CLOUDINARY_API_SECRET_KEY",
+		"DEV",
+		"SERVER_HOSTNAME_COOKIES",
+		"PUBLIC_SESSION_NAME",
+		"CLIENT_HOSTNAME_COOKIES",
+		"CLOUDINARY_ROOT_FOLDER_NAME",
+		"IOS_AUTHORIZATION_HEADER_NAME",
+		"PUBLIC_MAX_PICTURE_SIZE_IN_MB"
+	],
+	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
-			"outputs": ["dist/**", "src/generated/**"]
+			"outputs": ["dist/**", "src/generated/**"],
+			"env": ["APPWRITE_ENDPOINT"]
 		},
 		"lint": {
 			"dependsOn": ["^build"]

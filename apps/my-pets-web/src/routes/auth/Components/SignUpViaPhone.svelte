@@ -18,7 +18,7 @@
 	import { ID } from 'appwrite'
 	import { Button, Modal } from 'flowbite-svelte'
 
-	export let phoneNumber: string = '737401386'
+	export let phoneNumber: string = ''
 	export let phoneVerificationCode: string = ''
 
 	let phoneToken: Awaited<ReturnType<typeof account.createPhoneToken>> | undefined =

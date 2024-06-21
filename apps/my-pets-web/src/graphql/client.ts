@@ -1,5 +1,4 @@
-import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client'
-import { onError } from '@apollo/client/link/error'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 import clientOptions from './clientOptions'
 
 const cache = new InMemoryCache({
