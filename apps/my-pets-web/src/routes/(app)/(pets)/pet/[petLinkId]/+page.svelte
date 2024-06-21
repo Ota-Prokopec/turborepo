@@ -32,7 +32,7 @@
 {:else if status === 'found' && petData}
 	<Center class="w-full flex-wrap flex-col pt-20">
 		<Section
-			isOwner={petData.userId === data.user.userId}
+			isOwner={petData.userId === data.user?.userId}
 			petData={{
 				...petData,
 				petBirthDate: new Date(petData.petBirthDate),
