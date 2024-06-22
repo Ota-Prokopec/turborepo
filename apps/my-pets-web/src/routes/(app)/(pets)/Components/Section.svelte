@@ -3,6 +3,7 @@
 	import Column from '$lib/components/Common/Column.svelte'
 	import Right from '$lib/components/Common/Right.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
+	import UpdatePetIdTranslation from '$lib/components/MyPetsComponents/UpdatePetIdTranslation.svelte'
 	import { navigate } from '$lib/utils/navigator'
 	import { type GraphqlDocument } from '@repo/appwrite-types'
 	import { type TPetData } from '@repo/my-pets-tstypes'
@@ -17,12 +18,10 @@
 	import DeletePetButton from './DeletePetButton.svelte'
 	import EditPetButton from './EditPetButton.svelte'
 	import IFoundPetButton from './IFoundPetButton.svelte'
-	import PetFoundLocationItem from './Items/PetFoundLocationItem/PetFoundLocationItem.svelte'
-	import PetUrlItem from './Items/PetUrlItem.svelte'
 	import PetAgeItem from './Items/PetAgeItem.svelte'
-	import PetWeightInput from '$lib/components/MyPetsComponents/PetWeightInput.svelte'
+	import PetFoundLocations from './Items/PetFoundLocationItem/PetFoundLocations.svelte'
+	import PetUrlItem from './Items/PetUrlItem.svelte'
 	import PetWeightItem from './Items/PetWeightItem.svelte'
-	import UpdatePetIdTranslation from '$lib/components/MyPetsComponents/UpdatePetIdTranslation.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -63,10 +62,10 @@
 	{/if}
 
 	{#if petData.lostPetLocations.length && isOwner}
-		<PetFoundLocationItem
+		<PetFoundLocations
 			class="mobile:w-full w-max flex justify-start"
 			bind:locations={petData.lostPetLocations}
-		></PetFoundLocationItem>
+		></PetFoundLocations>
 	{/if}
 
 	<PetUrlItem class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrlItem>

@@ -10,5 +10,6 @@ export default objectType({
 		t.list.string('_permissions')
 		t.string('_databaseId')
 		t.field('coords', { type: 'Coords' })
+		t.string('dateTime')
 	},
 })

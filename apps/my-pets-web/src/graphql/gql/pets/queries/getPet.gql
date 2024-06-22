@@ -39,6 +39,7 @@ query getPet($petLinkId: String!) {
 			_permissions
 			_databaseId
 			coords
+			dateTime
 		}
 		linkId
 

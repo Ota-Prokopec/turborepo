@@ -42,6 +42,7 @@ type LostPetsLocation {
   _permissions: [String!]!
   _updatedAt: String!
   coords: Coords!
+  dateTime: String!
 }
 
 type Mutation {

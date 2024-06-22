@@ -1,0 +1,54 @@
+<script lang="ts">
+	import NoContent from '$lib/components/Common/NoContent.svelte'
+	import LL from '$src/i18n/i18n-svelte'
+	import type { TPetData } from '@repo/my-pets-tstypes'
+	import { Button, Modal } from 'flowbite-svelte'
+	import PetFoundLocationCard from './PetFoundLocationCard.svelte'
+	import Map from '$lib/components/Map/Map.svelte'
+	import Marker from '$lib/components/Map/Marker.svelte'
+	import Icon from '$lib/components/Common/Icon.svelte'
+	import IconLocation from '$lib/components/Icons/IconLocation.svelte'
+	import { Popup } from 'svelte-maplibre'
+
+	export let locations: TPetData['lostPetLocations']
+
+	let modalOpen = true
+
+	let className = ''
+	export { className as class }
+</script>
+
+<Button class={className} on:click={() => (modalOpen = true)} color="green"
+	>{$LL.component.PetFoundLocationItem.buttonLabel()}</Button
+>
+
+<Modal bind:open={modalOpen} title={$LL.component.PetFoundLocationItem.modal.title()}>
+	<Map class="w-full h-[400px] !rounded-xl overflow-hidden">
+		{#each locations as location}
+			<Marker location={location.coords}>
+				<Icon class="w-6 h-6">
+					<IconLocation></IconLocation>
+				</Icon>
+				<Popup
+					closeOnClickInside={false}
+					closeOnClickOutside={false}
+					lngLat={{ lat: location.coords[0], lng: location.coords[1] }}
+					open
+					closeButton={false}
+				>
+					{location.dateTime}
+				</Popup>
+			</Marker>
+		{/each}
+	</Map>
+	{#if locations.length === 0}
+		<NoContent></NoContent>
+	{:else}
+		{#each locations as location}
+			<PetFoundLocationCard
+				on:deleted={() => (locations = locations.filter((item) => item._id !== item._id))}
+				{location}
+			></PetFoundLocationCard>
+		{/each}
+	{/if}
+</Modal>

@@ -31,6 +31,7 @@ export const zodPetData = z.object({
 		.merge(
 			z.object({
 				coords: zodCoords,
+				dateTime: z.string(),
 			}),
 		)
 		.array(),
