@@ -34,18 +34,9 @@
 		location.coords[1],
 		{},
 	)
-	const date = new Date(location._createdAt)
 
 	const placeNamePromise = placePromise.then((place) => {
 		return place.at(0)?.place_name ?? location.coords
-	})
-
-	const normalizedDate = date.toLocaleDateString($locale, {
-		day: 'numeric',
-		year: 'numeric',
-		month: 'long',
-		hour: 'numeric',
-		minute: 'numeric',
 	})
 
 	const deleteLocation = async () => {
@@ -105,7 +96,7 @@
 			</Map>
 		{/if}
 
-		<Text class="ml-2 !text-gray-400">{normalizedDate}</Text>
+		<Text class="ml-2 !text-gray-400">{location.dateTime}</Text>
 		<Right>
 			<Row class="gap-2">
 				{#if !showMap}

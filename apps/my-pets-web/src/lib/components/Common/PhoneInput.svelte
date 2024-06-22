@@ -6,7 +6,7 @@
 
 	export let value: string | null
 
-	let selectedCountry: CountryCode | null = 'CZ'
+	const selectedCountry: CountryCode | null = 'CZ'
 	export let placeholder = ''
 
 	// Validity

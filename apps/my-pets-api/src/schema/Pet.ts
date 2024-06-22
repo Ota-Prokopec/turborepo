@@ -2,6 +2,7 @@ import { objectType, list, nullable } from 'nexus'
 import { Queries } from '../lib/appwrite/appwrite'
 import { ApolloError } from 'apollo-server-express'
 import { omit } from 'lodash'
+import { getNormalizedDate } from '../lib/utils/date'
 
 export default objectType({
 	name: 'Pet',
@@ -67,6 +68,7 @@ export default objectType({
 
 					return list.documents.map((document: (typeof list.documents)[number]) => ({
 						coords: [document.latitude, document.longitude],
+						dateTime: getNormalizedDate(new Date(document._createdAt)),
 						...document,
 					}))
 				} catch (error) {

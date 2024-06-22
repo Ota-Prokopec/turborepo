@@ -95,6 +95,7 @@ export interface NexusGenObjects {
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
     coords: NexusGenScalars['Coords']; // Coords!
+    dateTime: string; // String!
   }
   Mutation: {};
   Pet: { // root type
@@ -160,6 +161,7 @@ export interface NexusGenFieldTypes {
     _permissions: string[]; // [String!]!
     _updatedAt: string; // String!
     coords: NexusGenScalars['Coords']; // Coords!
+    dateTime: string; // String!
   }
   Mutation: { // field return type
     createPet: boolean; // Boolean!
@@ -233,6 +235,7 @@ export interface NexusGenFieldTypeNames {
     _permissions: 'String'
     _updatedAt: 'String'
     coords: 'Coords'
+    dateTime: 'String'
   }
   Mutation: { // field return type name
     createPet: 'Boolean'

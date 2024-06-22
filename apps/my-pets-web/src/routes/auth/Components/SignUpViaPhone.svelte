@@ -34,7 +34,7 @@
 		} catch (error) {}
 
 		try {
-			phoneToken = await account.createPhoneToken(ID.unique(), `+420${phoneNumber}`)
+			phoneToken = await account.createPhoneToken(ID.unique(), phoneNumber)
 			progress = 'verification-modal'
 			status = null
 		} catch (error) {
