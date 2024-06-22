@@ -13,7 +13,7 @@ export const load: LayoutServerLoad = async (event) => {
 			user,
 		}
 	} catch {
-		if (event.route.id.includes('pet') && !event.route.id.includes('edit'))
+		if (event.url.pathname.includes('pet') && !event.route.id.includes('edit'))
 			return { user: null }
 		else throw redirect(307, '/auth')
 	}
