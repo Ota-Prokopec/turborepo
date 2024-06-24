@@ -25,4 +25,8 @@ export const pageCS = {
 		sellingTagQR:
 			'Tato značka obsahuje QR kód, který usnadňuje kdokoliv, kdo najde vašeho mazlíčka, získání důležitých informací. Jednoduše naskenováním QR kódu svým telefonem mohou získat podrobnosti o vašem mazlíčkovi a dokonce vám poslat jeho polohu. QR kód umožňuje rychlý přístup pořízením fotografie.',
 	},
+	errorPage: {
+		label:
+			'Omlouváme se, v naší aplikaci My Pets došlo k chybě. Pracujeme na jejím odstranění. Prosíme o trpělivost. Děkujeme, váš MyPets.',
+	},
 } satisfies BaseTranslation

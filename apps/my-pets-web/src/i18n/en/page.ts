@@ -25,4 +25,9 @@ export const pageCS = {
 		sellingTagQR:
 			"This tag features a QR code, making it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo.",
 	},
+
+	errorPage: {
+		label:
+			"We're sorry, there's been an error in our My Pets app. We are working on its removal. Please be patient. Thank you, your MyPets.",
+	},
 } satisfies BaseTranslation

@@ -7,12 +7,13 @@
 	import Row from '$lib/components/Common/Row.svelte'
 	import Tabs from '$lib/components/Common/Tabs.svelte'
 	import IconAdd from '$lib/components/Icons/IconAdd.svelte'
+	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
 	import { sdk } from '$src/graphql/sdk'
 	import { onMount } from 'svelte'
 	import type { PageData } from './$types'
 	import Section from './Components/Section.svelte'
-	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
-	import type { TPetData } from '@repo/my-pets-tstypes'
+	import { page } from '$app/stores'
+	import { svelteParams } from '$lib/utils/paramsStore'
 
 	export let data: PageData
 
@@ -22,13 +23,18 @@
 		| Awaited<ReturnType<typeof sdk.getListOfPets>>['getListOfPets']
 		| undefined
 
-	let currentPetId: string | null = null
+	let currentPetId = svelteParams('petId')
 
 	onMount(async () => {
 		pageState = 'loading'
 		try {
 			myPetsData = (await sdk.getListOfPets()).getListOfPets
-			currentPetId = myPetsData?.at(0)?._id ?? null
+
+			// if there is no pet chosen by query, choose first one loaded
+			const firstPet = myPetsData.at(0)
+			if (!firstPet) throw new Error('myPetsData.at(0) is not data')
+			if (!$currentPetId) $currentPetId = firstPet._id
+
 			pageState = 'loaded'
 		} catch (error) {
 			pageState = 'error'
@@ -38,9 +44,9 @@
 	$: tabItems = myPetsData?.map((pet) => ({ key: pet._id, title: pet.petName }))
 
 	let currentPet: NonNullable<typeof myPetsData>[number] | undefined = undefined
-	$: currentPet = myPetsData?.find((pet) => pet._id === currentPetId)
+	$: currentPet = myPetsData?.find((pet) => pet._id === $currentPetId)
 
-	$: if (pageState === 'loaded' && !(currentPetId && currentPet && tabItems))
+	$: if (pageState === 'loaded' && !($currentPetId && currentPet && tabItems))
 		goto('notfound')
 </script>
 
@@ -50,11 +56,11 @@
 
 {#if pageState === 'loading'}
 	<FullPageLoading></FullPageLoading>
-{:else if currentPetId && currentPet && tabItems}
+{:else if $currentPetId && currentPet && tabItems}
 	<Center>
 		<Column class="h-auto mobile:w-full w-[500px] justify-center flex items-center pt-10">
 			<Row class="relative">
-				<Tabs let:title bind:active={currentPetId} items={tabItems}>
+				<Tabs let:title bind:active={$currentPetId} items={tabItems}>
 					{title}
 				</Tabs>
 				<Icon

@@ -61,6 +61,12 @@ type RootTranslation = {
 			 */
 			sellingTagQR: string
 		}
+		errorPage: {
+			/**
+			 * W​e​'​r​e​ ​s​o​r​r​y​,​ ​t​h​e​r​e​'​s​ ​b​e​e​n​ ​a​n​ ​e​r​r​o​r​ ​i​n​ ​o​u​r​ ​M​y​ ​P​e​t​s​ ​a​p​p​.​ ​W​e​ ​a​r​e​ ​w​o​r​k​i​n​g​ ​o​n​ ​i​t​s​ ​r​e​m​o​v​a​l​.​ ​P​l​e​a​s​e​ ​b​e​ ​p​a​t​i​e​n​t​.​ ​T​h​a​n​k​ ​y​o​u​,​ ​y​o​u​r​ ​M​y​P​e​t​s​.
+			 */
+			label: string
+		}
 	}
 	common: {
 		/**
@@ -629,6 +635,12 @@ export type TranslationFunctions = {
 			 * This tag features a QR code, making it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo.
 			 */
 			sellingTagQR: () => LocalizedString
+		}
+		errorPage: {
+			/**
+			 * We're sorry, there's been an error in our My Pets app. We are working on its removal. Please be patient. Thank you, your MyPets.
+			 */
+			label: () => LocalizedString
 		}
 	}
 	common: {

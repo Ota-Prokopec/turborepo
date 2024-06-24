@@ -11,7 +11,7 @@
 	import IconPhone from '$lib/components/Icons/IconPhone.svelte'
 	import PincodeInput from '$lib/components/Inputs/PincodeInput.svelte'
 	import ErrorModal from '$lib/components/MyPetsComponents/ErrorModal.svelte'
-	import { storage } from '$lib/utils/lsStore'
+	import lsStore, { storage } from '$lib/utils/lsStore'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
 	import { post } from '@repo/utils'
@@ -20,9 +20,6 @@
 
 	export let phoneNumber: string = ''
 	export let phoneVerificationCode: string = ''
-
-	let phoneToken: Awaited<ReturnType<typeof account.createPhoneToken>> | undefined =
-		undefined
 
 	let progress: 'phone-modal' | 'verification-modal' | null = null
 	let status: 'loading' | 'token-error' | 'verification-error' | null = null
@@ -34,7 +31,7 @@
 		} catch (error) {}
 
 		try {
-			phoneToken = await account.createPhoneToken(ID.unique(), phoneNumber)
+			$lsStore.phoneAuthToken = await account.createPhoneToken(ID.unique(), phoneNumber)
 			progress = 'verification-modal'
 			status = null
 		} catch (error) {
@@ -43,10 +40,10 @@
 	}
 	const verifyPhone = async () => {
 		status = 'loading'
-		if (!phoneToken) throw new Error('User has to get token first')
+		if (!$lsStore.phoneAuthToken) throw new Error('User has to get token first')
 		try {
 			const verification = await account.createSession(
-				phoneToken.userId,
+				$lsStore.phoneAuthToken.userId,
 				phoneVerificationCode,
 			)
 			const session = storage.cookieFallback

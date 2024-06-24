@@ -6,9 +6,12 @@
 
 	export let icon: ComponentType
 	export let props: Button['$$prop_def'] = {}
+
+	let className = ''
+	export { className as class }
 </script>
 
-<Button on:click {...props}>
+<Button class={className} on:click {...props}>
 	<Row class="items-center gap-2">
 		<slot />
 		<Icon class="w-4 h-4">
