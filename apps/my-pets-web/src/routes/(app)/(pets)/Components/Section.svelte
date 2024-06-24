@@ -3,8 +3,6 @@
 	import Column from '$lib/components/Common/Column.svelte'
 	import Right from '$lib/components/Common/Right.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
-	import UpdatePetIdTranslation from '$lib/components/MyPetsComponents/UpdatePetIdTranslation.svelte'
-	import { navigate } from '$lib/utils/navigator'
 	import { type GraphqlDocument } from '@repo/appwrite-types'
 	import { type TPetData } from '@repo/my-pets-tstypes'
 	import OwnerPhoneNumberItem from '../Components/Items/OwnerPhoneNumberItem.svelte'
@@ -15,13 +13,12 @@
 	import PetNameItem from '../Components/Items/PetNameItem.svelte'
 	import PetTreatingItem from '../Components/Items/PetTreatingItem.svelte'
 	import PetTypeItem from '../Components/Items/PetTypeItem.svelte'
-	import DeletePetButton from './DeletePetButton.svelte'
-	import EditPetButton from './EditPetButton.svelte'
 	import IFoundPetButton from './IFoundPetButton.svelte'
 	import PetAgeItem from './Items/PetAgeItem.svelte'
 	import PetFoundLocations from './Items/PetFoundLocationItem/PetFoundLocations.svelte'
 	import PetUrlItem from './Items/PetUrlItem.svelte'
 	import PetWeightItem from './Items/PetWeightItem.svelte'
+	import PetSettings from './PetSettings.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -40,18 +37,7 @@
 <Column class="w-full">
 	{#if isOwner}
 		<Right>
-			<Column>
-				<EditPetButton
-					on:click={() =>
-						navigate(`/pet/${petData.linkId}/edit`, { invalidateAll: true })}
-					class=""
-				></EditPetButton>
-				<DeletePetButton
-					on:deleted={() => navigate('/', { invalidateAll: true })}
-					petId={petData._id}
-				></DeletePetButton>
-				<UpdatePetIdTranslation {petData}></UpdatePetIdTranslation>
-			</Column>
+			<PetSettings {petData}></PetSettings>
 		</Right>
 	{:else}
 		<IFoundPetButton

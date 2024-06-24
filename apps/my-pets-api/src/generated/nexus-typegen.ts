@@ -169,6 +169,7 @@ export interface NexusGenFieldTypes {
     deletePet: boolean; // Boolean!
     deleteRecordToLostPetsLocation: boolean; // Boolean!
     logout: boolean; // Boolean!
+    removePetIdTranlation: boolean; // Boolean!
     updatePet: boolean; // Boolean!
     updatePetIdTranlation: boolean; // Boolean!
   }
@@ -243,6 +244,7 @@ export interface NexusGenFieldTypeNames {
     deletePet: 'Boolean'
     deleteRecordToLostPetsLocation: 'Boolean'
     logout: 'Boolean'
+    removePetIdTranlation: 'Boolean'
     updatePet: 'Boolean'
     updatePetIdTranlation: 'Boolean'
   }
@@ -312,6 +314,9 @@ export interface NexusGenArgTypes {
     }
     deleteRecordToLostPetsLocation: { // args
       documentId: string; // String!
+    }
+    removePetIdTranlation: { // args
+      petId: string; // String!
     }
     updatePet: { // args
       data: NexusGenInputs['CreatePetInput']; // CreatePetInput!

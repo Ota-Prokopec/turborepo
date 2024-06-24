@@ -9,10 +9,13 @@
 	import Icon from '$lib/components/Common/Icon.svelte'
 	import IconLocation from '$lib/components/Icons/IconLocation.svelte'
 	import { Popup } from 'svelte-maplibre'
+	import IconAnglesRight from '$lib/components/Icons/IconAnglesRight.svelte'
+	import IconAnglesDown from '$lib/components/Icons/IconAnglesDown.svelte'
+	import Center from '$lib/components/Common/Center.svelte'
 
 	export let locations: TPetData['lostPetLocations']
 
-	let modalOpen = true
+	let modalOpen = false
 
 	let className = ''
 	export { className as class }
@@ -41,6 +44,13 @@
 			</Marker>
 		{/each}
 	</Map>
+
+	<Center class="h-min">
+		<Icon>
+			<IconAnglesDown></IconAnglesDown>
+		</Icon>
+	</Center>
+
 	{#if locations.length === 0}
 		<NoContent></NoContent>
 	{:else}

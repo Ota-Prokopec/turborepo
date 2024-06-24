@@ -14,6 +14,7 @@
 	import Row from '../Common/Row.svelte'
 	import Icon from '../Common/Icon.svelte'
 	import IconTag from '../Icons/IconTag.svelte'
+	import { goto } from '$app/navigation'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -71,6 +72,7 @@
 		on:goBack={() => {
 			modalOpen = false
 			status = null
+			goto('/')
 		}}
 	></DoneModal>
 {/if}

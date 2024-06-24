@@ -541,6 +541,34 @@ type RootTranslation = {
 			 */
 			message: string
 		}
+		PetSettings: {
+			modal: {
+				/**
+				 * Y​o​u​r​ ​p​e​t​'​s​ ​s​e​t​t​i​n​g​s
+				 */
+				title: string
+			}
+			/**
+			 * S​e​t​t​i​n​g​s
+			 */
+			buttonLabel: string
+		}
+		RemovePetTag: {
+			/**
+			 * R​e​m​o​v​e​ ​a​ ​p​e​t​ ​t​a​g​ ​o​f​ ​t​h​i​s​ ​p​e​t
+			 */
+			buttonLabel: string
+			modal: {
+				/**
+				 * R​e​m​o​v​e​ ​a​ ​p​e​t​ ​t​a​g​ ​o​f​ ​t​h​i​s​ ​p​e​t
+				 */
+				title: string
+				/**
+				 * A​f​t​e​r​ ​r​e​m​o​v​i​n​g​ ​y​o​u​ ​w​i​l​l​ ​b​e​ ​a​b​l​e​ ​t​o​ ​r​e​g​i​s​t​e​r​ ​t​h​e​ ​t​a​g​ ​b​a​c​k​ ​t​o​ ​t​h​i​s​ ​p​e​t​,​ ​b​u​t​ ​y​o​u​ ​w​i​l​l​ ​a​l​s​o​ ​b​e​ ​a​b​l​e​ ​t​o​ ​r​e​g​i​s​t​e​r​ ​t​h​i​s​ ​t​a​g​ ​t​o​ ​a​ ​d​i​f​f​e​r​e​n​t​ ​p​e​t​ ​o​f​ ​y​o​u​r​s​.
+				 */
+				text: string
+			}
+		}
 	}
 	error: {
 		/**
@@ -1081,6 +1109,34 @@ export type TranslationFunctions = {
 			 * If this is your tag, you have to register it first. You can do this in your pet profile.
 			 */
 			message: () => LocalizedString
+		}
+		PetSettings: {
+			modal: {
+				/**
+				 * Your pet's settings
+				 */
+				title: () => LocalizedString
+			}
+			/**
+			 * Settings
+			 */
+			buttonLabel: () => LocalizedString
+		}
+		RemovePetTag: {
+			/**
+			 * Remove a pet tag of this pet
+			 */
+			buttonLabel: () => LocalizedString
+			modal: {
+				/**
+				 * Remove a pet tag of this pet
+				 */
+				title: () => LocalizedString
+				/**
+				 * After removing you will be able to register the tag back to this pet, but you will also be able to register this tag to a different pet of yours.
+				 */
+				text: () => LocalizedString
+			}
 		}
 	}
 	error: {
