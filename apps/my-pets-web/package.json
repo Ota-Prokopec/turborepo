@@ -2,7 +2,6 @@
 	"name": "my-pets-web",
 	"version": "0.0.1",
 	"private": true,
-	"packageManager": "yarn@1.22.21",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
