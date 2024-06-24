@@ -74,8 +74,7 @@
 </Button>
 
 {#if progress === 'phone-modal'}
-	<Modal dismissable={false} title={'Sign up with phone number'} open>
-		<Text>{$LL.component.SignUpViaPhone.phoneModal.title()}</Text>
+	<Modal dismissable={false} title={$LL.component.SignUpViaPhone.phoneModal.title()} open>
 		<PhoneInput bind:value={phoneNumber}></PhoneInput>
 		<Right>
 			<Button
