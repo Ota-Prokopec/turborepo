@@ -10,6 +10,7 @@ export type Data = {
 	colorTheme?: ColorTheme
 	language?: Locales
 	temrsAccepted?: boolean
+	phoneAuthToken?: { userId: string }
 } & Record<string, unknown>
 
 const parseLocalStorageValue = (value: string) => {

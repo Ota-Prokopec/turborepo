@@ -12,6 +12,8 @@
 	import IconAnglesRight from '$lib/components/Icons/IconAnglesRight.svelte'
 	import IconAnglesDown from '$lib/components/Icons/IconAnglesDown.svelte'
 	import Center from '$lib/components/Common/Center.svelte'
+	import ButtonWithIcon from '$lib/components/Buttons/ButtonWithIcon.svelte'
+	import IconRoute from '$lib/components/Icons/IconRoute.svelte'
 
 	export let locations: TPetData['lostPetLocations']
 
@@ -21,8 +23,11 @@
 	export { className as class }
 </script>
 
-<Button class={className} on:click={() => (modalOpen = true)} color="green"
-	>{$LL.component.PetFoundLocationItem.buttonLabel()}</Button
+<ButtonWithIcon
+	class={className}
+	on:click={() => (modalOpen = true)}
+	props={{ color: 'green' }}
+	icon={IconRoute}>{$LL.component.PetFoundLocationItem.buttonLabel()}</ButtonWithIcon
 >
 
 <Modal bind:open={modalOpen} title={$LL.component.PetFoundLocationItem.modal.title()}>

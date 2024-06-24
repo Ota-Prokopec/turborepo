@@ -15,6 +15,8 @@
 	import Icon from '../Common/Icon.svelte'
 	import IconTag from '../Icons/IconTag.svelte'
 	import { goto } from '$app/navigation'
+	import ButtonWithIcon from '../Buttons/ButtonWithIcon.svelte'
+	import IconQRcode from '../Icons/IconQRcode.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
@@ -57,8 +59,8 @@
 		<Center class="h-min">
 			<PincodeInput size={5} bind:value={passCode}></PincodeInput>
 		</Center>
-		<Button on:click={updateTag}
-			>{$LL.component.UpdatePetIdTranslation.modal.updateTagButtonLabel()}</Button
+		<ButtonWithIcon icon={IconQRcode} on:click={updateTag}
+			>{$LL.component.UpdatePetIdTranslation.modal.updateTagButtonLabel()}</ButtonWithIcon
 		>
 	</Column>
 </Modal>
