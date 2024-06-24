@@ -203,4 +203,17 @@ export const componentsCS = {
 		message:
 			'If this is your tag, you have to register it first. You can do this in your pet profile.',
 	},
+	PetSettings: {
+		modal: {
+			title: "Your pet's settings",
+		},
+		buttonLabel: 'Settings',
+	},
+	RemovePetTag: {
+		buttonLabel: 'Remove a pet tag of this pet',
+		modal: {
+			title: 'Remove a pet tag of this pet',
+			text: 'After removing you will be able to register the tag back to this pet, but you will also be able to register this tag to a different pet of yours.',
+		},
+	},
 } satisfies BaseTranslation

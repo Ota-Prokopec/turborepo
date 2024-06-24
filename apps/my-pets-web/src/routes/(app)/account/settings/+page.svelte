@@ -8,12 +8,10 @@
 	import LanguageSwitch from '$lib/components/Common/LanguageSwitch.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
 	import ThemeSwitch from '$lib/components/Common/ThemeSwitch.svelte'
-	import UpdatePetIdTranslation from '$lib/components/MyPetsComponents/UpdatePetIdTranslation.svelte'
 	import lsStore from '$lib/utils/lsStore'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
 	import { alert } from '$src/routes/alertStore'
-	import type { PageData } from './$types'
 
 	const logOut = async () => {
 		try {

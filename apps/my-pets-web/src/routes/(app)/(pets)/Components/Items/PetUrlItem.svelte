@@ -16,7 +16,7 @@
 </script>
 
 <Button
-	color="green"
+	color="blue"
 	on:click={() => {
 		clipboard.copy(petUrl)
 	}}

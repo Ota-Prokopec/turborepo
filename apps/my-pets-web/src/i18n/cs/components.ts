@@ -204,4 +204,18 @@ export const componentsCS = {
 		message:
 			'Pokud je toto váš štítek, musíte jej nejprve zaregistrovat. Můžete to udělat v profilu vašeho zvířete.',
 	},
+	PetSettings: {
+		modal: {
+			title: "Your pet's settings",
+		},
+		buttonLabel: 'Nastavení',
+	},
+
+	RemovePetTag: {
+		buttonLabel: 'Odstranit štítek tohoto mazlíčka',
+		modal: {
+			title: 'Odstranit štítek tohoto mazlíčka',
+			text: 'Po odstranění budete moci štítek znovu registrovat k tomuto mazlíčkovi, ale také budete moci tento štítek registrovat k jinému vašemu mazlíčkovi.',
+		},
+	},
 } satisfies BaseTranslation

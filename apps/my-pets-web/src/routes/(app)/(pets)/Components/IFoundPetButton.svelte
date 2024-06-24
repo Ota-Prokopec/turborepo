@@ -25,7 +25,10 @@
 			throw new Error('Users geolocation is off')
 		}
 		try {
-			const coords: Coords = await getUsersLocation({ enableHighAccuracy: true })
+			const coords: Coords = await getUsersLocation({
+				enableHighAccuracy: true,
+				maximumAge: 1,
+			})
 
 			await sdk.createRecordToLostPetsLocation({
 				coords: coords,
