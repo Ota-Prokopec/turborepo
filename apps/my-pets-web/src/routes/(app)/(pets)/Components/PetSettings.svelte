@@ -28,11 +28,9 @@
 
 <Modal dismissable title={$LL.component.PetSettings.modal.title()} bind:open={modalOpen}>
 	<Column>
-		<UpdatePetTag {petData}></UpdatePetTag>
-		<RemovePetTag petId={petData._id}></RemovePetTag>
-		<EditPetButton
-			on:click={() => navigate(`/pet/${petData.linkId}/edit`, { invalidateAll: true })}
-			class=""
+		<UpdatePetTag bind:petData></UpdatePetTag>
+		<RemovePetTag bind:petData></RemovePetTag>
+		<EditPetButton on:click={() => navigate(`/pet/${petData.linkId}/edit`)} class=""
 		></EditPetButton>
 		<DeletePetButton
 			on:deleted={() => navigate('/', { invalidateAll: true })}

@@ -51,9 +51,9 @@ type Mutation {
   deletePet(petId: String!): Boolean!
   deleteRecordToLostPetsLocation(documentId: String!): Boolean!
   logout: Boolean!
-  removePetIdTranlation(petId: String!): Boolean!
+  removePetIdTranslation(petId: String!): PetTag!
   updatePet(data: CreatePetInput!, petId: String!): Boolean!
-  updatePetIdTranlation(input: UpdatePetIdTranslationInput!): Boolean!
+  updatePetIdTranslation(input: UpdatePetIdTranslationInput!): PetTag!
 }
 
 type Pet {
@@ -102,6 +102,10 @@ type PetDescriptionCustomField {
 }
 
 scalar PetGender
+
+type PetTag {
+  linkId: String!
+}
 
 scalar PetType
 

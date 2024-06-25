@@ -14,6 +14,7 @@
 	import Section from './Components/Section.svelte'
 	import { page } from '$app/stores'
 	import { svelteParams } from '$lib/utils/paramsStore'
+	import SectionLoading from './Components/SectionLoading.svelte'
 
 	export let data: PageData
 
@@ -54,11 +55,11 @@
 	<IconSettings></IconSettings>
 </Icon>
 
-{#if pageState === 'loading'}
-	<FullPageLoading></FullPageLoading>
-{:else if $currentPetId && currentPet && tabItems}
-	<Center>
-		<Column class="h-auto mobile:w-full w-[500px] justify-center flex items-center pt-10">
+<Center>
+	<Column class="h-auto mobile:w-full w-[500px] justify-center flex items-center pt-10">
+		{#if pageState === 'loading'}
+			<SectionLoading></SectionLoading>
+		{:else if $currentPetId && currentPet && tabItems}
 			<Row class="relative">
 				<Tabs let:title bind:active={$currentPetId} items={tabItems}>
 					{title}
@@ -80,6 +81,6 @@
 					}}
 				></Section>
 			{/if}
-		</Column>
-	</Center>
-{/if}
+		{/if}
+	</Column>
+</Center>
