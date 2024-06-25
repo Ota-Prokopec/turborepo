@@ -15,10 +15,10 @@
 	import PetTypeItem from './Items/petType/PetTypeItem.svelte'
 	import IFoundPetButton from './IFoundPetButton.svelte'
 	import PetAgeItem from './Items/PetAge/PetAgeItem.svelte'
-	import PetFoundLocations from './Items/petFoundLocationItem/PetFoundLocations.svelte'
 	import PetUrlItem from './Items/petUrl/PetUrlItem.svelte'
 	import PetWeightItem from './Items/petWeight/PetWeightItem.svelte'
 	import PetSettings from './PetSettings.svelte'
+	import PetFoundLocations from './Items/petFoundLocationItem/PetFoundLocations.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 
