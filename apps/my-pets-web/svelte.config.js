@@ -8,7 +8,6 @@ const config = {
 	// for more information about preprocessors
 	preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
 	kit: {
-		typescript: { config: { forceConsistentCasingInFileNames: true } },
 		adapter: adapter(),
 		env: {
 			dir: '../../',
