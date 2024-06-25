@@ -32,7 +32,7 @@
 				},
 				{
 					"name": "web",
-					"commands": ["cd apps/my-pets-web", "clear"]
+					"commands": ["cd apps/my-pets-web", "yarn check:watch"]
 				},
 				{
 					"name": "api",
