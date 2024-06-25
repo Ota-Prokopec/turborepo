@@ -18,7 +18,7 @@
 	import PetUrlItem from './Items/petUrl/PetUrlItem.svelte'
 	import PetWeightItem from './Items/petWeight/PetWeightItem.svelte'
 	import PetSettings from './PetSettings.svelte'
-	import PetFoundLocations from './Items/petFoundLocationItem/PetFoundLocations.svelte'
+	import PetFoundLocations from './Items/petFoundLocation/PetFoundLocations.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
 

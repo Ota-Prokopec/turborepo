@@ -18,7 +18,6 @@
 	import ErrorModal from '$lib/components/MyPetsComponents/ErrorModal.svelte'
 	import mapTiler from '$lib/utils/mapTiler'
 	import { sdk } from '$src/graphql/sdk'
-	import { locale } from '$src/i18n/i18n-svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
 	import { createEventDispatcher } from 'svelte'
 
