@@ -8,6 +8,7 @@
 	import type { PageData } from './$types'
 	import PetNotFound from '$lib/components/MyPetsComponents/PetNotFound.svelte'
 	import { onMount } from 'svelte'
+	import SectionLoading from '../../Components/SectionLoading.svelte'
 
 	export let data: PageData
 
@@ -27,10 +28,10 @@
 	})
 </script>
 
-{#if status === 'loading'}
-	<FullPageLoading></FullPageLoading>
-{:else if status === 'found' && petData}
-	<Center class="w-full flex-wrap flex-col pt-20">
+<Center class="w-full flex-wrap flex-col pt-20">
+	{#if status === 'loading'}
+		<SectionLoading></SectionLoading>
+	{:else if status === 'found' && petData}
 		<Section
 			isOwner={petData.userId === data.user?.userId}
 			petData={{
@@ -38,7 +39,7 @@
 				petBirthDate: new Date(petData.petBirthDate),
 			}}
 		></Section>
-	</Center>
-{:else if status === 'not-found'}
-	<PetNotFound></PetNotFound>
-{/if}
+	{:else if status === 'not-found'}
+		<PetNotFound></PetNotFound>
+	{/if}
+</Center>

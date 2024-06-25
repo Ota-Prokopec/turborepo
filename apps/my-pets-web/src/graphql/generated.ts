@@ -72,9 +72,9 @@ export type Mutation = {
   deletePet: Scalars['Boolean']['output'];
   deleteRecordToLostPetsLocation: Scalars['Boolean']['output'];
   logout: Scalars['Boolean']['output'];
-  removePetIdTranlation: Scalars['Boolean']['output'];
+  removePetIdTranslation: PetTag;
   updatePet: Scalars['Boolean']['output'];
-  updatePetIdTranlation: Scalars['Boolean']['output'];
+  updatePetIdTranslation: PetTag;
 };
 
 
@@ -100,7 +100,7 @@ export type MutationDeleteRecordToLostPetsLocationArgs = {
 };
 
 
-export type MutationRemovePetIdTranlationArgs = {
+export type MutationRemovePetIdTranslationArgs = {
   petId: Scalars['String']['input'];
 };
 
@@ -111,7 +111,7 @@ export type MutationUpdatePetArgs = {
 };
 
 
-export type MutationUpdatePetIdTranlationArgs = {
+export type MutationUpdatePetIdTranslationArgs = {
   input: UpdatePetIdTranslationInput;
 };
 
@@ -160,6 +160,11 @@ export type PetDescriptionCustomField = {
   _updatedAt: Scalars['String']['output'];
   text: Scalars['String']['output'];
   title: Scalars['String']['output'];
+};
+
+export type PetTag = {
+  __typename?: 'PetTag';
+  linkId: Scalars['String']['output'];
 };
 
 export type Query = {
@@ -223,19 +228,19 @@ export type DeleteRecordToLostPetsLocationMutationVariables = Exact<{
 
 export type DeleteRecordToLostPetsLocationMutation = { __typename?: 'Mutation', deleteRecordToLostPetsLocation: boolean };
 
-export type RemovePetIdTranlationMutationVariables = Exact<{
+export type RemovePetIdTranslationMutationVariables = Exact<{
   petId: Scalars['String']['input'];
 }>;
 
 
-export type RemovePetIdTranlationMutation = { __typename?: 'Mutation', removePetIdTranlation: boolean };
+export type RemovePetIdTranslationMutation = { __typename?: 'Mutation', removePetIdTranslation: { __typename?: 'PetTag', linkId: string } };
 
 export type UpdatePetIdTranslationMutationVariables = Exact<{
   input: UpdatePetIdTranslationInput;
 }>;
 
 
-export type UpdatePetIdTranslationMutation = { __typename?: 'Mutation', updatePetIdTranlation: boolean };
+export type UpdatePetIdTranslationMutation = { __typename?: 'Mutation', updatePetIdTranslation: { __typename?: 'PetTag', linkId: string } };
 
 export type CreatePetMutationVariables = Exact<{
   input: CreatePetInput;
@@ -303,14 +308,18 @@ export const DeleteRecordToLostPetsLocationDocument = gql`
   deleteRecordToLostPetsLocation(documentId: $documentId)
 }
     `;
-export const RemovePetIdTranlationDocument = gql`
-    mutation removePetIdTranlation($petId: String!) {
-  removePetIdTranlation(petId: $petId)
+export const RemovePetIdTranslationDocument = gql`
+    mutation removePetIdTranslation($petId: String!) {
+  removePetIdTranslation(petId: $petId) {
+    linkId
+  }
 }
     `;
 export const UpdatePetIdTranslationDocument = gql`
     mutation updatePetIdTranslation($input: UpdatePetIdTranslationInput!) {
-  updatePetIdTranlation(input: $input)
+  updatePetIdTranslation(input: $input) {
+    linkId
+  }
 }
     `;
 export const CreatePetDocument = gql`
@@ -447,8 +456,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     deleteRecordToLostPetsLocation(variables: DeleteRecordToLostPetsLocationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<DeleteRecordToLostPetsLocationMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteRecordToLostPetsLocationMutation>(DeleteRecordToLostPetsLocationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteRecordToLostPetsLocation', 'mutation');
     },
-    removePetIdTranlation(variables: RemovePetIdTranlationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RemovePetIdTranlationMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<RemovePetIdTranlationMutation>(RemovePetIdTranlationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'removePetIdTranlation', 'mutation');
+    removePetIdTranslation(variables: RemovePetIdTranslationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<RemovePetIdTranslationMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<RemovePetIdTranslationMutation>(RemovePetIdTranslationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'removePetIdTranslation', 'mutation');
     },
     updatePetIdTranslation(variables: UpdatePetIdTranslationMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UpdatePetIdTranslationMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpdatePetIdTranslationMutation>(UpdatePetIdTranslationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updatePetIdTranslation', 'mutation');

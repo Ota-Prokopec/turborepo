@@ -1,13 +1,10 @@
 <script lang="ts">
+	import Icon from '$lib/components/Common/Icon.svelte'
 	import Row from '$lib/components/Common/Row.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
-	import LL from '$src/i18n/i18n-svelte'
-	import { A } from 'flowbite-svelte'
-	import InfoItem from '../../Components/InfoItem.svelte'
-	import { LinkOutline } from 'flowbite-svelte-icons'
-	import Icon from '$lib/components/Common/Icon.svelte'
 	import IconLink from '$lib/components/Icons/IconLink.svelte'
 	import IconPhone from '$lib/components/Icons/IconPhone.svelte'
+	import { A } from 'flowbite-svelte'
 
 	export let number: string
 </script>

@@ -12,5 +12,7 @@ export { default as PetAddress } from './PetAddress';
 export * from './PetAddress';
 export { default as PetDescribingCustomField } from './PetDescribingCustomField';
 export * from './PetDescribingCustomField';
+export { default as PetTag } from './PetTag';
+export * from './PetTag';
 export { default as Session } from './Session';
 export * from './Session';

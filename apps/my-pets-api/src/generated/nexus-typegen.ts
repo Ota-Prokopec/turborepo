@@ -133,6 +133,9 @@ export interface NexusGenObjects {
     text: string; // String!
     title: string; // String!
   }
+  PetTag: { // root type
+    linkId: string; // String!
+  }
   Query: {};
   Session: { // root type
     session: string; // String!
@@ -169,9 +172,9 @@ export interface NexusGenFieldTypes {
     deletePet: boolean; // Boolean!
     deleteRecordToLostPetsLocation: boolean; // Boolean!
     logout: boolean; // Boolean!
-    removePetIdTranlation: boolean; // Boolean!
+    removePetIdTranslation: NexusGenRootTypes['PetTag']; // PetTag!
     updatePet: boolean; // Boolean!
-    updatePetIdTranlation: boolean; // Boolean!
+    updatePetIdTranslation: NexusGenRootTypes['PetTag']; // PetTag!
   }
   Pet: { // field return type
     _collectionId: string; // String!
@@ -213,6 +216,9 @@ export interface NexusGenFieldTypes {
     text: string; // String!
     title: string; // String!
   }
+  PetTag: { // field return type
+    linkId: string; // String!
+  }
   Query: { // field return type
     getAccount: NexusGenRootTypes['Account']; // Account!
     getListOfPets: NexusGenRootTypes['Pet'][]; // [Pet!]!
@@ -244,9 +250,9 @@ export interface NexusGenFieldTypeNames {
     deletePet: 'Boolean'
     deleteRecordToLostPetsLocation: 'Boolean'
     logout: 'Boolean'
-    removePetIdTranlation: 'Boolean'
+    removePetIdTranslation: 'PetTag'
     updatePet: 'Boolean'
-    updatePetIdTranlation: 'Boolean'
+    updatePetIdTranslation: 'PetTag'
   }
   Pet: { // field return type name
     _collectionId: 'String'
@@ -288,6 +294,9 @@ export interface NexusGenFieldTypeNames {
     text: 'String'
     title: 'String'
   }
+  PetTag: { // field return type name
+    linkId: 'String'
+  }
   Query: { // field return type name
     getAccount: 'Account'
     getListOfPets: 'Pet'
@@ -315,14 +324,14 @@ export interface NexusGenArgTypes {
     deleteRecordToLostPetsLocation: { // args
       documentId: string; // String!
     }
-    removePetIdTranlation: { // args
+    removePetIdTranslation: { // args
       petId: string; // String!
     }
     updatePet: { // args
       data: NexusGenInputs['CreatePetInput']; // CreatePetInput!
       petId: string; // String!
     }
-    updatePetIdTranlation: { // args
+    updatePetIdTranslation: { // args
       input: NexusGenInputs['UpdatePetIdTranslationInput']; // UpdatePetIdTranslationInput!
     }
   }

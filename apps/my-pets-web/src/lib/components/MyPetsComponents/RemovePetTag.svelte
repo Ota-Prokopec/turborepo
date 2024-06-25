@@ -11,8 +11,10 @@
 	import Loading from '../Common/Loading.svelte'
 	import { sdk } from '$src/graphql/sdk'
 	import { goto } from '$app/navigation'
+	import { type TPetData } from '@repo/my-pets-tstypes'
+	import { type GraphqlDocument } from '@repo/appwrite-types'
 
-	export let petId: string
+	export let petData: GraphqlDocument<TPetData>
 
 	let modalOpen = false
 	let state: 'removing' | 'removed' | 'error' | null = null
@@ -21,7 +23,9 @@
 		try {
 			state = 'removing'
 
-			await sdk.removePetIdTranlation({ petId: petId })
+			petData.linkId = (
+				await sdk.removePetIdTranslation({ petId: petData._id })
+			).removePetIdTranslation.linkId
 
 			state = 'removed'
 		} catch (error) {
@@ -52,7 +56,12 @@
 </Modal>
 
 {#if state === 'removed'}
-	<DoneModal on:goBack={() => goto('/')}></DoneModal>
+	<DoneModal
+		on:goBack={() => {
+			state = null
+			modalOpen = false
+		}}
+	></DoneModal>
 {/if}
 {#if state === 'error'}
 	<ErrorModal></ErrorModal>

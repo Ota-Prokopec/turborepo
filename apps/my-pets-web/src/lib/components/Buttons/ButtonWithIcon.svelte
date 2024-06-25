@@ -12,7 +12,7 @@
 </script>
 
 <Button class={className} on:click {...props}>
-	<Row class="items-center gap-2">
+	<Row class="items-center gap-2 grid grid-cols-[auto_min-content]">
 		<slot />
 		<Icon class="w-4 h-4">
 			<svelte:component this={icon}></svelte:component>

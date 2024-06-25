@@ -5,19 +5,19 @@
 	import Row from '$lib/components/Common/Row.svelte'
 	import { type GraphqlDocument } from '@repo/appwrite-types'
 	import { type TPetData } from '@repo/my-pets-tstypes'
-	import OwnerPhoneNumberItem from '../Components/Items/OwnerPhoneNumberItem.svelte'
-	import PetAddressItem from '../Components/Items/PetAddressItem.svelte'
-	import PetAllergensItem from '../Components/Items/PetAllergensItem.svelte'
-	import PetDescriptionCustomFieldsItem from '../Components/Items/PetDescriptionCustomFieldsItem.svelte'
-	import PetGenderItem from '../Components/Items/PetGenderItem.svelte.svelte'
-	import PetNameItem from '../Components/Items/PetNameItem.svelte'
-	import PetTreatingItem from '../Components/Items/PetTreatingItem.svelte'
-	import PetTypeItem from '../Components/Items/PetTypeItem.svelte'
+	import OwnerPhoneNumberItem from './Items/ownerPhoneNumber/OwnerPhoneNumberItem.svelte'
+	import PetAddressItem from './Items/petAddress/PetAddressItem.svelte'
+	import PetAllergensItem from './Items/PetAllergens/PetAllergensItem.svelte'
+	import PetDescriptionCustomFieldsItem from './Items/petDescription/PetDescriptionCustomFieldsItem.svelte'
+	import PetGenderItem from './Items/petGender/PetGenderItem.svelte.svelte'
+	import PetNameItem from './Items/petName/PetNameItem.svelte'
+	import PetTreatingItem from './Items/petTreating/PetTreatingItem.svelte'
+	import PetTypeItem from './Items/petType/PetTypeItem.svelte'
 	import IFoundPetButton from './IFoundPetButton.svelte'
-	import PetAgeItem from './Items/PetAgeItem.svelte'
-	import PetFoundLocations from './Items/PetFoundLocationItem/PetFoundLocations.svelte'
-	import PetUrlItem from './Items/PetUrlItem.svelte'
-	import PetWeightItem from './Items/PetWeightItem.svelte'
+	import PetAgeItem from './Items/PetAge/PetAgeItem.svelte'
+	import PetFoundLocations from './Items/petFoundLocationItem/PetFoundLocations.svelte'
+	import PetUrlItem from './Items/petUrl/PetUrlItem.svelte'
+	import PetWeightItem from './Items/petWeight/PetWeightItem.svelte'
 	import PetSettings from './PetSettings.svelte'
 
 	export let petData: GraphqlDocument<TPetData>
@@ -37,7 +37,7 @@
 <Column class="w-full">
 	{#if isOwner}
 		<Right>
-			<PetSettings {petData}></PetSettings>
+			<PetSettings bind:petData></PetSettings>
 		</Right>
 	{:else}
 		<IFoundPetButton

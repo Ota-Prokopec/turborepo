@@ -2,7 +2,7 @@
 	import Row from '$lib/components/Common/Row.svelte'
 	import Text from '$lib/components/Common/Text.svelte'
 	import LL from '$src/i18n/i18n-svelte'
-	import InfoItem from '../../Components/InfoItem.svelte'
+	import InfoItem from '../../InfoItem.svelte'
 
 	export let text: string
 </script>

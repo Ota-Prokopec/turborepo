@@ -29,12 +29,14 @@
 		try {
 			status = 'updating'
 
-			await sdk.updatePetIdTranslation({
-				input: {
-					petId: petData._id,
-					passCode: passCode,
-				},
-			})
+			petData.linkId = (
+				await sdk.updatePetIdTranslation({
+					input: {
+						petId: petData._id,
+						passCode: passCode,
+					},
+				})
+			).updatePetIdTranslation.linkId
 
 			status = 'updated'
 		} catch (error) {
@@ -74,7 +76,6 @@
 		on:goBack={() => {
 			modalOpen = false
 			status = null
-			goto('/')
 		}}
 	></DoneModal>
 {/if}

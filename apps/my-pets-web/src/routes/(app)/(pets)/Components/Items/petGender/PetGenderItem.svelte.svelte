@@ -5,7 +5,7 @@
 	import IconMale from '$lib/components/Icons/IconMale.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
-	import InfoItem from '../../Components/InfoItem.svelte'
+	import InfoItem from '../../InfoItem.svelte'
 
 	export let petGender: TPetData['petGender']
 </script>

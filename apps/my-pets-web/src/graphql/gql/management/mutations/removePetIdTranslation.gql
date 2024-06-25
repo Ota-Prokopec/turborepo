@@ -1,3 +1,5 @@
-mutation removePetIdTranlation($petId: String!) {
-	removePetIdTranlation(petId: $petId)
+mutation removePetIdTranslation($petId: String!) {
+	removePetIdTranslation(petId: $petId) {
+		linkId
+	}
 }

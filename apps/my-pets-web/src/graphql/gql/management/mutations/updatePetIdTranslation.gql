@@ -1,3 +1,5 @@
 mutation updatePetIdTranslation($input: UpdatePetIdTranslationInput!) {
-	updatePetIdTranlation(input: $input)
+	updatePetIdTranslation(input: $input) {
+		linkId
+	}
 }
