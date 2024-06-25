@@ -45,7 +45,7 @@
 	export { className as class }
 </script>
 
-<Button on:click={() => (modalOpen = true)} class={twMerge(className)} color="blue">
+<Button on:click={() => (modalOpen = true)} class={twMerge(className)} color="red">
 	<Row class="gap-1 items-center">
 		<Text>{$LL.component.FoundPetButton.label()}</Text>
 	</Row>

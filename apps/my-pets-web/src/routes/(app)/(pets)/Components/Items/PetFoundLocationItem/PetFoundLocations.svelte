@@ -61,7 +61,8 @@
 	{:else}
 		{#each locations as location}
 			<PetFoundLocationCard
-				on:deleted={() => (locations = locations.filter((item) => item._id !== item._id))}
+				on:deleted={() =>
+					(locations = locations.filter((item) => item._id !== location._id))}
 				{location}
 			></PetFoundLocationCard>
 		{/each}
