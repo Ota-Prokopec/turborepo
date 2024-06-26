@@ -575,6 +575,12 @@ type RootTranslation = {
 				text: string
 			}
 		}
+		TagItem: {
+			/**
+			 * Y​o​u​r​ ​p​e​t​'​s​ ​t​a​g​ ​Q​R​ ​c​o​d​e
+			 */
+			title: string
+		}
 	}
 	error: {
 		/**
@@ -1149,6 +1155,12 @@ export type TranslationFunctions = {
 				 */
 				text: () => LocalizedString
 			}
+		}
+		TagItem: {
+			/**
+			 * Your pet's tag QR code
+			 */
+			title: () => LocalizedString
 		}
 	}
 	error: {

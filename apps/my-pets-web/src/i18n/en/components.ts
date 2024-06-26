@@ -216,4 +216,7 @@ export const componentsCS = {
 			text: 'After removing you will be able to register the tag back to this pet, but you will also be able to register this tag to a different pet of yours.',
 		},
 	},
+	TagItem: {
+		title: "Your pet's tag QR code",
+	},
 } satisfies BaseTranslation

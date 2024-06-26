@@ -12,23 +12,25 @@
 	import CardSkeletonLoading from '$lib/components/SkeletonLoadings/CardSkeletonLoading.svelte'
 </script>
 
-<RoundSkeletonLoading class="w-36 h-36"></RoundSkeletonLoading>
-<Row
-	class="mobile:gap-[120px] gap-4 items-center w-full mobile:justify-center relative top-[-50px]"
->
-	<PetTypeSkeletonLoading></PetTypeSkeletonLoading>
-	<PetGenderSkeletonLoading></PetGenderSkeletonLoading>
-</Row>
-<Column class="w-full">
-	<PetUrlSkeletonLoading class="mobile:w-full w-52 flex justify-start"
-	></PetUrlSkeletonLoading>
-	<Column class="w-full max-w-[600px]">
-		<PetNameSkeletonLoading></PetNameSkeletonLoading>
-		<OwnerPhoneNumberSkeletonLoading></OwnerPhoneNumberSkeletonLoading>
-		<PetAgeSkeletonLoading></PetAgeSkeletonLoading>
+<Column class="h-auto mobile:w-full w-[500px] justify-center flex items-center pt-10">
+	<RoundSkeletonLoading class="w-36 h-36"></RoundSkeletonLoading>
+	<Row
+		class="mobile:gap-[120px] gap-4 items-center w-full mobile:justify-center relative top-[-50px]"
+	>
+		<PetTypeSkeletonLoading></PetTypeSkeletonLoading>
+		<PetGenderSkeletonLoading></PetGenderSkeletonLoading>
+	</Row>
+	<Column class="w-full">
+		<PetUrlSkeletonLoading class="mobile:w-full w-52 flex justify-start"
+		></PetUrlSkeletonLoading>
+		<Column class="w-full max-w-[600px]">
+			<PetNameSkeletonLoading></PetNameSkeletonLoading>
+			<OwnerPhoneNumberSkeletonLoading></OwnerPhoneNumberSkeletonLoading>
+			<PetAgeSkeletonLoading></PetAgeSkeletonLoading>
+		</Column>
+		<CardSkeletonLoading class="h-[120px]"></CardSkeletonLoading>
+		<CardSkeletonLoading class="h-[200px]"></CardSkeletonLoading>
+		<CardSkeletonLoading class="h-[150px]"></CardSkeletonLoading>
+		<CardSkeletonLoading class="h-[100px]"></CardSkeletonLoading>
 	</Column>
-	<CardSkeletonLoading class="h-[120px]"></CardSkeletonLoading>
-	<CardSkeletonLoading class="h-[200px]"></CardSkeletonLoading>
-	<CardSkeletonLoading class="h-[150px]"></CardSkeletonLoading>
-	<CardSkeletonLoading class="h-[100px]"></CardSkeletonLoading>
 </Column>

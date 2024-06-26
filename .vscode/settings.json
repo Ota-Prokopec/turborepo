@@ -8,6 +8,9 @@
 	"[ts]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode" // enable Prettier formatter for JavaScript files
 	},
+	"terminal.integrated.persistentSessionReviveProcess": "never",
+	"terminal.integrated.enablePersistentSessions": false,
+
 	"editor.fontFamily": "Fira Code",
 	"editor.fontLigatures": true,
 	"restoreTerminals.runOnStartup": true,
