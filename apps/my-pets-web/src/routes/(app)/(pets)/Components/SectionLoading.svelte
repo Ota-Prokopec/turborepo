@@ -10,6 +10,7 @@
 	import PetTypeSkeletonLoading from './Items/petType/PetTypeSkeletonLoading.svelte'
 	import PetUrlSkeletonLoading from './Items/petUrl/PetUrlSkeletonLoading.svelte'
 	import CardSkeletonLoading from '$lib/components/SkeletonLoadings/CardSkeletonLoading.svelte'
+	import LineSkeletonLoading from '$lib/components/SkeletonLoadings/LineSkeletonLoading.svelte'
 </script>
 
 <Column class="h-auto mobile:w-full w-[500px] justify-center flex items-center pt-10">
@@ -21,6 +22,7 @@
 		<PetGenderSkeletonLoading></PetGenderSkeletonLoading>
 	</Row>
 	<Column class="w-full">
+		<LineSkeletonLoading></LineSkeletonLoading>
 		<PetUrlSkeletonLoading class="mobile:w-full w-52 flex justify-start"
 		></PetUrlSkeletonLoading>
 		<Column class="w-full max-w-[600px]">
