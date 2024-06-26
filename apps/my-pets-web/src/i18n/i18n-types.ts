@@ -51,13 +51,6 @@ type RootTranslation = {
 				errorMessage: string
 			}
 		}
-		selling: {
-			/**
-			 * T​h​i​s​ ​t​a​g​ ​c​o​n​t​a​i​n​s​ ​b​o​t​h​ ​a​ ​Q​R​ ​c​o​d​e​ ​a​n​d​ ​N​F​C​ ​t​e​c​h​n​o​l​o​g​y​ ​s​o​ ​t​h​a​t​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​c​a​n​ ​e​a​s​i​l​y​ ​g​e​t​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​n​d​ ​b​r​i​n​g​ ​t​h​e​m​ ​t​o​ ​y​o​u​r​ ​h​o​m​e​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​ ​o​r​ ​b​y​ ​b​r​i​n​g​i​n​g​ ​t​h​e​i​r​ ​N​F​C​-​e​n​a​b​l​e​d​ ​d​e​v​i​c​e​ ​c​l​o​s​e​ ​t​o​ ​t​h​e​ ​t​a​g​,​ ​t​h​e​y​ ​c​a​n​ ​g​e​t​ ​d​e​t​a​i​l​s​ ​a​b​o​u​t​ ​y​o​u​r​ ​p​e​t​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​t​h​e​i​r​ ​l​o​c​a​t​i​o​n​.​ ​
-		​ ​T​h​e​ ​t​a​g​ ​i​s​ ​m​a​d​e​ ​o​f​ ​e​p​o​x​y​ ​r​e​s​i​n​.
-			 */
-			sellingTagNFC: string
-		}
 		errorPage: {
 			/**
 			 * W​e​'​r​e​ ​s​o​r​r​y​,​ ​t​h​e​r​e​'​s​ ​b​e​e​n​ ​a​n​ ​e​r​r​o​r​ ​i​n​ ​o​u​r​ ​M​y​ ​P​e​t​s​ ​a​p​p​.​ ​W​e​ ​a​r​e​ ​w​o​r​k​i​n​g​ ​o​n​ ​i​t​s​ ​r​e​m​o​v​a​l​.​ ​P​l​e​a​s​e​ ​b​e​ ​p​a​t​i​e​n​t​.​ ​T​h​a​n​k​ ​y​o​u​,​ ​y​o​u​r​ ​M​y​P​e​t​s​.
@@ -628,13 +621,6 @@ export type TranslationFunctions = {
 				 */
 				errorMessage: () => LocalizedString
 			}
-		}
-		selling: {
-			/**
-			 * This tag contains both a QR code and NFC technology so that anyone who finds your pet can easily get important information and bring them to your home. By simply scanning the QR code with their phone or by bringing their NFC-enabled device close to the tag, they can get details about your pet and even send you their location. 
-		 The tag is made of epoxy resin.
-			 */
-			sellingTagNFC: () => LocalizedString
 		}
 		errorPage: {
 			/**

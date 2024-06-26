@@ -7,7 +7,6 @@
 	import Carousel from '../Carousel/Carousel.svelte'
 
 	export let price: string
-	export let description: string
 	export let title: string
 	export let size: string
 	export let imgSources: string[]
@@ -26,7 +25,7 @@
 
 		<Text class="text-2xl font-bold text-gray-500 dark:text-white">{price}</Text>
 	</Row>
-	<Text class="font-bold text-gray-700">{description}</Text>
+	<slot />
 	<Right>
 		<Text class="font-bold text-gray-800"
 			>{$LL.component.SellingCard.sizes()}: {size}</Text

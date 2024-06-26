@@ -19,10 +19,7 @@ export const pageCS = {
 			errorMessage: 'Nemohli jsme Vás odhlásit, zkuste to znovu prosím',
 		},
 	},
-	selling: {
-		sellingTagNFC:
-			'Tato známka obsahuje jak QR kód, tak technologii NFC, aby kdokoliv, kdo najde vašeho mazlíčka, mohl snadno získat důležité informace a dovést ho k Vám domů.  \n Značka je vyrobena z epoxilové pryskyřice.',
-	},
+
 	errorPage: {
 		label:
 			'Omlouváme se, v naší aplikaci My Pets došlo k chybě. Pracujeme na jejím odstranění. Prosíme o trpělivost. Děkujeme, váš MyPets.',
