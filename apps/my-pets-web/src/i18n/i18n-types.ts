@@ -53,13 +53,10 @@ type RootTranslation = {
 		}
 		selling: {
 			/**
-			 * T​h​i​s​ ​t​a​g​ ​f​e​a​t​u​r​e​s​ ​b​o​t​h​ ​a​ ​Q​R​ ​c​o​d​e​ ​a​n​d​ ​N​F​C​ ​t​e​c​h​n​o​l​o​g​y​ ​t​o​ ​m​a​k​e​ ​i​t​ ​e​a​s​y​ ​f​o​r​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​t​o​ ​a​c​c​e​s​s​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​ ​o​r​ ​p​l​a​c​i​n​g​ ​a​n​ ​N​F​C​-​e​n​a​b​l​e​d​ ​d​e​v​i​c​e​ ​n​e​a​r​ ​t​h​e​ ​t​a​g​,​ ​t​h​e​y​ ​c​a​n​ ​r​e​t​r​i​e​v​e​ ​y​o​u​r​ ​p​e​t​'​s​ ​d​e​t​a​i​l​s​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​i​t​s​ ​l​o​c​a​t​i​o​n​.​ ​T​h​e​ ​Q​R​ ​c​o​d​e​ ​a​l​l​o​w​s​ ​f​o​r​ ​q​u​i​c​k​ ​a​c​c​e​s​s​ ​b​y​ ​t​a​k​i​n​g​ ​a​ ​p​h​o​t​o​,​ ​w​h​i​l​e​ ​t​h​e​ ​N​F​C​ ​f​u​n​c​t​i​o​n​a​l​i​t​y​ ​p​r​o​v​i​d​e​s​ ​i​n​s​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​ ​w​i​t​h​ ​a​ ​t​a​p​.
+			 * T​h​i​s​ ​t​a​g​ ​c​o​n​t​a​i​n​s​ ​b​o​t​h​ ​a​ ​Q​R​ ​c​o​d​e​ ​a​n​d​ ​N​F​C​ ​t​e​c​h​n​o​l​o​g​y​ ​s​o​ ​t​h​a​t​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​c​a​n​ ​e​a​s​i​l​y​ ​g​e​t​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​ ​a​n​d​ ​b​r​i​n​g​ ​t​h​e​m​ ​t​o​ ​y​o​u​r​ ​h​o​m​e​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​ ​o​r​ ​b​y​ ​b​r​i​n​g​i​n​g​ ​t​h​e​i​r​ ​N​F​C​-​e​n​a​b​l​e​d​ ​d​e​v​i​c​e​ ​c​l​o​s​e​ ​t​o​ ​t​h​e​ ​t​a​g​,​ ​t​h​e​y​ ​c​a​n​ ​g​e​t​ ​d​e​t​a​i​l​s​ ​a​b​o​u​t​ ​y​o​u​r​ ​p​e​t​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​t​h​e​i​r​ ​l​o​c​a​t​i​o​n​.​ ​
+		​ ​T​h​e​ ​t​a​g​ ​i​s​ ​m​a​d​e​ ​o​f​ ​e​p​o​x​y​ ​r​e​s​i​n​.
 			 */
 			sellingTagNFC: string
-			/**
-			 * T​h​i​s​ ​t​a​g​ ​f​e​a​t​u​r​e​s​ ​a​ ​Q​R​ ​c​o​d​e​,​ ​m​a​k​i​n​g​ ​i​t​ ​e​a​s​y​ ​f​o​r​ ​a​n​y​o​n​e​ ​w​h​o​ ​f​i​n​d​s​ ​y​o​u​r​ ​p​e​t​ ​t​o​ ​a​c​c​e​s​s​ ​i​m​p​o​r​t​a​n​t​ ​i​n​f​o​r​m​a​t​i​o​n​.​ ​B​y​ ​s​i​m​p​l​y​ ​s​c​a​n​n​i​n​g​ ​t​h​e​ ​Q​R​ ​c​o​d​e​ ​w​i​t​h​ ​t​h​e​i​r​ ​p​h​o​n​e​,​ ​t​h​e​y​ ​c​a​n​ ​r​e​t​r​i​e​v​e​ ​y​o​u​r​ ​p​e​t​'​s​ ​d​e​t​a​i​l​s​ ​a​n​d​ ​e​v​e​n​ ​s​e​n​d​ ​y​o​u​ ​i​t​s​ ​l​o​c​a​t​i​o​n​.​ ​T​h​e​ ​Q​R​ ​c​o​d​e​ ​a​l​l​o​w​s​ ​f​o​r​ ​q​u​i​c​k​ ​a​c​c​e​s​s​ ​b​y​ ​t​a​k​i​n​g​ ​a​ ​p​h​o​t​o​.
-			 */
-			sellingTagQR: string
 		}
 		errorPage: {
 			/**
@@ -634,13 +631,10 @@ export type TranslationFunctions = {
 		}
 		selling: {
 			/**
-			 * This tag features both a QR code and NFC technology to make it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone or placing an NFC-enabled device near the tag, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo, while the NFC functionality provides instant information with a tap.
+			 * This tag contains both a QR code and NFC technology so that anyone who finds your pet can easily get important information and bring them to your home. By simply scanning the QR code with their phone or by bringing their NFC-enabled device close to the tag, they can get details about your pet and even send you their location. 
+		 The tag is made of epoxy resin.
 			 */
 			sellingTagNFC: () => LocalizedString
-			/**
-			 * This tag features a QR code, making it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo.
-			 */
-			sellingTagQR: () => LocalizedString
 		}
 		errorPage: {
 			/**
