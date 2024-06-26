@@ -21,9 +21,7 @@ export const pageCS = {
 	},
 	selling: {
 		sellingTagNFC:
-			'Tato značka obsahuje jak QR kód, tak technologii NFC, aby kdokoliv, kdo najde vašeho mazlíčka, mohl snadno získat důležité informace. Jednoduše naskenováním QR kódu svým telefonem nebo přiblížením zařízení s podporou NFC ke značce mohou získat podrobnosti o vašem mazlíčkovi a dokonce vám poslat jeho polohu. QR kód umožňuje rychlý přístup pořízením fotografie, zatímco funkce NFC poskytuje okamžité informace jedním klepnutím.',
-		sellingTagQR:
-			'Tato značka obsahuje QR kód, který usnadňuje kdokoliv, kdo najde vašeho mazlíčka, získání důležitých informací. Jednoduše naskenováním QR kódu svým telefonem mohou získat podrobnosti o vašem mazlíčkovi a dokonce vám poslat jeho polohu. QR kód umožňuje rychlý přístup pořízením fotografie.',
+			'Tato známka obsahuje jak QR kód, tak technologii NFC, aby kdokoliv, kdo najde vašeho mazlíčka, mohl snadno získat důležité informace a dovést ho k Vám domů.  \n Značka je vyrobena z epoxilové pryskyřice.',
 	},
 	errorPage: {
 		label:

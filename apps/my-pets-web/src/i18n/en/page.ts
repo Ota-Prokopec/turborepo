@@ -21,9 +21,7 @@ export const pageCS = {
 	},
 	selling: {
 		sellingTagNFC:
-			"This tag features both a QR code and NFC technology to make it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone or placing an NFC-enabled device near the tag, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo, while the NFC functionality provides instant information with a tap.",
-		sellingTagQR:
-			"This tag features a QR code, making it easy for anyone who finds your pet to access important information. By simply scanning the QR code with their phone, they can retrieve your pet's details and even send you its location. The QR code allows for quick access by taking a photo.",
+			'This tag contains both a QR code and NFC technology so that anyone who finds your pet can easily get important information and bring them to your home.  \n The tag is made of epoxy resin.',
 	},
 
 	errorPage: {
