@@ -185,7 +185,7 @@ export const componentsCS = {
 			'Oups, něco se pokazilo, pokud si myslíte, že jste zadali správný kód a nemáte žádného jiného mazlíčka registrovaného s tímto kódem, kontaktujte nás.',
 	},
 	SignUpViaPhone: {
-		buttonLabel: 'Zaregistrujte se pomocí telefonního čísla',
+		buttonLabel: 'Přihlásit se pomocí telefonního čísla',
 		phoneModal: {
 			title: 'Zadejte své telefonní číslo, pošleme vám ověřovací kód.',
 			sendButtonLabel: 'Odeslat',

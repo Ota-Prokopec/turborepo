@@ -184,7 +184,7 @@ export const componentsCS = {
 			'Oppps, something went wrong, if you think that you wrote a right code and you dont have any other pet registered with this code, please contact us.',
 	},
 	SignUpViaPhone: {
-		buttonLabel: 'Sign up with phone number',
+		buttonLabel: 'Sign in with phone number',
 		phoneModal: {
 			title: 'Write your phone number, we will send you a verification code.',
 			sendButtonLabel: 'Send',
