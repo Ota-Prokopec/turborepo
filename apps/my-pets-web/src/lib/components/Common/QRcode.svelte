@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { elementIdGenerator } from '@repo/utils'
 	import QRcode from 'qrcode'
-	import { onMount } from 'svelte'
 
 	export let value: string
 
