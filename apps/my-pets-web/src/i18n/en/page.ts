@@ -19,10 +19,6 @@ export const pageCS = {
 			errorMessage: 'We were not able to sign you out',
 		},
 	},
-	selling: {
-		sellingTagNFC:
-			'This tag contains both a QR code and NFC technology so that anyone who finds your pet can easily get important information and bring them to your home.  \n The tag is made of epoxy resin.',
-	},
 
 	errorPage: {
 		label:
