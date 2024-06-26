@@ -6,6 +6,7 @@
 	import { Heading } from 'flowbite-svelte'
 	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
 	import SignUpViaPhone from './Components/SignUpViaPhone.svelte'
+	import { PUBLIC_APPWRITE_ENDPOINT } from '$env/static/public'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">

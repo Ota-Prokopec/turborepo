@@ -218,4 +218,7 @@ export const componentsCS = {
 			text: 'Po odstranění budete moci štítek znovu registrovat k tomuto mazlíčkovi, ale také budete moci tento štítek registrovat k jinému vašemu mazlíčkovi.',
 		},
 	},
+	TagItem: {
+		title: 'QR kód vašeho mazlíčka',
+	},
 } satisfies BaseTranslation

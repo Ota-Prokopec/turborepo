@@ -2,7 +2,6 @@ import appwrite from '@repo/appwrite-client'
 import Queries from './tools/query'
 import { Client } from 'appwrite'
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public'
-
 import myCollections from './tools/collections'
 
 const client = appwrite<Record<string, never>>(

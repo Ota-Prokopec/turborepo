@@ -2,7 +2,7 @@
 	import LL from '$src/i18n/i18n-svelte'
 	import type { TPetData } from '@repo/my-pets-tstypes'
 	import { Li, List } from 'flowbite-svelte'
-	import InfoItem from '../../InfoItem.svelte'
+	import InfoItem from '../InfoItem.svelte'
 
 	export let petAllergens: TPetData['petAllergens']
 </script>
