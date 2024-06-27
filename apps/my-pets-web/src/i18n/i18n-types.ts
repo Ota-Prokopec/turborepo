@@ -495,7 +495,7 @@ type RootTranslation = {
 		}
 		SignUpViaPhone: {
 			/**
-			 * S​i​g​n​ ​u​p​ ​w​i​t​h​ ​p​h​o​n​e​ ​n​u​m​b​e​r
+			 * S​i​g​n​ ​i​n​ ​w​i​t​h​ ​p​h​o​n​e​ ​n​u​m​b​e​r
 			 */
 			buttonLabel: string
 			phoneModal: {
@@ -1066,7 +1066,7 @@ export type TranslationFunctions = {
 		}
 		SignUpViaPhone: {
 			/**
-			 * Sign up with phone number
+			 * Sign in with phone number
 			 */
 			buttonLabel: () => LocalizedString
 			phoneModal: {

@@ -32,9 +32,9 @@
 			myPetsData = (await sdk.getListOfPets()).getListOfPets
 
 			// if there is no pet chosen by query, choose first one loaded
-			const firstPet = myPetsData.at(0)
-			if (!firstPet) throw new Error('myPetsData.at(0) is not data')
-			if (!$currentPetId) $currentPetId = firstPet._id
+			const firstPet = myPetsData ? myPetsData.at(0) : undefined
+
+			if (!$currentPetId) $currentPetId = firstPet ? firstPet._id : null
 
 			pageState = 'loaded'
 		} catch (error) {
@@ -47,7 +47,7 @@
 	let currentPet: NonNullable<typeof myPetsData>[number] | undefined = undefined
 	$: currentPet = myPetsData?.find((pet) => pet._id === $currentPetId)
 
-	$: if (pageState === 'loaded' && !($currentPetId && currentPet && tabItems))
+	$: if (pageState === 'loaded' && !($currentPetId && currentPet && tabItems?.length))
 		goto('notfound')
 </script>
 

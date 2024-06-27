@@ -50,11 +50,13 @@
 				? storage.cookieFallback[PUBLIC_SESSION_NAME]
 				: undefined
 
+			console.log(session)
+
 			if (!session) throw new Error('Cant read session from local-storage')
 
 			await sdk.setSession({ session: session })
 			await post('/api/auth/setSession', { session })
-			goto('/')
+			goto('/', { invalidateAll: true, replaceState: true })
 		} catch (error) {
 			status = 'verification-error'
 		}
