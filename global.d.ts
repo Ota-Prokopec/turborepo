@@ -16,5 +16,12 @@ declare namespace NodeJS {
 		readonly CLOUDINARY_ROOT_FOLDER_NAME: string
 		readonly IOS_AUTHORIZATION_HEADER_NAME: string
 		readonly PUBLIC_MAX_PICTURE_SIZE_IN_MB: string
+		readonly PUBLIC_SERVER_HOSTNAME: string
+		readonly PUBLIC_APPWRITE_ENDPOINT
+		readonly PUBLIC_APPWRITE_PROJECT_ID: string
+		readonly PUBLIC_IOS_AUTHORIZATION_HEADER_NAME: string
+		readonly PUBLIC_CLIENT_HOSTNAME: string
+		readonly PUBLIC_MAP_TILER_API_KEY: string
+		readonly PUBLIC_DEV: string
 	}
 }

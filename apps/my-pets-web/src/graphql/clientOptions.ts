@@ -5,7 +5,10 @@ import {
 	PUBLIC_SESSION_NAME,
 } from '$env/static/public'
 import { storage } from '$lib/utils/lsStore'
-import { RequestConfig, RequestMiddleware } from 'graphql-request/build/esm/types'
+import type {
+	RequestMiddleware,
+	RequestConfig,
+} from '../../../../node_modules/graphql-request/src/types'
 
 const url = `${PUBLIC_SERVER_HOSTNAME}/graphql`
 

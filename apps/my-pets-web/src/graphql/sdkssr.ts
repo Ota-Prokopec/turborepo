@@ -1,6 +1,6 @@
 import { getSdk } from '$src/graphql/generated'
 import { GraphQLClient } from 'graphql-request'
-import { Types } from '@repo/appwrite-ssr-graphql'
+import type { Types } from '@repo/appwrite-ssr-graphql'
 import clientOptions from './clientOptions'
 
 type Input = { cookies: { getAll: () => Types.Cookie[] } }
