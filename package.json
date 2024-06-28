@@ -10,11 +10,11 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"devDependencies": {
+		"dotenv-cli": "latest",
 		"eslint-config": "*",
-		"tsconfig": "*",
 		"prettier": "^3.2.5",
-		"turbo": "1.6.3",
-		"dotenv-cli": "latest"
+		"tsconfig": "*",
+		"turbo": "2.0.5"
 	},
 	"engines": {
 		"node": ">=18"

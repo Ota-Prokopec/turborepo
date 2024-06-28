@@ -1,5 +1,5 @@
 import { browser } from '$app/environment'
-import { Locales } from '$src/i18n/i18n-types'
+import type { Locales } from '$src/i18n/i18n-types'
 import type { ColorTheme, Coords } from '@repo/ts-types'
 import * as lodash from 'lodash'
 import { writable } from 'svelte/store'

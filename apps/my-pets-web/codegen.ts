@@ -8,6 +8,7 @@ const codegenConfigConfig: CodegenConfig['config'] = {
 		PetType: "'cat'|'dog'",
 		Coords: '[number, number]',
 		Date: 'Date',
+		URL: 'URL',
 	},
 }
 
@@ -15,14 +16,25 @@ const config: CodegenConfig = {
 	schema: '../my-pets-api/src/generated/schema.graphql',
 	documents: './src/graphql/**/*.gql',
 	generates: {
-		'./src/graphql/generated-svelte.ts': {
-			plugins: ['typescript', 'typescript-operations', 'graphql-codegen-svelte-apollo'],
-			config: codegenConfigConfig,
-		},
 		'./src/graphql/generated.ts': {
-			plugins: ['typescript', 'typescript-operations', 'typescript-graphql-request'],
+			plugins: [
+				'typescript',
+				'typescript-operations',
+				'typescript-graphql-request',
+				{
+					add: {
+						content:
+							"import { type GraphQLClientRequestHeaders } from '../../../../node_modules/graphql-request/src/types';",
+					},
+				},
+			],
 			config: codegenConfigConfig,
 		},
+	},
+	hooks: {
+		afterAllFileWrite: [
+			'sed -i -e "/import { GraphQLClientRequestHeaders } from \'graphql-request\\/build\\/cjs\\/types\';/d" ./src/graphql/generated.ts',
+		],
 	},
 }
 export default config

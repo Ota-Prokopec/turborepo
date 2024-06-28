@@ -1,4 +1,4 @@
-import { BaseTranslation } from 'typesafe-i18n';
+import type { BaseTranslation } from 'typesafe-i18n'
 
 export const commonCS = {
 	or: 'nebo',
@@ -8,5 +8,5 @@ export const commonCS = {
 	yes: 'ano',
 	no: 'ne',
 	save: 'uložit',
-	settings: 'nastavení'
-} satisfies BaseTranslation;
+	settings: 'nastavení',
+} satisfies BaseTranslation

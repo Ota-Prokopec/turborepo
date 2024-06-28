@@ -19,7 +19,7 @@
 		"IOS_AUTHORIZATION_HEADER_NAME",
 		"PUBLIC_MAX_PICTURE_SIZE_IN_MB"
 	],
-	"pipeline": {
+	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
 			"outputs": ["dist/**", "src/generated/**"],

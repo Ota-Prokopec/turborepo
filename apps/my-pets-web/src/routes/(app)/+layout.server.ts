@@ -1,6 +1,6 @@
 import { sdkssr } from '$src/graphql/sdkssr'
 import { error, redirect } from '@sveltejs/kit'
-import { LayoutServerLoad } from './$types'
+import type { LayoutServerLoad } from './$types'
 
 export const load: LayoutServerLoad = async (event) => {
 	const routeId = event.route.id

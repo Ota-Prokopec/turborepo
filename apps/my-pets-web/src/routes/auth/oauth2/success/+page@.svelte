@@ -1,16 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 	import { PUBLIC_SESSION_NAME } from '$env/static/public'
-	import Center from '$lib/components/Common/Center.svelte'
+	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
 	import { storage } from '$lib/utils/lsStore'
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
-	import SectionLoading from '$src/routes/(app)/(pets)/Components/SectionLoading.svelte'
 	import { alert } from '$src/routes/alertStore'
 	import { onMount } from 'svelte'
 	import type { PageData } from './$types'
-	import Column from '$lib/components/Common/Column.svelte'
-	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
 
 	export let data: PageData
 
