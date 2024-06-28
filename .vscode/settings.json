@@ -30,8 +30,8 @@
 		{
 			"splitTerminals": [
 				{
-					"name": "i18n",
-					"commands": ["cd apps/my-pets-web", "yarn typesafe-i18n"]
+					"name": "web",
+					"commands": ["cd apps/my-pets-web", "clear"]
 				},
 				{
 					"name": "web",
@@ -41,6 +41,11 @@
 					"name": "api",
 					"commands": ["cd apps/my-pets-api", "clear"]
 				}
+			]
+		},
+		{
+			"splitTerminals": [
+				{ "name": "i18n", "commands": ["cd apps/my-pets-web", "yarn typesafe-i18n"] }
 			]
 		}
 	]
