@@ -4,6 +4,7 @@ import type { LayoutServerLoad } from './$types'
 
 export const load: LayoutServerLoad = async (event) => {
 	const routeId = event.route.id
+	const pathname = event.url.pathname
 	if (!routeId) throw error(404)
 
 	try {
@@ -13,7 +14,10 @@ export const load: LayoutServerLoad = async (event) => {
 			user,
 		}
 	} catch {
-		if (event.url.pathname.includes('pet') && !event.route.id.includes('edit'))
+		if (
+			(pathname.includes('pet') && !pathname.includes('edit')) ||
+			pathname.includes('account/settings')
+		)
 			return { user: null }
 		else throw redirect(307, '/auth')
 	}
