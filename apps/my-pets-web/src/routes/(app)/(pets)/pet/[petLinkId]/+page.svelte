@@ -1,14 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores'
 	import Center from '$lib/components/Common/Center.svelte'
-	import FullPageLoading from '$lib/components/Common/FullPageLoading.svelte'
-	import { sdk } from '$src/graphql/sdk'
-	import { useQuery } from '@sveltestack/svelte-query'
-	import Section from '../../Components/Section.svelte'
-	import type { PageData } from './$types'
 	import PetNotFound from '$lib/components/MyPetsComponents/PetNotFound.svelte'
+	import { sdk } from '$src/graphql/sdk'
 	import { onMount } from 'svelte'
+	import Section from '../../Components/Section.svelte'
 	import SectionLoading from '../../Components/SectionLoading.svelte'
+	import type { PageData } from './$types'
 
 	export let data: PageData
 

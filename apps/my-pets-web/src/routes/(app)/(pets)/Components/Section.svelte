@@ -57,7 +57,10 @@
 			></PetFoundLocations>
 		{/if}
 
-		<PetUrlItem class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrlItem>
+		{#if isOwner}
+			<PetUrlItem class="mobile:w-full w-52 flex justify-start" {petUrl}></PetUrlItem>
+		{/if}
+
 		<Column class="w-full max-w-[600px]">
 			<PetNameItem petName={petData.petName}></PetNameItem>
 			<OwnerPhoneNumberItem number={petData.ownerPhoneNumber}></OwnerPhoneNumberItem>
