@@ -12,6 +12,9 @@
 	import Text from '$lib/components/Common/Text.svelte'
 	import { Button } from 'flowbite-svelte'
 	import { alertStore } from './alertStore'
+	import Icon from '$lib/components/Common/Icon.svelte'
+	import IconSettings from '$lib/components/Icons/IconSettings.svelte'
+	import { goto } from '$app/navigation'
 	const queryClient = new QueryClient()
 </script>
 

@@ -12,6 +12,9 @@
 	import { sdk } from '$src/graphql/sdk'
 	import LL from '$src/i18n/i18n-svelte'
 	import { alert } from '$src/routes/alertStore'
+	import type { PageData } from './$types'
+
+	export let data: PageData
 
 	const logOut = async () => {
 		try {
@@ -41,7 +44,10 @@
 			></ThemeSwitch>
 		</Column>
 	</Card>
-	<Card>
-		<LogOutButton on:click={logOut}></LogOutButton>
-	</Card>
+
+	{#if data.user}
+		<Card>
+			<LogOutButton on:click={logOut}></LogOutButton>
+		</Card>
+	{/if}
 </Column>

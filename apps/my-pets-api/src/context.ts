@@ -1,8 +1,8 @@
-import { Request, Response } from 'express'
-import { Models } from 'appwrite'
-import appwriteConnections, { Appwrite } from './lib/appwrite/appwrite'
 import { Types, getSessionFromCookie } from '@repo/appwrite-ssr-graphql'
 import { TUserPreferences } from '@repo/my-pets-tstypes'
+import { Models } from 'appwrite'
+import { Request, Response } from 'express'
+import appwriteConnections, { Appwrite } from './lib/appwrite/appwrite'
 
 export const context = async ({ req, res }: { res: Response; req: Request }) => {
 	try {
