@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
-		"@repo/ts-types": "*",
+		"@repo/ts-types": "workspace:*",
 		"appwrite": "^15.0.0",
 		"browser-image-compression": "^2.0.2",
 		"buffer": "^6.0.3",

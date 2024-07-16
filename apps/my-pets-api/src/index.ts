@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
 export const server = new ApolloServer({ schema, context: context, introspection: true })
+
 //FIXME: this will be possible changed in the future
 const app = express()
 

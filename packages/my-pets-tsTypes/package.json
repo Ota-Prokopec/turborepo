@@ -29,8 +29,8 @@
 		"typescript": "5.5.2"
 	},
 	"dependencies": {
-		"@repo/appwrite-types": "*",
-		"@repo/ts-types": "*",
+		"@repo/appwrite-types": "workspace:*",
+		"@repo/ts-types": "workspace:*",
 		"zod": "^3.22.4"
 	}
 }

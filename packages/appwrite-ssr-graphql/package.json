@@ -28,8 +28,8 @@
 		"typescript": "5.5.2"
 	},
 	"dependencies": {
-		"@repo/appwrite-permissions": "*",
-		"@repo/appwrite-types": "*",
+		"@repo/appwrite-permissions": "workspace:*",
+		"@repo/appwrite-types": "workspace:*",
 		"appwrite": "^15.0.0",
 		"lodash": "^4.17.21",
 		"node-appwrite": "^13.0.0",
