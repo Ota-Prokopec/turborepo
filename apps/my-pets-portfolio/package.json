@@ -9,19 +9,22 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@repo/utils": "*",
 		"@emotion/react": "^11.11.4",
 		"@emotion/styled": "^11.11.5",
 		"@mui/material": "^5.16.3",
 		"@radix-ui/react-slot": "^1.1.0",
+		"@repo/utils": "*",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
 		"flowbite-react": "^0.10.1",
 		"framer-motion": "^11.3.4",
+		"i18next": "^23.12.1",
 		"lucide-react": "^0.408.0",
 		"next": "14.2.5",
+		"next-i18next": "^15.3.0",
 		"react": "^18",
 		"react-dom": "^18",
+		"react-i18next": "^14.1.3",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss-animate": "^1.0.7"
 	},

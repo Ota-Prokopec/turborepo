@@ -28,20 +28,23 @@ export const PetPictures = ({ className }: PetPicturesProps) => {
 		<Scroll className={twMerge(' w-full', className)}>
 			{pets.map(({ petName, petPictureUrl }, i) => {
 				return (
-					<motion.div
-						key={i}
-						style={
-							deviceWidth === 'lg' || deviceWidth === 'xl' || deviceWidth === '2xl'
-								? { [!(i % 2) ? 'left' : 'right']: `${0}px`, top: `${i * 200}px` }
-								: {}
-						}
-						className="card-container lg:absolute relative lg:m-2"
-						initial={{ opacity: 0.6, scale: 0.6 }}
-						whileInView={{ opacity: 1, scale: 1 }}
-						viewport={{ once: false }}
-					>
-						<PetCard petName={petName} petPictureUrl={petPictureUrl}></PetCard>
-					</motion.div>
+					deviceWidth && (
+						<motion.div
+							suppressHydrationWarning
+							key={i}
+							style={
+								deviceWidth === 'lg' || deviceWidth === 'xl' || deviceWidth === '2xl'
+									? { [!(i % 2) ? 'left' : 'right']: `${0}px`, top: `${i * 200}px` }
+									: {}
+							}
+							className="card-container lg:absolute relative lg:m-2"
+							initial={{ opacity: 0.6, scale: 0.6 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={{ once: false }}
+						>
+							<PetCard petName={petName} petPictureUrl={petPictureUrl}></PetCard>
+						</motion.div>
+					)
 				)
 			})}
 		</Scroll>

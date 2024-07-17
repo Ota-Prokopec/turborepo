@@ -2,7 +2,9 @@
 
 import { Avatar, Button } from 'flowbite-react'
 import { Column } from './Column'
-import { scaleToMax } from '@repo/utils'
+import { device, scaleToMax } from '@repo/utils'
+import { MyPetsLogo } from './MyPetsLogo'
+import { MyPetsIconTag } from './MyPetsIronTag'
 
 export type MainPageTitleProps = {
 	scroll: number
@@ -24,14 +26,20 @@ export const MainPageTitle = ({ scroll }: MainPageTitleProps) => {
 				</p>
 			</Column>
 
-			<Avatar
-				className="relative !rounded-full overflow-hidden"
-				alt=""
-				img={mypetsIconUrl}
+			<MyPetsLogo
 				style={{ scale: `${scaleToMax(scroll * 3 + 2, 6)}`, top: `-${scroll * 150}px` }}
-			></Avatar>
+				className="relative !rounded-full overflow-hidden w-10 h-10"
+			></MyPetsLogo>
 
 			<Button href="https://www.mypets.cz">See My Pets app</Button>
+			<div className="w-full flex relative lg:justify-end justify-center">
+				<MyPetsIconTag
+					style={{
+						right: device.recognizeWidth() !== 'mobile' ? `${scroll * 50}%` : '0',
+					}}
+					className="relative w-[200px] h-[200px] rotate-[15deg]"
+				></MyPetsIconTag>
+			</div>
 		</Column>
 	)
 }
