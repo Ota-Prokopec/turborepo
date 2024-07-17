@@ -27,9 +27,9 @@
 		"typescript": "5.5.2"
 	},
 	"dependencies": {
-		"@repo/appwrite-permissions": "workspace:*",
-		"@repo/appwrite-types": "workspace:*",
-		"@repo/utils": "workspace:*",
+		"@repo/appwrite-permissions": "*",
+		"@repo/appwrite-types": "*",
+		"@repo/utils": "*",
 		"@types/tough-cookie": "^4.0.2",
 		"appwrite": "^15.0.0",
 		"axios-cookiejar-support": "^5.0.2",

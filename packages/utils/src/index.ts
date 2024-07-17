@@ -11,6 +11,7 @@ export * from './utils/elementIdGenerator';
 export * from './utils/fetching';
 export * from './utils/language';
 export * from './utils/location';
+export * from './utils/math';
 export * from './utils/normalizators';
 export * from './utils/object';
 export * from './utils/operations';

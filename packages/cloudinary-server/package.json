@@ -17,7 +17,7 @@
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
 		"check-missing-dependencies": "npx dependency-check package.json src/**/* --missing",
-		"prebuild": "yarn check-missing-dependencies",
+		"prebuild": "pnpm check-missing-dependencies",
 		"dependency-check": "^4.1.0"
 	},
 	"devDependencies": {
@@ -28,7 +28,7 @@
 		"typescript": "5.5.2"
 	},
 	"dependencies": {
-		"@repo/ts-types": "workspace:*",
+		"@repo/ts-types": "*",
 		"cloudinary": "^2.2.0"
 	}
 }

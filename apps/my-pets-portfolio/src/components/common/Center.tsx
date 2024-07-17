@@ -1,16 +1,16 @@
 import { twMerge } from 'tailwind-merge'
 
-type ColumnProps = {
+type CenterProps = {
 	children: React.ReactNode
 	className?: string
 	style?: React.CSSProperties
 }
 
-export const Column = ({ children, className, style }: ColumnProps) => {
+export const Center = ({ children, className, style }: CenterProps) => {
 	return (
 		<div
 			style={style}
-			className={twMerge('w-auto h-auto flex flex-wrap flex-col', className)}
+			className={twMerge('flex justify-center items-center w-full h-auto', className)}
 		>
 			{children}
 		</div>

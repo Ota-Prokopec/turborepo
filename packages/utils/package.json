@@ -16,7 +16,7 @@
 		"build": "npm run build:types && npm run build:libs",
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
-		"prebuild": "yarn barrelsby",
+		"prebuild": "pnpm barrelsby",
 		"barrelsby": "barrelsby --delete  --singleQuotes --directory ./src/",
 		"check-missing-dependencies": "npx dependency-check ./package.json src/**/* --missing"
 	},
@@ -31,7 +31,7 @@
 	"dependencies": {
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
-		"@repo/ts-types": "workspace:*",
+		"@repo/ts-types": "*",
 		"appwrite": "^15.0.0",
 		"browser-image-compression": "^2.0.2",
 		"buffer": "^6.0.3",

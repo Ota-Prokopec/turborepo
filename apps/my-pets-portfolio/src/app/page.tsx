@@ -1,44 +1,29 @@
 'use client'
 
+import { Center } from '@/components/common/Center'
 import { Column } from '@/components/common/Column'
-import { PetCard } from '@/components/common/PetCard'
-import { PetScroll } from '@/components/common/PetScroll'
-import { Card, CardTitle } from '@/components/ui/card'
-import { Grid } from '@mui/material'
-import {} from 'flowbite-react'
-import { useScroll, motion } from 'framer-motion'
+import { MainPageTitle } from '@/components/common/MainPageTitle'
+import { PetPictures } from '@/components/common/PetPictures'
+import { browser, useBrowser } from '@/lib/useBrowser'
+import { useScroll } from '@/lib/useScroll'
+import { Avatar, Button } from 'flowbite-react'
+import { Heading1 } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect } from 'react'
 
-const Home = () => {
+const Page = () => {
+	const [scroll, setScroll] = useScroll()
+
 	return (
-		<div className="items-center grid grid-cols-3 grid-rows-5">
-			<PetScroll>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-				<PetCard
-					petName="Jessie"
-					petPictureUrl={'https://www.mypets.cz/icon.png'}
-				></PetCard>
-			</PetScroll>
-		</div>
+		<Column className="items-center flex h-auto w-full relative p-2 gap-4">
+			<Center className="h-full text-center relative lg:fixed">
+				<MainPageTitle scroll={scroll}></MainPageTitle>
+			</Center>
+			{browser && (
+				<PetPictures className="lg:absolute top-0 left-0 relative"></PetPictures>
+			)}
+		</Column>
 	)
 }
 
-export default Home
+export default Page
