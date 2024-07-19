@@ -25,10 +25,6 @@ const RootLayout = ({
 					name="viewport"
 					content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, user-scalable=no"
 				/>
-				<link rel="icon" href="/pictures/favicon.ico" />
-				<link rel="apple-touch-icon" href="/pictures/favicon.ico" />
-				<link rel="apple-touch-icon-precomposed" href="/pictures/favicon.ico" />
-				<link rel="shortcut icon" href="/pictures/favicon.ico" />
 			</head>
 			<body className={twMerge(inter.className, 'relative w-[100vw] h-[100vh]')}>
 				{children}
