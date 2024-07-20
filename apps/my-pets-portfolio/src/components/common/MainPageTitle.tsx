@@ -40,7 +40,7 @@ export const MainPageTitle = () => {
 			></MyPetsLogo>
 
 			<Button href="https://www.mypets.cz">See My Pets app</Button>
-			<Center className="w-full flex relative justify-center">
+			<Center className="w-full flex relative justify-center overflow-hidden">
 				<MyPetsTag className="relative w-[400px] h-auto max-w-full rotate-[15deg]"></MyPetsTag>
 			</Center>
 		</Column>
