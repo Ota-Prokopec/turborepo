@@ -1,11 +1,11 @@
 import { Avatar, AvatarSizes } from 'flowbite-react'
 
-export type MyPetsIconTagProps = {
+export type MyPetsTagProps = {
 	className?: string
 	style?: React.CSSProperties
 }
 
-export const MyPetsIconTag = ({ className, style }: MyPetsIconTagProps) => {
+export const MyPetsTag = ({ className, style }: MyPetsTagProps) => {
 	return (
 		<img
 			style={style}

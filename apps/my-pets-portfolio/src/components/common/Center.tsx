@@ -1,9 +1,10 @@
+import { ReactNode, CSSProperties } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type CenterProps = {
-	children: React.ReactNode
+	children: ReactNode
 	className?: string
-	style?: React.CSSProperties
+	style?: CSSProperties
 }
 
 export const Center = ({ children, className, style }: CenterProps) => {

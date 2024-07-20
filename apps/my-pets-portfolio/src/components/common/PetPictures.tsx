@@ -2,11 +2,10 @@
 
 import { PetCard } from '@/components/common/PetCard'
 import { Scroll } from '@/components/common/Scroll'
+import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
 import {} from 'flowbite-react'
 import { motion } from 'framer-motion'
 import { twMerge } from 'tailwind-merge'
-import { device } from '../../../../../packages/utils/src/utils/device'
-import { Loader, LoaderPinwheel } from 'lucide-react'
 
 export type PetPicturesProps = {
 	className?: string
@@ -22,18 +21,17 @@ const pets: { petName: string; petPictureUrl: string }[] = [
 ]
 
 export const PetPictures = ({ className }: PetPicturesProps) => {
-	const deviceWidth = device.recognizeWidth()
+	const { width: pageWidth } = useRecognizeWidth()
 
 	return (
 		<Scroll className={twMerge(' w-full', className)}>
 			{pets.map(({ petName, petPictureUrl }, i) => {
 				return (
-					deviceWidth && (
+					pageWidth && (
 						<motion.div
-							suppressHydrationWarning
 							key={i}
 							style={
-								deviceWidth === 'lg' || deviceWidth === 'xl' || deviceWidth === '2xl'
+								pageWidth === 'lg' || pageWidth === 'xl' || pageWidth === '2xl'
 									? { [!(i % 2) ? 'left' : 'right']: `${0}px`, top: `${i * 200}px` }
 									: {}
 							}

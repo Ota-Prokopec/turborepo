@@ -2,14 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { twMerge } from 'tailwind-merge'
-import { useLayoutEffect, useState } from 'react'
-import { appWithTranslation } from 'next-i18next'
+import { useLayoutEffect, useRef, useState } from 'react'
+import { appWithI18Next } from 'ni18n'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-	title: 'My Pets',
-}
 
 const RootLayout = ({
 	children,

@@ -1,5 +1,3 @@
-import { Avatar, AvatarSizes } from 'flowbite-react'
-
 export type MyPetsLogoProps = {
 	className?: string
 	style?: React.CSSProperties

@@ -4,17 +4,22 @@ import { Avatar, Button } from 'flowbite-react'
 import { Column } from './Column'
 import { device, scaleToMax } from '@repo/utils'
 import { MyPetsLogo } from './MyPetsLogo'
-import { MyPetsIconTag } from './MyPetsIronTag'
-
-export type MainPageTitleProps = {
-	scroll: number
-}
+import { MyPetsTag } from './MyPetsTag'
+import { useScroll } from '@/lib/useScroll'
+import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
+import { Center } from './Center'
+import { useMemo } from 'react'
 
 const mypetsIconUrl = 'https://www.mypets.cz/icon.png'
 
-export const MainPageTitle = ({ scroll }: MainPageTitleProps) => {
+export const MainPageTitle = () => {
+	const { scroll } = useScroll()
+	const { width: pageWidth } = useRecognizeWidth()
+
+	console.log(scroll)
+
 	return (
-		<Column className="gap-16 max-w-[400px] items-center relative ">
+		<Column className="gap-16 max-w-[400px] items-center relative h-auto">
 			<Column
 				className="gap-16 mt-4 lg:mt-0 relative"
 				style={{ top: `-${scroll * 100}px` }}
@@ -27,19 +32,17 @@ export const MainPageTitle = ({ scroll }: MainPageTitleProps) => {
 			</Column>
 
 			<MyPetsLogo
-				style={{ scale: `${scaleToMax(scroll * 3 + 2, 6)}`, top: `-${scroll * 150}px` }}
+				style={{
+					scale: `${useMemo(() => scaleToMax(scroll * 3 + 2, 6), [scroll * 3 + 2, 6])}`,
+					top: `-${scroll * 150}px`,
+				}}
 				className="relative !rounded-full overflow-hidden w-10 h-10"
 			></MyPetsLogo>
 
 			<Button href="https://www.mypets.cz">See My Pets app</Button>
-			<div className="w-full flex relative lg:justify-end justify-center">
-				<MyPetsIconTag
-					style={{
-						right: device.recognizeWidth() !== 'mobile' ? `${scroll * 50}%` : '0',
-					}}
-					className="relative w-[200px] h-[200px] rotate-[15deg]"
-				></MyPetsIconTag>
-			</div>
+			<Center className="w-full flex relative justify-center">
+				<MyPetsTag className="relative w-[400px] h-auto max-w-full rotate-[15deg]"></MyPetsTag>
+			</Center>
 		</Column>
 	)
 }
