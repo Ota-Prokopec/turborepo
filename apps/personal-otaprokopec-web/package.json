@@ -9,10 +9,10 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"@repo/utils": "*",
 		"@emotion/react": "^11.13.0",
 		"@emotion/styled": "^11.13.0",
 		"@mui/material": "^5.16.4",
+		"@repo/utils": "*",
 		"@secretwpn/react-image-zoom": "^0.4.9",
 		"@types/react-responsive-masonry": "^2.1.3",
 		"class-variance-authority": "^0.7.0",
@@ -21,6 +21,7 @@
 		"lightgallery": "^2.7.2",
 		"lucide-react": "^0.414.0",
 		"next": "14.2.5",
+		"next-cloudinary": "^6.6.2",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-medium-image-zoom": "^5.2.8",

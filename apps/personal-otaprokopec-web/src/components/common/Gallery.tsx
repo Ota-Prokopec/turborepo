@@ -1,12 +1,14 @@
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
 import { PinchZoomPanImage } from '@secretwpn/react-image-zoom'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
 import Masonry from 'react-responsive-masonry'
 import { Card } from '../ui/card'
 import { Center } from './Center'
 import { Column } from './Column'
 import { Icon } from './Icon'
+import Image from 'next/image'
+import { Text } from './Text'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
@@ -59,11 +61,19 @@ type GalleryItemProps = {
 }
 
 const GalleryItem = ({ picture }: GalleryItemProps) => {
-	const onClick = () => {}
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	return (
-		<Card onClick={onClick} className="rounded-2xl overflow-hidden mobile:w-full">
-			<PinchZoomPanImage src={picture.src} alt=""></PinchZoomPanImage>
+		<Card className="rounded-2xl overflow-hidden mobile:w-full">
+			<Fragment>
+				<img
+					onLoad={() => setIsLoading(false)}
+					loading="lazy"
+					className="!h-auto !w-auto"
+					src={picture.src}
+					alt=""
+				></img>
+			</Fragment>
 		</Card>
 	)
 }
