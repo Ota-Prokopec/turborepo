@@ -130,7 +130,6 @@
 		"react-filerobot-image-editor": "^4.5.2",
 		"sapper": "^0.29.3",
 		"superjson": "^2.2.1",
-		"svelte-appwrite-client": "^0.2.3",
 		"svelte-calendar": "^3.1.6",
 		"svelte-carousel": "^1.0.25",
 		"svelte-filepond": "^0.2.0",
