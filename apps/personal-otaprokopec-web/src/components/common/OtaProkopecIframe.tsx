@@ -12,10 +12,10 @@ export const OtaProkopecIframe = ({}: OtaProkopecIframeProps) => {
 			<Iframe
 				scrolling="no"
 				className="w-full overflow-hidden h-[800px]"
-				src="http://www.otaprokopec.cz"
+				src="https://www.otaprokopec.cz"
 			></Iframe>
 			<Center className="mt-[-50px]">
-				<ButtonLink href="http://www.otaprokopec.cz" className="mobile:w-full w-max ">
+				<ButtonLink href="https://www.otaprokopec.cz" className="mobile:w-full w-max ">
 					Load more ...
 				</ButtonLink>
 			</Center>
