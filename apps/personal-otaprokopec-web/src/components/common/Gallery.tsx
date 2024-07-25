@@ -39,7 +39,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 	const [galleryType, setGalleryType] = useState<GalleryType>('gallery')
 	const { width: windowWidth } = useRecognizeWidth()
 
-	const swiperSlidesPerView =
+	const picturesPerView =
 		windowWidth === 'mobile'
 			? 1
 			: windowWidth === 'sm'
@@ -48,9 +48,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 					? 3
 					: windowWidth === 'lg'
 						? 4
-						: windowWidth === 'xl'
-							? 5
-							: 6
+						: 5
 
 	const loadMorePictures = () =>
 		setLimit((currentLimit) => currentLimit + columnsCount * 2)
@@ -58,7 +56,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 	const picturesToRender = pictures.slice(0, limit).map((picture, i) => {
 		return (
 			<div key={picture.src}>
-				<GalleryItem picture={picture}></GalleryItem>
+				<GalleryItem quality={60 - picturesPerView * 10} picture={picture}></GalleryItem>
 			</div>
 		)
 	})
@@ -81,7 +79,6 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 					<Swiper
 						className=""
 						spaceBetween={50}
-						slidesPerView={swiperSlidesPerView}
 						onReachEnd={() => {
 							if (limit < pictures.length) loadMorePictures()
 						}}
@@ -98,9 +95,10 @@ type GalleryItemProps = {
 	picture: { src: string }
 	className?: string
 	onClick?: () => void
+	quality: number
 }
 
-const GalleryItem = ({ picture, className, onClick }: GalleryItemProps) => {
+const GalleryItem = ({ picture, className, onClick, quality }: GalleryItemProps) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	return (
@@ -120,7 +118,7 @@ const GalleryItem = ({ picture, className, onClick }: GalleryItemProps) => {
 					alt="Picture of the author"
 					width={500}
 					height={500}
-					quality={1}
+					quality={quality}
 					className="!h-auto !w-auto"
 					onLoad={() => setIsLoading(false)}
 					loading="lazy"
