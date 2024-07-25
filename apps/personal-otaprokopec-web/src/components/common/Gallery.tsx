@@ -33,7 +33,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 							: 1
 
 	const [limit, setLimit] = useState<number>(columnsCount * 2)
-	const [galleryType, setGalleryType] = useState<GalleryType>('swiper')
+	const [galleryType, setGalleryType] = useState<GalleryType>('gallery')
 	const { width: windowWidth } = useRecognizeWidth()
 
 	const swiperSlidesPerView =
