@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 export type IconProps = {
 	children: ReactNode
 	className?: string
-	onClick: () => void
+	onClick?: () => void
 }
 
 export const Icon = ({ children, className, onClick }: IconProps) => {

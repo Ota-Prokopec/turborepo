@@ -2,7 +2,15 @@
 
 import { parseCookies, setCookie } from 'nookies'
 import { z } from 'zod'
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import {
+	createContext,
+	Dispatch,
+	ReactNode,
+	SetStateAction,
+	useContext,
+	useEffect,
+	useState,
+} from 'react'
 import { device, getThemeInternalMode } from '@repo/utils'
 
 export const colorThemeCookieName = 'colorTheme'
@@ -13,7 +21,7 @@ export type TColorTheme = z.infer<typeof colorThemeZodSchema>
 
 export type UseColorThemeContextPayload = {
 	colorTheme: TColorTheme
-	setColorTheme: (value: TColorTheme) => void
+	setColorTheme: Dispatch<SetStateAction<'dark' | 'light'>>
 }
 
 // Context
