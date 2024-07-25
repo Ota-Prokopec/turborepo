@@ -12,6 +12,8 @@ export type SwiperProps = {
 } & ReactSwiperProps
 
 export const Swiper = ({ children, ...props }: SwiperProps) => {
+	console.log(props)
+
 	const { width: windowWidth } = useRecognizeWidth()
 
 	const slidesPerView =

@@ -13,6 +13,7 @@ import { Row } from './Row'
 import Image from 'next/image'
 import cloudinaryLoader from '@/lib/imageLoaders/cloudinaryImageLoader'
 import { Loading } from './Loading'
+import { EffectCoverflow, Pagination } from 'swiper/modules'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
@@ -77,6 +78,24 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 			) : (
 				<Row className="gap-4 w-full h-auto">
 					<Swiper
+						effect={
+							width === 'mobile'
+								? 'cards'
+								: width === 'md' || width === 'sm'
+									? 'coverflow'
+									: undefined
+						}
+						grabCursor={true}
+						centeredSlides={true}
+						coverflowEffect={{
+							rotate: 50,
+							stretch: 0,
+							depth: 100,
+							modifier: 1,
+							slideShadows: true,
+						}}
+						pagination={true}
+						modules={[EffectCoverflow, Pagination]}
 						className=""
 						spaceBetween={50}
 						onReachEnd={() => {
