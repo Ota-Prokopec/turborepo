@@ -116,8 +116,8 @@ const GalleryItem = ({ picture, className, onClick, quality }: GalleryItemProps)
 					loader={cloudinaryLoader}
 					src={picture.src}
 					alt="Picture of the author"
-					width={500}
-					height={500}
+					width={600}
+					height={600}
 					quality={quality}
 					className="!h-auto !w-auto"
 					onLoad={() => setIsLoading(false)}
