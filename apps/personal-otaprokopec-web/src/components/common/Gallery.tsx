@@ -10,6 +10,9 @@ import { Icon } from './Icon'
 import { Swiper } from './Swiper'
 import { GallerySwiperSwitch } from './GallerySwiperSwitch'
 import { Row } from './Row'
+import Image from 'next/image'
+import cloudinaryLoader from '@/lib/imageLoaders/cloudinaryImageLoader'
+import { Loading } from './Loading'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
@@ -106,13 +109,22 @@ const GalleryItem = ({ picture, className, onClick }: GalleryItemProps) => {
 			className={cn('rounded-2xl overflow-hidden mobile:w-full', className)}
 		>
 			<Fragment>
-				<img
+				{isLoading && (
+					<Center className="w-full h-[350px]">
+						<Loading></Loading>
+					</Center>
+				)}
+				<Image
+					loader={cloudinaryLoader}
+					src={picture.src}
+					alt="Picture of the author"
+					width={500}
+					height={500}
+					quality={1}
+					className="!h-auto !w-auto"
 					onLoad={() => setIsLoading(false)}
 					loading="lazy"
-					className="!h-auto !w-auto"
-					src={picture.src}
-					alt=""
-				></img>
+				/>
 			</Fragment>
 		</Card>
 	)
