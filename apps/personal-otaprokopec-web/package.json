@@ -26,6 +26,7 @@
 		"react-dom": "^18",
 		"react-medium-image-zoom": "^5.2.8",
 		"react-responsive-masonry": "^2.2.1",
+		"swiper": "^11.1.7",
 		"tailwind-merge": "^2.4.0",
 		"tailwindcss-animate": "^1.0.7"
 	},
