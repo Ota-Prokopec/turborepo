@@ -1,7 +1,7 @@
 import { Icon } from './Icon'
 import { RiGalleryView2 } from 'react-icons/ri'
 import { MdSwipe } from 'react-icons/md'
-import { GalleryType } from './Gallery'
+import { GalleryType } from '../gallery/Gallery'
 
 export type GallerySwiperSwitchProps = {
 	onChange: (value: GalleryType) => void

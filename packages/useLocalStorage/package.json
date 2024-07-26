@@ -1,5 +1,5 @@
 {
-	"name": "@repo/cloudinary-server",
+	"name": "@repo/utils",
 	"version": "1.0.1",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
@@ -8,7 +8,7 @@
 		".": {
 			"import": "./dist/esm/index.js",
 			"require": "./dist/cjs/index.js",
-			"types": "./dist/types/index.d.ts"
+			"types": "./src/index.ts"
 		},
 		"./package.json": "./package.json"
 	},
@@ -16,19 +16,17 @@
 		"build": "npm run build:types && npm run build:libs",
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
-		"check-missing-dependencies": "npx dependency-check package.json src/**/* --missing",
-		"prebuild": "pnpm check-missing-dependencies",
-		"dependency-check": "^4.1.0"
+		"check-missing-dependencies": "npx dependency-check ./package.json src/**/* --missing"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.26.2",
 		"@types/node": "^20.14.9",
-		"@types/set-cookie-parser": "^2.4.3",
+		"barrelsby": "^2.8.0",
+		"dependency-check": "^4.1.0",
 		"rollup": "^4.6.0",
+		"ts-node": "^10.9.1",
 		"typescript": "5.5.2"
 	},
 	"dependencies": {
-		"@repo/ts-types": "workspace:*",
-		"cloudinary": "^2.2.0"
+		"react": "^18.3.1"
 	}
 }

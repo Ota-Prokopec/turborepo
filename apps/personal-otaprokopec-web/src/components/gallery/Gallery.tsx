@@ -4,16 +4,18 @@ import { FaCirclePlus } from 'react-icons/fa6'
 import Masonry from 'react-responsive-masonry'
 import { Card } from '../ui/card'
 import { cn } from '../utils'
-import { Center } from './Center'
-import { Column } from './Column'
-import { Icon } from './Icon'
-import { Swiper } from './Swiper'
-import { GallerySwiperSwitch } from './GallerySwiperSwitch'
-import { Row } from './Row'
+import { Center } from '../common/Center'
+import { Column } from '../common/Column'
+import { Icon } from '../common/Icon'
+import { Swiper } from '../common/Swiper'
+import { GallerySwiperSwitch } from '../common/GallerySwiperSwitch'
+import { Row } from '../common/Row'
 import Image from 'next/image'
 import cloudinaryLoader from '@/lib/imageLoaders/cloudinaryImageLoader'
-import { Loading } from './Loading'
+import { Loading } from '../common/Loading'
 import { EffectCoverflow, Pagination } from 'swiper/modules'
+import { FaHeart } from 'react-icons/fa'
+import { GalleryItem } from './GalleryItem'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
@@ -107,43 +109,6 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 				</Row>
 			)}
 		</Column>
-	)
-}
-
-type GalleryItemProps = {
-	picture: { src: string }
-	className?: string
-	onClick?: () => void
-	quality: number
-}
-
-const GalleryItem = ({ picture, className, onClick, quality }: GalleryItemProps) => {
-	const [isLoading, setIsLoading] = useState<boolean>(true)
-
-	return (
-		<Card
-			onClick={onClick}
-			className={cn('rounded-2xl overflow-hidden mobile:w-full', className)}
-		>
-			<Fragment>
-				{isLoading && (
-					<Center className="w-full h-[350px]">
-						<Loading></Loading>
-					</Center>
-				)}
-				<Image
-					loader={cloudinaryLoader}
-					src={picture.src}
-					alt="Picture of the author"
-					width={600}
-					height={600}
-					quality={quality}
-					className="!h-auto !w-auto"
-					onLoad={() => setIsLoading(false)}
-					loading="lazy"
-				/>
-			</Fragment>
-		</Card>
 	)
 }
 

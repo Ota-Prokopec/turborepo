@@ -19,11 +19,11 @@
 			"splitTerminals": [
 				{
 					"name": "mypets-web",
-					"commands": ["yarn dev-pets-web"]
+					"commands": ["pnpm dev-pets-web"]
 				},
 				{
 					"name": "mypets-api",
-					"commands": ["yarn dev-pets-api"]
+					"commands": ["pnpm dev-pets-api"]
 				}
 			]
 		},
@@ -35,7 +35,7 @@
 				},
 				{
 					"name": "web",
-					"commands": ["cd apps/my-pets-web", "yarn check:watch"]
+					"commands": ["cd apps/my-pets-web", "pnpm check:watch"]
 				},
 				{
 					"name": "api",
@@ -45,7 +45,7 @@
 		},
 		{
 			"splitTerminals": [
-				{ "name": "i18n", "commands": ["cd apps/my-pets-web", "yarn typesafe-i18n"] }
+				{ "name": "i18n", "commands": ["cd apps/my-pets-web", "pnpm typesafe-i18n"] }
 			]
 		}
 	]
