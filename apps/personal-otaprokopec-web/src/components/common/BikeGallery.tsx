@@ -1,6 +1,5 @@
-import { useLocalStorageContext, useLocalStorageValue } from '@/contexts/ContextProviders'
+import { useLocalStorageValue } from '@/contexts/ContextProviders'
 import { Gallery } from '../gallery/Gallery'
-import { useEffect } from 'react'
 
 const bikePictures = [
 	{
@@ -81,5 +80,21 @@ const bikePictures = [
 ]
 
 export const BikeGallery = () => {
-	return <Gallery onLikePost={() => {}} pictures={bikePictures}></Gallery>
+	const [likes, setLikes] = useLocalStorageValue('LikedbikePictures')
+
+	const likePostHandler = ({ picture }: { picture: { src: string } }) => {
+		setLikes((currentLikes) => {
+			if (currentLikes.find(({ src }) => src === picture.src))
+				return currentLikes.filter(({ src }) => src !== picture.src)
+			return [...currentLikes, picture]
+		})
+	}
+
+	return (
+		<Gallery
+			likedPictures={likes}
+			onLikePost={likePostHandler}
+			pictures={bikePictures}
+		></Gallery>
+	)
 }

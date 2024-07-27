@@ -1,29 +1,25 @@
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
-import { Card } from '../ui/card'
-import { cn } from '../utils'
+import { EffectCoverflow, Pagination } from 'swiper/modules'
 import { Center } from '../common/Center'
 import { Column } from '../common/Column'
-import { Icon } from '../common/Icon'
-import { Swiper } from '../common/Swiper'
 import { GallerySwiperSwitch } from '../common/GallerySwiperSwitch'
+import { Icon } from '../common/Icon'
 import { Row } from '../common/Row'
-import Image from 'next/image'
-import cloudinaryLoader from '@/lib/imageLoaders/cloudinaryImageLoader'
-import { Loading } from '../common/Loading'
-import { EffectCoverflow, Pagination } from 'swiper/modules'
-import { FaHeart } from 'react-icons/fa'
+import { Swiper } from '../common/Swiper'
+import { cn } from '../utils'
 import { GalleryItem } from './GalleryItem'
 import { MansonryGallery } from './MansonryGallery'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
 	onLikePost: ({ picture }: { picture: { src: string } }) => void
+	likedPictures: { src: string }[]
 }
 export type GalleryType = 'gallery' | 'swiper'
 
-export const Gallery = ({ pictures, onLikePost }: GalleryProps) => {
+export const Gallery = ({ pictures, onLikePost, likedPictures }: GalleryProps) => {
 	const { width } = useRecognizeWidth()
 
 	const columnsCount =
@@ -61,6 +57,7 @@ export const Gallery = ({ pictures, onLikePost }: GalleryProps) => {
 		return (
 			<div key={picture.src}>
 				<GalleryItem
+					isLiked={likedPictures.find(({ src }) => src === picture.src) ? true : false}
 					onLikePost={() => onLikePost({ picture })}
 					quality={60 - picturesPerView * 10}
 					picture={picture}
@@ -85,26 +82,6 @@ export const Gallery = ({ pictures, onLikePost }: GalleryProps) => {
 			) : (
 				<Row className="gap-4 w-full h-auto">
 					<Swiper
-						effect={
-							width === 'mobile'
-								? 'cards'
-								: width === 'md' || width === 'sm'
-									? 'coverflow'
-									: undefined
-						}
-						grabCursor={true}
-						centeredSlides={true}
-						coverflowEffect={{
-							rotate: 50,
-							stretch: 0,
-							depth: 100,
-							modifier: 1,
-							slideShadows: true,
-						}}
-						pagination={true}
-						modules={[EffectCoverflow, Pagination]}
-						className=""
-						spaceBetween={50}
 						onReachEnd={() => {
 							if (limit < pictures.length) loadMorePictures()
 						}}

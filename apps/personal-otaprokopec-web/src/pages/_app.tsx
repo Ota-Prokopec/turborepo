@@ -1,5 +1,4 @@
 import { ContextProviders } from '@/contexts/ContextProviders'
-import { getLocalStorageContext } from '@/contexts/useLocalStorage'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'

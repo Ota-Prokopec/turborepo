@@ -14,6 +14,7 @@ type GalleryItemProps = {
 	onClick?: () => void
 	quality: number
 	onLikePost: () => void
+	isLiked: boolean
 }
 
 export const GalleryItem = ({
@@ -22,6 +23,7 @@ export const GalleryItem = ({
 	onClick,
 	quality,
 	onLikePost,
+	isLiked,
 }: GalleryItemProps) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -49,7 +51,7 @@ export const GalleryItem = ({
 				/>
 			</Fragment>
 			<Icon onClick={onLikePost} className="absolute bottom-0 left-0 m-2 w-6 h-6">
-				<FaHeart className="w-full h-full " />
+				<FaHeart className={cn('w-full h-full', { 'fill-red-500': isLiked })} />
 			</Icon>
 		</Card>
 	)

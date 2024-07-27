@@ -2,7 +2,7 @@
 import { ReactNode } from 'react'
 import { ColorThemeContextProvider } from './ColorThemeContextProvider'
 import { z } from 'zod'
-import { localStorageContext } from './useLocalStorage'
+import { localStorageContext } from './ContextLocalStorage'
 
 export type ContextProvidersProps = {
 	children: ReactNode
@@ -10,7 +10,9 @@ export type ContextProvidersProps = {
 
 const { useLocalStorageContext, LocalStorageContextProvider, useLocalStorageValue } =
 	localStorageContext(
-		z.object({ key: z.string().optional(), key2: z.string().optional() }),
+		z.object({
+			LikedbikePictures: z.object({ src: z.string() }).array().default([]),
+		}),
 	)
 
 export const ContextProviders = ({ children }: ContextProvidersProps) => {
