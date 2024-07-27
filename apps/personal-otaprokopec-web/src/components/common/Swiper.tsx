@@ -4,8 +4,9 @@ import {
 	SwiperSlide,
 	type SwiperProps as ReactSwiperProps,
 } from 'swiper/react'
-import '../../../../../node_modules/swiper/swiper.min.css'
+import '../../../node_modules/swiper/swiper.min.css'
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
+import { EffectCoverflow, Pagination } from 'swiper/modules'
 
 export type SwiperProps = {
 	children: ReactNode[]
@@ -30,7 +31,30 @@ export const Swiper = ({ children, ...props }: SwiperProps) => {
 							: 6
 
 	return (
-		<ReactSwiper slidesPerView={slidesPerView} {...props}>
+		<ReactSwiper
+			effect={
+				windowWidth === 'mobile'
+					? 'cards'
+					: windowWidth === 'md' || windowWidth === 'sm'
+						? 'coverflow'
+						: undefined
+			}
+			grabCursor={true}
+			centeredSlides={true}
+			coverflowEffect={{
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+				slideShadows: true,
+			}}
+			pagination={true}
+			modules={[EffectCoverflow, Pagination]}
+			className=""
+			spaceBetween={50}
+			slidesPerView={slidesPerView}
+			{...props}
+		>
 			{children.map((child, i) => {
 				return <SwiperSlide key={i}>{child}</SwiperSlide>
 			})}

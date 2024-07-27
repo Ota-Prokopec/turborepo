@@ -21,6 +21,7 @@
 		"check-missing-dependencies": "npx dependency-check package.json src/**/* --missing"
 	},
 	"devDependencies": {
+		"@rollup/plugin-typescript": "^11.1.6",
 		"@types/node": "^20.14.9",
 		"barrelsby": "^2.8.0",
 		"dependency-check": "^4.1.0",

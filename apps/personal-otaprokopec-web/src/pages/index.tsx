@@ -1,23 +1,12 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { ImageList, ImageListItem } from '@mui/material'
 import { BikeGallery } from '@/components/common/BikeGallery'
 import { Column } from '@/components/common/Column'
-import { Text } from '@/components/common/Text'
-import { Layout } from '@/layouts/Layout'
-import { Iframe } from '@/components/common/Iframe'
 import { OtaProkopecIframe } from '@/components/common/OtaProkopecIframe'
-import { Card, CardContent } from '@/components/ui/card'
-import { ThemeSwith } from '@/components/common/ThemeSwith'
-import { Row } from '@/components/common/Row'
 import { Right } from '@/components/common/Right'
-
-const bikePictures = [
-	{
-		img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-		title: 'Breakfast',
-	},
-]
+import { Text } from '@/components/common/Text'
+import { ThemeSwith } from '@/components/common/ThemeSwith'
+import { useLocalStorageContext, useLocalStorageValue } from '@/contexts/ContextProviders'
+import { Layout } from '@/layouts/Layout'
+import { useEffect } from 'react'
 
 export default function Home() {
 	return (

@@ -1,26 +1,25 @@
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
-import Masonry from 'react-responsive-masonry'
-import { Card } from '../ui/card'
-import { cn } from '../utils'
-import { Center } from './Center'
-import { Column } from './Column'
-import { Icon } from './Icon'
-import { Swiper } from './Swiper'
-import { GallerySwiperSwitch } from './GallerySwiperSwitch'
-import { Row } from './Row'
-import Image from 'next/image'
-import cloudinaryLoader from '@/lib/imageLoaders/cloudinaryImageLoader'
-import { Loading } from './Loading'
 import { EffectCoverflow, Pagination } from 'swiper/modules'
+import { Center } from '../common/Center'
+import { Column } from '../common/Column'
+import { GallerySwiperSwitch } from '../common/GallerySwiperSwitch'
+import { Icon } from '../common/Icon'
+import { Row } from '../common/Row'
+import { Swiper } from '../common/Swiper'
+import { cn } from '../utils'
+import { GalleryItem } from './GalleryItem'
+import { MansonryGallery } from './MansonryGallery'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
+	onLikePost: ({ picture }: { picture: { src: string } }) => void
+	likedPictures: { src: string }[]
 }
 export type GalleryType = 'gallery' | 'swiper'
 
-export const Gallery = ({ pictures }: GalleryProps) => {
+export const Gallery = ({ pictures, onLikePost, likedPictures }: GalleryProps) => {
 	const { width } = useRecognizeWidth()
 
 	const columnsCount =
@@ -57,7 +56,12 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 	const picturesToRender = pictures.slice(0, limit).map((picture, i) => {
 		return (
 			<div key={picture.src}>
-				<GalleryItem quality={60 - picturesPerView * 10} picture={picture}></GalleryItem>
+				<GalleryItem
+					isLiked={likedPictures.find(({ src }) => src === picture.src) ? true : false}
+					onLikePost={() => onLikePost({ picture })}
+					quality={60 - picturesPerView * 10}
+					picture={picture}
+				></GalleryItem>
 			</div>
 		)
 	})
@@ -70,7 +74,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 			></GallerySwiperSwitch>
 			{galleryType === 'gallery' ? (
 				<Column className="w-full gap-4 ">
-					<Masonry columnsCount={columnsCount}>{picturesToRender}</Masonry>
+					<MansonryGallery columns={columnsCount}>{picturesToRender}</MansonryGallery>
 					{limit < pictures.length && (
 						<LoadMoreButton onClick={loadMorePictures}></LoadMoreButton>
 					)}
@@ -78,26 +82,6 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 			) : (
 				<Row className="gap-4 w-full h-auto">
 					<Swiper
-						effect={
-							width === 'mobile'
-								? 'cards'
-								: width === 'md' || width === 'sm'
-									? 'coverflow'
-									: undefined
-						}
-						grabCursor={true}
-						centeredSlides={true}
-						coverflowEffect={{
-							rotate: 50,
-							stretch: 0,
-							depth: 100,
-							modifier: 1,
-							slideShadows: true,
-						}}
-						pagination={true}
-						modules={[EffectCoverflow, Pagination]}
-						className=""
-						spaceBetween={50}
 						onReachEnd={() => {
 							if (limit < pictures.length) loadMorePictures()
 						}}
@@ -107,43 +91,6 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 				</Row>
 			)}
 		</Column>
-	)
-}
-
-type GalleryItemProps = {
-	picture: { src: string }
-	className?: string
-	onClick?: () => void
-	quality: number
-}
-
-const GalleryItem = ({ picture, className, onClick, quality }: GalleryItemProps) => {
-	const [isLoading, setIsLoading] = useState<boolean>(true)
-
-	return (
-		<Card
-			onClick={onClick}
-			className={cn('rounded-2xl overflow-hidden mobile:w-full', className)}
-		>
-			<Fragment>
-				{isLoading && (
-					<Center className="w-full h-[350px]">
-						<Loading></Loading>
-					</Center>
-				)}
-				<Image
-					loader={cloudinaryLoader}
-					src={picture.src}
-					alt="Picture of the author"
-					width={600}
-					height={600}
-					quality={quality}
-					className="!h-auto !w-auto"
-					onLoad={() => setIsLoading(false)}
-					loading="lazy"
-				/>
-			</Fragment>
-		</Card>
 	)
 }
 

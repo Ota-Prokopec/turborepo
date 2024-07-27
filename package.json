@@ -12,15 +12,15 @@
 	},
 	"devDependencies": {
 		"dotenv-cli": "latest",
-		"eslint-config": "*",
+		"eslint-config": "workspace:*",
 		"prettier": "^3.2.5",
-		"tsconfig": "*",
+		"tsconfig": "workspace:*",
 		"turbo": "2.0.5"
 	},
 	"engines": {
 		"node": ">=18"
 	},
-	"packageManager": "yarn@1.22.22",
+	"packageManager": "pnpm@9.5.0",
 	"workspaces": [
 		"apps/my-pets-portfolio",
 		"apps/my-pets-api",

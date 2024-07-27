@@ -24,7 +24,7 @@ const config: CodegenConfig = {
 				{
 					add: {
 						content:
-							"import { type GraphQLClientRequestHeaders } from '../../../../node_modules/graphql-request/src/types';",
+							"import { type GraphQLClientRequestHeaders } from '../../node_modules/graphql-request/src/types';",
 					},
 				},
 			],
