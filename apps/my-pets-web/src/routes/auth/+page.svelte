@@ -4,9 +4,8 @@
 	import Padding from '$lib/components/Common/Padding.svelte'
 	import LL from '$src/i18n/i18n-svelte'
 	import { Heading } from 'flowbite-svelte'
-	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
 	import SignUpViaPhone from './Components/SignUpViaPhone.svelte'
-	import { PUBLIC_APPWRITE_ENDPOINT } from '$env/static/public'
+	import SignUpViaSocialMedia from './Components/SignUpViaSocialMedia.svelte'
 </script>
 
 <Column class="flex justify-center items-center w-full h-auto">

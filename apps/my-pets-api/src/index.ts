@@ -1,17 +1,20 @@
 import { ApolloServer } from 'apollo-server-express'
 import schema from './schema'
 import { context } from './context'
-import express from 'express'
+import express, { Application, type Express } from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
 export const server = new ApolloServer({ schema, context: context, introspection: true })
+
 //FIXME: this will be possible changed in the future
-const app = express()
+
+const app: Express = express()
 
 const start = async () => {
 	await server.start()
 	server.applyMiddleware({
+		//@ts-ignore
 		app,
 		path: '/graphql',
 		cors: false,

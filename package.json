@@ -4,24 +4,29 @@
 	"scripts": {
 		"build": "turbo run build --force",
 		"dev": "turbo dev",
-		"dev-pets-web": "dotenv -e .env -- turbo dev --filter=my-pets-web ",
-		"dev-pets-api": "dotenv -e .env -- turbo dev --filter=my-pets-api ",
+		"dev-pets-web": "dotenv -e .env -- turbo dev --filter=my-pets-web",
+		"dev-pets-api": "dotenv -e .env -- turbo dev --filter=my-pets-api",
+		"dev-pets": "dotenv -e .env -- turbo dev --filter=my-pets-api --filter=my-pets-web",
+		"dev-pets-portfolio": "dotenv -e .env -- turbo dev --filter=my-pets-portfolio",
 		"lint": "turbo lint",
 		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"devDependencies": {
 		"dotenv-cli": "latest",
-		"eslint-config": "*",
+		"eslint-config": "workspace:*",
 		"prettier": "^3.2.5",
-		"tsconfig": "*",
+		"tsconfig": "workspace:*",
 		"turbo": "2.0.5"
 	},
 	"engines": {
 		"node": ">=18"
 	},
-	"packageManager": "yarn@1.22.21",
+	"packageManager": "pnpm@9.5.0",
 	"workspaces": [
-		"apps/*",
+		"apps/my-pets-portfolio",
+		"apps/my-pets-api",
+		"apps/my-pets-web",
+		"apps/personal-otaprokopec-web",
 		"packages/*"
 	]
 }

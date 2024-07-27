@@ -8,7 +8,7 @@
 		".": {
 			"import": "./dist/esm/index.js",
 			"require": "./dist/cjs/index.js",
-			"types": "./dist/types/index.d.ts"
+			"types": "./src/index.ts"
 		},
 		"./package.json": "./package.json"
 	},
@@ -16,11 +16,13 @@
 		"build": "npm run build:types && npm run build:libs",
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
-		"prebuild": "yarn barrelsby",
+		"prebuild": "pnpm barrelsby",
 		"barrelsby": "barrelsby --delete  --singleQuotes --directory ./src/",
 		"check-missing-dependencies": "npx dependency-check ./package.json src/**/* --missing"
 	},
 	"devDependencies": {
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@types/lodash": "^4.14.202",
 		"@types/node": "^20.14.9",
 		"barrelsby": "^2.8.0",
 		"dependency-check": "^4.1.0",
@@ -31,7 +33,7 @@
 	"dependencies": {
 		"@cloudinary/url-gen": "^1.15.0",
 		"@maptiler/client": "^1.5.0",
-		"@repo/ts-types": "*",
+		"@repo/ts-types": "workspace:*",
 		"appwrite": "^15.0.0",
 		"browser-image-compression": "^2.0.2",
 		"buffer": "^6.0.3",

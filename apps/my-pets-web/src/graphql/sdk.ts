@@ -20,8 +20,10 @@ const requestMiddleware: RequestMiddleware = (req) => {
 	}
 	return {
 		...req,
-		cache: 'only-if-cached',
+
+		cache: 'force-cache',
 		headers: {
+			'Cache-Control': 'force-cache',
 			...req.headers,
 			...authHeader,
 		},
@@ -30,7 +32,7 @@ const requestMiddleware: RequestMiddleware = (req) => {
 
 const client = new GraphQLClient(url, {
 	mode: 'same-origin',
-	cache: 'only-if-cached',
+	cache: 'force-cache',
 	requestMiddleware: requestMiddleware,
 	credentials: 'include',
 })
