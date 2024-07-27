@@ -52,6 +52,9 @@
 
 			if (!session) throw new Error('Cant read session from local-storage')
 
+			// set cookie fallback into localstorage once more, because i have to set the cookie fallback value into svelte store, so when i update the store the cookie fallback value will be there updated
+			storage.cookieFallback = { [PUBLIC_SESSION_NAME]: session }
+
 			await sdk.setSession({ session: session })
 			await post('/api/auth/setSession', { session })
 			goto('/', { invalidateAll: true, replaceState: true })

@@ -425,6 +425,9 @@ importers:
       '@turf/turf':
         specifier: ^7.0.0
         version: 7.0.0
+      '@types/lodash':
+        specifier: ^4.14.202
+        version: 4.17.7
       '@types/turf':
         specifier: ^3.5.32
         version: 3.5.32
