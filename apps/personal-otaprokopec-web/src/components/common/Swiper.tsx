@@ -4,7 +4,7 @@ import {
 	SwiperSlide,
 	type SwiperProps as ReactSwiperProps,
 } from 'swiper/react'
-import '../../../../../node_modules/swiper/swiper.min.css'
+import '../../../node_modules/swiper/swiper.min.css'
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
 
 export type SwiperProps = {

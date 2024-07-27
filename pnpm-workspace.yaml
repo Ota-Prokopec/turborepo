@@ -1,3 +1,6 @@
 packages:
-  - 'apps/**'
+  - 'apps/my-pets-portfolio'
+  - 'apps/my-pets-api'
+  - 'apps/my-pets-web'
+  - 'apps/personal-otaprokopec-web'
   - 'packages/**'

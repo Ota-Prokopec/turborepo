@@ -1,7 +1,6 @@
 import { useRecognizeWidth } from '@/hooks/useRecognizeWidth'
 import { Fragment, useState } from 'react'
 import { FaCirclePlus } from 'react-icons/fa6'
-import Masonry from 'react-responsive-masonry'
 import { Card } from '../ui/card'
 import { cn } from '../utils'
 import { Center } from '../common/Center'
@@ -16,13 +15,15 @@ import { Loading } from '../common/Loading'
 import { EffectCoverflow, Pagination } from 'swiper/modules'
 import { FaHeart } from 'react-icons/fa'
 import { GalleryItem } from './GalleryItem'
+import { MansonryGallery } from './MansonryGallery'
 
 export type GalleryProps = {
 	pictures: { src: string }[]
+	onLikePost: ({ picture }: { picture: { src: string } }) => void
 }
 export type GalleryType = 'gallery' | 'swiper'
 
-export const Gallery = ({ pictures }: GalleryProps) => {
+export const Gallery = ({ pictures, onLikePost }: GalleryProps) => {
 	const { width } = useRecognizeWidth()
 
 	const columnsCount =
@@ -59,7 +60,11 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 	const picturesToRender = pictures.slice(0, limit).map((picture, i) => {
 		return (
 			<div key={picture.src}>
-				<GalleryItem quality={60 - picturesPerView * 10} picture={picture}></GalleryItem>
+				<GalleryItem
+					onLikePost={() => onLikePost({ picture })}
+					quality={60 - picturesPerView * 10}
+					picture={picture}
+				></GalleryItem>
 			</div>
 		)
 	})
@@ -72,7 +77,7 @@ export const Gallery = ({ pictures }: GalleryProps) => {
 			></GallerySwiperSwitch>
 			{galleryType === 'gallery' ? (
 				<Column className="w-full gap-4 ">
-					<Masonry columnsCount={columnsCount}>{picturesToRender}</Masonry>
+					<MansonryGallery columns={columnsCount}>{picturesToRender}</MansonryGallery>
 					{limit < pictures.length && (
 						<LoadMoreButton onClick={loadMorePictures}></LoadMoreButton>
 					)}

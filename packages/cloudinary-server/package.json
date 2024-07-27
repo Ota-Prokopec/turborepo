@@ -22,8 +22,10 @@
 	},
 	"devDependencies": {
 		"@changesets/cli": "^2.26.2",
+		"@rollup/plugin-typescript": "^11.1.6",
 		"@types/node": "^20.14.9",
 		"@types/set-cookie-parser": "^2.4.3",
+		"dependency-check": "^4.1.0",
 		"rollup": "^4.6.0",
 		"typescript": "5.5.2"
 	},

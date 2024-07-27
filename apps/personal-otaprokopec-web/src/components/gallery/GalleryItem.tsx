@@ -7,13 +7,13 @@ import { Icon } from '../common/Icon'
 import { Loading } from '../common/Loading'
 import { Card } from '../ui/card'
 import { cn } from '../utils'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 type GalleryItemProps = {
 	picture: { src: string }
 	className?: string
 	onClick?: () => void
 	quality: number
+	onLikePost: () => void
 }
 
 export const GalleryItem = ({
@@ -21,16 +21,9 @@ export const GalleryItem = ({
 	className,
 	onClick,
 	quality,
+	onLikePost,
 }: GalleryItemProps) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
-	const [likedPosts, setLikedPosts] = useLocalStorage('LikedbikePictures')
-
-	const likePost = (newLikedPost: string) => {
-		setLikedPosts((currentLikedPosts) => {
-			if (!likedPosts) return [newLikedPost]
-			else return [...likedPosts, newLikedPost]
-		})
-	}
 
 	return (
 		<Card
@@ -55,10 +48,7 @@ export const GalleryItem = ({
 					loading="lazy"
 				/>
 			</Fragment>
-			<Icon
-				onClick={() => likePost(picture.src)}
-				className="absolute bottom-0 left-0 m-2 w-6 h-6"
-			>
+			<Icon onClick={onLikePost} className="absolute bottom-0 left-0 m-2 w-6 h-6">
 				<FaHeart className="w-full h-full " />
 			</Icon>
 		</Card>

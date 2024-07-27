@@ -1,4 +1,6 @@
+import { useLocalStorageContext, useLocalStorageValue } from '@/contexts/ContextProviders'
 import { Gallery } from '../gallery/Gallery'
+import { useEffect } from 'react'
 
 const bikePictures = [
 	{
@@ -79,5 +81,5 @@ const bikePictures = [
 ]
 
 export const BikeGallery = () => {
-	return <Gallery pictures={bikePictures}></Gallery>
+	return <Gallery onLikePost={() => {}} pictures={bikePictures}></Gallery>
 }

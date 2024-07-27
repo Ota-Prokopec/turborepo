@@ -11,13 +11,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ThemeSwith } from '@/components/common/ThemeSwith'
 import { Row } from '@/components/common/Row'
 import { Right } from '@/components/common/Right'
-
-const bikePictures = [
-	{
-		img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-		title: 'Breakfast',
-	},
-]
+import { useLocalStorageContext, useLocalStorageValue } from '@/contexts/ContextProviders'
+import { useEffect } from 'react'
 
 export default function Home() {
 	return (
