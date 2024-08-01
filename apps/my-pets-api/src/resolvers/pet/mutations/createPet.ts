@@ -80,11 +80,11 @@ export const createPet = async (
 		petDocumentId,
 	)
 
-	const linkId = await collections.petIdTranslation.getDocumentsCount()
+	//const linkId = await collections.petIdTranslation.getDocumentsCount()
 
 	const petIdTranslationDocument = await collections.petIdTranslation.createDocument(
 		{
-			linkId: linkId.toString(),
+			linkId: petDocument._id,
 			petId: petDocument._id,
 		},
 		permissions.owner(userId),
