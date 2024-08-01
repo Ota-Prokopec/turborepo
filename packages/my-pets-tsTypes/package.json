@@ -13,7 +13,7 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"build": "npm run build:types && npm run build:libs",
+		"build": "pnpm run build:types && pnpm run build:libs",
 		"build:libs": "rollup -c",
 		"build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
 		"prebuild": "pnpm barrelsby && pnpm  check-missing-dependencies",
